@@ -1,0 +1,13 @@
+<% user = defined?(locals[:user]) ? locals[:user] : @user %>
+
+<td>
+  <%= user.login %>
+</td>
+
+<td>
+  <%= user.login_count %>
+</td>
+
+<td>
+  <%= user.last_login_at %>
+</td>

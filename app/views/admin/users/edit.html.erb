@@ -1,0 +1,7 @@
+<h1>Edit User</h1>
+
+<%= form_for([:admin,@user]) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit "Update",  :disable_with => "Please Wait..." %>
+<% end %>

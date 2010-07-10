@@ -1,0 +1,65 @@
+KernCoinProject::Application.routes.draw do |map|
+#  get "checkout/view_cart"
+#
+#  get "checkout/personal_info"
+#
+#  get "checkout/billing_info"
+#
+#  get "checkout/review_order"
+#
+#  get "checkout/checkout"
+#
+#  get "profile/show"
+#
+#  get "profile/bought_items"
+#
+#  get "profile/won_auctions"
+#
+#  get "profile/bids"
+
+  
+  root :to => 'admin/home#index'
+
+  # Admin Namespace
+  namespace "admin" do
+    get "home/index"
+    resources :items
+    resources :pages
+    resources :users
+    resources :categories, :except => [:show]
+    get "sales/view"
+    get "sales_reports/view"
+  end
+
+  # Home Controller
+  match "home" => 'home#index', :as => :home
+  match "home/all_pages" => 'home#all_pages', :as => :all_pages
+  match "home/:id" => "home#page", :as => :page
+
+  # Account Controller
+  #  get "account/show"
+  #  get "account/bids"
+  #  get "account/history"
+  #  get "account/cart"
+  match "logout" => 'user_sessions#destroy'
+  resource :user_session, :only => [:destroy, :create, :new]
+
+  # Auctions Module
+  #  scope :module => "auction" do
+  #    # CustomerAuctions Controller
+  #    match "auctions/categories" => 'customer_auctions#categories', :as => :auctions_categories
+  #    match "auctions/list" => 'customer_auctions#list', :as => :auctions_list
+  #    match "auctions/view/:id" => 'customer_auctions#view', :as => :auctions_view
+  #    # CustomerBid Controller
+  #    resource :customer_bid, :only => [:new, :create, :destroy]
+  #  end
+
+  # Store Controller
+  get 'store/categories', :as => :store_categories
+  get 'store/list', :as => :store_list
+  get 'store/view', :as => :store_view
+  post 'store/empty_cart', :as => :store_empty_cart
+  match 'store/add_to_cart/:id' => 'store#add_to_cart', :as => :store_add_to_cart, :via => 'post'
+
+  
+end

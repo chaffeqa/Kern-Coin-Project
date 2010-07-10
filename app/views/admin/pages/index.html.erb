@@ -1,0 +1,16 @@
+<h1>Pages Admin</h1>
+
+<% @pages.each do |page| %>
+  <%= render 'partials/page_list', :locals => {:page => page} %>
+  <p>
+    <%= link_to 'Show', admin_page_path(page) %>---
+    <%= link_to 'Edit', edit_admin_page_path(page) %>---
+    <%= link_to 'Destroy', admin_page_path(page), :confirm => 'Are you sure?', :method => :delete %>
+  </p>
+
+<% end %>
+
+<br />
+
+<%= link_to 'New Page', new_admin_page_path %>
+---<%= link_to 'Admin Home', 'home/index' %>

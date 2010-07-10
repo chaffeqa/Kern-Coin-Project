@@ -1,0 +1,8 @@
+<h2>Announcements</h2>
+
+<% @announcements.each do |announcement| %>
+  <%= render 'admin/announcements/announcement', :locals => {:announcement => announcement} %>
+  <%= link_to "Read More", announcement_path(announcement.id) %>
+<% end %>
+<%= link_to "Home", home_path %>
+

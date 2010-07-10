@@ -1,0 +1,32 @@
+<%= form_for([:admin,@user]) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited your user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :login %><br/>
+    <%= f.text_field :login %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, f.object.new_record? ? nil : "Change password" %><br/>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Register",  :disable_with => "Please Wait..." %>
+  </div>
+<% end %>

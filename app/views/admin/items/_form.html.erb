@@ -1,0 +1,52 @@
+<%= form_for([:admin, @item]) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% @item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :details %><br />
+    <%= f.text_area :details %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.collection_select :category_id, Category.order("title desc"), :id, :title %>
+  </div>
+  <div class="field">
+    <%= f.label :cost, "Starting Cost" %><br />
+    $ <%= f.text_field :cost, :size => 7 %>
+  </div>
+
+  <% if f.object.new_record? %>
+    <div class="field">
+      <%= f.label :item_id, "Item ID" %><br />
+      <%= f.text_field :item_id %>
+    </div>
+    <div class="field">
+      <%= f.label :display, "For Sale" %>
+      <%= f.radio_button :for_sale, true %><br />
+      <%= f.label :display, "Not For Sale" %>
+      <%= f.radio_button :for_sale, false %>
+    </div>
+    <div class="field">
+      <%= f.label :display, "Display Item" %>
+      <%= f.radio_button :display, true %><br />
+      <%= f.label :display, "Don't Display Item" %>
+      <%= f.radio_button :display, false %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit :disable_with => "Please Wait..." %>
+  </div>
+<% end %>

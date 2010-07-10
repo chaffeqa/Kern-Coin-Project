@@ -1,0 +1,32 @@
+<% item = defined?(locals[:item]) ? locals[:item] : @item %>
+
+<h3><%= item.name %></h3>
+<p>
+  <strong>Item ID: </strong>
+  <%= item.item_id %>
+</p>
+
+<p>
+  <strong>Details: </strong>
+  <%=raw item.details %>
+</p>
+
+<p>
+  <strong>Category: </strong>
+  <%= item.category.title %>
+</p>
+
+<p>
+  <strong>Cost: </strong>
+  <%= item.cost %>
+</p>
+
+<p>
+  <strong>For Sale: </strong>
+  <%= item.for_sale %>
+</p>
+
+<p>
+  <strong>On Display: </strong>
+  <%= item.display %>
+</p>

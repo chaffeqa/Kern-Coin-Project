@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  item: 
+  amount: 9.99
+  fulfillment: MyString
+  user: 
+
+two:
+  item: 
+  amount: 9.99
+  fulfillment: MyString
+  user: 

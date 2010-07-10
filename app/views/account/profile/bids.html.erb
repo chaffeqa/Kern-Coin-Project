@@ -1,0 +1,18 @@
+<% if defined?(@bids) and @bids.count > 0 %>
+  <h2>Your Bids</h2>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Bidder</th>
+      <th>Bid Date</th>
+      <th>Bid Amount</th>
+    </tr>
+    <% @bids.each do |bid| %>
+      <tr>
+        <%= render 'partials/bid_list', :locals => {:bid => bid} %>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h2>You have not bidded on any items</h2>
+<% end %>
