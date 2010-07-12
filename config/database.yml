@@ -25,7 +25,7 @@ production:
   username: root
   password: chaffee
   host: localhost
-  socket: /tmp/mysql.sock
+  socket: /var/lib/mysql.sock
 #  adapter: sqlite3
 #  database: db/development.sqlite3_production
 #  pool: 5
