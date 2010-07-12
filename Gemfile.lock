@@ -4,10 +4,6 @@ dependencies:
     group: 
     - :default
     version: = 3.0.0.beta4
-  pg: 
-    group: 
-    - :production
-    version: ">= 0"
   sqlite3-ruby: 
     group: 
     - :development
@@ -15,6 +11,10 @@ dependencies:
     version: ">= 0"
     require: 
     - sqlite3
+  mysql: 
+    group: 
+    - :production
+    version: ">= 0"
   authlogic: 
     group: 
     - :default
@@ -76,8 +76,8 @@ specs:
 - ckeditor: 
     version: 3.2.5
     source: 0
-- pg: 
-    version: 0.9.0
+- mysql: 
+    version: 2.8.1
 - railroad: 
     version: 0.5.0
 - thor: 
@@ -88,7 +88,7 @@ specs:
     version: 3.0.0.beta4
 - sqlite3-ruby: 
     version: 1.3.0
-hash: be5990c1c30b624fbf1f589d96848122702fda5c
+hash: 3f121c85196bce3e5803776620c85869ae38314d
 sources: 
 - Git: 
     uri: git://github.com/galetahub/rails-ckeditor.git

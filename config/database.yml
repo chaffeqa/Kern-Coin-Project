@@ -19,8 +19,15 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/development.sqlite3_production
-  pool: 5
-  timeout: 5000
+  adapter: mysql
+  encoding: utf8
+  database: kern_coin_production
+  username: root
+  password: chaffee
+  host: localhost
+  socket: /tmp/mysql.sock
+#  adapter: sqlite3
+#  database: db/development.sqlite3_production
+#  pool: 5
+#  timeout: 5000
 
