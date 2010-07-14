@@ -1,16 +1,19 @@
 <h1>Pages Admin</h1>
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+  <% @pages.each do |page| %>
+    <tr>
+      <%= render 'partials/page_list', :locals => {:page => page} %>
 
-<% @pages.each do |page| %>
-  <%= render 'partials/page_list', :locals => {:page => page} %>
-  <p>
-    <%= link_to 'Show', admin_page_path(page) %>---
-    <%= link_to 'Edit', edit_admin_page_path(page) %>---
-    <%= link_to 'Destroy', admin_page_path(page), :confirm => 'Are you sure?', :method => :delete %>
-  </p>
+      <td><%= link_to 'Show', admin_page_path(page) %></td>
+      <td><%= link_to 'Edit', edit_admin_page_path(page) %></td>
+      <td><%= link_to 'Destroy', admin_page_path(page), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+  <br />
 
-<% end %>
-
-<br />
-
-<%= link_to 'New Page', new_admin_page_path %>
----<%= link_to 'Admin Home', 'home/index' %>
+  <%= link_to 'New Page', new_admin_page_path %>
+  ---<%= link_to 'Admin Home', admin_home_url %>

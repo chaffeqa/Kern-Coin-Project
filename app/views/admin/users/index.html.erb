@@ -6,14 +6,14 @@
     <th>Last Login</th>
   </tr>
   <% @users.each do |user| %>
-  <tr>
-    <%= render 'partials/user_list', :locals => {:user => user} %>
-    <td><%= link_to 'Show', admin_user_path(user) %></td>
-    <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
-    <td><%= link_to 'Destroy', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <tr>
+      <%= render 'partials/user_list', :locals => {:user => user} %>
+      <td><%= link_to 'Show', admin_user_path(user) %></td>
+      <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+      <td><%= link_to 'Deslioy', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
   <%end%>
 </table>
 <br/>
 
-<%= link_to 'Admin Home', 'home/index' %>
+<%= link_to 'Admin Home', admin_home_url %>

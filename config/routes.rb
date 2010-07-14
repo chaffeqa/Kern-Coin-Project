@@ -1,28 +1,11 @@
 KernCoinProject::Application.routes.draw do |map|
-#  get "checkout/view_cart"
-#
-#  get "checkout/personal_info"
-#
-#  get "checkout/billing_info"
-#
-#  get "checkout/review_order"
-#
-#  get "checkout/checkout"
-#
-#  get "profile/show"
-#
-#  get "profile/bought_items"
-#
-#  get "profile/won_auctions"
-#
-#  get "profile/bids"
-
+  
   
   root :to => 'admin/home#index'
 
   # Admin Namespace
   namespace "admin" do
-    get "home/index"
+    get "home/index", :as => :home
     resources :items
     resources :pages
     resources :users
@@ -36,12 +19,13 @@ KernCoinProject::Application.routes.draw do |map|
   match "home/all_pages" => 'home#all_pages', :as => :all_pages
   match "home/:id" => "home#page", :as => :page
 
-  # Account Controller
-  #  get "account/show"
-  #  get "account/bids"
-  #  get "account/history"
-  #  get "account/cart"
-  match "logout" => 'user_sessions#destroy'
+  # Profile Controller
+  #  get "profile/show"
+  #  get "profile/bought_items"
+  #  get "profile/won_auctions"
+  #  get "profile/bids"
+  match "logout" => 'user_sessions#destroy', :as => :logout
+  match "login" => 'user_sessions#new', :as => :login
   resource :user_session, :only => [:destroy, :create, :new]
 
   # Auctions Module
@@ -61,5 +45,9 @@ KernCoinProject::Application.routes.draw do |map|
   post 'store/empty_cart', :as => :store_empty_cart
   match 'store/add_to_cart/:id' => 'store#add_to_cart', :as => :store_add_to_cart, :via => 'post'
 
-  
+  #  get "checkout/view_cart"
+  #  get "checkout/personal_info"
+  #  get "checkout/billing_info"
+  #  get "checkout/review_order"
+  #  get "checkout/checkout"
 end

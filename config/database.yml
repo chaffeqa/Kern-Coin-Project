@@ -25,9 +25,5 @@ production:
   username: root
   password: chaffee
   host: localhost
-  socket: /var/lib/mysql.sock
-#  adapter: sqlite3
-#  database: db/development.sqlite3_production
-#  pool: 5
-#  timeout: 5000
+  socket: /var/run/mysqld/mysqld.sock
 

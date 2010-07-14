@@ -12,7 +12,7 @@ class CartItem
   end
 
   def title
-    @item.title
+    @item.name
   end
   
   def total

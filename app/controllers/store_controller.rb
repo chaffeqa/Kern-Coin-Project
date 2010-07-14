@@ -23,9 +23,12 @@ class StoreController < ApplicationController
  
 
   def add_to_cart
-    item = Item.find(:id)
+    item = Item.find(params[:id])
     @current_item = @cart.add_item(item)
-    redirect_to( :back || store_categories_url)
+    respond_to do |format|
+      format.js if request.xhr?
+      format.html {redirect_to( :back || store_categories_url)}
+    end    
     #TODO make protected error method
   rescue ActiveRecord::RecordNotFound
     logger.error("Attempt to access invalid item #{params[:id]}" )
@@ -34,7 +37,10 @@ class StoreController < ApplicationController
 
   def empty_cart
     session[:cart] = nil
-    redirect_to( :back || store_categories_url)
+    respond_to do |format|
+      format.js if request.xhr?
+      format.html {redirect_to( :back || store_categories_url)}
+    end
   end
 
 

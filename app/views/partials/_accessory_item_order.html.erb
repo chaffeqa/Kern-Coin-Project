@@ -1,0 +1,12 @@
+<% item = defined?(locals[:item]) ? locals[:item] : @item %>
+
+<%#= form_tag :url => 'https://KERN-Coin.foxycart.com/cart', :class => 'foxycart' do -%>
+  <form class="foxycart" action="https://KERN-Coin.foxycart.com/cart" method="post" accept-charset="utf-8">
+    <%= hidden_field_tag 'name', item.name %>
+    <%= hidden_field_tag 'category', item.category.title %>
+    <%= hidden_field_tag 'price', item.cost %>
+    <%= hidden_field_tag 'ID', item.item_id %>
+    <div class="actions">
+      <%= submit_tag 'Add to Cart', :disable_with => "Please Wait..." %>
+    </div>
+  </form>

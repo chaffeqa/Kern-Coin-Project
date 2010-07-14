@@ -8,10 +8,12 @@
   </tr>
 
   <% @items.each do |item| %>
-    <tr>
+    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
       <%= render 'partials/item_list', :locals => {:item => item} %>
-      <td><%= item.cost_to_currency %></td>
-      <td><%= link_to 'Add To Cart', store_add_to_cart_path(item), :method => :post %></td>
+      <td><%= number_to_currency(item.cost) %></td>
+      <td><%= link_to 'Add To Cart', store_add_to_cart_path(item), :remote => true, :method => :post %></td>
+      <td><%= render 'partials/accessory_item_order', :locals => {:item => item} %></td>
     </tr>
   <% end %>
 </table>
+
