@@ -2,6 +2,6 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
-.sqlite3
-.sqlite3/*
+db/*.sqlite3_test
 schema.rb
+public/ckeditor_assets
