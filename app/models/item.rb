@@ -15,6 +15,7 @@ class Item < ActiveRecord::Base
 
 
   scope :get_for_sale, where(:for_sale => true)
+  scope :displayed, where(:display => true)
   
   def short_details
     return self.details[0,30] << "..."

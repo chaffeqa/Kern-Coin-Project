@@ -7,7 +7,8 @@ class StoreController < ApplicationController
   end
 
   def list
-    @items = Item.where(:category_id => params[:category_id]).get_for_sale
+    @items = Item.get_for_sale.displayed
+    @items = @items.where(:category_id => params[:category_id]) if params[:category_id]
     if params[:asc] == "desc"
       @items.order("? desc", params[:order_by] ||= 'title')
     else
