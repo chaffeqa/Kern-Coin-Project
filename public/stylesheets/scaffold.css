@@ -11,7 +11,7 @@ div#right-panel div.panel {padding: 8px; margin-bottom: 25px; border-bottom: bla
 table.panel.th, table.panel.td {padding: 4px;}
 
 pre { background-color: #eee; padding: 10px; font-size: 11px; }
-div.image { float: left; padding: 8px; border: #737357 solid 4px; }
+div.image { float: left; margin: 15px; border: #737357 solid 4px; }
 
 a { color: #000; }
 a:visited { color: #666; }
