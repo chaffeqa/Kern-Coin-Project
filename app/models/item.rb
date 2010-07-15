@@ -3,8 +3,8 @@ class Item < ActiveRecord::Base
   has_one :sale
   has_many :cart_items
   has_attached_file :main_image,
-    :url  => "/images/items/:name/main_image_:style.:extension",
-    :path => ":rails_root/public/images/items/:name/main_image_:style.:extension",
+    :url  => "/images/items/:id/main_image_:style.:extension",
+    :path => ":rails_root/public/images/items/:id/main_image_:style.:extension",
     :styles => {:display => ['250x250#', :gif], :thumb => ['80x80#', :gif] }
 
   validates_attachment_presence :main_image
