@@ -21,7 +21,7 @@ div.field, div.actions {
   margin-bottom: 10px;
 }
 
-td, th {padding: 0px;}
+td, th {padding: 10px; margin: 0px;}
 th {background-color: #CEE2F2; }
 tr.hover {background-color: #DDF0DD; border: #888888 solid 5px; }
 td.thumb { border: #888888 solid 2px; }

@@ -17,7 +17,7 @@ class StoreController < ApplicationController
   end
 
   def view
-    @item = Item.find(:id)
+    @item = Item.find(params[:id])
   end
 
  
