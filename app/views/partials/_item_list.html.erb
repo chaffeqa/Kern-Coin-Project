@@ -1,5 +1,7 @@
 <% item = defined?(locals[:item]) ? locals[:item] : @item %>
 
+<td class="thumb"><%= image_tag item.main_image.url(:thumb) %></td>
+
 <td><strong><%= item.name %></strong></td>
 
 <td>

@@ -1,4 +1,4 @@
-<%= form_for([:admin, @item]) do |f| %>
+<%= form_for([:admin, @item], :html => { :multipart => true }) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -26,6 +26,11 @@
   <div class="field">
     <%= f.label :cost, "Starting Cost" %><br />
     $ <%= f.text_field :cost, :size => 7 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :main_image %>
+    <%= f.file_field :main_image %>
   </div>
 
   <% if f.object.new_record? %>

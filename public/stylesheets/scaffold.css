@@ -10,11 +10,8 @@ div#right-panel {float: right; border: #888888 solid 8px; padding: 15px;}
 div#right-panel div.panel {padding: 8px; margin-bottom: 25px; border-bottom: black solid 3px;}
 table.panel.th, table.panel.td {padding: 4px;}
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
+pre { background-color: #eee; padding: 10px; font-size: 11px; }
+div.image { float: left; padding: 8px; border: #737357 solid 4px; }
 
 a { color: #000; }
 a:visited { color: #666; }
@@ -27,6 +24,7 @@ div.field, div.actions {
 td, th {padding: 10px;}
 th {background-color: #CEE2F2; }
 tr.hover {background-color: #DDF0DD; border: #888888 solid 5px; }
+td.thumb { border: #888888 solid 2px; }
 
 
 #notice {  color: green; }
