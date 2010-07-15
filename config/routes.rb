@@ -41,7 +41,7 @@ KernCoinProject::Application.routes.draw do |map|
   # Store Controller
   get 'store/categories', :as => :store_categories
   get 'store/list', :as => :store_list
-  get 'store/view', :as => :store_view
+  match 'store/view/:id' => 'store#view', :as => :store_view
   post 'store/empty_cart', :as => :store_empty_cart
   match 'store/add_to_cart/:id' => 'store#add_to_cart', :as => :store_add_to_cart, :via => 'post'
 
