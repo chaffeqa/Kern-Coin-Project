@@ -2,19 +2,19 @@
 
 <table>
   <tr>
-    <th></th>
+    <td></td>
     <th><%= link_to "Item", store_list_path(:sort_by => 'title') %></th>
     <th>Description</th>
     <th><%= link_to "Cost", store_list_path(:sort_by => 'cost') %></th>
   </tr>
 
   <% @items.each do |item| %>
-    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>"><a href="test">
       <%= render 'partials/item_list', :locals => {:item => item} %>
       <td><%= number_to_currency(item.cost) %></td>
       <td><%= link_to 'Add To Cart', store_add_to_cart_path(item), :remote => true, :method => :post %></td>
       <td><%= render 'partials/accessory_item_order', :locals => {:item => item} %></td>
-    </tr>
-  <% end %>
+    </a></tr>
+<% end %>
 </table>
 
