@@ -24,7 +24,7 @@ div.field, div.actions {
 table { border-collapse: collapse; }
 td, th {padding: 10px; margin: 0px;}
 th {background-color: #CEE2F2; }
-tr.hover {background-color: #DDF0DD; border: #888888 solid 5px; }
+tr.hover {background-color: #DDF0DD; }
 td.thumb { border: #888888 solid 2px; }
 
 
