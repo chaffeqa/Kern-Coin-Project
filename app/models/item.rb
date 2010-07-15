@@ -9,7 +9,7 @@ class Item < ActiveRecord::Base
 
   validates_attachment_presence :main_image
 	validates_attachment_size :main_image, :less_than => 2.megabytes
-  validates_attachment_content_type :main_image
+  validates_attachment_content_type :main_image, ["jpg", "png", "gif"]
   validates_presence_of :name, :item_id, :cost
   validates_numericality_of :cost
 
