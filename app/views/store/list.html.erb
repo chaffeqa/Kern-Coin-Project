@@ -9,9 +9,11 @@
   </tr>
 
   <% @items.each do |item| %>
-    <tr  onclick="location.href='<%= store_view_path(item.id) %>';" style="cursor: pointer;" onmouseover="this.className='hover';" onmouseout="this.className='';">
-      <%= render 'partials/item_list', :locals => {:item => item} %>
-      <td><%= number_to_currency(item.cost) %></td>
+    <tr  style="cursor: pointer;" onmouseover="this.className='hover';" onmouseout="this.className='';">
+      <td class="thumb" onclick="location.href='<%= store_view_path(item) %>';"><%= image_tag item.main_image.url(:thumb) %></td>
+      <td onclick="location.href='<%= store_view_path(item) %>';"><strong><%= item.name %></strong></td>
+      <td onclick="location.href='<%= store_view_path(item) %>';"><%= item.short_details %></td>
+      <td onclick="location.href='<%= store_view_path(item) %>';"><%= number_to_currency(item.cost) %></td>
       <td><%= link_to 'Add To Cart', store_add_to_cart_path(item), :remote => true, :method => :post %></td>
       <td><%= render 'partials/accessory_item_order', :locals => {:item => item} %></td>
     </tr>
