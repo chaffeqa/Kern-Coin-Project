@@ -5,11 +5,11 @@ class Item < ActiveRecord::Base
   has_attached_file :main_image,
     :url  => "/images/items/:name/main_image_:style.:extension",
     :path => ":rails_root/public/images/items/:name/main_image_:style.:extension",
-    :styles => { :thumb => '100x100#' }
+    :styles => { :thumb => ['100x100#', :gif] }
 
   validates_attachment_presence :main_image
 	validates_attachment_size :main_image, :less_than => 2.megabytes
-  validates_attachment_content_type :main_image, ["jpg", "png", "gif"]
+  validates_attachment_content_type :main_image, :content_type => ["jpg", "jpeg", "png", "gif", "tif", "tiff"]
   validates_presence_of :name, :item_id, :cost
   validates_numericality_of :cost
 
