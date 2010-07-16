@@ -9,7 +9,7 @@ class StoreController < ApplicationController
   def list
     @items = Item.get_for_sale.displayed
     @items = @items.where(:category_id => params[:category_id]) if params[:category_id]
-    order_by = params[:order_by].to_s.gsub(/\\/, '\&\&').gsub(/'/, "''") || 'title'
+    order_by = defined?(params[:order_by] ? params[:order_by].to_s.gsub(/\\/, '\&\&').gsub(/'/, "''") || 'title'
     if params[:asc] and params[:asc] == "desc"
       @asc = "asc"
       @items = @items.order("#{order_by} asc")
