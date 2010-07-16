@@ -15,8 +15,16 @@
   <body>
     <div id="page">
       <div id="wrapper" class="clearfloat">
+        <div id="header" class="clearfloat"><%= render 'layouts/header' %></div>
+        <ul id="nav-menu" class="clearfloat"> <%= render 'layouts/nav_menu' %> </ul>
+
+        <div id="content">
+          <% if flash[:notice] %> <p id="notice"><%= notice %></p> <% end %>
+          <% if flash[:important_notice] %> <p id="important-notice"><%= flash[:important_notice] %></p><% end %>
+          <%= yield %>
+        </div>
+
         <div id="right-panel">
-          <div class="panel"><%= link_to 'Home', home_path %></div>
           <% if @cart %>
             <% hidden_div_if(@cart.items.empty?, :id => "cart" ) do %>
               <%= render("partials/cart") %>
@@ -30,10 +38,6 @@
           <% end %>
         </div>
 
-        <% if flash[:notice] %> <p id="notice"><%= notice %></p> <% end %>
-        <% if flash[:important_notice] %> <p id="important-notice"><%= flash[:important_notice] %></p><% end %>
-
-        <%= yield %>
       </div>
     </div>
   </body>

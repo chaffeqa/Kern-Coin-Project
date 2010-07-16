@@ -1,7 +1,7 @@
 KernCoinProject::Application.routes.draw do |map|
   
   
-  root :to => 'admin/home#index'
+  root :to => 'home#home'
 
   # Admin Namespace
   namespace "admin" do
@@ -15,9 +15,10 @@ KernCoinProject::Application.routes.draw do |map|
   end
 
   # Home Controller
-  match "home" => 'home#index', :as => :home
-  match "home/all_pages" => 'home#all_pages', :as => :all_pages
-  match "home/:id" => "home#page", :as => :page
+  match "home" => 'home#home', :as => :home
+  # Announcement Controller
+  match 'announcements' => 'announcement#announcements', :as => :announcements
+  match 'announcement/:id' => 'announcement#announcement', :as => :announcement
 
   # Profile Controller
   #  get "profile/show"
