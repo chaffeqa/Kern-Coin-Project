@@ -1,14 +1,6 @@
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Date</th>
-  </tr>
-  <% @pages.each do |page| %>
-    <tr>
-      <%= render 'partials/page_list', :locals => {:page => page} %>
-      <td><%= link_to "Read More", announcement_path(page.id) %></td>
-    </tr>
-  <% end %>
-</table>
+
+<% @pages.each do |page| %>
+  <%= render 'partials/page', :locals => {:page => page} %>
+<% end %>
 <%= link_to "Home", home_path %>
 

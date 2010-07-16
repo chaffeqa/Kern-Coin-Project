@@ -24,9 +24,12 @@ div.image { float: left; margin: 15px; border: #737357 solid 4px; }
 h1 {display: inline;}
 #header-controller {font-size: 16px;}
 #header-action {font-size: 13px;}
+
 a, a:visited  { color: #000; display: inline; letter-spacing: normal; }
 a:hover { color: #607B88; }
 p, h2, h3, h4 {margin-bottom: 10px;}
+h4 {font-size: 9px;}
+p {padding-left: 5px;}
 li {display: block; padding-left: 5px; margin-bottom: 4px;}
 
 div.field, div.actions { margin-bottom: 10px; }
