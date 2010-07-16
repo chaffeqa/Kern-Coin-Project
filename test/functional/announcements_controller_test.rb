@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AnnouncementControllerTest < ActionController::TestCase
+class AnnouncementsControllerTest < ActionController::TestCase
   test "should get announcements" do
     get :announcements
     assert_response :success

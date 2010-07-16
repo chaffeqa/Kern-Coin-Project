@@ -8,13 +8,13 @@ body { background-color: #6666ff; color: #1D1D1D; min-height: 101%; font: 12px s
 
 #wrapper { background: white; border: 1px solid #000000; padding: 0px 25px 60px; }
 
-#header {border-bottom: 1px solid #607B88; padding: 22px 0px;}
-#nav-menu { border-top: 1px solid #83A8B9; line-height: 1; margin: 0px auto; padding: 6px 0px 6px 15px; position: relative;}
+#header { padding: 22px 0px;}
+#nav-menu { border-top: 1px solid #83A8B9; line-height: 1; margin: 0px auto 25px; padding: 6px 0px 6px 15px; position: relative;}
 #nav-menu li {border-right: 1px dotted #83A8B9; float: left; list-style: none; margin-right: 25px; padding: 0px 25px 0px 13px !important; position: relative;}
 #nav-menu a, a:visited {color: #141414; display: block; letter-spacing: 0.07em; padding-bottom: 3px; text-decoration: none;}
 #content {float: left; width: 620px;}
 
-#right-panel {float: right; width: 262px;}
+#right-panel {float: right; width: 200px;}
 #right-panel div.panel {padding: 8px; margin-bottom: 25px; border-bottom: black solid 3px;}
 table.panel.th, table.panel.td {padding: 4px;}
 
@@ -22,7 +22,8 @@ pre { background-color: #eee; padding: 10px; font-size: 11px; }
 div.image { float: left; margin: 15px; border: #737357 solid 4px; }
 
 h1 {display: inline;}
-#header-path {font-size: 16px;}
+#header-controller {font-size: 16px;}
+#header-action {font-size: 13px;}
 a, a:visited  { color: #000; display: inline; letter-spacing: normal; }
 a:hover { color: #607B88; }
 p, h2, h3, h4 {margin-bottom: 10px;}
@@ -32,7 +33,7 @@ div.field, div.actions { margin-bottom: 10px; }
 
 table { border-collapse: collapse; }
 td, th {padding: 10px; margin: 0px;}
-th {background-color: #cccccc; }
+th {border-bottom: 2px solid #737357; }
 tr { margin: 3px; }
 tr.hover {background-color: #DDF0DD; }
 td.thumb { border: #888888 solid 2px; }

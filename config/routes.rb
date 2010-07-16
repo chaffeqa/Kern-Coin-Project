@@ -17,8 +17,8 @@ KernCoinProject::Application.routes.draw do |map|
   # Home Controller
   match "home" => 'home#home', :as => :home
   # Announcement Controller
-  match 'announcements' => 'announcement#announcements', :as => :announcements
-  match 'announcement/:id' => 'announcement#announcement', :as => :announcement
+  match 'announcements' => 'announcements#announcements', :as => :announcements
+  match 'announcement/:id' => 'announcements#announcement', :as => :announcement
 
   # Profile Controller
   #  get "profile/show"

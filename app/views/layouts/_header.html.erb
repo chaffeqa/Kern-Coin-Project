@@ -1,2 +1,3 @@
 <h1><%= link_to 'Kern Coin Project', home_url %></h1>
-<h1 id="header-path"> &nbsp; > &nbsp; <%= @page_title ||= controller.action_name.capitalize %></h1>
+<h1 id="header-controller"> &nbsp; > &nbsp; <%= @page_controller ||= controller.controller_name.capitalize %></h1>
+<h1 id="header-action"> &nbsp; > &nbsp; <%= @page_action ||= controller.action_name.capitalize %></h1>

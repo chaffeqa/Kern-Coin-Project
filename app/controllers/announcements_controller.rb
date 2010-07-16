@@ -1,4 +1,4 @@
-class AnnouncementController < ApplicationController
+class AnnouncementsController < ApplicationController
   def announcement
     @page = Page.find(params[:id])
   end
