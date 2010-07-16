@@ -13,10 +13,10 @@ class StoreController < ApplicationController
     order_by = params[:sort_by] if params[:sort_by]
     if params[:asc] and params[:asc] == "desc"
       @asc = "asc"
-      @items = @items.order("(?) asc", order_by)
+      @items = @items.order("#{order_by} asc")
     else
       @asc = "desc"
-      @items = @items.order("(?) desc", order_by)
+      @items = @items.order("#{order_by} desc")
     end
   end
 
