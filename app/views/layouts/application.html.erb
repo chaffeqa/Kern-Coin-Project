@@ -13,26 +13,28 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <div id="content">
-      <div id="right-panel">
-        <div class="panel"><%= link_to 'Home', home_path %></div>
-        <% if @cart %>
-          <% hidden_div_if(@cart.items.empty?, :id => "cart" ) do %>
-            <%= render("partials/cart") %>
+    <div id="page">
+      <div id="content" class="clearfloat">
+        <div id="right-panel">
+          <div class="panel"><%= link_to 'Home', home_path %></div>
+          <% if @cart %>
+            <% hidden_div_if(@cart.items.empty?, :id => "cart" ) do %>
+              <%= render("partials/cart") %>
+            <% end %>
           <% end %>
-        <% end %>
-        <div class="panel"><%= render 'layouts/admin' %></div>
-        <% unless @user %>
-          <div class="panel"><%= render 'layouts/login' %></div>
-        <% else %>
-          <div class="panel"><%= render 'layouts/logout'%></div>
-        <% end %>
+          <div class="panel"><%= render 'layouts/admin' %></div>
+          <% unless @user %>
+            <div class="panel"><%= render 'layouts/login' %></div>
+          <% else %>
+            <div class="panel"><%= render 'layouts/logout'%></div>
+          <% end %>
+        </div>
+
+        <% if flash[:notice] %> <p id="notice"><%= notice %></p> <% end %>
+        <% if flash[:important_notice] %> <p id="important-notice"><%= flash[:important_notice] %></p><% end %>
+
+        <%= yield %>
       </div>
-
-      <% if flash[:notice] %> <p id="notice"><%= notice %></p> <% end %>
-      <% if flash[:important_notice] %> <p id="important-notice"><%= flash[:important_notice] %></p><% end %>
-
-      <%= yield %>
     </div>
   </body>
 </html>
