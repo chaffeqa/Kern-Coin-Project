@@ -1,7 +1,11 @@
 <table>
+  <tr>
+    <th>Title</th>
+    <th>Date</th>
+  </tr>
   <% @pages.each do |page| %>
     <tr>
-      <%= render 'partials/page', :locals => {:page => page} %>
+      <%= render 'partials/page_list', :locals => {:page => page} %>
       <td><%= link_to "Read More", announcement_path(page.id) %></td>
     </tr>
   <% end %>
