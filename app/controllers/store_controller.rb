@@ -16,7 +16,7 @@ class StoreController < ApplicationController
       @items = @items.order("(?) asc", order_by)
     else
       @asc = "desc"
-      @items = @items.order("? desc", order_by)
+      @items = @items.order("(?) desc", order_by)
     end
   end
 
