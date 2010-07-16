@@ -1,9 +1,9 @@
 <table>
   <tr>
     <td></td>
-    <th><%= link_to "Item", store_list_path(:sort_by => 'title') %></th>
+    <th><%= link_to "Item", store_list_path(:sort_by => 'title', :asc => @asc) %></th>
     <th>Description</th>
-    <th><%= link_to "Cost", store_list_path(:sort_by => 'cost') %></th>
+    <th><%= link_to "Cost", store_list_path(:sort_by => 'cost', :asc => @asc) %></th>
   </tr>
 
   <% @items.each do |item| %>
