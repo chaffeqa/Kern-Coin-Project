@@ -1,0 +1,10 @@
+<table>
+  <% @pages.each do |page| %>
+    <tr>
+      <%= render 'partials/page', :locals => {:page => page} %>
+      <td><%= link_to "Read More", announcement_path(page.id) %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "Home", home_path %>
+
