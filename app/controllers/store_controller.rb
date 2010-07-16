@@ -11,10 +11,10 @@ class StoreController < ApplicationController
     @items = @items.where(:category_id => params[:category_id]) if params[:category_id]
     if params[:asc] and params[:asc] == "desc"
       @asc = "asc"
-      @items = @items.order(["? asc", params[:order_by] ||= 'title'])
+      @items = @items.order(["(?) asc", params[:order_by] ||= 'title'])
     else
       @asc = "desc"
-      @items = @items.order(["? desc", params[:order_by] ||= 'title'])
+      @items = @items.order(["(?) desc", params[:order_by] ||= 'title'])
     end
   end
 
