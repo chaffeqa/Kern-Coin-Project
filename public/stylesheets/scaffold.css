@@ -1,28 +1,21 @@
-body {
-  background-color: #0000cc;
-  font-size: 12px;
-  color:#564b47;
-  padding:20px;
-  margin:0px;
-  text-align: center;
-}
+.clearfloat { display: block; }
+.clearfloat:after {clear: both; content: '.'; display: block;  height: 0px; visibility: hidden;}
 
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
-}
+body { background-color: #0000cc;
+       font-size: 12px;
+       color:#564b47;
+       text-align: center; }
+
+#page { margin: 0px auto;
+        padding-top: 8px;
+        width: 945px; }
 
 
-#content {
-  text-align: left;
-  vertical-align: middle;
-  margin: 0px auto;
-  padding: 0px;
-  width: 550px;
-  background-color: #ffffff;
-  border: 2px solid #564b47;
-}
+#wrapper { background: white;
+           border-bottom: 1px solid #CAC8C2;
+           border-right: 1px solid #CAC8C2;
+           font-size: 0.75em;
+           padding: 0px 25px 60px; }
 
 
 div#right-panel {float: right; border: #888888 solid 8px; padding: 15px;}
@@ -37,7 +30,7 @@ a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }
 
 div.field, div.actions {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 table { border-collapse: collapse; }
@@ -52,96 +45,96 @@ td.thumb { border: #888888 solid 2px; }
 #important-notice {  color: red; background-color: #888888; border: red solid 4px; }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+    padding: 2px;
+    background-color: red;
+    display: table;
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+    width: 450px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
 }
 
 #error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  margin-bottom: 0px;
-  background-color: #c00;
-  color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
 }
 
 #error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
+    font-size: 12px;
+    list-style: square;
 }
 
 
 
 /* An entry in the store catalog */
 #store .entry {
-overflow: auto;
-margin-top: 1em;
-border-bottom: 1px dotted #77d ;
+    overflow: auto;
+    margin-top: 1em;
+    border-bottom: 1px dotted #77d ;
 }
 #store .title {
-font-size: 120%;
-font-family: sans-serif;
+    font-size: 120%;
+    font-family: sans-serif;
 }
 #store .entry img {
-width: 75px;
-float: left;
+    width: 75px;
+    float: left;
 }
 #store .entry h3 {
-margin-top: 0;
-margin-bottom: 2px;
-color: #227 ;
+    margin-top: 0;
+    margin-bottom: 2px;
+    color: #227 ;
 }
 #store .entry p {
-margin-top: 0.5em;
-margin-bottom: 0.8em;
+    margin-top: 0.5em;
+    margin-bottom: 0.8em;
 }
 #store .entry .price-line {
-clear: both;
+    clear: both;
 }
 #store .entry .add-to-cart {
-position: relative;
+    position: relative;
 }
 #store .entry .price {
-color: #44a;
-font-weight: bold;
-margin-right: 2em;
+    color: #44a;
+    font-weight: bold;
+    margin-right: 2em;
 }
 #store .entry form, #store .entry form div {
-display: inline;
+    display: inline;
 }
 /* Styles for the cart in the main page */
 .cart-title {
-font: 120% bold;
+    font: 120% bold;
 }
 .item-price, .total-line {
-text-align: right;
+    text-align: right;
 }
 .total-line .total-cell {
-font-weight: bold;
-border-top: 1px solid #595 ;
+    font-weight: bold;
+    border-top: 1px solid #595 ;
 }
 /* Styles for the cart in the sidebar */
 #cart, #cart table {
-font-size: smaller;
+    font-size: smaller;
 }
 #cart table {
-border-top: 1px dotted #595 ;
-border-bottom: 1px dotted #595 ;margin-bottom: 10px;
+    border-top: 1px dotted #595 ;
+    border-bottom: 1px dotted #595 ;margin-bottom: 10px;
 }
 
 .locale {
-float:right;
-padding-top: 0.2em
+    float:right;
+    padding-top: 0.2em
 }
