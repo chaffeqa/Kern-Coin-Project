@@ -8,8 +8,8 @@ class Item < ActiveRecord::Base
     :styles => {:display => ['250x250#', :gif], :thumb => ['80x80#', :gif],
     :default_url => "/images/items/no_image.gif" }
 
-  validates_attachment_size :main_image, :less_than => 2.megabytes
-  validates_attachment_content_type :main_image, :content_type => [ 'image/jpeg', 'image/png', 'image/gif', 'image/x-png', 'image/pjpeg' ]
+#  validates_attachment_size :main_image, :less_than => 2.megabytes
+#  validates_attachment_content_type :main_image, :content_type => [ 'image/jpeg', 'image/png', 'image/gif', 'image/x-png', 'image/pjpeg' ]
   validates_presence_of :name, :item_id, :cost
   validates_numericality_of :cost
 

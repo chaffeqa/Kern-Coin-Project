@@ -75,6 +75,7 @@ class Admin::ItemsController < ApplicationController
   # DELETE /items/1.xml
   def destroy
     @item = Item.find(params[:id])
+    @item.destroy_attached_files
     @item.destroy
 
     respond_to do |format|
