@@ -2,6 +2,8 @@ class CreateCategories < ActiveRecord::Migration
   def self.up
     create_table :categories do |t|
       t.string :title
+      t.text :description
+      t.belongs_to :category
 
       t.timestamps
     end

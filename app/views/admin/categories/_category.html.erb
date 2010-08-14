@@ -1,0 +1,15 @@
+<% category = locals[:category] %>
+
+<li title="<%= category.description || 'No Description' %>">
+  <%= category.title %> &nbsp;
+  | <%= link_to 'Edit', edit_admin_category_path(category) %> |
+  <%= link_to 'Destroy', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete %> |
+</li>
+
+<% unless category.children.empty? %>
+  <ul>
+    <% category.children.each do |category| %>
+      <%= render 'category', :locals => {:category => category} %>
+    <% end %>
+  </ul>
+<% end %>

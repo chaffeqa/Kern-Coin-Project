@@ -2,7 +2,7 @@
 
 <h3><%= item.name %></h3>
 
-<div class="image"><%= image_tag item.main_image.url(:display) %></div>
+<div class="image"><%= image_tag item.product_images.first.url(:display) %></div>
 
 <p>
   <strong>Item ID: </strong>

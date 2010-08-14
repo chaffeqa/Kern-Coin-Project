@@ -1,17 +1,6 @@
-<table>
-  <tr>
-    <th>Title</th>
-  </tr>
-
-<% @categories.each do |category| %>
-  <tr>
-    <td><%= category.title %></td>
-    <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
-    <td><%= link_to 'Destroy', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+<ul>
+  <%= render 'category', :locals => {:category => @inventory} %>
+</ul>
 <br />
 
 <%= link_to 'Add Category', new_admin_category_path %>

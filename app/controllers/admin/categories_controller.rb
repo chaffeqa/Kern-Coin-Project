@@ -3,12 +3,7 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @categories }
-    end
+    @inventory = Category.where(:title => 'Inventory').first
   end
 
   
@@ -16,11 +11,6 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories/new.xml
   def new
     @category = Category.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @category }
-    end
   end
 
   # GET /categories/1/edit
@@ -31,16 +21,10 @@ class Admin::CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.xml
   def create
-    @category = Category.new(params[:category])
-
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to(admin_categories_path, :notice => 'Category was successfully Added.') }
-        format.xml  { render :xml => @category, :status => :created, :location => @category }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
-      end
+    if @category.save
+      redirect_to(admin_categories_path, :notice => 'Category was successfully Added.')
+    else
+      render :action => "new" 
     end
   end
 
@@ -48,15 +32,10 @@ class Admin::CategoriesController < ApplicationController
   # PUT /categories/1.xml
   def update
     @category = Category.find(params[:id])
-
-    respond_to do |format|
-      if @category.update_attributes(params[:category])
-        format.html { redirect_to(admin_categories_path, :notice => 'Category was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
-      end
+    if @category.update_attributes(params[:category])
+      redirect_to(admin_categories_path, :notice => 'Category was successfully updated.')
+    else
+      render :action => "edit"
     end
   end
 
@@ -65,10 +44,6 @@ class Admin::CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(admin_categories_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(admin_categories_url)
   end
 end

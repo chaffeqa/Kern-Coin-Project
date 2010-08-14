@@ -28,10 +28,6 @@
     $ <%= f.text_field :cost, :size => 7 %>
   </div>
 
-  <div class="field">
-    <%= f.label :main_image %>
-    <%= f.file_field :main_image %>
-  </div>
 
   <% if f.object.new_record? %>
     <div class="field">
@@ -51,6 +47,31 @@
       <%= f.radio_button :display, false %>
     </div>
   <% end %>
+
+  <fieldset>
+    <%= f.fields_for :product_images do |image_f|  %>
+      <% if image_f.object.new_record? %>
+        <div class="field">
+          <%= image_f.file_field :image %> &nbsp;
+          <%= image_f.label :image %>
+        </div>
+
+      <% else %>
+        <div class="thumb"><%= image_tag image_f.object.image.url(:thumb) %></div>
+        <div class="field">
+          <%= image_f.check_box :_destroy %>
+          <%= image_f.label :_destroy, "Delete Image?" %>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= image_f.check_box :primary_image, :class => 'primary-image-checkbox' %>
+        <%= image_f.label :primary_image, "Main Image" %>
+      </div>
+    <% end %>
+
+  </fieldset>
+
   <div class="actions">
     <%= f.submit :disable_with => "Please Wait..." %>
   </div>
