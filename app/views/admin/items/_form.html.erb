@@ -48,29 +48,12 @@
     </div>
   <% end %>
 
-  <fieldset>
-    <%= f.fields_for :product_images do |image_f|  %>
-      <% if image_f.object.new_record? %>
-        <div class="field">
-          <%= image_f.file_field :image %> &nbsp;
-          <%= image_f.label :image %>
-        </div>
 
-      <% else %>
-        <div class="thumb"><%= image_tag image_f.object.image.url(:thumb) %></div>
-        <div class="field">
-          <%= image_f.check_box :_destroy %>
-          <%= image_f.label :_destroy, "Delete Image?" %>
-        </div>
-      <% end %>
-
-      <div class="field">
-        <%= image_f.check_box :primary_image, :class => 'primary-image-checkbox' %>
-        <%= image_f.label :primary_image, "Main Image" %>
-      </div>
-    <% end %>
-
-  </fieldset>
+  <% f.fields_for :product_images do |img_form| %>
+    <%= render :partial => 'product_image', :locals => { :f => img_form } %>
+  <% end %>
+  <p><%= add_child_link "New Task", :product_images %></p>
+  <%= new_child_fields_template(f, :product_images)%>
 
   <div class="actions">
     <%= f.submit :disable_with => "Please Wait..." %>

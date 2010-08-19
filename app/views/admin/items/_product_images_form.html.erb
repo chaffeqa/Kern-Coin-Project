@@ -1,0 +1,49 @@
+<% f = locals[:f] %>
+
+<% checked = false %>
+<% img_count = 0 %>
+<%= f.fields_for :product_images do |image_f|  %>
+
+  <% if image_f.object.new_record? %>
+    <div class="hidden_field" style="display: none;">
+      <div class="field">
+        <%= image_f.file_field :image %> &nbsp;
+        <%= image_f.label :image %>
+      </div>
+      <div class="field">
+        <% unless checked %>
+          <%= radio_button_tag :primary_image, img_count, true, :class => 'primary_image_radio' %>
+          <%= image_f.hidden_field :primary_image, :value => true %>
+          <% checked = true %>
+        <% else %>
+          <%= radio_button_tag :primary_image, img_count, false, :class => 'primary_image_radio' %>
+        <% end %>
+        <%= label_tag "primary_image_#{img_count}", "Main Image" %>
+      </div>
+      <%= link_to "Remove Image", 'javascript:none()', :class => 'remove-field' %>
+      <% img_count += 1 %>
+    </div>
+
+  <% else %>
+    <div class="shown_field">
+      <div class="thumb"><%= image_tag image_f.object.image.url(:thumb) %></div>
+      <div class="field">
+        <%= image_f.check_box :_destroy %>
+        <%= image_f.label :_destroy, "Delete Image?" %>
+      </div>
+      <div class="field">
+        <% if image_f.object.primary_image %>
+          <%= radio_button_tag :primary_image, img_count, true, :class => 'primary_image_radio' %>
+          <%= image_f.hidden_field :primary_image, :value => true %>
+          <% checked = true %>
+        <% else %>
+          <%= radio_button_tag :primary_image, img_count, false, :class => 'primary_image_radio' %>
+        <% end %>
+        <%= label_tag "primary_image_#{img_count}", "Main Image" %>
+      </div>
+      <% img_count += 1 %>
+    </div>
+  <% end %>
+
+<% end %>
+<%= link_to "Add an Image", 'javascript:none()', :id => 'add-field' %>

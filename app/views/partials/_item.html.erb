@@ -2,7 +2,10 @@
 
 <h3><%= item.name %></h3>
 
-<div class="image"><%= image_tag item.product_images.first.url(:display) %></div>
+<div class="image">
+  <strong>Main Image</strong><br/>
+  <%= image_tag item.main_image.display_image %>
+</div>
 
 <p>
   <strong>Item ID: </strong>
@@ -33,3 +36,12 @@
   <strong>On Display: </strong>
   <%= item.display %>
 </p>
+
+<% if item.product_images %>
+  <div class="clearfloat">
+    <strong>Other Images</strong><br/>
+    <% item.product_images.each do |product_image| %>
+      <%= link_to (image_tag product_image.thumbnail_image), product_image.display_image, :rel => 'group1', :class => 'image gallery' %>
+    <% end %>
+  </div>
+<% end %>

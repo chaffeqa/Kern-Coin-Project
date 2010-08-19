@@ -19,7 +19,7 @@ body { background-color: #6666ff; color: #1D1D1D; min-height: 101%; font: 12px s
 table.panel.th, table.panel.td {padding: 4px;}
 
 pre { background-color: #eee; padding: 10px; font-size: 11px; }
-div.image { float: left; margin: 15px; border: #737357 solid 4px; }
+.image { float: left; margin: 15px; border: #737357 solid 4px; }
 
 h1 {display: inline;}
 #header-controller {font-size: 16px;}
@@ -42,7 +42,7 @@ tr.hover {background-color: #DDF0DD; }
 
 
 #notice {  color: green; width: 300px; }
-#important-notice {  color: red; background-color: #888888; border: red solid 4px; width: 300px; }
+#alert {  color: red; background-color: #888888; border: red solid 4px; width: 300px; }
 
 .field_with_errors { padding: 2px; background-color: red; display: table; }
 #error_explanation { width: 300px; border: 2px solid red; padding: 7px; padding-bottom: 0; margin-bottom: 20px; background-color: #f0f0f0; }

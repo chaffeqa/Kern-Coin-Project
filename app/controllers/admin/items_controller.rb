@@ -17,13 +17,13 @@ class Admin::ItemsController < ApplicationController
   # GET /items/new.xml
   def new
     @item = Item.new
-    @item.product_images.build
+    #    build_product_images
   end
 
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
-    @item.product_images.build
+    #    build_product_images
   end
 
   # POST /items
@@ -33,6 +33,7 @@ class Admin::ItemsController < ApplicationController
     if @item.save
       redirect_to(admin_item_path(@item), :notice => 'Item was successfully created.')
     else
+      #      build_product_images
       render :action => "new"
     end
   end
@@ -44,6 +45,7 @@ class Admin::ItemsController < ApplicationController
     if @item.update_attributes(params[:item])
       redirect_to( admin_item_path(@item), :notice => 'Item was successfully updated.')
     else
+      #      build_product_images
       render :action => "edit"
     end
   end
@@ -55,5 +57,10 @@ class Admin::ItemsController < ApplicationController
     @item.destroy_attached_files
     @item.destroy
     redirect_to(admin_items_url) 
+  end
+
+  private
+  def build_product_images
+    (10 - @item.product_images.count).times  { @item.product_images.build }
   end
 end
