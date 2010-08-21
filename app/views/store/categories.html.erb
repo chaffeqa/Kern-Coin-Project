@@ -1,13 +1,6 @@
 <table>
-  <tr>
-    <th>Category</th>
-  </tr>
-
-  <% @categories.each do |category| %>
-    <tr>
-      <td><%= category.title %></td>
-      <td><%= link_to 'Items For Sale', store_list_path(:category_id => category.id) %></td>
-    </tr>
-  <% end %>
+  <ul>
+    <%= render :partial => 'subategory_list', :locals => { :category => @inventory } %>
+  </ul>
 </table>
 

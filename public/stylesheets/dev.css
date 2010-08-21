@@ -9,9 +9,14 @@ body { background-color: #6666ff; color: #1D1D1D; min-height: 101%; font: 12px s
 #wrapper { background: white; border: 1px solid #000000; padding: 0px 25px 60px; }
 
 #header { padding: 22px 0px;}
-#nav-menu { border-top: 1px solid #83A8B9; line-height: 1; margin: 0px auto 25px; padding: 6px 0px 6px 15px; position: relative;}
-#nav-menu li {border-right: 1px dotted #83A8B9; float: left; list-style: none; margin-right: 25px; padding: 0px 25px 0px 13px !important; position: relative;}
-#nav-menu a, a:visited {color: #141414; display: block; letter-spacing: 0.07em; padding-bottom: 3px; text-decoration: none;}
+ul#nav-menu { border-top: 1px solid #83A8B9; line-height: 1; margin: 0px auto 25px; padding: 0px 0px 0px 15px; position: relative;}
+ul#nav-menu li { float: left; list-style: none; margin: 0px; padding: 0px; position: relative;}
+ul#nav-menu a, a.visited {line-height: 300%; border-right: 1px dotted #83A8B9; color: #141414; display: block; letter-spacing: 0.07em;  padding: 0px 25px 0px 13px !important; text-decoration: none;}
+ul#nav-menu a:hover { background-color: #d3d3d3 }
+ul#nav-menu li.selected { background-color: #888888 }
+ul#nav-menu ul {position: absolute; font-size: 11px; min-width: 175px;}
+ul#nav-menu ul li {float: none;}
+ul#nav-menu ul li a {line-height: 300%; border: none;}
 #content {float: left; width: 620px;}
 
 #right-panel {float: right; width: 200px;}

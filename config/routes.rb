@@ -1,6 +1,6 @@
 KernCoinProject::Application.routes.draw do |map|
   
-  
+
   root :to => 'home#home'
 
   # Admin Namespace
@@ -45,6 +45,9 @@ KernCoinProject::Application.routes.draw do |map|
   match 'store/view/:id' => 'store#view', :as => :store_view
   post 'store/empty_cart', :as => :store_empty_cart
   match 'store/add_to_cart/:id' => 'store#add_to_cart', :as => :store_add_to_cart, :via => 'post'
+
+  # Questions for 'Contact Us'
+  resources :questions
 
   #  get "checkout/view_cart"
   #  get "checkout/personal_info"

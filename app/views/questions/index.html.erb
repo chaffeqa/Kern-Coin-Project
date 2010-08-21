@@ -1,0 +1,55 @@
+<h1>Listing questions</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Company</th>
+    <th>Street address 1</th>
+    <th>Street address 2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>Zip code</th>
+    <th>Phone</th>
+    <th>Fax</th>
+    <th>Email</th>
+    <th>Website</th>
+    <th>Subject</th>
+    <th>Body</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @questions.each do |question| %>
+  <tr>
+    <td><%= question.title %></td>
+    <td><%= question.first_name %></td>
+    <td><%= question.last_name %></td>
+    <td><%= question.company %></td>
+    <td><%= question.street_address_1 %></td>
+    <td><%= question.street_address_2 %></td>
+    <td><%= question.city %></td>
+    <td><%= question.state %></td>
+    <td><%= question.country %></td>
+    <td><%= question.zip_code %></td>
+    <td><%= question.phone %></td>
+    <td><%= question.fax %></td>
+    <td><%= question.email %></td>
+    <td><%= question.website %></td>
+    <td><%= question.subject %></td>
+    <td><%= question.body %></td>
+    <td><%= question.user %></td>
+    <td><%= link_to 'Show', question %></td>
+    <td><%= link_to 'Edit', edit_question_path(question) %></td>
+    <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Question', new_question_path %>

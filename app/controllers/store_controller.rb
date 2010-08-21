@@ -3,7 +3,7 @@ class StoreController < ApplicationController
   before_filter :require_user, :only => [:add_to_cart, :empty_cart]
   
   def categories
-    @categories = Category.order("title desc")
+    @inventory = Category.where(:title => 'Inventory').first
   end
 
   def list

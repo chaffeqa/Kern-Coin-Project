@@ -52,7 +52,7 @@
   <% f.fields_for :product_images do |img_form| %>
     <%= render :partial => 'product_image', :locals => { :f => img_form } %>
   <% end %>
-  <p><%= add_child_link "New Task", :product_images %></p>
+  <p><%= add_child_link "Add Product Image", :product_images %></p>
   <%= new_child_fields_template(f, :product_images)%>
 
   <div class="actions">

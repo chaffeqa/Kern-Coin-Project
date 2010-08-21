@@ -14,3 +14,4 @@ gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch
 
 gem 'paperclip'
 
+gem 'simple-navigation', :git => 'git://github.com/andi/simple-navigation.git'

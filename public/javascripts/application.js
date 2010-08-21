@@ -20,4 +20,8 @@ $(function() {
     });
 
     $('a.gallery').colorbox();
+
+
+    $('ul#nav-menu').superfish();
+
 });

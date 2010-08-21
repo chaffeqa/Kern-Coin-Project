@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="http://KERN-Coin.foxycart.com/files/foxybox.css" type="text/css" media="screen" charset="utf-8" />
     <link rel="stylesheet" href="http://KERN-Coin.foxycart.com/themes/standard/theme.foxybox.css" type="text/css" media="screen" charset="utf-8" />
     <!-- END FOXYCART FILES -->
-    <%= javascript_include_tag 'jquery.min', 'rails.jquery', 'application', 'jquery.colorbox-min'  %>
+    <%= javascript_include_tag 'jquery.min', 'rails.jquery', 'application', 'jquery.colorbox-min', 'superfish'  %>
     <%= javascript_include_tag :ckeditor %>
     <%= yield :javascript %>
     <%= csrf_meta_tag %>
@@ -17,7 +17,7 @@
     <div id="page">
       <div id="wrapper" class="clearfloat">
         <div id="header" class="clearfloat"><%= render 'layouts/header' %></div>
-        <ul id="nav-menu" class="clearfloat"> <%= render 'layouts/nav_menu' %> </ul>
+        <div class="clearfloat"> <%= render 'layouts/nav_menu' %> </div>
 
         <div id="content">
           <% if flash[:notice] %> <p id="notice"><%= notice %></p> <% end %>
