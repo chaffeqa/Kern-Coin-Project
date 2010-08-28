@@ -1,0 +1,18 @@
+<p>
+  <b>Section name:</b>
+  <%= @site_text_section.section_name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @site_text_section.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @site_text_section.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_site_text_section_path(@site_text_section) %> |
+<%= link_to 'Back', admin_site_text_sections_path %>

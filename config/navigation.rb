@@ -30,17 +30,25 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.dom_class = 'clearfloat'
 
     # You can turn off auto highlighting for a specific level
-#    primary.auto_highlight = false
+    #    primary.auto_highlight = false
+
+    inventory = Category.get_inventory
 
     primary.item :home, 'Home', home_path
     primary.item :about_us, 'About Us', home_path
-    primary.item :inventory, 'Inventory', store_categories_path
-#    do |category|
-#      inventory = Category.where(:title => 'Inventory').first
-#      inventory.children.each do |sub_category|
-#        category.item sub_category.title.to_sym, sub_category.title, store_list_path(:category_id => sub_category)
-#      end
-#    end
+    primary.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
+      inventory.children.each do |sub_category|
+        if sub_category.children.empty?
+          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category)
+        else
+          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category) do |level_2|
+            sub_category.children.each do |sub_sub_category|
+              level_2.item sub_sub_category.title.to_sym, sub_sub_category.title, inventory_category_path(sub_sub_category)
+            end
+          end
+        end
+      end
+    end
     primary.item :archives, 'Archives', home_path do |sub_nav|
       sub_nav.item :coinworld_archives, 'CoinWorld Archives', home_path
       sub_nav.item :inventory_archives, 'Inventory Archives', home_path
@@ -65,29 +73,29 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched 
     #                            against the current URI.
     #
-#    primary.item :key_1, 'name', url, options
+    #    primary.item :key_1, 'name', url, options
     
     # Add an item which has a sub navigation (same params, but with block)
-#    primary.item :key_2, 'name', url, options do |sub_nav|
-      # Add an item to the sub navigation (same params again)
-#      sub_nav.item :key_2_1, 'name', url, options
-#    end
+    #    primary.item :key_2, 'name', url, options do |sub_nav|
+    # Add an item to the sub navigation (same params again)
+    #      sub_nav.item :key_2_1, 'name', url, options
+    #    end
   
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
-#    primary.item :key_3, 'Admin', url, :class => 'special', :if => Proc.new { current_user.admin? }
-#    primary.item :key_4, 'Account', url, :unless => Proc.new { logged_in? }
+    #    primary.item :key_3, 'Admin', url, :class => 'special', :if => Proc.new { current_user.admin? }
+    #    primary.item :key_4, 'Account', url, :unless => Proc.new { logged_in? }
 
     
   
   end
 
-#  navigation.items do |admin|
-#    admin.item :pages_admin, 'Pages Admin', admin_pages_path
-#    admin.item :items_admin, 'Items Admin', admin_items_path
-#    admin.item :users_admin, 'Users Admin', admin_users_path
-#    admin.item :categories_pages_admin, 'Categories Admin', admin_categories_path
-#  end
+  #  navigation.items do |admin|
+  #    admin.item :pages_admin, 'Pages Admin', admin_pages_path
+  #    admin.item :items_admin, 'Items Admin', admin_items_path
+  #    admin.item :users_admin, 'Users Admin', admin_users_path
+  #    admin.item :categories_pages_admin, 'Categories Admin', admin_categories_path
+  #  end
   
 end

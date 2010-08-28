@@ -1,0 +1,10 @@
+<h2><%= @category.title %></h2>
+<p><%= @category.description %></p>
+
+<% @category.children.each do |child_category|%>
+  <%= render :partial => 'category_list', :locals => { :category => child_category } %>
+<% end %>
+
+<% @category.items.each do |item|%>
+  <%= render :partial => 'item_list', :locals => { :item => item } %>
+<% end %>

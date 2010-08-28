@@ -1,0 +1,33 @@
+<div class="image">
+  <% if item.main_image %>
+    <%= image_tag item.main_image.display_image %>
+  <% else %>
+    <%= image_tag "items/no_image.gif" %>
+  <% end %>
+</div>
+<% if item.product_images %>
+  <div class="clearfloat">
+    <strong>Other Images</strong><br/>
+    <% item.product_images.each do |product_image| %>
+      <%= link_to (image_tag product_image.thumbnail_image), product_image.display_image, :rel => 'group1', :class => 'image gallery' %>
+    <% end %>
+  </div>
+<% end %>
+
+<h3><%= item.name %></h3>
+
+<p>
+  <strong>Item ID: </strong>
+  <%= item.item_id %>
+</p>
+
+<p>
+  <strong>Details: </strong>
+  <%=raw item.details %>
+</p>
+
+<p>
+  <strong>Cost: </strong>
+  <%= number_to_currency(item.cost) %>
+</p>
+

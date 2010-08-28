@@ -1,0 +1,42 @@
+<p>
+  <b>Title:</b>
+  <%= @question.title %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @question.first_name %> <%= @question.last_name %> <br/>
+  <b>Username:</b>
+  <%= @question.user.login %>
+  <b>Company:</b>
+  <%= @question.company %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @question.street_address_1 %> <%= (' (' +  @question.street_address_2 + ')') unless @question.street_address_2.blank? %> <br/>
+  <%= @question.city + ' ,' + @question.state %> <br/>
+  <%= @question.country + ' ,' + @question.zip_code %>
+</p>
+<p>
+  <b>Phone:</b>
+  <%= @question.phone %> <br/>
+  <b>Fax:</b>
+  <%= @question.fax %> <br/>
+  <b>Email:</b>
+  <%= @question.email %><br/>
+  <b>Website:</b>
+  <%= @question.website %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @question.subject %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=raw @question.body %>
+</p>
+
+<%= link_to 'Back', admin_questions_path %>

@@ -1,0 +1,6 @@
+<% if @buy_section %>
+  <div id="<%= @buy_section.section_name %>" class="section">
+    <p class="title"><%= @buy_section.title %></p>
+    <p class="body"><%=raw @buy_section.body %></p>
+  </div>
+<% end %>

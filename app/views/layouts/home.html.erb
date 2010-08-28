@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render :partial => 'layouts/head' %>
+    <%= yield :head %>
+  </head>
+  <body>
+    <div id="page">
+      <div id="wrapper" class="clearfloat">
+
+        <%= render :partial => 'layouts/header' %>
+        <%= render :partial => 'layouts/nav_menu' %>
+
+        <div id="content">
+          <% if flash[:notice] %> <p id="notice"><%= notice %></p> <% end %>
+          <% if flash[:alert] %> <p id="alert"><%= flash[:alert] %></p><% end %>
+          <%= yield %>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

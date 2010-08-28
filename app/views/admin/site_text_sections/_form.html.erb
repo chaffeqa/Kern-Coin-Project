@@ -1,0 +1,29 @@
+<%= form_for([:admin, @site_text_section]) do |f| %>
+  <% if @site_text_section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site_text_section.errors.count, "error") %> prohibited this site_text_section from being saved:</h2>
+
+      <ul>
+      <% @site_text_section.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :section_name %><br />
+    <%= f.text_field :section_name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit :disable_with => 'Please Wait...' %>
+  </div>
+<% end %>

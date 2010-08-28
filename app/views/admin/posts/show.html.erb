@@ -1,0 +1,5 @@
+<%= render :partial => 'post', :locals => {:post => @post}  %>
+
+
+<%= link_to 'Edit', edit_admin_post_path(@post) %> |
+<%= link_to 'Admin Home', admin_posts_path %>

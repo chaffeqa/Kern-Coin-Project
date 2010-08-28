@@ -1,0 +1,10 @@
+<div id="recent-news-section" class="section">
+  <p class="title">News</p>
+  <% if @recent_news %>
+      <% @recent_news.each do |article| %>
+          <%= render :partial => 'news_article_list', :locals => {:post => article} %>
+      <% end %>
+  <% else %>
+    <p>There is no recent news at this time.</p>
+  <% end %>
+</div>

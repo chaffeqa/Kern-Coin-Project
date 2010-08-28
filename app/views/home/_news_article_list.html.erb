@@ -1,0 +1,6 @@
+<p>
+  <%= post.title %> -- <%= link_to 'View', news_article_path(post) %><br/>
+
+  <%= post.updated_at.strftime("%I %p - %b %d, %Y") %>
+
+</p>

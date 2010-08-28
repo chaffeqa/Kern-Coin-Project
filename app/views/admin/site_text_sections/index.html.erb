@@ -1,0 +1,27 @@
+<h1>Listing Site Text Sections</h1>
+
+<table>
+  <tr>
+    <th>Section name</th>
+    <th>Title</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @site_text_sections.each do |site_text_section| %>
+  <tr>
+    <td><%= site_text_section.section_name %></td>
+    <td><%= site_text_section.title %></td>
+    <td><%= site_text_section.body %></td>
+    <td><%= link_to 'Show', admin_site_text_section_path(site_text_section) %></td>
+    <td><%= link_to 'Edit', edit_admin_site_text_section_path(site_text_section) %></td>
+    <td><%= link_to 'Destroy', admin_site_text_section_path(site_text_section), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site text section', new_admin_site_text_section_path %>

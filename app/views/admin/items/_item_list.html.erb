@@ -1,0 +1,14 @@
+<td class="thumb">
+  <% if item.main_image %>
+    <%= image_tag item.main_image.thumbnail_image %>
+  <% else %>
+    <%= image_tag "items/no_image.gif" %>
+  <% end %>
+</td>
+
+<td><strong><%= item.name %></strong></td>
+
+<td>
+  <%= item.short_details %>
+</td>
+

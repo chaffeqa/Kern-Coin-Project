@@ -17,6 +17,8 @@ ul#nav-menu li.selected { background-color: #888888 }
 ul#nav-menu ul {position: absolute; font-size: 11px; min-width: 175px;}
 ul#nav-menu ul li {float: none;}
 ul#nav-menu ul li a {line-height: 300%; border: none;}
+ul#nav-menu ul ul {position: absolute; left: 175px; font-size: 11px; min-width: 175px; top: -5px;}
+ul#nav-menu ul ul li a {line-height: 300%; border: none;}
 #content {float: left; width: 620px;}
 
 #right-panel {float: right; width: 200px;}
@@ -43,7 +45,7 @@ table { border-collapse: collapse; }
 td, th {padding: 10px; margin: 0px;}
 th {border-bottom: 2px solid #737357; }
 tr { margin: 3px; }
-tr.hover {background-color: #DDF0DD; }
+tr.hover {background-color: #DDF0DD; cursor: pointer; }
 
 
 #notice {  color: green; width: 300px; }
@@ -54,31 +56,3 @@ tr.hover {background-color: #DDF0DD; }
 #error_explanation h2 { text-align: left; font-weight: bold; padding: 5px 5px 5px 15px; font-size: 12px; margin: -7px;
                         margin-bottom: 0px; background-color: #c00; color: #fff; }
 #error_explanation ul li { font-size: 12px; list-style: square; }
-
-
-
-
-/* Styles for the cart in the main page */
-.cart-title {
-    font: 120% bold;
-}
-.item-price, .total-line {
-    text-align: right;
-}
-.total-line .total-cell {
-    font-weight: bold;
-    border-top: 1px solid #595 ;
-}
-/* Styles for the cart in the sidebar */
-#cart, #cart table {
-    font-size: smaller;
-}
-#cart table {
-    border-top: 1px dotted #595 ;
-    border-bottom: 1px dotted #595 ;margin-bottom: 10px;
-}
-
-.locale {
-    float:right;
-    padding-top: 0.2em
-}

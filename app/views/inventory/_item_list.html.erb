@@ -1,0 +1,15 @@
+<div class="item-list">
+  <div class="title">
+    <%= item.name %>
+  </div>
+  <div class="thumbnail">
+    <% if item.main_image %>
+      <%= link_to image_tag item.main_image.thumbnail_image, inventory_view_path(item) %>
+    <% else %>
+      <%= link_to (image_tag "items/no_image.gif"), inventory_view_path(item) %>
+    <% end %>
+  </div>
+  <div class="cost">
+    <%= number_to_currency(item.cost) %>
+  </div>
+</div>

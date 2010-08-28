@@ -1,0 +1,7 @@
+<% if @categories %>
+  <div id="categories-section" class="section">
+    <% @categories.each do |category| %>
+      <%= link_to category.title, inventory_category_path(category) %>
+    <% end %>
+  </div>
+<% end %>

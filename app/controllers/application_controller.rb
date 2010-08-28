@@ -2,8 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'application'
   helper :all
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :categories_for_items
   before_filter :side_panels
+
+  def categories_for_items(items = Item.all)
+    items.collect {|item| item.category}.uniq
+  end
 
   private
 

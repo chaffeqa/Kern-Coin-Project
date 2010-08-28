@@ -1,0 +1,6 @@
+<% unless @welcome_section %>
+  <div id="<%= @welcome_section.section_name %>" class="section">
+    <p class="title"><%= @welcome_section.title %></p>
+    <p class="body"><%=raw @welcome_section.body %></p>
+  </div>
+<% end %>

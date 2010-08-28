@@ -1,4 +1,17 @@
-inventory = Category.create({:title => 'Inventory'})
+SiteTextSection.create([
+    { :section_name => 'bid', :title => 'Bid', :body => 'Our website features a 100% exclusive auction that allows our loyal customers to bid on rare, unique, and valuable coins!'},
+    { :section_name => 'buy', :title => 'Buy', :body => 'We offer an inventory which is second-to-none featuring ancient, foreign, medevial, U.S. and numerous other types of coins.  Visit our online store, view our inventory, and purchase coins!'},
+    { :section_name => 'welcome', :title => 'Welcome', :body => 'Since 1971 Jonathan Kern has been a knowledgeable dealer and collecter.'},
+    { :section_name => 'headline', :title => 'Headline', :body => 'Our website features a 100% exclusive auction that allows our loyal customers to bid on rare, unique, and valuable coins!'},
+    { :section_name => 'special_offers', :title => 'Secial Offers!', :body => 'Please take a moment to view our special offers on coins of all sorts!'},
+    { :section_name => 'contact_info', :title => 'Contact Information', :body => 'Contact Information.'},
+    { :section_name => 'description_of_business', :title => 'Description of Business', :body => 'Description of business.'},
+    { :section_name => 'legal', :title => 'Legal Information', :body => 'Legal Information'}
+  ])
+
+
+
+inventory = Category.create!({:title => 'Inventory'})
 inventory.children.create([
     { :title => 'Special Offers' },
     { :title => 'Ancient' },
@@ -15,7 +28,7 @@ inventory.children.create([
     { :title => 'U.S. Tokens' },
     { :title => 'U.S. Treasures' },
     { :title => 'U.S. Medals and Awards' }
-])
+  ])
 
 
 
@@ -30,7 +43,7 @@ ancient.children.create([
     { :title => 'Roman Imperatoral', :description => 'From the deterioration of the Republic to the battle of Actium.' },
     { :title => 'Roman Imperial', :description => 'Commonly encountered titles include Caesar, originated with Julius Caesar, and Augustus, originated with Octavian, also known as Augustus. In later years the title Augustus meant the supreme ruler of the Roman Empire, and the title Caesar meant heir to the throne.' },
     { :title => 'Roman Republic', :description => 'Rome and its territories from about 280 to 41 BC.' }
-])
+  ])
 foreign = Category.where(:title => 'Foreign').first
 foreign.children.create([
     { :title => 'Afghanistan' },
@@ -89,12 +102,12 @@ medieval.children.create([
     { :title => 'Ireland' },
     { :title => 'Scotland' },
     { :title => 'Anglo-Gallic' }
-])
+  ])
 usterri = Category.where(:title => 'U.S. Territorial Gold').first
 usterri.children.create([
     { :title => 'California' },
     { :title => 'Southern-North Carolina and Georgia' }
-])
+  ])
 
 
 
@@ -105,15 +118,15 @@ ancient_greek = Category.where(:title => 'Greek').first
 ancient_greek.children.create([
     { :title => 'Alexander the Great and Family' },
     { :title => 'Egypt of the Greek Ptolemies' }
-])
+  ])
 foreign_aust_hung = Category.where(:title => 'Austro-Hungarian Lands and Cities').first
 foreign_aust_hung.children.create([
     { :title => 'Salzburg ' }
-])
+  ])
 foreign_france = Category.where(:title => 'France').first
 foreign_france.children.create([
     { :title => 'French Colonies ' }
-])
+  ])
 foreign_germany = Category.where(:title => 'Germany').first
 foreign_germany.children.create([
     { :title => 'Augsburg' },
@@ -136,7 +149,7 @@ foreign_germany.children.create([
     { :title => 'Saxony' },
     { :title => 'Westphalia' },
     { :title => 'Wurttemberg' }
-])
+  ])
 foreign_italy = Category.where(:title => 'Italy').first
 foreign_italy.children.create([
     { :title => 'Florence' },
@@ -144,7 +157,7 @@ foreign_italy.children.create([
     { :title => 'Papal States' },
     { :title => 'Sardinia' },
     { :title => 'Venice' }
-])
+  ])
 foreign_portugal_col = Category.where(:title => 'Portugal and Colonies').first
 foreign_portugal_col.children.create([
     { :title => 'Angola' },
@@ -156,18 +169,18 @@ foreign_portugal_col.children.create([
     { :title => 'Portuguese India' },
     { :title => 'Saint Thomas and Prince Islands' },
     { :title => 'Timor' }
-])
+  ])
 foreign_strait = Category.where(:title => 'Straits Settlements').first
 foreign_strait.children.create([
     { :title => 'East India Company' }
-])
+  ])
 
 
 
 # Items
 ancient.items.create([
-  {:name => 'Bookmark', :cost => '12.52', :details => 'Just a bookmark. I am serious.', :item_id => '123154123', :for_sale => true, :display => true},
-  {:name => 'Glasses', :cost => '25.99', :details => 'Just a Glasses. I am serious.', :item_id => 'd12312311e1', :for_sale => true, :display => true},
-  {:name => 'Coin Display Case', :cost => '51.00', :details => 'This is by far the coolest way to display your collection. Please use it wisely.', :item_id => '1e3121rt1rt12', :for_sale => true, :display => true},
-  {:name => 'Pen', :cost => '2.11', :details => 'Just a Pen. I am serious.', :item_id => '12315421323123', :for_sale => true, :display => true}
-])
+    {:name => 'Bookmark', :cost => '12.52', :details => 'Just a bookmark. I am serious.', :item_id => '123154123', :for_sale => true, :display => true},
+    {:name => 'Glasses', :cost => '25.99', :details => 'Just a Glasses. I am serious.', :item_id => 'd12312311e1', :for_sale => true, :display => true},
+    {:name => 'Coin Display Case', :cost => '51.00', :details => 'This is by far the coolest way to display your collection. Please use it wisely.', :item_id => '1e3121rt1rt12', :for_sale => true, :display => true},
+    {:name => 'Pen', :cost => '2.11', :details => 'Just a Pen. I am serious.', :item_id => '12315421323123', :for_sale => true, :display => true}
+  ])

@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KernCoinProject</title>
-    <%= stylesheet_link_tag :all %>
-    <!-- BEGIN FOXYCART FILES -->
-    <script src="http://KERN-Coin.foxycart.com/files/foxycart_includes.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="http://KERN-Coin.foxycart.com/files/foxybox.css" type="text/css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="http://KERN-Coin.foxycart.com/themes/standard/theme.foxybox.css" type="text/css" media="screen" charset="utf-8" />
-    <!-- END FOXYCART FILES -->
-    <%= javascript_include_tag 'jquery.min', 'rails.jquery', 'application', 'jquery.colorbox-min', 'superfish'  %>
-    <%= javascript_include_tag :ckeditor %>
-    <%= yield :javascript %>
-    <%= csrf_meta_tag %>
+    <%= render :partial => 'layouts/head' %>
+    <%= yield :head %>
   </head>
   <body>
     <div id="page">
       <div id="wrapper" class="clearfloat">
-        <div id="header" class="clearfloat"><%= render 'layouts/header' %></div>
-        <div class="clearfloat"> <%= render 'layouts/nav_menu' %> </div>
+
+        <%= render :partial => 'layouts/header' %>
+        <%= render :partial => 'layouts/nav_menu' %>
 
         <div id="content">
           <% if flash[:notice] %> <p id="notice"><%= notice %></p> <% end %>
@@ -26,19 +18,11 @@
         </div>
 
         <div id="right-panel">
-          <% if @cart %>
-            <% hidden_div_if(@cart.items.empty?, :id => "cart" ) do %>
-              <%= render("partials/cart") %>
-            <% end %>
-          <% end %>
-          <div class="panel"><%= render 'layouts/admin' %></div>
-          <% unless @user %>
-            <div class="panel"><%= render 'layouts/login' %></div>
-          <% else %>
-            <div class="panel"><%= render 'layouts/logout'%></div>
-          <% end %>
+          <div class="panel"><%= render :partial => 'layouts/admin' %></div>
+          <div class="panel"> <% unless @user %> <%= render :partial => 'layouts/login' %> <% else %> <%= render :partial => 'layouts/logout'%> <% end %> </div>
+          <%= yield :right_panel %>
         </div>
-
+        
       </div>
     </div>
   </body>

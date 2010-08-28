@@ -1,0 +1,6 @@
+<% if @special_offers_section %>
+  <div id="<%= @special_offers_section.section_name %>" class="section">
+    <p class="title"><%= @special_offers_section.title %></p>
+    <p class="body"><%=raw @special_offers_section.body %></p>
+  </div>
+<% end %>

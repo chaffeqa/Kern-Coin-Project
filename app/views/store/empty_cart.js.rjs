@@ -1,2 +1,0 @@
-page.select("div#notice" ).each { |div| div.hide }
-page[:cart].visual_effect :blind_up

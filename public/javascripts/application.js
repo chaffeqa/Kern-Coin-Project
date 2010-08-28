@@ -19,9 +19,19 @@ $(function() {
         return false;
     });
 
-    $('a.gallery').colorbox();
-
+    
 
     $('ul#nav-menu').superfish();
 
+    $('a.gallery').colorbox();
+    
+
+    // For the store item list
+    $('tr.hover-tr').mouseover(function() {
+        $(this).addClass('hover');
+    });
+    $('tr.hover-tr').mouseout(function() {
+        $(this).removeClass('hover');
+    });
 });
+

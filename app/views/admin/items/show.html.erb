@@ -1,4 +1,4 @@
-<%= render 'partials/item'  %>
+<%= render :partial => 'item', :locals => {:item => @item} %>
 
 <p>
   <%= link_to 'Edit', edit_admin_item_path(@item) %> |

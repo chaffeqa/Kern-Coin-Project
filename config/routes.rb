@@ -1,24 +1,25 @@
 KernCoinProject::Application.routes.draw do |map|
-  
 
   root :to => 'home#home'
 
   # Admin Namespace
   namespace "admin" do
     get "home/index", :as => :home
+    resources :site_text_sections
     resources :items
-    resources :pages
+    resources :posts
     resources :users
     resources :categories, :except => [:show]
-    get "sales/view"
-    get "sales_reports/view"
+    resources :questions, :only => [:index, :show, :delete]
+    #    get "sales/view"
+    #    get "sales_reports/view"
   end
 
   # Home Controller
   match "home" => 'home#home', :as => :home
-  # Announcement Controller
-  match 'announcements' => 'announcements#announcements', :as => :announcements
-  match 'announcement/:id' => 'announcements#announcement', :as => :announcement
+  # News Controller
+  match 'news' => 'news#index', :as => :news
+  match 'news/article/:id' => 'news#article', :as => :news_article
 
   # Profile Controller
   #  get "profile/show"
@@ -39,15 +40,15 @@ KernCoinProject::Application.routes.draw do |map|
   #    resource :customer_bid, :only => [:new, :create, :destroy]
   #  end
 
-  # Store Controller
-  get 'store/categories', :as => :store_categories
-  get 'store/list', :as => :store_list
-  match 'store/view/:id' => 'store#view', :as => :store_view
-  post 'store/empty_cart', :as => :store_empty_cart
-  match 'store/add_to_cart/:id' => 'store#add_to_cart', :as => :store_add_to_cart, :via => 'post'
+  # Inventory Controller
+  match 'inventory/category/:id' => 'inventory#category', :as => :inventory_category
+  get 'inventory/list', :as => :inventory_list
+  match 'inventory/view/:id' => 'inventory#view', :as => :inventory_view
+  #  post 'inventory/empty_cart', :as => :inventory_empty_cart
+  #  match 'inventory/add_to_cart/:id' => 'inventory#add_to_cart', :as => :inventory_add_to_cart, :via => 'post'
 
   # Questions for 'Contact Us'
-  resources :questions
+  resources :questions, :only => [:new, :create]
 
   #  get "checkout/view_cart"
   #  get "checkout/personal_info"
