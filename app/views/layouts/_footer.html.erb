@@ -1,0 +1,19 @@
+<footer class="clearfix">
+  <div id="wrapper">
+    <div id="footerNav"><%= render_navigation(:level => 1) %></div>
+
+    <p id="copyright">
+      &copy; Copyright 2010.<br />
+      Jonathan K. Kern Company.<br />
+      All Rights Reserved.
+    </p>
+
+    <ul class="legalNav">
+      <li><a href="<%= legal_path %>">Legal</a></li>
+      <li><a href="<%= privacy_policy_path %>">Privacy Policy</a></li>
+      <li><a href="<%= terms_of_use_path %>">Terms of Use</a></li>
+    </ul>
+
+    <%= render :partial => 'layouts/contact_info' %>
+  </div>
+</footer>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  template_name: MyString
+  node: 
+
+two:
+  template_name: MyString
+  node: 

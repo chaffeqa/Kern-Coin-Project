@@ -1,5 +1,11 @@
-<div id="header" class="clearfloat">
-  <h1><%= link_to 'Kern Coin Project', home_url %></h1>
-  <h1 id="header-controller"> &nbsp; > &nbsp; <%= @page_controller ||= controller.controller_name.capitalize %></h1>
-  <h1 id="header-action"> &nbsp; > &nbsp; <%= @page_action ||= controller.action_name.capitalize %></h1>
-</div>
+<ul id="skipTo">
+  <li><a href="#navigation" title="Skip to Navigation" accesskey="n" tabindex="1">Skip to Navigation</a></li>
+  <li><a href="#content" title="Skip to Content" accesskey="c" tabindex="2">Skip to Content</a></li>
+</ul>
+
+<header class="clearfix">
+  <div id="wrapper">
+    <%= render :partial => 'layouts/contact_info' %>
+    <h1 id="logo"><a href="/"><img src="/images/logo.png" alt="logo" /></a></h1>
+  </div>
+</header>

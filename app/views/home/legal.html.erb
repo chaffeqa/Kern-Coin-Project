@@ -1,0 +1,19 @@
+<!-- Element -->
+<% if @legal_section %>
+
+  <article class="text" id="<%= @legal_section.section_name %>">
+    <h1 class="title"><%= @legal_section.title %></h1>
+    <%=raw @legal_section.body %>
+  </article>
+
+<% else %>
+
+  <article class="text">
+    <h1 class="title">Legal</h1>
+    <p>
+      No Current Legal info
+    </p>
+  </article>
+
+<% end %>
+<!-- /Element -->

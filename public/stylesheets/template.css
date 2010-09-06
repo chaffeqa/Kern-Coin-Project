@@ -1,0 +1,245 @@
+/*
+
+	~ TEMPLATE STYLES ~
+	This contains all styling for templating.
+
+*/
+
+/* this is for sites that have a designed background to keep it from pushing up under the adminbar */
+#body {
+}
+#wrapper {
+	width: 960px;
+	margin: 0 auto;
+}
+
+
+
+#skipTo {
+	display: none;	
+}
+
+
+
+
+
+/* HEADER */
+header {
+	clear: both;
+	background: #000;
+	padding: 15px 0;
+	color: #FFF;
+}
+	header #logo {text-align: center;}
+	header #left {float: left;width: 200px;}
+	header #right {float: right;width: 200px;text-align: right;}
+	header a {color: #fed543;
+
+	-webkit-transition:all 0.2s ease-out;
+	-o-transition:all 0.2s ease-out;
+	-moz-transition:all 0.2s ease-out;}
+	header a:hover {color: #eee; text-decoration: none;}
+
+
+/* NAVIGATION */
+nav {
+	background: url(../template/nav-bg.png) center top repeat-x;
+	height: 47px;
+	clear: both;
+}
+div#footerNav ul,
+nav#mainNav ul {
+	width: 960px;
+	margin: 0 auto;
+	padding: 8px 0;
+}
+div#footerNav ul {
+	border-bottom: 1px solid #fff;
+	height: 30px;
+	margin-bottom: 20px;
+}
+	div#footerNav ul li,
+	nav#mainNav ul li {
+		float: left;
+		background: url(../template/nav-li-bg.png) center top no-repeat;
+		height: 26px;
+		padding: 2px 0;
+		margin: 0 -2px;
+		width: 17%;
+		text-align: center;
+	}
+		div#footerNav ul li a,
+		nav#mainNav ul li a {
+			color: #fff;
+			font-size: 1.429em;
+		}
+
+
+
+
+
+/* CONTENT AREA */
+#content {
+	clear: both;
+	padding: 20px 0;
+	background: url(../template/content-bg-sec.png) repeat-x;
+}
+
+/* column layouts */
+/* three column */
+.threeColumn #subColumn {
+	float: right;
+	width: 311px;
+}
+.threeColumn #extraColumn {
+	float: left;
+	width: 152px;
+}
+.threeColumn #mainColumn {
+	float: left;
+	width: 464px;
+}
+
+/* two column layout */
+.twoColumn #subColumn {
+	float: left;
+	width: 152px;
+}
+.twoColumn #mainColumn {
+	float: right;
+	width: 789px;
+}
+
+/* one column */
+.oneColumn #mainColumn {
+	width: 95%;
+}
+
+
+/* Main Column */
+#mainColumn {
+	background: url(../template/main-bg-bot-home.png) 0 bottom no-repeat;
+	padding-bottom: 7px;
+}
+	#mainColumn #top {height: 6px; background: url(../template/main-bg-top.png);}
+	#mainColumn article {background: #FFF;}
+	
+/* Extra Column */
+#extraColumn {}
+	#extraColumn article {padding: 10px;}
+
+/* Sub Column */
+#subColumn {
+	background: url(../template/sub-bg-bot.png) 0 bottom no-repeat;
+	padding-bottom: 7px;
+}
+	#subColumn #top {height: 6px; background: url(../template/sub-bg-top.png);}
+	#subColumn article {background: url(../template/sub-bg-tile.png) repeat;}
+
+	#subColumn ul {margin: 0;}
+	#subColumn ul li {padding: 0; background: none;}
+	#subColumn ul li a {font-weight: bold; color: #000;}
+	#subColumn ul li a:before {content: "- ";}
+            #subColumn ul ul {margin: 0;}
+            #subColumn ul ul li {padding-left: 8px; background: none;}
+            #subColumn ul ul li a {font-weight: normal; color: #000;}
+            #subColumn ul ul li a:before {content: "- ";}
+
+
+
+
+/* Featured Column */
+#featured {
+	background: url(../template/featured-bg.png) repeat-x;
+	height: 240px;
+	padding: 20px 0;
+	color: #fff;
+}
+	#homePage #featured h1 { font-size: 2.2em; padding-left: 50px; line-height: 1.7em;}
+	#homePage #featured article {padding: 15px; background: transparent;}
+#homePage #featured #mainColumn,
+#homePage #featured #subColumn,
+#homePage #featured #extraColumn {
+	padding: 0;
+	width: 304px;
+	height: 233px;
+	background: url(../template/featured-pane-bg.png) !important;
+}
+#homePage #featured #mainColumn {margin-left: 25px;}
+	#featured h1.browse { background: url(../template/magnifying-glass.png) no-repeat;}
+	#featured h1.buy { background: url(../template/sales-tag.png) no-repeat;}
+	#featured h1.bid { background: url(../template/bullseye.png) no-repeat;}
+
+
+#homeFooter { padding: 10px 0 20px; }
+#homeFooter	article {padding: 0;}
+#homeFooter	article ul.categoryList {margin: 0 -10px;}
+#homeFooter	article ul.categoryList li {
+	float: left;
+	margin: 10px;
+}
+	#homeFooter	article ul.categoryList li a {
+		display: block;
+		background: url(../template/category-bg.png) 0 0 no-repeat;
+		height: 25px;
+		padding: 10px 0 10px 60px;
+		width: 244px;
+		font-size: 1.3em;
+		color: #000;
+		font-family: Georgia, "Times New Roman", Times, serif;
+	}
+
+
+
+
+/* HOMEPAGE MISC*/
+#homePage #content {
+	background: url(../template/content-bg-home.png) repeat-x;	
+	height: 301px;
+}
+#homePage #mainColumn {background: url(../template/main-bg-bot-home.png) 0 bottom no-repeat; margin-left: 20px;}
+	#homePage #mainColumn #top {background: url(../template/main-bg-top-home.png);}
+#homePage #subColumn {background: url(../template/sub-bg-bot-home.png) 0 bottom no-repeat;}
+	#homePage #subColumn #top {background: url(../template/sub-bg-top-home.png);}
+
+		#homePage #content #mainColumn article,
+		#homePage #content #subColumn article {
+			background: #FFF;
+		}
+
+#homePage #extraColumn {
+	background: url(../template/extra-bg.png);
+	height: 256px;
+}
+
+
+/* SECONDARY MISC */
+#secPage #mainColumn {
+}
+
+
+
+
+
+
+/* SITE FOOTER/NAVIGATION */
+footer {
+	padding: 20px 0;
+	clear: both;
+	background: #000;
+	color: #fff;
+}
+	footer #left {float: right; width: 25%;}
+	footer #right {float: right; width: 25%;}
+footer ul.legalNav,
+footer #copyright {
+	float: left;
+	width: 18%;
+	margin-left: 6%;
+}
+	footer a {color: #fed543;
+
+	-webkit-transition:all 0.2s ease-out;
+	-o-transition:all 0.2s ease-out;
+	-moz-transition:all 0.2s ease-out;}
+	header a:hover {color: #eee; text-decoration: none;}

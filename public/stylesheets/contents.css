@@ -1,0 +1,267 @@
+/*
+
+	~ CONTENT STYLES ~
+	This contains all styling for module and content elements.
+
+*/
+
+/* <textEditor> */
+/* </textEditor> */
+
+body {
+	color: #000;
+	font-size: 80%; /* Base font size: 12px */
+	font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+	line-height: 1.429;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+/* HTML5 Enabling */
+header, section, footer,
+aside, nav, article, figure {
+	display: block;
+	margin: 0;
+}
+
+/* Links */
+a {
+	color: #314385;
+	text-decoration: none;
+}
+	a:hover {
+		color: #333;
+		text-decoration: underline;
+	}
+
+
+/* General Site Headings */
+h1 {font-size: 1.847em;	font-weight: 400;}	/* 24px */
+h2 {font-size: 1.429em;}	/* 18px */
+h3 {font-size: 1.429em;	font-weight: 400;}	/* 18px */
+h4 {font-size: 1.286em;	font-weight: 400;}	/* 16px */
+h5 {font-size: 1.143em;	font-weight: 400;}	/* 14px */
+h6 {font-size: 1em}			/* 12px */
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.1;
+	margin-bottom: .8em;
+}
+h1, h3 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+	h1 a, h2 a, h3 a, h4 a, h5 a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+dl {margin: 0 0 1.5em 0;}
+dt {font-weight: bold;}
+dd {margin-left: 1.5em;}
+
+/* Quotes */
+blockquote {font-style: italic;}
+cite {}
+q {}
+
+/* want the paragraphs to have a nice even margin */
+p {margin-bottom: 1.143em;}
+* p:last-child {margin-bottom: 0;}
+
+/* Optional
+::-moz-selection {background: #F6CF74; color: #fff;}
+::selection {background: #F6CF74; color: #fff;}
+*/
+
+/* Clearing */
+.clearfloat,
+.clear {
+	clear: both;
+	height: 1px;
+	line-height: 0px;
+	margin: 0;
+	padding: 0;
+}
+article:after,
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/* want good looking horizontal rules */
+hr {
+	border: 1px solid #ece8fc;
+	border-width: 1px 0 0 0;
+	border-collapse: collapse;
+	clear: both;
+	margin: 10px 0;
+}
+
+/* Tables */
+table {margin: .5em auto 1.5em auto; width: 98%;}
+
+	/* Thead */
+	thead th {padding: .5em .4em; text-align: left;}
+	thead td {}
+
+	/* Tbody */
+	tbody td {padding: .5em .4em;}
+	tbody th {}
+
+	tbody .alt td {}
+	tbody .alt th {}
+
+	/* Tfoot */
+	tfoot th {}
+	tfoot td {}
+
+
+/* Fancy amperstands */
+span.amp {
+	font-family: Baskerville, "Goudy Old Style", "Palatino", "Book Antiqua", serif;
+	font-style: italic;
+}
+
+
+article {padding: 3px 10px;	}
+article h1.title {border-bottom: 1px solid #e2e2e2; padding-bottom: .6em;}
+
+.breadcrumb {background: #FFF; padding: 0 10px 10px;}
+.breadcrumb a {color: #000;}
+
+/* CONTENT ONLY */
+
+/* setting the OL/UL to specified values in the content areas */
+.contents ul {
+	list-style: none;
+	margin: 1em 0 1.5em 1.5em;
+}
+	.contents ul li {
+		background: url(../template/li-bullet-black.png) 0 .7em no-repeat;
+		padding-left: .5em;
+	}
+.contents ol {
+	list-style: outside decimal;
+	margin: 1em 0 1.5em 1.5em;
+}
+.contents ol ol {list-style:upper-alpha;}
+.contents ol ol ol {list-style:lower-roman;}
+.contents ol ol ol ol {list-style:lower-alpha;}
+.contents ul ul,.contents ol ol,.contents ul ol,.contents ol ul {margin-bottom:0;}
+
+/* making the images right/left alignment look a little nicer */
+.contents img[align="right"],
+.contents img.right {
+	float: right;
+	margin: 0 0 .5em 1em;
+	clear: right;
+}
+.contents img[align="left"],
+.contents img.left {
+	float: left;
+	margin: 0 1em .5em 0;
+	clear: left;
+}
+
+
+
+/* ELEMENT SPECIFIC CALLINGS */
+
+/* THUMBNAIL-LIST */
+div.thumbnail-list {
+    float: left; 
+    margin:  15px;
+    width: 110px;
+    text-align: center;
+    height: 130px;
+}
+
+/* SEARCH */
+.search {
+	float: right;
+	margin: 10px 20px 0;
+}
+	.search label {
+		text-transform: uppercase;
+		display: block;
+		font-weight: bold;
+		color: #FFF;
+		font-size: .9em;
+	}
+	.search .searchInput {
+		width: 145px;
+		padding: 2px 3px;
+		height: 15px;
+	}
+	.search .searchButton {
+		font-weight: bold;
+		height: 22px;
+		width: 25px;
+		border: none;
+		color: #fff;
+	}
+
+/* BLOG ITEM */
+h3.commentsHead {
+	background: #fcf8ef !important;
+	padding: 0.75em 1em !important;
+	border-top: 0.5em solid #f6e4c1;
+}
+	h3.commentsHead a {
+		font-size: 0.75em !important;
+	}
+
+.fieldSelected {
+	background: #f5e3bd !important;
+	border: 1px solid #deb35f !important;
+}
+
+.eventsList ul li .eventDate,
+.postDate {
+	margin: 0 0 1em;
+	color: #575757;
+	font-style: oblique;
+}
+
+.commentsForm {
+	padding: 0.25em 2em 1em;
+	background: #fcf8ef;
+	border-top: 0.5em solid #f6e4c1;
+}
+
+.blogBack {
+	border: none !important;
+	padding: 0 !important;
+	float: right;
+	margin: 2.5em 1.5em 1.5em 0;
+}
+
+.eventsList ul,
+.blogList ul {
+	margin: 0;
+}
+	.eventsList ul li,
+	.blogList ul li {
+		margin: 0;
+		background: none;
+	}
+		.eventsList ul li a,
+		h2.postTitle {
+			padding: 0;
+			margin: 1em 0 0;
+			font-size: 1em;
+			color: #000;
+			font-weight: bold;
+		}
+.rss {
+	display: block;
+	float: right;
+	color: #000;
+	margin: -55px 0 0;
+	padding: 0 0 0 22px;
+	background: url(../template/icon_rss.png) no-repeat;
+}

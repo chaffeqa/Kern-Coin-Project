@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  template: 
+  position: 1
+  elem: 
+  column_order: 1
+
+two:
+  template: 
+  position: 1
+  elem: 
+  column_order: 1

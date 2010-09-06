@@ -1,0 +1,19 @@
+<!-- Element -->
+<% if @privacy_policy_section %>
+
+  <article class="text" id="<%= @privacy_policy_section.section_name %>">
+    <h1 class="title"><%= @privacy_policy_section.title %></h1>
+    <%=raw @privacy_policy_section.body %>
+  </article>
+
+<% else %>
+
+  <article class="text">
+    <h1 class="title">Privacy Policy</h1>
+    <p>
+      No Current Privacy Policy info
+    </p>
+  </article>
+
+<% end %>
+<!-- /Element -->

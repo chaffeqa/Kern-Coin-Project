@@ -1,12 +1,54 @@
 SiteTextSection.create([
-    { :section_name => 'bid', :title => 'Bid', :body => 'Our website features a 100% exclusive auction that allows our loyal customers to bid on rare, unique, and valuable coins!'},
-    { :section_name => 'buy', :title => 'Buy', :body => 'We offer an inventory which is second-to-none featuring ancient, foreign, medevial, U.S. and numerous other types of coins.  Visit our online store, view our inventory, and purchase coins!'},
-    { :section_name => 'welcome', :title => 'Welcome', :body => 'Since 1971 Jonathan Kern has been a knowledgeable dealer and collecter.'},
-    { :section_name => 'headline', :title => 'Headline', :body => 'Our website features a 100% exclusive auction that allows our loyal customers to bid on rare, unique, and valuable coins!'},
-    { :section_name => 'special_offers', :title => 'Secial Offers!', :body => 'Please take a moment to view our special offers on coins of all sorts!'},
-    { :section_name => 'contact_info', :title => 'Contact Information', :body => 'Contact Information.'},
-    { :section_name => 'description_of_business', :title => 'Description of Business', :body => 'Description of business.'},
-    { :section_name => 'legal', :title => 'Legal Information', :body => 'Legal Information'}
+    { :section_name => 'bid', :title => 'Bid', :body => '<p>
+      Our website features a 100% exclusive auction
+      that allows our loyal customers to bid on rare,
+      unique and valuable coins!
+    </p>'},
+    { :section_name => 'buy', :title => 'Buy', :body => ' <p>
+      We offer an inventory that is second-to-none featuring ancient,
+      foreign, medieval, US and numerous other types of coins. Visit
+      our online store, view our inventory, and purchase coins!
+    </p>'},
+    { :section_name => 'welcome', :title => 'Welcome', :body => '<p>
+      Since 1971 Jonathan Kern has been a knowledgeable dealer and
+      collector in ancient, foreign, and U.S. coinage along with tokens, paper
+      money and antiquities.
+    </p>
+    <p>
+      We take great pride in putting the customer first. Please take a look at
+      our current inventory listing or drop us a line so we may help you with
+      your numismatic need.
+    </p>'},
+    { :section_name => 'special_offers', :title => 'Secial Offers!', :body => '<p>
+      Please take a moment to view our current special offers on coins of all sorts!
+    </p>'},
+    { :section_name => 'contact_info_left', :title => 'Contact Information', :body => '<p>
+        Professional Numismatist<br />
+        <a href="#">Bachelor of Arts in Numismatics</a>
+      </p>
+      <p>
+        JONATHAN K. KERN COMPANY<br />
+        441 South Ashland Avenue<br />
+        Lexington KY 40502
+      </p>
+      <p>
+        Visits by Appointment Only
+      </p>'},
+    { :section_name => 'contact_info_right', :title => 'Contact Information', :body => '<p>Email: <a href="mailto:jonathan@kern.com">
+          Jonathan Kern</a><br />
+        Email: <a href="mailto:dino@kern.com">Dino Payne</a><br />
+        Call: Melanie Turner
+      </p>
+      <p>
+        To order, call (859)-269-1614<br />
+        9am and 5pm EST MON-FRI
+      </p>
+      <p>
+        24-hour FAX: (859)-266-7900
+      </p>'},
+    { :section_name => 'privacy_policy', :title => 'Privacy Policy', :body => 'Todo.'},
+    { :section_name => 'terms_of_use', :title => 'Terms of Use', :body => 'Todo.'},
+    { :section_name => 'legal', :title => 'Legal Information', :body => 'Todo'}
   ])
 
 

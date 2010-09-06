@@ -1,0 +1,19 @@
+<!-- Element -->
+<% if @terms_of_use_section %>
+
+  <article class="text" id="<%= @terms_of_use_section.section_name %>">
+    <h1 class="title"><%= @terms_of_use_section.title %></h1>
+    <%=raw @terms_of_use_section.body %>
+  </article>
+
+<% else %>
+
+  <article class="text">
+    <h1 class="title">Terms of Use</h1>
+    <p>
+      No Current Terms of Use info
+    </p>
+  </article>
+
+<% end %>
+<!-- /Element -->

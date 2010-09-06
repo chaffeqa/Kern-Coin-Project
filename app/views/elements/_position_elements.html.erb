@@ -1,0 +1,16 @@
+<div id="elements-<%= position %>">
+  <% @elements.elements_for_position(position).each do |element|  %>
+    <%= render :partial => 'elements/element', :locals => {:element => element} %>
+  <% end %>
+</div>
+
+
+<%= admin_area do %>
+  <!-- Element -->
+  <article class="text">
+    <div id="new-element-<%= position %>">
+      <%= render 'elements/new_element_select', :locals => {:position => position} %>
+    </div>
+  </article>
+  <!-- Element -->
+<% end %>

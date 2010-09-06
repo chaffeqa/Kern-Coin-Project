@@ -1,0 +1,8 @@
+<h2><%= elem.title %></h2>
+<ul>
+  <% elem.links.each do |link| %>
+    <li>
+      <%= render :partial => 'elem_partials/link', :locals => {:link => link} %>
+    </li>
+  <% end %>
+</ul>

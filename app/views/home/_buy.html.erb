@@ -1,6 +1,23 @@
+<!-- Element -->
 <% if @buy_section %>
-  <div id="<%= @buy_section.section_name %>" class="section">
-    <p class="title"><%= @buy_section.title %></p>
-    <p class="body"><%=raw @buy_section.body %></p>
-  </div>
+
+  <article class="text" id="<%= @buy_section.section_name %>">
+    <h1 class="buy"><%= @buy_section.title %></h1>
+    <%=raw @buy_section.body %>
+    <a href="/inventory"><img src="images/view-store.png" alt="View Our Online Store" /></a>
+  </article>
+
+<% else %>
+
+  <article class="text">
+    <h1 class="buy">Buy</h1>
+    <p>
+      We offer an inventory that is second-to-none featuring ancient,
+      foreign, medieval, US and numerous other types of coins. Visit
+      our online store, view our inventory, and purchase coins!
+    </p>
+    <a href="/inventory"><img src="images/view-store.png" alt="View Our Online Store" /></a>
+  </article>
+
 <% end %>
+<!-- /Element -->

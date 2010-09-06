@@ -1,0 +1,41 @@
+<% if @contact_info_right %>
+  <div id="right" id="<%= @contact_info_right.section_name %>">
+    <%=raw @contact_info_right.body %>
+  </div>
+<% else %>
+  <div id="right">
+    <p>Email: <a href="mailto:jonathan@kern.com">
+        Jonathan Kern</a><br />
+      Email: <a href="mailto:dino@kern.com">Dino Payne</a><br />
+      Call: Melanie Turner
+    </p>
+    <p>
+      To order, call (859)-269-1614<br />
+      9am and 5pm EST MON-FRI
+    </p>
+    <p>
+      24-hour FAX: (859)-266-7900
+    </p>
+  </div>
+<% end %>
+
+<% if @contact_info_left %>
+  <div id="left" id="<%= @contact_info_left.section_name %>">
+    <%=raw @contact_info_left.body %>
+  </div>
+<% else %>
+  <div id="left">
+    <p>
+      Professional Numismatist<br />
+      <a href="#">Bachelor of Arts in Numismatics</a>
+    </p>
+    <p>
+      JONATHAN K. KERN COMPANY<br />
+      441 South Ashland Avenue<br />
+      Lexington KY 40502
+    </p>
+    <p>
+      Visits by Appointment Only
+    </p>
+  </div>
+<% end %>

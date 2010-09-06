@@ -1,6 +1,21 @@
+<!-- Element -->
 <% if @special_offers_section %>
-  <div id="<%= @special_offers_section.section_name %>" class="section">
-    <p class="title"><%= @special_offers_section.title %></p>
-    <p class="body"><%=raw @special_offers_section.body %></p>
-  </div>
+
+  <article class="text" id="<%= @special_offers_section.section_name %>">
+    <img style="padding: 6px 6px 15px;" src="images/special-offers.png" alt="<%= @special_offers_section.title %>" />
+    <%=raw @special_offers_section.body %>
+    <a href="/special"><img style="margin: 30px -4px 0;" src="images/view-offers.png" alt="View Offers" /></a>
+  </article>
+
+<% else %>
+
+  <article class="text">
+    <img style="padding: 6px 6px 15px;" src="images/special-offers.png" alt="Special Offers" />
+    <p>
+      Please take a moment to view our current special offers on coins of all sorts!
+    </p>
+    <a href="/special"><img style="margin: 30px -4px 0;" src="images/view-offers.png" alt="View Offers" /></a>
+  </article>
+
 <% end %>
+<!-- /Element -->

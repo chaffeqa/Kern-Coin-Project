@@ -21,7 +21,7 @@ $(function() {
 
     
 
-    $('ul#nav-menu').superfish();
+    $('div.sf ul').superfish();
 
     $('a.gallery').colorbox();
     

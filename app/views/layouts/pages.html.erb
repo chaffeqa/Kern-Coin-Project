@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render :partial => 'layouts/head' %>
+    <%= yield :head %>
+  </head>
+
+  <body id="<%= yield :body_id %>" class="<%= yield :body_class %>">
+
+    <%= render :partial => 'layouts/header' %>
+    <%= render :partial => 'layouts/nav_menu' %>
+
+
+    <% if flash[:notice] %> <div id="notice"><%= flash[:notice] %></div> <% end %>
+    <% if flash[:alert] %> <div id="alert"><%= flash[:alert] %></div><% end %>
+
+    <%= yield %>
+
+    <%= render :partial => 'layouts/footer' %>
+  </body>
+</html>

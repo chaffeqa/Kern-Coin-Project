@@ -1,0 +1,76 @@
+<%= form_for([:admin,@node]) do |f| %>
+  <% if @node.errors.any? or @node.template.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize((@node.errors.count + @node.template.errors.count), "error") %> prohibited this node from being saved:</h2>
+      <ul>
+        <% @node.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        <% @node.template.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% unless @home_form %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :menu_name %><br />
+      <%= f.text_field :menu_name %>
+    </div>
+    <div class="field">
+      <%= f.label :shortcut %><br />
+      http://localhost/<%= f.text_field :shortcut %>
+    </div>
+    <div class="field">
+      <%= f.check_box :displayed, :checked => true %>
+      <%= f.label :displayed, "Display Page?" %>
+    </div>
+    <div class="field">
+      <%= f.label :node_id, "Where Should This Page Go?" %><br/>
+      <%= f.select :node_id, options_for_select([[@home_node.menu_name,@home_node.id]] + options_tree_recursive(@home_node, ""), "Home") %>
+    </div>
+
+  <% else %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, :disabled => 'disabled' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :menu_name %><br />
+      <%= f.text_field :menu_name, :disabled => 'disabled'  %>
+    </div>
+    <div class="field">
+      <%= f.label :shortcut %><br />
+      http://localhost/<%= f.text_field :shortcut, :disabled => 'disabled'  %>
+    </div>
+    <div class="field">
+      <%= f.check_box :displayed, :checked => true, :disabled => 'disabled'  %>
+      <%= f.label :displayed, "Display Page?" %>
+    </div>
+
+    <%= f.hidden_field :title %>
+    <%= f.hidden_field :displayed %>
+    <%= f.hidden_field :menu_name %>
+    <%= f.hidden_field :shortcut %>
+
+  <% end %>
+
+
+
+  <%= f.fields_for :template do |tf| %>
+    <div class="field">
+      <%= tf.label :template_name, "Template Type" %><br />
+      <%= tf.select :template_name, ['Right Inside','Home'] %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

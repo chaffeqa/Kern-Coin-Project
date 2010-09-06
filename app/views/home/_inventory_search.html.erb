@@ -1,8 +1,14 @@
-<div id="search-inventory-section" class="section">
-<%= form_tag(inventory_list_path(), :method => 'get') do %>
-  <%= label_tag :search_text, 'Search our inventory of coins' %><br/>
-  <%= text_field_tag :search_text %><br/>
-  <%= select_tag :category_id, options_for_select(categories_for_items(Item.get_for_sale.displayed).map {|category| [category.title, category.id]} << ['Category',''],'') %><br/>
-  <%= select_tag :cost_range, options_for_select([['$0 - $10','10'], ['$0 - $50','50'], ['$0 - $100','100'], [' < $500','500'], [' < $1000','1000'], ['Cost', ''] ], '') %><br/>
-  <%= submit_tag('Search Inventory') %>
-<% end %>
+<!-- Element -->
+<article class="text">
+  <h1 class="browse">Browse</h1>
+  <p>Search our inventory</p>
+
+  <%= form_tag(inventory_list_path(), :method => 'get', :class => 'search') do %>
+  <%#= label_tag :search_text, 'Search our inventory of coins' %><br/>
+    <%= text_field_tag :search_text %>
+    <%= select_tag :category_id, options_for_select(categories_for_items(Item.get_for_sale.displayed).map {|category| [category.title, category.id]} << ['Category',''],'') %>
+    <%= select_tag :cost_range, options_for_select([['$0 - $10','10'], ['$0 - $50','50'], ['$0 - $100','100'], [' < $500','500'], [' < $1000','1000'], ['Cost', ''] ], '') %>
+    <%= submit_tag('Search') %>
+  <% end %>
+</article>
+<!-- /Element -->

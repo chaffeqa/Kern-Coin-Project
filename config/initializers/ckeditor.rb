@@ -36,13 +36,13 @@ if Object.const_defined?("Ckeditor")
     #config.swf_image_file_upload_limit = 10
     
     # Path for view all uploaded files
-    #config.file_manager_uri = "/ckeditor/files"
+    config.file_manager_uri = "/ckeditor/files"
     
     # Path for upload files process
     #config.file_manager_upload_uri = "/ckeditor/create/file"
     
     # Path for view all uploaded images
-    #config.file_manager_image_uri = "/ckeditor/images"
+    config.file_manager_image_uri = "/ckeditor/images"
     
     # Path for upload images process
     #config.file_manager_image_upload_uri = "/ckeditor/create/image"

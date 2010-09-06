@@ -1,6 +1,23 @@
+<!-- Element -->
 <% if @bid_section %>
-  <div id="<%= @bid_section.section_name %>" class="section">
-    <p class="title"><%= @bid_section.title %></p>
-    <p class="body"><%=raw @bid_section.body %></p>
-  </div>
+
+  <article class="text" id="<%= @bid_section.section_name %>">
+    <h1 class="bid"><%= @bid_section.title %></h1>
+    <%=raw @bid_section.body %>
+    <a href="/auction"><img src="images/view-auctions.png" alt="View Current Auctions" /></a>
+  </article>
+
+<% else %>
+
+  <article class="text">
+    <h1 class="bid">Bid</h1>
+    <p>
+      Our website features a 100% exclusive auction
+      that allows our loyal customers to bid on rare,
+      unique and valuable coins!
+    </p>
+    <a href="/auction"><img src="images/view-auctions.png" alt="View Current Auctions" /></a>
+  </article>
+
 <% end %>
+<!-- /Element -->

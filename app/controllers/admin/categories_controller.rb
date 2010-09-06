@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  layout 'admin'
   before_filter :require_user
   # GET /categories
   # GET /categories.xml

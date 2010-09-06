@@ -1,7 +1,43 @@
-<%= render :partial => 'inventory_search' %>
-<%= render :partial => 'buy' %>
-<%= render :partial => 'bid' %>
-<%= render :partial => 'special_offers' %>
-<%= render :partial => 'welcome' %>
-<%= render :partial => 'recent_news' %>
-<%= render :partial => 'categories' %>
+<%= content_for :body_id do %>homePage<% end %>
+<%= content_for :body_class do %>threeColumn<% end %>
+
+<% if @node.template and @node.template.template_name == "Home" %>
+
+  <section id="featured" class="clearfix">
+    <div id="wrapper">
+      <div id="extraColumn">
+        <%= render :partial => 'inventory_search' %>
+      </div>
+      <div id="mainColumn">
+        <%= render :partial => 'buy' %>
+      </div>
+      <div id="subColumn">
+        <%= render :partial => 'bid' %>
+      </div>
+    </div>
+  </section>
+
+  <nav></nav>
+
+  <section id="content" class="clearfix">
+    <div id="wrapper">
+      <section id="extraColumn" class="contents">
+        <%= render :partial => 'special_offers' %>
+      </section>
+      <section id="mainColumn" class="clearfix contents">
+        <%= render :partial => 'welcome' %>
+      </section>
+      <section id="subColumn" class="clearfix contents">
+        <div id="top"></div> <%= render :partial => 'recent_news' %>
+      </section>
+    </div>
+  </section>
+
+  <section id="homeFooter" class="clearfix">
+    <div id="wrapper">
+      <%= render :partial => 'elements/position_elements', :locals => {:position => 1} %>
+      <%= render :partial => 'categories' %>
+    </div>
+  </section>
+
+<% end %>

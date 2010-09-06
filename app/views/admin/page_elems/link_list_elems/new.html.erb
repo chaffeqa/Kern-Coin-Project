@@ -1,0 +1,7 @@
+<% form_for([:admin, @link_list_elem]) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= hidden_field_tag :column_order, @element.column_order %>
+  <%= hidden_field_tag :position, @element.position %>
+
+<% end %>
+<%= link_to 'Cancel', shortcut_path(@shortcut) %>

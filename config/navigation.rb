@@ -21,21 +21,20 @@ SimpleNavigation::Configuration.run do |navigation|
   # This turns it off globally (for the whole plugin)
   # navigation.auto_highlight = false
 
+  inventory = Category.get_inventory
+
   # Define the primary navigation
   navigation.items do |primary|
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu
-    primary.dom_id = 'nav-menu'
-    primary.dom_class = 'clearfloat'
+#    primary.dom_id = 'nav-menu'
+    primary.dom_class = 'nav-menu'
 
     # You can turn off auto highlighting for a specific level
     #    primary.auto_highlight = false
 
-    inventory = Category.get_inventory
-
     primary.item :home, 'Home', home_path
-    primary.item :about_us, 'About Us', home_path
     primary.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
       inventory.children.each do |sub_category|
         if sub_category.children.empty?
@@ -55,6 +54,18 @@ SimpleNavigation::Configuration.run do |navigation|
     end
     primary.item :auctions, 'Auctions', home_path
     primary.item :contact_us, 'Contact Us', new_question_path
+    @home_node ||= Node.where(:menu_name => 'Home').first
+    @home_node.nodes.each do |child_node|
+      if child_node.nodes.empty?
+        primary.item child_node.shortcut.to_sym, child_node.menu_name, shortcut_path(:shortcut => child_node.shortcut)
+      else
+        primary.item child_node.shortcut.to_sym, child_node.menu_name, shortcut_path(:shortcut => child_node.shortcut) do |sub_menu|
+          child_node.nodes.each do |sub_child_node|
+            sub_menu.item sub_child_node.shortcut.to_sym, sub_child_node.menu_name, shortcut_path(:shortcut => sub_child_node.shortcut)
+          end
+        end
+      end
+    end
 
     # Add an item to the primary navigation. The following params apply:
     # key - a symbol which uniquely defines your navigation item in the scope of the primary_navigation
@@ -69,8 +80,8 @@ SimpleNavigation::Configuration.run do |navigation|
     #                     be rendered (e.g. <tt>:unless => Proc.new { current_user.admin? }</tt>). The
     #                     proc should evaluate to a true or false value and is evaluated in the context of the view.
     #           :method - Specifies the http-method for the generated link - default is :get.
-    #           :highlights_on - if autohighlighting is turned off and/or you want to explicitly specify 
-    #                            when the item should be highlighted, you can set a regexp which is matched 
+    #           :highlights_on - if autohighlighting is turned off and/or you want to explicitly specify
+    #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.
     #
     #    primary.item :key_1, 'name', url, options
@@ -90,6 +101,8 @@ SimpleNavigation::Configuration.run do |navigation|
     
   
   end
+
+ 
 
   #  navigation.items do |admin|
   #    admin.item :pages_admin, 'Pages Admin', admin_pages_path
