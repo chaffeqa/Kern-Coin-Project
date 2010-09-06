@@ -1,3 +1,3 @@
-<h4><%= elem.title %></h4>
-<p><%= elem.text %></p>  
+<% unless elem.title.blank? %><h1 class="title"><%= elem.title %></h1><% end %>
+<%=raw elem.text %>
 

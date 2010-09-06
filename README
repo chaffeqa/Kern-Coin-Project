@@ -1,3 +1,8 @@
+== Notes
+
+None so far
+
+
 == Deployment TODO Notes
 * chmod 666 log/production.log
 * chmod 777 public/ckeditor_assets -R
@@ -6,7 +11,7 @@
 == Recommended Platform/Stack
 
 Ruby Interpreter: REE (Ruby Enterprise Edition)
-Framework: Rails 3.0.0beta4
+Framework: Rails 3.0.0
 App: Phusion Passenger
 Web: Apache 2.2.8 (built from source)
 (http://www.rubyenterpriseedition.com/comparisons.html#participants)

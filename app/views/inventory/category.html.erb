@@ -1,10 +1,16 @@
 <h2><%= @category.title %></h2>
 <p><%= @category.description %></p>
 
+<% unless @category.items.empty? %>
+  <div class="item-list clearfix">
+    <h3>Items</h3>
+    <% @category.items.each do |item|%>
+      <%= render :partial => 'item_list', :locals => { :item => item } %>
+    <% end %>
+  </div>
+<% end %>
+
 <% @category.children.each do |child_category|%>
   <%= render :partial => 'category_list', :locals => { :category => child_category } %>
 <% end %>
 
-<% @category.items.each do |item|%>
-  <%= render :partial => 'item_list', :locals => { :item => item } %>
-<% end %>

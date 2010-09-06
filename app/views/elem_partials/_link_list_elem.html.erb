@@ -1,4 +1,4 @@
-<h2><%= elem.title %></h2>
+<% unless elem.title.blank? %><h1 class="title"><%= elem.title %></h1><% end %>
 <ul>
   <% elem.links.each do |link| %>
     <li>

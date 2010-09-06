@@ -4,12 +4,12 @@ class Element < ActiveRecord::Base
 
   ELEM_TYPES = [
     ["Text"           ,   "text_elems"          ],
-    ["Blog"           ,   "blog_elems"          ],
-    ["Donation"       ,   "donation_elems"      ],
+#    ["Blog"           ,   "blog_elems"          ],
+#    ["Donation"       ,   "donation_elems"      ],
     ["Calendar"       ,   "calendar_elems"      ],
-    ["Form"           ,   "blog_elems"          ],
+#    ["Form"           ,   "blog_elems"          ],
     ["Link List"      ,   "link_list_elems"     ],
-    ["Evite"          ,   "evite_elems"         ],
+#    ["Evite"          ,   "evite_elems"         ],
     ["Login"          ,   "login_elems"         ],
     ["Photo Gallery"  ,   "photo_gallery_elems" ]
   ]

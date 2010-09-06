@@ -28,45 +28,52 @@ SimpleNavigation::Configuration.run do |navigation|
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu
-#    primary.dom_id = 'nav-menu'
+    #    primary.dom_id = 'nav-menu'
     primary.dom_class = 'nav-menu'
 
-    # You can turn off auto highlighting for a specific level
-    #    primary.auto_highlight = false
 
-    primary.item :home, 'Home', home_path
-    primary.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
-      inventory.children.each do |sub_category|
-        if sub_category.children.empty?
-          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category)
+    primary.item :home, 'Home', home_path do |home_level|
+      @home_node ||= Node.where(:menu_name => 'Home').first
+      @home_node.nodes.each do |child_node|
+        if child_node.nodes.empty?
+          home_level.item child_node.shortcut.to_sym, child_node.menu_name, shortcut_path(:shortcut => child_node.shortcut)
         else
-          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category) do |level_2|
-            sub_category.children.each do |sub_sub_category|
-              level_2.item sub_sub_category.title.to_sym, sub_sub_category.title, inventory_category_path(sub_sub_category)
+          home_level.item child_node.shortcut.to_sym, child_node.menu_name, shortcut_path(:shortcut => child_node.shortcut) do |sub_menu|
+            child_node.nodes.each do |sub_child_node|
+              sub_menu.item sub_child_node.shortcut.to_sym, sub_child_node.menu_name, shortcut_path(:shortcut => sub_child_node.shortcut)
             end
           end
         end
       end
-    end
-    primary.item :archives, 'Archives', home_path do |sub_nav|
-      sub_nav.item :coinworld_archives, 'CoinWorld Archives', home_path
-      sub_nav.item :inventory_archives, 'Inventory Archives', home_path
-    end
-    primary.item :auctions, 'Auctions', home_path
-    primary.item :contact_us, 'Contact Us', new_question_path
-    @home_node ||= Node.where(:menu_name => 'Home').first
-    @home_node.nodes.each do |child_node|
-      if child_node.nodes.empty?
-        primary.item child_node.shortcut.to_sym, child_node.menu_name, shortcut_path(:shortcut => child_node.shortcut)
-      else
-        primary.item child_node.shortcut.to_sym, child_node.menu_name, shortcut_path(:shortcut => child_node.shortcut) do |sub_menu|
-          child_node.nodes.each do |sub_child_node|
-            sub_menu.item sub_child_node.shortcut.to_sym, sub_child_node.menu_name, shortcut_path(:shortcut => sub_child_node.shortcut)
+    
+      primary.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
+        inventory.children.each do |sub_category|
+          if sub_category.children.empty?
+            level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category)
+          else
+            level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category) do |level_2|
+              sub_category.children.each do |sub_sub_category|
+                level_2.item sub_sub_category.title.to_sym, sub_sub_category.title, inventory_category_path(sub_sub_category)
+              end
+            end
           end
         end
       end
+      primary.item :archives, 'Archives', home_path do |sub_nav|
+        sub_nav.item :coinworld_archives, 'CoinWorld Archives', home_path
+        sub_nav.item :inventory_archives, 'Inventory Archives', home_path
+      end
+      primary.item :auctions, 'Auctions', home_path
+      primary.item :contact_us, 'Contact Us', new_question_path
+      primary.item :admin, 'Admin', admin_home_path, :if => Proc.new { admin? }
     end
 
+
+
+
+    # You can turn off auto highlighting for a specific level
+    #    primary.auto_highlight = false
+    
     # Add an item to the primary navigation. The following params apply:
     # key - a symbol which uniquely defines your navigation item in the scope of the primary_navigation
     # name - will be displayed in the rendered navigation. This can also be a call to your I18n-framework.
