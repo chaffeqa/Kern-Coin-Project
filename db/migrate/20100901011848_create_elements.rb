@@ -5,6 +5,9 @@ class CreateElements < ActiveRecord::Migration
       t.integer :position
       t.references :elem, :polymorphic => true
       t.integer :column_order
+      t.string :title
+      t.boolean :display_title, :default => true
+      t.string :html_id
 
       t.timestamps
     end

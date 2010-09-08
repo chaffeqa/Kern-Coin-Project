@@ -1,5 +1,5 @@
-class Link < ActiveRecord::Base
-  belongs_to :link_list_elem
+class LinkElem < ActiveRecord::Base
+  has_one :element, :as => :elem
   belongs_to :node
 
   has_attached_file :link_file,

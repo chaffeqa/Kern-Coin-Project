@@ -1,8 +1,0 @@
-<h2>Link List Elem</h2>
-<%= render :partial => 'elem_partials/link_list_elem', :locals => {:elem => @link_list_elem} %>
-
-<p>
-  | <%= link_to 'List Options', edit_admin_link_list_elem_path(@link_list_elem) %> |
-  <%= link_to 'Add Link', new_admin_link_list_elem_link_path(@link_list_elem) %> |
-  <%= link_to 'Done', shortcut_path(@shortcut) %> |
-</p>

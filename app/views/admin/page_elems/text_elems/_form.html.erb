@@ -10,19 +10,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
+  <%= render :partial => 'admin/page_elems/form_element_fields' %>
+
 
   <div class="field">
     <%= f.label :text %><br />
-    <%= f.text_area :text %>
+    <%= f.cktext_area :text %>
   </div>
 
-  <%= hidden_field_tag :column_order, @element.column_order %>
-  <%= hidden_field_tag :position, @element.position %>
-  <%= hidden_field_tag :shortcut, @shortcut %>
+
 
   <div class="actions">
     <%= f.submit %>

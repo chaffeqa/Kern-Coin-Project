@@ -45,28 +45,29 @@ SimpleNavigation::Configuration.run do |navigation|
           end
         end
       end
+    end
     
-      primary.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
-        inventory.children.each do |sub_category|
-          if sub_category.children.empty?
-            level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category)
-          else
-            level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category) do |level_2|
-              sub_category.children.each do |sub_sub_category|
-                level_2.item sub_sub_category.title.to_sym, sub_sub_category.title, inventory_category_path(sub_sub_category)
-              end
+    primary.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
+      inventory.children.each do |sub_category|
+        if sub_category.children.empty?
+          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category)
+        else
+          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category) do |level_2|
+            sub_category.children.each do |sub_sub_category|
+              level_2.item sub_sub_category.title.to_sym, sub_sub_category.title, inventory_category_path(sub_sub_category)
             end
           end
         end
       end
-      primary.item :archives, 'Archives', home_path do |sub_nav|
-        sub_nav.item :coinworld_archives, 'CoinWorld Archives', home_path
-        sub_nav.item :inventory_archives, 'Inventory Archives', home_path
-      end
-      primary.item :auctions, 'Auctions', home_path
-      primary.item :contact_us, 'Contact Us', new_question_path
-      primary.item :admin, 'Admin', admin_home_path, :if => Proc.new { admin? }
     end
+    primary.item :archives, 'Archives', home_path do |sub_nav|
+      sub_nav.item :coinworld_archives, 'CoinWorld Archives', home_path
+      sub_nav.item :inventory_archives, 'Inventory Archives', home_path
+    end
+    primary.item :auctions, 'Auctions', home_path
+    primary.item :contact_us, 'Contact Us', new_question_path
+    primary.item :admin, 'Admin', admin_home_path, :if => Proc.new { admin? }
+   
 
 
 

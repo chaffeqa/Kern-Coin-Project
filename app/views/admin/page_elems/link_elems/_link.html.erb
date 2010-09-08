@@ -1,7 +1,3 @@
-<% admin_area do %>
-  | <%= link_to 'Edit', edit_admin_link_list_elem_link_path( link.link_list_elem, link ) %> | &nbsp;
-<% end %>
-
 <% if link.link_type == "Url" %>
   <%= link_to link.link_name, link.link_url, :target => link.target %>
 <% end %>
@@ -10,4 +6,9 @@
 <% end %>
 <% if link.link_type == "File" %>
   <%= link_to link.link_name, file_admin_link_list_elem_link_path(link.link_list_elem, link), :target => link.target %>
+<% end %>
+
+
+<% admin_area do %>
+  | <%= link_to 'Edit', edit_admin_link_list_elem_link_path( link.link_list_elem, link ) %> |
 <% end %>

@@ -66,13 +66,14 @@ KernCoinProject::Application.routes.draw do
     resources :questions, :only => [:index, :show, :delete]
     scope :module => 'page_elems' do
       resources :text_elems, :except => [:index, :destroy, :show]
-      resources :link_list_elems, :except => [:index, :destroy] do
-        resources :links, :except => [:index, :show, :destroy] do
-          post :file, :on => :member
-        end
+      resources :link_elems, :except => [:index, :destroy] do
+        post :file, :on => :member
       end
     end
   end
+
+  get 'ckeditor/images'
+
   match 'admin/:shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
   match 'admin/:shortcut' => 'templates#edit', :as => :admin_shortcut
 end

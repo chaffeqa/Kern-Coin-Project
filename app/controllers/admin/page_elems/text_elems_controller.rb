@@ -1,9 +1,9 @@
 class Admin::PageElems::TextElemsController < ApplicationController
-  before_filter :get_template, :require_user
+  before_filter :get_template
 
 
   def new
-    @element = Element.new(:position => params[:position], :column_order => Element.set_highest_column_order(params[:position]))
+    @element = Element.new(:position => params[:position], :column_order => Element.set_highest_column_order(params[:position]), :title => '', :display_title => true)
     @text_elem = @element.elem=TextElem.new
   end
 
@@ -14,7 +14,7 @@ class Admin::PageElems::TextElemsController < ApplicationController
 
 
   def create
-    @element = Element.new(:position => params[:position], :column_order => params[:column_order])
+    @element = Element.new(:position => params[:position], :column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title])
     @text_elem = @element.elem=TextElem.new(params[:text_elem])
     if @text_elem.save and @element.save and @node.template.elements << @element
       redirect_to shortcut_path(@node.shortcut, :notice => "Text Element successfully added!")

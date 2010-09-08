@@ -1,0 +1,54 @@
+<%= form_for([:admin, @link_elem], :html => {:multipart => true}) do |f| %>
+
+  <% if @link_elem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@link_elem.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+      <ul>
+        <% @link_elem.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render :partial => 'admin/page_elems/form_element_fields' %>
+
+  <div class="field">
+    <%= f.label :link_name %><br />
+    <%= f.text_field :link_name %>
+  </div>
+  <div class="field">
+    <%= f.label :link_type %><br />
+    <%= f.select :link_type, LinkElem.link_type_options %> &nbsp;
+
+    <span id="link_url_select"><%= render :partial => 'link_url_select', :locals => {:f => f} %></span>
+
+    <script type="text/javascript" >
+      $(function() {
+        $('#link_elem_link_type').change( function() {
+          type = $('#link_elem_link_type').val();
+          if (type=="Url") {
+            $('#link_url_select').html('<%= escape_javascript  f.text_field :link_url %>');
+          } else {
+            if (type=="File") {
+              $('#link_url_select').html('<%= escape_javascript  f.file_field :link_file %> &nbsp; <%= f.label :link_file, 'Upload File' %>');
+            } else {
+              $('#link_url_select').html('<%= escape_javascript  f.select :node_id, options_for_select([[@home_node.menu_name,@home_node.id]] + options_tree_recursive(@home_node, ""), "Home") %>');
+            }
+          }
+        })
+      })
+    </script>
+
+  </div>
+  <div class="field">
+    <%= f.check_box :target, {}, '_blank', '' %>
+    <%= f.label :target, "Open Link in New Window?" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
