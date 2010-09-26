@@ -2,7 +2,7 @@ module ApplicationHelper
 
   # Anything passed into an <%= admin_area do %> ... <% end %> block in an .erb file will get surrounded by <div class="admin"></div>
   def admin_area(&block)
-    content_tag(:div, :class => "admin", &block) if admin?
+    content_tag(:span, :class => "admin", &block) if admin?
   end
 
   def hidden_div_if(condition, attributes = {}, &block)
@@ -98,6 +98,21 @@ module ApplicationHelper
       'Purple',
       'Orange'
     ]
+  end
+
+
+  def new_asset
+    unless @asset
+      @asset = Ckeditor.image_model.new
+    end
+    @asset
+  end
+
+  def all_image_assets
+    unless @image_assets
+      @image_assets = Ckeditor.image_model.all
+    end
+    @image_assets
   end
   
 

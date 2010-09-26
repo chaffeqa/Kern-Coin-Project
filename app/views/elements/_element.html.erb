@@ -1,6 +1,6 @@
 <!-- Element -->
-<article id="element-<%= element.html_id %>" class="<%= element.elem_type %>">
-  <% if element.display_title %><h1 class="title"><%= element.title %></h1><% end %>
+<article  class="text">
+  <% if element.display_title %><h1 class="title  <%= element.html_id %> "><%= element.title %></h1><% end %>
   <%= render :partial => "elem_partials/#{(element.elem_type.tableize).singularize}", :locals => {:elem => element.elem} %>
   <%= admin_area do %>
     <%= link_to 'Edit Element', get_elem_link_to_action(element, 'edit') %>

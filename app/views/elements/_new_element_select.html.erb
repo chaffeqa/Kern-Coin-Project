@@ -1,4 +1,4 @@
-<%= form_tag(new_element_path(:shortcut => @shortcut, :position => locals[:position])) do %>
+<%= form_tag(new_element_path(:shortcut => @shortcut, :position => position)) do %>
 
 <%= label_tag :elem_path, "Select an Element" %>
 <%= select_tag :elem_controller, options_for_select(Element.get_elem_select) %>

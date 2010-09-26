@@ -2,10 +2,8 @@
 <article class="text">
   <h1 class="title">Select a category to see further information and sub-categories within that region...</h1>
   <ul class="categoryList">
-    <% if @categories %>
-      <% @categories.each do |category| %>
-        <li><%= link_to category.title, inventory_category_path(category) %></li>
-      <% end %>
+    <% Category.get_inventory.children.each do |category| %>
+      <li><%= link_to category.title, inventory_category_path(category) %></li>
     <% end %>
   </ul>
 </article>

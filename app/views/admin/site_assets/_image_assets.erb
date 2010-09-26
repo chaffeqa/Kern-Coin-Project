@@ -1,0 +1,5 @@
+<div class="clearfix">
+  <% all_image_assets.each do |image_asset| %>
+    <%= render :partial => 'admin/site_assets/image_asset', :locals => {:image_asset => image_asset} %>
+  <% end %>
+</div>

@@ -1,4 +1,4 @@
-<%= form_for([:admin, @link_elem], :html => {:multipart => true}) do |f| %>
+<%= form_for([:admin, @link_elem]) do |f| %>
 
   <% if @link_elem.errors.any? %>
     <div id="error_explanation">
@@ -42,6 +42,13 @@
     </script>
 
   </div>
+
+  <div class="field">
+    <%= render :partial => 'admin/site_assets/select_site_image', :locals => {:form => f} %>
+    <%= f.label :image_style, 'Style applied to img tag:' %><br/>
+    <%= f.text_field :image_style %>
+  </div>
+
   <div class="field">
     <%= f.check_box :target, {}, '_blank', '' %>
     <%= f.label :target, "Open Link in New Window?" %>

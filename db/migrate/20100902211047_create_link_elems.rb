@@ -6,11 +6,8 @@ class CreateLinkElems < ActiveRecord::Migration
       t.string :link_url
       t.belongs_to :node
       t.string :target
-      t.string :image_file_url
-      t.string :link_file_file_name
-      t.string :link_file_content_type
-      t.integer :link_file_file_size
-      t.datetime :link_file_updated_at
+      t.belongs_to :image
+      t.string :image_style
 
       t.timestamps
     end

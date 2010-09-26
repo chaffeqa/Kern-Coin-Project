@@ -27,33 +27,16 @@ class ApplicationController < ActionController::Base
     get_home_node
     @node = @node || (Node.where(:shortcut => params[:shortcut]).first if params[:shortcut])
     if @node
-      if @node.template
-#        @template = @node.template
-        @elements = @node.template.elements.elem_order
+      if @node.page_type=='Template'
+        @elements = @node.page.elements.elem_order
         @shortcut = @node.shortcut
-      else
-        flash[:alert] = "This Page does not have legal template, please choose one."
-        redirect_to edit_admin_node_path(@node)
       end
-    else
-      flash[:alert] = "No Page exists with this name. Please create one."
-      redirect_to new_admin_node_path
     end
-
   end
 
   #TODO
   def admin?
-    true
-  end
-
-
-  def render_node_template(error_message="Error")
-    if @node and @template
-      render 'templates/edit', :alert => error_message
-    else
-      redirect_to root_url(), :alert => error_message.to_s
-    end
+    false
   end
 
 
@@ -61,14 +44,14 @@ class ApplicationController < ActionController::Base
   private
 
   def create_home_node
-    @home_node = Node.create!(:menu_name => 'Home', :title => 'Home', :shortcut => 'home', :displayed => true)
-    @home_node.create_template(:template_name => 'Home')
+    home_page = Template.create!(:template_name => 'Home')
+    @home_node = home_page.create_node(:menu_name => 'Home', :title => 'Home', :shortcut => 'home', :displayed => true)
   end
 
   
 
   def side_panels
-#    @popular_auctions = Auction.list_by_popularity.limit(5)
+    #    @popular_auctions = Auction.list_by_popularity.limit(5)
     @time = Time.now
     if current_user
       @user = current_user

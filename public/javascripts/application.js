@@ -33,5 +33,6 @@ $(function() {
     $('tr.hover-tr').mouseout(function() {
         $(this).removeClass('hover');
     });
+
 });
 

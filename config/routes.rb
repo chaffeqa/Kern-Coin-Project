@@ -1,5 +1,7 @@
 KernCoinProject::Application.routes.draw do
-  root :to => 'home#home'
+
+
+  root :to => 'admin/home#index'
   
   
   #  resources :link_list_elems, :except => [:index, :destroy] do
@@ -41,27 +43,34 @@ KernCoinProject::Application.routes.draw do
 
   # Questions for 'Contact Us'
   resources :questions, :only => [:new, :create]
-
-
-  # Home Controller
-  match "home" => 'home#home', :as => :home
-  match "legal" => 'home#legal', :as => :legal
-  match "privacy_policy" => 'home#privacy_policy', :as => :privacy_policy
-  match "terms_of_use" => 'home#terms_of_use', :as => :terms_of_use
-  #  match ':shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
-  match ':shortcut' => 'templates#show', :as => :shortcut
-  match 'home/news' => 'news#index', :as => :news
-  match 'home/news/article/:id' => 'news#article', :as => :news_article
+  #
+  #
+  #
+  #  # Home Controller
+  #  match "home" => 'home#home', :as => :home
+  #  match "legal" => 'home#legal', :as => :legal
+  #  match "privacy_policy" => 'home#privacy_policy', :as => :privacy_policy
+  #  match "terms_of_use" => 'home#terms_of_use', :as => :terms_of_use
+  #  #  match ':shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
+  #  match 'inventory' => 'inventory#category'
+  #  match 'auctions' => 'inventory#category'
+  #  match 'archives' => 'inventory#category'
+  #  match 'admin' => 'admin/home#index'
+  #
+  #  match ':shortcut' => 'templates#show', :as => :shortcut
+  #  match 'home/news' => 'news#index', :as => :news
+  #  match 'home/news/article/:id' => 'news#article', :as => :news_article
 
 
   # Admin Namespace
   namespace "admin" do
     get "home/index", :as => :home
+    resources :site_assets, :only => [:create, :index, :destroy]
     resources :nodes
-    resources :site_text_sections
+    #    resources :site_text_sections
     resources :items
     resources :posts
-    resources :users
+    #    resources :users
     resources :categories, :except => [:show]
     resources :questions, :only => [:index, :show, :delete]
     scope :module => 'page_elems' do
@@ -72,8 +81,14 @@ KernCoinProject::Application.routes.draw do
     end
   end
 
-  get 'ckeditor/images'
+  
+  match '/admin/:controller/:action(/:id)'
+  match '/:controller/:action(/:id)'
+  match ':shortcut' => 'templates#show', :as => :shortcut
+  match ':shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
 
-  match 'admin/:shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
-  match 'admin/:shortcut' => 'templates#edit', :as => :admin_shortcut
+  #  match 'admin/:shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
+  #  match 'admin/:shortcut' => 'templates#edit', :as => :admin_shortcut
+
+  
 end

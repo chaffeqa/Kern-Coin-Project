@@ -1,9 +1,9 @@
 <% if elem.link_type == "Url" %>
-  <%= link_to elem.link_name, elem.link_url, :target => elem.target %>
+  <%= link_to (elem.image ? image_tag(elem.image.url, :alt => elem.link_name, :style => elem.image_style) : elem.link_name), elem.link_url, :target => elem.target %>
 <% end %>
 <% if elem.link_type == "Page" %>
-  <%= link_to elem.link_name, shortcut_path(elem.node.shortcut), :target => elem.target %>
+  <%= link_to (elem.image ? image_tag(elem.image.url, :alt => elem.link_name, :style => elem.image_style) : elem.link_name), shortcut_path(elem.node.shortcut), :target => elem.target %>
 <% end %>
 <% if elem.link_type == "File" %>
-  <%= link_to elem.link_name, file_admin_link_elem_path(elem), :target => elem.target %>
+  <%= link_to (elem.image ? image_tag(elem.image.url, :alt => elem.link_name, :style => elem.image_style) : elem.link_name), file_admin_link_elem_path(elem), :target => elem.target %>
 <% end %>

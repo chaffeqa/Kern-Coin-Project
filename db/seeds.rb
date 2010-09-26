@@ -1,15 +1,50 @@
-SiteTextSection.create([
-    { :section_name => 'bid', :title => 'Bid', :body => '<p>
-      Our website features a 100% exclusive auction
-      that allows our loyal customers to bid on rare,
-      unique and valuable coins!
-    </p>'},
-    { :section_name => 'buy', :title => 'Buy', :body => ' <p>
+home_page = Template.create(:template_name => 'Home')
+home_node = home_page.create_node(:menu_name => 'Home', :title => 'Home', :shortcut => 'home', :displayed => true)
+
+
+Ckeditor.image_model.create!([
+    {:data_file_name => 'view-store.png', :data_content_type => 'image/png', :data_file_size => 9414, :type => 'Ckeditor::Picture', :locale => 0},
+    {:data_file_name => 'view-auctions.png', :data_content_type => 'image/png', :data_file_size => 9609, :type => 'Ckeditor::Picture', :locale => 0},
+    {:data_file_name => 'view-offers.png', :data_content_type => 'image/png', :data_file_size => 3946, :type => 'Ckeditor::Picture', :locale => 0},
+    {:data_file_name => 'learn-more.png', :data_content_type => 'image/png', :data_file_size => 7729, :type => 'Ckeditor::Picture', :locale => 0},
+    {:data_file_name => 'view-archive.png', :data_content_type => 'image/png', :data_file_size => 8415, :type => 'Ckeditor::Picture', :locale => 0}
+  ])
+
+buy_element = home_page.elements.create(:position => 2, :column_order => 1, :title => 'Buy', :display_title => true)
+buy_element.elem = TextElem.create(:text => '<p>
       We offer an inventory that is second-to-none featuring ancient,
       foreign, medieval, US and numerous other types of coins. Visit
       our online store, view our inventory, and purchase coins!
-    </p>'},
-    { :section_name => 'welcome', :title => 'Welcome', :body => '<p>
+    </p>')
+buy_element.save!
+buy_link_element = home_page.elements.create(:position => 2, :column_order => 2, :title => 'Buy', :display_title => false)
+buy_link_element.elem = LinkElem.create(:link_name => 'Buy', :link_type => 'Page', :node_id => 6, :image_id => 1, :target => '')
+buy_link_element.save!
+
+bid_element = home_page.elements.create(:position => 3, :column_order => 1, :title => 'Bid', :display_title => true)
+bid_element.elem = TextElem.create(:text => '<p>
+      Our website features a 100% exclusive auction
+      that allows our loyal customers to bid on rare,
+      unique and valuable coins!
+    </p>')
+bid_element.save!
+bid_link_element = home_page.elements.create(:position => 3, :column_order => 2, :title => 'Bid', :display_title => false)
+bid_link_element.elem = LinkElem.create(:link_name => 'Bid', :link_type => 'Page', :node_id => 1, :image_id => 2, :target => '')
+bid_link_element.save!
+
+special_offers_element = home_page.elements.create(:position => 4, :column_order => 1, :title => 'Special Offers', :display_title => false)
+special_offers_element.elem = TextElem.create(:text => '
+    <img alt="Special Offers" src="images/special-offers.png" style="padding: 6px 6px 15px;">
+    <p>
+      Please take a moment to view our current special offers on coins of all sorts!
+    </p>')
+special_offers_element.save!
+special_offers_link_element = home_page.elements.create(:position => 4, :column_order => 2, :title => 'Special Offers', :display_title => false)
+special_offers_link_element.elem = LinkElem.create(:link_name => 'Special Offers', :link_type => 'Page', :node_id => 7, :image_id => 3, :target => '')
+special_offers_link_element.save!
+
+welcome_element = home_page.elements.create(:position => 5, :column_order => 1, :title => 'Welcome', :display_title => true)
+welcome_element.elem = TextElem.create(:text => '<p>
       Since 1971 Jonathan Kern has been a knowledgeable dealer and
       collector in ancient, foreign, and U.S. coinage along with tokens, paper
       money and antiquities.
@@ -18,42 +53,20 @@ SiteTextSection.create([
       We take great pride in putting the customer first. Please take a look at
       our current inventory listing or drop us a line so we may help you with
       your numismatic need.
-    </p>'},
-    { :section_name => 'special_offers', :title => 'Secial Offers!', :body => '<p>
-      Please take a moment to view our current special offers on coins of all sorts!
-    </p>'},
-    { :section_name => 'contact_info_left', :title => 'Contact Information', :body => '<p>
-        Professional Numismatist<br />
-        <a href="#">Bachelor of Arts in Numismatics</a>
-      </p>
-      <p>
-        JONATHAN K. KERN COMPANY<br />
-        441 South Ashland Avenue<br />
-        Lexington KY 40502
-      </p>
-      <p>
-        Visits by Appointment Only
-      </p>'},
-    { :section_name => 'contact_info_right', :title => 'Contact Information', :body => '<p>Email: <a href="mailto:jonathan@kern.com">
-          Jonathan Kern</a><br />
-        Email: <a href="mailto:dino@kern.com">Dino Payne</a><br />
-        Call: Melanie Turner
-      </p>
-      <p>
-        To order, call (859)-269-1614<br />
-        9am and 5pm EST MON-FRI
-      </p>
-      <p>
-        24-hour FAX: (859)-266-7900
-      </p>'},
-    { :section_name => 'privacy_policy', :title => 'Privacy Policy', :body => 'Todo.'},
-    { :section_name => 'terms_of_use', :title => 'Terms of Use', :body => 'Todo.'},
-    { :section_name => 'legal', :title => 'Legal Information', :body => 'Todo'}
-  ])
+    </p>')
+welcome_element.save!
+welcome_link_element = home_page.elements.create(:position => 5, :column_order => 2, :title => 'Welcome', :display_title => false)
+welcome_link_element.elem = LinkElem.create(:link_name => 'Welcome', :link_type => 'Page', :node_id => 1, :image_id => 4, :target => '')
+welcome_link_element.save!
+
+
+
+
 
 
 
 inventory = Category.create!({:title => 'Inventory'})
+home_node.nodes << inventory.node
 inventory.children.create([
     { :title => 'Special Offers' },
     { :title => 'Ancient' },
@@ -226,3 +239,23 @@ ancient.items.create([
     {:name => 'Coin Display Case', :cost => '51.00', :details => 'This is by far the coolest way to display your collection. Please use it wisely.', :item_id => '1e3121rt1rt12', :for_sale => true, :display => true},
     {:name => 'Pen', :cost => '2.11', :details => 'Just a Pen. I am serious.', :item_id => '12315421323123', :for_sale => true, :display => true}
   ])
+
+
+
+home_node.nodes.create([
+    {:menu_name => 'Auction', :title => 'Auction', :shortcut => 'auction', :displayed => true, :controller => 'auctions', :action => 'index'},
+    {:menu_name => 'Archives', :title => 'Archives', :shortcut => 'archives', :displayed => true, :controller => 'archives', :action => 'index'},
+    {:menu_name => 'Contact Us', :title => 'Contact Us', :shortcut => 'contact-us', :displayed => true, :controller => 'questions', :action => 'new'}
+  ])
+
+admin_node = home_node.nodes.create(:menu_name => 'Admin', :title => 'Admin', :shortcut => 'admin', :displayed => true, :controller => 'admin/home', :action => 'index')
+site_page_admin_node = admin_node.nodes.create(:menu_name => 'Site Page Admin', :title => 'Site Page Admin', :displayed => true, :controller => 'admin/nodes')
+categories_admin_node = admin_node.nodes.create(:menu_name => 'Inventory Categories Admin', :title => 'Inventory Categories Admin', :displayed => true, :controller => 'admin/categories')
+items_admin_node = admin_node.nodes.create(:menu_name => 'Inventory Items Admin', :title => 'Inventory Items Admin', :displayed => true, :controller => 'admin/items')
+site_images_admin_node = admin_node.nodes.create(:menu_name => 'Site Images Admin', :title => 'Site Images Admin', :displayed => true, :controller => 'admin/site_assets')
+questions_admin_node = admin_node.nodes.create(:menu_name => 'Questions Admin', :title => 'Questions Admin', :displayed => true, :controller => 'admin/questions')
+blog_admin_node = admin_node.nodes.create(:menu_name => 'News Article Admin', :title => 'News Article Admin', :displayed => true, :controller => 'admin/posts')
+
+site_page_admin_node.nodes.create(:menu_name => 'New Page', :title => 'New Page', :displayed => true, :controller => 'admin/nodes', :action => 'new')
+categories_admin_node.nodes.create(:menu_name => 'New Category', :title => 'New Category', :displayed => true, :controller => 'admin/categories', :action => 'new')
+items_admin_node.nodes.create(:menu_name => 'New Item', :title => 'New Item', :displayed => true, :controller => 'admin/items', :action => 'new')

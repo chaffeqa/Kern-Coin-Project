@@ -3,7 +3,8 @@ class InventoryController < ApplicationController
 #  before_filter :require_user, :only => [:add_to_cart, :empty_cart]
   
   def category
-    @category = Category.find( params[:id])
+    @category = Category.find( params[:id]) if params[:id]
+    @category = Category.where(:title => 'Inventory').first unless params[:id]
   end
 
   def list

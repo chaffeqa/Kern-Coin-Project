@@ -1,4 +1,5 @@
 class Admin::PageElems::TextElemsController < ApplicationController
+  layout 'admin'
   before_filter :get_template
 
 

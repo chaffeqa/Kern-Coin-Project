@@ -6,6 +6,10 @@ class CreateNodes < ActiveRecord::Migration
       t.string :shortcut
       t.belongs_to :node
       t.boolean :displayed
+      t.references :page, :polymorphic => true
+      t.string :controller
+      t.string :action
+
 
       t.timestamps
     end

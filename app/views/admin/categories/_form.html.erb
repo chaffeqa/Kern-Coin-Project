@@ -11,6 +11,29 @@
     </div>
   <% end %>
 
+  <%= f.fields_for :node do |node_f| %>
+    <div class="field">
+      <%= node_f.label :title %><br />
+      <%= node_f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= node_f.label :menu_name %><br />
+      <%= node_f.text_field :menu_name %>
+    </div>
+    <div class="field">
+      <%= node_f.label :shortcut %><br />
+      http://localhost/<%= node_f.text_field :shortcut %>
+    </div>
+    <div class="field">
+      <%= node_f.check_box :displayed, :checked => true %>
+      <%= node_f.label :displayed, "Display Page?" %>
+    </div>
+    <div class="field">
+      <%= node_f.label :node_id, "Where Should This Page Go?" %><br/>
+      <%= node_f.select :node_id, options_for_select([[@home_node.menu_name,@home_node.id]] + options_tree_recursive(@home_node, ""), "Home") %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -19,12 +42,14 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+<!--
   <div class="field">
-    <% unless f.object.title == 'Inventory' %>
-      <%= f.label :parent, 'Parent Category' %><br />
-      <%= f.collection_select :parent, Category.order("title desc"), :id, :title %>
-    <% end %>
+    <%# unless f.object.title == 'Inventory' %>
+      <%#= f.label :parent, 'Parent Category' %><br />
+      <%#= f.collection_select :parent, Category.order("title desc"), :id, :title %>
+    <%# end %>
   </div>
+-->
   <div class="field">
     <% unless f.object.new_record? %>
       <strong>Current Image:</strong><br/>

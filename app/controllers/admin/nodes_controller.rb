@@ -20,13 +20,11 @@ class Admin::NodesController < ApplicationController
 
   def new
     @node = Node.new(:displayed => true)
-    @node.template = Template.new
   end
 
 
   def edit
     @node = Node.find(params[:id])
-    @node.template = Template.new unless @node.template
   end
 
 

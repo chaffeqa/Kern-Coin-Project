@@ -1,6 +1,10 @@
 class Template < ActiveRecord::Base
-  belongs_to :node
+#  belongs_to :node
   has_many :elements
+  
+  # Associated Node attributes
+  has_one :node, :as => :page
+  accepts_nested_attributes_for :node
 
   VIEW_NAMES = [
     "Home",
@@ -30,4 +34,6 @@ class Template < ActiveRecord::Base
   def underscore_template_name
     template_name.gsub(/ /, '_').underscore
   end
+
+
 end

@@ -21,62 +21,61 @@ SimpleNavigation::Configuration.run do |navigation|
   # This turns it off globally (for the whole plugin)
   # navigation.auto_highlight = false
 
-  inventory = Category.get_inventory
+  #  inventory = Category.get_inventory
 
-  # Define the primary navigation
-  navigation.items do |primary|
+  # Define the menu_level_1 navigation
+  navigation.items do |menu_level_1|
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu
-    #    primary.dom_id = 'nav-menu'
-    primary.dom_class = 'nav-menu'
+    #    menu_level_1.dom_id = 'nav-menu'
+    menu_level_1.dom_class = 'nav-menu'
+    @home_node ||= Node.where(:menu_name => 'Home').first
 
-
-    primary.item :home, 'Home', home_path do |home_level|
-      @home_node ||= Node.where(:menu_name => 'Home').first
-      @home_node.nodes.each do |child_node|
-        if child_node.nodes.empty?
-          home_level.item child_node.shortcut.to_sym, child_node.menu_name, shortcut_path(:shortcut => child_node.shortcut)
-        else
-          home_level.item child_node.shortcut.to_sym, child_node.menu_name, shortcut_path(:shortcut => child_node.shortcut) do |sub_menu|
-            child_node.nodes.each do |sub_child_node|
-              sub_menu.item sub_child_node.shortcut.to_sym, sub_child_node.menu_name, shortcut_path(:shortcut => sub_child_node.shortcut)
+    menu_level_1.item @home_node.menu_name.to_sym, 'Home', @home_node.url
+    @home_node.nodes.each do |child_node_1|
+      menu_level_1.item child_node_1.menu_name.to_sym, child_node_1.menu_name, child_node_1.url do |menu_level_2|
+        child_node_1.nodes.each do |child_node_2|
+          menu_level_2.item child_node_2.menu_name.to_sym, child_node_2.menu_name, child_node_2.url do |menu_level_3|
+            child_node_2.nodes.each do |child_node_3|
+              menu_level_3.item child_node_3.menu_name.to_sym, child_node_3.menu_name, child_node_3.url do |menu_level_4|
+              end
             end
           end
         end
       end
     end
     
-    primary.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
-      inventory.children.each do |sub_category|
-        if sub_category.children.empty?
-          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category)
-        else
-          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category) do |level_2|
-            sub_category.children.each do |sub_sub_category|
-              level_2.item sub_sub_category.title.to_sym, sub_sub_category.title, inventory_category_path(sub_sub_category)
-            end
-          end
-        end
-      end
-    end
-    primary.item :archives, 'Archives', home_path do |sub_nav|
-      sub_nav.item :coinworld_archives, 'CoinWorld Archives', home_path
-      sub_nav.item :inventory_archives, 'Inventory Archives', home_path
-    end
-    primary.item :auctions, 'Auctions', home_path
-    primary.item :contact_us, 'Contact Us', new_question_path
-    primary.item :admin, 'Admin', admin_home_path, :if => Proc.new { admin? }
+    #    menu_level_1.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
+    #      inventory.children.each do |sub_category|
+    #        if sub_category.children.empty?
+    #          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category)
+    #        else
+    #          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category) do |level_2|
+    #            sub_category.children.each do |sub_sub_category|
+    #              level_2.item sub_sub_category.title.to_sym, sub_sub_category.title, inventory_category_path(sub_sub_category)
+    #            end
+    #          end
+    #        end
+    #      end
+    #    end
+    #    menu_level_1.item :archives, 'Archives', home_path do |sub_nav|
+    #      sub_nav.item :coinworld_archives, 'CoinWorld Archives', home_path
+    #      sub_nav.item :inventory_archives, 'Inventory Archives', home_path
+    #    end
+    #    menu_level_1.item :auctions, 'Auctions', home_path
+    #    menu_level_1.item :contact_us, 'Contact Us', new_question_path
+    #    menu_level_1.item :admin, 'Admin', admin_home_path, :if => Proc.new { admin? }
    
 
 
 
 
     # You can turn off auto highlighting for a specific level
-    #    primary.auto_highlight = false
+    #    menu_level_1.auto_highlight = false
     
-    # Add an item to the primary navigation. The following params apply:
-    # key - a symbol which uniquely defines your navigation item in the scope of the primary_navigation
+    # Add an item to the menu_level_1 navigation. The following params apply:
+    # key - a symbol which uniquely defines your navigation item in the scope of the menu_level_1_navigation
     # name - will be displayed in the rendered navigation. This can also be a call to your I18n-framework.
     # url - the address that the generated item links to. You can also use url_helpers (named routes, restful routes helper, url_for etc.)
     # options - can be used to specify attributes that will be included in the rendered navigation item (e.g. id, class etc.)
@@ -92,10 +91,10 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.
     #
-    #    primary.item :key_1, 'name', url, options
+    #    menu_level_1.item :key_1, 'name', url, options
     
     # Add an item which has a sub navigation (same params, but with block)
-    #    primary.item :key_2, 'name', url, options do |sub_nav|
+    #    menu_level_1.item :key_2, 'name', url, options do |sub_nav|
     # Add an item to the sub navigation (same params again)
     #      sub_nav.item :key_2_1, 'name', url, options
     #    end
@@ -103,8 +102,8 @@ SimpleNavigation::Configuration.run do |navigation|
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
-    #    primary.item :key_3, 'Admin', url, :class => 'special', :if => Proc.new { current_user.admin? }
-    #    primary.item :key_4, 'Account', url, :unless => Proc.new { logged_in? }
+    #    menu_level_1.item :key_3, 'Admin', url, :class => 'special', :if => Proc.new { current_user.admin? }
+    #    menu_level_1.item :key_4, 'Account', url, :unless => Proc.new { logged_in? }
 
     
   

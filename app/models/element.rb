@@ -1,3 +1,4 @@
+#require  ActiveSupport::CoreExtensions::String
 class Element < ActiveRecord::Base
   belongs_to :template
   belongs_to :elem, :polymorphic => true
@@ -12,7 +13,7 @@ class Element < ActiveRecord::Base
   ]
 
 
-  before_save :create_html_id
+  before_validation :create_html_id
   validates_numericality_of :position
   validates_numericality_of :column_order
 
@@ -20,7 +21,7 @@ class Element < ActiveRecord::Base
   # Scopes
 
   # Returns the elements ordered from highest (first) to lowest (last)
-  scope :elem_order, order('column_order desc')
+  scope :elem_order, order('column_order asc')
   # Returns all Elements with the position passed in
   scope :position_elems, lambda {|position|
     where(:position => position)
@@ -31,13 +32,13 @@ class Element < ActiveRecord::Base
   }
   # Returns the next highest available column_order number for the passed in position
   def self.set_highest_column_order(position)
-    col_order = 0 + Element.position_elems(position).count
+    col_order = 1 + Element.position_elems(position).maximum("column_order")
     col_order
   end
 
 
   def create_html_id
-    self.html_id = self.title.empty? ? "element-#{self.id}" : self.title.downcase.dasherize.html_safe
+    self.html_id = self.title.empty? ? "element-#{self.id}" : self.title.downcase.parameterize.html_safe
   end
 
   # Select array

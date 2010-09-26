@@ -1,18 +1,18 @@
 <%= content_for :body_id do %>homePage<% end %>
 <%= content_for :body_class do %>threeColumn<% end %>
 
-<% if @node.template and @node.template.template_name == "Home" %>
+<% if @node.page and @node.page.template_name == "Home" %>
 
   <section id="featured" class="clearfix">
     <div id="wrapper">
       <div id="extraColumn">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
+        <%= render :partial => 'template_partials/inventory_search', :locals => {:position => 1} %>
       </div>
       <div id="mainColumn">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 3} %>
+        <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
       </div>
       <div id="subColumn">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 4} %>
+        <%= render :partial => 'elements/position_elements', :locals => {:position => 3} %>
       </div>
     </div>
   </section>
@@ -22,20 +22,20 @@
   <section id="content" class="clearfix">
     <div id="wrapper">
       <section id="extraColumn" class="contents">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 5} %>
+        <%= render :partial => 'elements/position_elements', :locals => {:position => 4} %>
       </section>
       <section id="mainColumn" class="clearfix contents">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 6} %>
+        <%= render :partial => 'elements/position_elements', :locals => {:position => 5} %>
       </section>
       <section id="subColumn" class="clearfix contents">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 7} %>
+        <%= render :partial => 'template_partials/recent_news' %>
       </section>
     </div>
   </section>
 
   <section id="homeFooter" class="clearfix">
     <div id="wrapper">
-      <%= render :partial => 'elements/position_elements', :locals => {:position => 1} %>
+      <%= render :partial => 'layouts/categories' %>
     </div>
   </section>
 

@@ -1,9 +1,10 @@
 class Admin::PageElems::LinkElemsController < ApplicationController
+    layout 'admin'
   before_filter :get_template
 
-def new
+  def new
     @element = Element.new(:position => params[:position], :column_order => Element.set_highest_column_order(params[:position]), :title => '', :display_title => true)
-    @link_elem = @element.elem=LinkElem.new
+    @link_elem = @element.elem=LinkElem.new(:link_type => 'Url')
   end
 
 
@@ -15,8 +16,8 @@ def new
   def create
     @element = Element.new(:position => params[:position], :column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title])
     @link_elem = @element.elem=LinkElem.new(params[:link_elem])
-    if @link_elem.save and @element.save and @node.template.elements << @element
-      redirect_to shortcut_path(@node.shortcut, :notice => "Link Element successfully added!")
+    if  @node.page.elements << @element and @element.save and @link_elem.save
+      redirect_to shortcut_path(@node.shortcut), :notice => "Link Element successfully added!"
     else
       render :action => 'new'
     end
@@ -25,8 +26,8 @@ def new
 
   def update
     @element = @link_elem.element
-    if @link_elem.update_attributes(params[:link_elem])
-      redirect_to shortcut_path(@node.shortcut, :notice => "Link Element successfully updated!")
+    if @link_elem.update_attributes(params[:link_elem]) and @element.update_attributes(:column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title], :position => params[:position])
+      redirect_to shortcut_path(@node.shortcut), :notice => "Link Element successfully updated!"
     else
       render :action => 'edit'
     end
