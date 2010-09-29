@@ -6,6 +6,7 @@ KernCoinProject::Application.routes.draw do
   resources :elements, :only => [:destroy] do
     get :move, :on => :member
   end
+  
   #  match 'admin/:shortcut' => 'templates#edit', :as => :admin_shortcut
 
 
