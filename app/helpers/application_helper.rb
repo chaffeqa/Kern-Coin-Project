@@ -1,18 +1,36 @@
 module ApplicationHelper
 
+ ################### Admin Helpers #####################
+
   # Anything passed into an <%= admin_area do %> ... <% end %> block in an .erb file will get surrounded by <div class="admin"></div>
-  def admin_area(&block)
-    content_tag(:span, :class => "admin", &block) if admin?
-  end
-
-  def hidden_div_if(condition, attributes = {}, &block)
-    if condition
-      attributes["style" ] = "display: none"
+  def admin_wrapper(&block)
+    if admin?
+      content_tag(:div, :class => "admin clearfix", &block)
+    else
+      content_tag(:div, &block)
     end
-    content_tag("div" , attributes, &block)
   end
 
+  def admin_area(&block)
+    content_tag(:div, :class => "admin", &block) if admin?
+  end
 
+  def admin_controls_area(&block)
+    content_tag(:span, :class => "controls", &block) if admin?
+  end
+
+  def get_elem_link_to_action(element, action)
+    { :controller => "admin/page_elems/#{element.elem_type.tableize}", :action => action, :id => element.elem, :shortcut => @node.shortcut }
+  end
+
+#  def hidden_div_if(condition, attributes = {}, &block)
+#    if condition
+#      attributes["style" ] = "display: none"
+#    end
+#    content_tag("div" , attributes, &block)
+#  end
+
+##########################################################
 
   # Form Helpers
   def remove_child_link(name, f)
@@ -35,9 +53,7 @@ module ApplicationHelper
     end
   end
 
-  def get_elem_link_to_action(element, action)
-    { :controller => "admin/page_elems/#{element.elem_type.tableize}", :action => action, :id => element.elem, :shortcut => @node.shortcut }
-  end
+  
 
 
   def display_menu_list()

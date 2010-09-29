@@ -1,16 +1,11 @@
-<div id="elements-<%= position %>">
+<% if admin? %> <div class="admin clearfix"> <% end %>
+  
   <% @elements.elements_for_position(position).each do |element|  %>
     <%= render :partial => 'elements/element', :locals => {:element => element} %>
   <% end %>
-</div>
 
+  <% if admin? %>
+    <%= render :partial => 'elements/new_element_select', :locals => {:position => position} %>
+  <% end %>
 
-<%= admin_area do %>
-  <!-- Element -->
-  <article class="text">
-    <div id="new-element-<%= position %>">
-      <%= render :partial => 'elements/new_element_select', :locals => {:position => position} %>
-    </div>
-  </article>
-  <!-- Element -->
-<% end %>
+<% if admin? %> </div><% end %>

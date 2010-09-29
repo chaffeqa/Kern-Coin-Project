@@ -3,13 +3,6 @@ KernCoinProject::Application.routes.draw do
 
   root :to => 'admin/home#index'
   
-  
-  #  resources :link_list_elems, :except => [:index, :destroy] do
-  #    resources :links, :except => [:index, :show, :destroy] do
-  #      post :file, :on => :member
-  #    end
-  #  end
-  
   resources :elements, :only => [:destroy] do
     get :move, :on => :member
   end
@@ -66,10 +59,10 @@ KernCoinProject::Application.routes.draw do
   namespace "admin" do
     get "home/index", :as => :home
     resources :site_assets, :only => [:create, :index, :destroy]
-    resources :nodes
+    resources :templates, :except => [:show]
     #    resources :site_text_sections
     resources :items
-    resources :posts
+#    resources :posts
     #    resources :users
     resources :categories, :except => [:show]
     resources :questions, :only => [:index, :show, :delete]

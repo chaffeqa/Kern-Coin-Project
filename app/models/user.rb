@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   acts_as_authentic do |c|
     #    c.my_config_option = my_value # for available options see documentation in: Authlogic::ActsAsAuthentic
   end # block optional
-  has_many :sales
+#  has_many :sales
 
   validates_presence_of :login
   validates_uniqueness_of :login

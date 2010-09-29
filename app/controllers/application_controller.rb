@@ -28,7 +28,8 @@ class ApplicationController < ActionController::Base
     @node = @node || (Node.where(:shortcut => params[:shortcut]).first if params[:shortcut])
     if @node
       if @node.page_type=='Template'
-        @elements = @node.page.elements.elem_order
+        @templt = @node.page
+        @elements = @templt.elements.elem_order
         @shortcut = @node.shortcut
       end
     end
@@ -36,7 +37,7 @@ class ApplicationController < ActionController::Base
 
   #TODO
   def admin?
-    false
+    true
   end
 
 

@@ -29,6 +29,10 @@ aside, nav, article, figure {
 a {
 	color: #314385;
 	text-decoration: none;
+
+	-webkit-transition:all 0.2s ease-out;
+	-o-transition:all 0.2s ease-out;
+	-moz-transition:all 0.2s ease-out;
 }
 	a:hover {
 		color: #333;
@@ -127,10 +131,11 @@ span.amp {
 }
 
 
-article {padding: 3px 10px;	}
+article {margin: 0 0 20px;}
+article:last-child {margin-bottom: 0;}
 article h1.title {border-bottom: 1px solid #e2e2e2; padding-bottom: .6em;}
 
-.breadcrumb {background: #FFF; padding: 0 10px 10px;}
+.breadcrumb {padding: 0 0 10px;}
 .breadcrumb a {color: #000;}
 
 /* CONTENT ONLY */
@@ -170,15 +175,6 @@ article h1.title {border-bottom: 1px solid #e2e2e2; padding-bottom: .6em;}
 
 
 /* ELEMENT SPECIFIC CALLINGS */
-
-/* THUMBNAIL-LIST */
-div.thumbnail-list {
-    float: left; 
-    margin:  15px;
-    width: 110px;
-    text-align: center;
-    height: 130px;
-}
 
 /* SEARCH */
 .search {
@@ -265,3 +261,49 @@ h3.commentsHead {
 	padding: 0 0 0 22px;
 	background: url(../template/icon_rss.png) no-repeat;
 }
+
+
+/* PHUSION CMS */
+div.admin:hover * {z-index: 1;}
+article {}
+
+article:hover {margin: -37px -6px 19px; padding: 5px 5px 0; border: 1px solid #999; box-shadow: 0 1px 3px #999; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; }
+article:hover span.controls {display: block;}
+
+article.admin:hover {margin: -6px -6px -1px;}
+
+article span.controls {display: none; margin: -5px -5px 5px; padding: 5px 5px; background: rgba(30,30,30,.5);box-shadow: 0 1px 3px #000; -moz-box-shadow: 0 1px 3px #000; -webkit-box-shadow: 0 1px 3px #000; position: relative;}
+article.admin span.controls {display: block; margin-bottom: 0;}
+
+span.controls:hover {background: rgba(30,30,30,.7);}
+.btn {
+	background: #222 url(../template/phusion/gradient.png) repeat-x;
+	display: inline-block !important;
+	padding: 5px 10px 6px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;
+	text-shadow: 0 -1px 1px #222;
+	border-bottom: 1px solid #222;
+	position: relative;
+	cursor: pointer;
+}
+.delete.btn {float: right; margin-bottom: margin-bottom: -10px;}
+a.btn:hover {color: #AAA; text-decoration: none;}
+
+/* Sizes ---------- */
+.small.btn {font-size: 11px; padding: 5px 8px 4px;}
+.medium.btn {font-size: 13px;}
+.large.btn {font-size: 14px; padding: 8px 14px 9px;}
+
+/* Colors ---------- */
+.blue.btn {background-color: #2daebf;}
+.red.btn {background-color: #e33100;}
+.magenta.btn {background-color: #a9014b;}
+.orange.btn {background-color: #ff5c00;}
+.yellow.btn {background-color: #ffb515;}

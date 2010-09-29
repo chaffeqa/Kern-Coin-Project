@@ -4,6 +4,9 @@ class LinkElem < ActiveRecord::Base
   belongs_to :image, :class_name => 'Ckeditor::Picture'
   accepts_nested_attributes_for :element
 
+  has_attached_file :link_file,
+    :url => '/site_assets/files/link_file_:id.:extension',
+    :path => ":rails_root/public/site_assets/files/link_file_:id.:extension"
 
   TARGET_OPTIONS = [ '', '_blank' ]
   LINK_TYPE_OPTIONS = [ 'Page', 'Url', 'File' ]

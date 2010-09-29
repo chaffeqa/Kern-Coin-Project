@@ -50,4 +50,6 @@ class Element < ActiveRecord::Base
   def get_elem_controller
     elem_type.tableize
   end
+
+  
 end

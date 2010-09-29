@@ -18,7 +18,7 @@ buy_element.elem = TextElem.create(:text => '<p>
     </p>')
 buy_element.save!
 buy_link_element = home_page.elements.create(:position => 2, :column_order => 2, :title => 'Buy', :display_title => false)
-buy_link_element.elem = LinkElem.create(:link_name => 'Buy', :link_type => 'Page', :node_id => 6, :image_id => 1, :target => '')
+buy_link_element.elem = LinkElem.create(:link_name => 'Buy', :link_type => 'Page', :node_id => 6, :is_image => true, :img_src => 'view-store.png', :image_style => '', :target => '')
 buy_link_element.save!
 
 bid_element = home_page.elements.create(:position => 3, :column_order => 1, :title => 'Bid', :display_title => true)
@@ -29,7 +29,7 @@ bid_element.elem = TextElem.create(:text => '<p>
     </p>')
 bid_element.save!
 bid_link_element = home_page.elements.create(:position => 3, :column_order => 2, :title => 'Bid', :display_title => false)
-bid_link_element.elem = LinkElem.create(:link_name => 'Bid', :link_type => 'Page', :node_id => 1, :image_id => 2, :target => '')
+bid_link_element.elem = LinkElem.create(:link_name => 'Bid', :link_type => 'Page', :node_id => 1, :is_image => true, :img_src => 'view-auctions.png', :image_style => '', :target => '')
 bid_link_element.save!
 
 special_offers_element = home_page.elements.create(:position => 4, :column_order => 1, :title => 'Special Offers', :display_title => false)
@@ -40,7 +40,7 @@ special_offers_element.elem = TextElem.create(:text => '
     </p>')
 special_offers_element.save!
 special_offers_link_element = home_page.elements.create(:position => 4, :column_order => 2, :title => 'Special Offers', :display_title => false)
-special_offers_link_element.elem = LinkElem.create(:link_name => 'Special Offers', :link_type => 'Page', :node_id => 7, :image_id => 3, :target => '')
+special_offers_link_element.elem = LinkElem.create(:link_name => 'Special Offers', :link_type => 'Page', :node_id => 7, :is_image => true, :img_src => 'view-offers.png', :image_style => 'margin: 30px -4px 0pt;', :target => '')
 special_offers_link_element.save!
 
 welcome_element = home_page.elements.create(:position => 5, :column_order => 1, :title => 'Welcome', :display_title => true)
@@ -56,7 +56,7 @@ welcome_element.elem = TextElem.create(:text => '<p>
     </p>')
 welcome_element.save!
 welcome_link_element = home_page.elements.create(:position => 5, :column_order => 2, :title => 'Welcome', :display_title => false)
-welcome_link_element.elem = LinkElem.create(:link_name => 'Welcome', :link_type => 'Page', :node_id => 1, :image_id => 4, :target => '')
+welcome_link_element.elem = LinkElem.create(:link_name => 'Welcome', :link_type => 'Page', :node_id => 126, :is_image => true, :img_src => 'learn-more.png', :image_style => 'float: right; margin-top: 8px;', :target => '')
 welcome_link_element.save!
 
 
@@ -248,13 +248,28 @@ home_node.nodes.create([
     {:menu_name => 'Contact Us', :title => 'Contact Us', :shortcut => 'contact-us', :displayed => true, :controller => 'questions', :action => 'new'}
   ])
 
-admin_node = home_node.nodes.create(:menu_name => 'Admin', :title => 'Admin', :shortcut => 'admin', :displayed => true, :controller => 'admin/home', :action => 'index')
+about_us_page = Template.create(:template_name => 'Right Inside')
+about_us_node = home_node.nodes.create(:menu_name => 'About Us', :title => 'About Us', :shortcut => 'about_us', :displayed => true)
+about_us_page.node = about_us_node
+about_us_page.save!
+about_us_element = about_us_page.elements.create(:position => 1, :column_order => 1, :title => 'About Kern Coin', :display_title => true)
+about_us_element.elem = TextElem.create(:text => '<p>
+      Lorem ipsum dolor sit amet, emphasis consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus.
+      Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.
+      Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor.
+      Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc.
+      Morbi imperdiet augue quis tellus.
+    </p>')
+about_us_element.save!
+
+#admin_node = home_node.nodes.create(:menu_name => 'Admin', :title => 'Admin', :shortcut => 'admin', :displayed => true, :controller => 'admin/home', :action => 'index')
+admin_node = Node.create(:menu_name => 'Admin', :title => 'Admin', :shortcut => 'admin', :displayed => true, :controller => 'admin/home', :action => 'index')
 site_page_admin_node = admin_node.nodes.create(:menu_name => 'Site Page Admin', :title => 'Site Page Admin', :displayed => true, :controller => 'admin/nodes')
 categories_admin_node = admin_node.nodes.create(:menu_name => 'Inventory Categories Admin', :title => 'Inventory Categories Admin', :displayed => true, :controller => 'admin/categories')
 items_admin_node = admin_node.nodes.create(:menu_name => 'Inventory Items Admin', :title => 'Inventory Items Admin', :displayed => true, :controller => 'admin/items')
-site_images_admin_node = admin_node.nodes.create(:menu_name => 'Site Images Admin', :title => 'Site Images Admin', :displayed => true, :controller => 'admin/site_assets')
+#site_images_admin_node = admin_node.nodes.create(:menu_name => 'Site Images Admin', :title => 'Site Images Admin', :displayed => true, :controller => 'admin/site_assets')
 questions_admin_node = admin_node.nodes.create(:menu_name => 'Questions Admin', :title => 'Questions Admin', :displayed => true, :controller => 'admin/questions')
-blog_admin_node = admin_node.nodes.create(:menu_name => 'News Article Admin', :title => 'News Article Admin', :displayed => true, :controller => 'admin/posts')
+#blog_admin_node = admin_node.nodes.create(:menu_name => 'News Article Admin', :title => 'News Article Admin', :displayed => true, :controller => 'admin/posts')
 
 site_page_admin_node.nodes.create(:menu_name => 'New Page', :title => 'New Page', :displayed => true, :controller => 'admin/nodes', :action => 'new')
 categories_admin_node.nodes.create(:menu_name => 'New Category', :title => 'New Category', :displayed => true, :controller => 'admin/categories', :action => 'new')
