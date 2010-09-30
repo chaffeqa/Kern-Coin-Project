@@ -10,7 +10,11 @@
   <% end %>
 
   <% if element.display_title %><h1 class="title  <%= element.html_id %> "><%= element.title %></h1><% end %>
-  <%= render :partial => "elem_partials/#{(element.elem_type.tableize).singularize}", :locals => {:elem => element.elem} %>
+  <% if element.elem_id %>
+    <%= render :partial => "elem_partials/#{(element.elem_type.tableize).singularize}", :locals => {:elem => element.elem} %>
+  <% else %>
+    <%= render :partial => "elem_partials/#{(element.elem_type.tableize).singularize}" %>
+  <% end %>
 
 </article>
 <!-- Element -->

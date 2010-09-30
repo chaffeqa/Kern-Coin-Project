@@ -1,6 +1,8 @@
 KernCoinProject::Application.routes.draw do
 
 
+  devise_for :admins
+
   root :to => 'admin/home#index'
   
   resources :elements, :only => [:destroy] do
@@ -11,14 +13,6 @@ KernCoinProject::Application.routes.draw do
 
 
 
-  # Profile Controller
-  #  get "profile/show"
-  #  get "profile/bought_items"
-  #  get "profile/won_auctions"
-  #  get "profile/bids"
-  match "logout" => 'user_sessions#destroy', :as => :logout
-  match "login" => 'user_sessions#new', :as => :login
-  resource :user_session, :only => [:destroy, :create, :new]
 
   # Auctions Module
   #  scope :module => "auction" do
@@ -64,7 +58,6 @@ KernCoinProject::Application.routes.draw do
     #    resources :site_text_sections
     resources :items
 #    resources :posts
-    #    resources :users
     resources :categories, :except => [:show]
     resources :questions, :only => [:index, :show, :delete]
     scope :module => 'page_elems' do

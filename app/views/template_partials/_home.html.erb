@@ -6,7 +6,7 @@
   <section id="featured" class="clearfix">
     <div id="wrapper">
       <div id="extraColumn">
-        <%= render :partial => 'template_partials/inventory_search', :locals => {:position => 1} %>
+        <%= render :partial => 'elements/position_elements', :locals => {:position => 1} %>
       </div>
       <div id="mainColumn">
         <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
@@ -28,7 +28,7 @@
         <%= render :partial => 'elements/position_elements', :locals => {:position => 5} %>
       </section>
       <section id="subColumn" class="clearfix contents">
-        <%= render :partial => 'template_partials/recent_news' %>
+        <%= render :partial => 'elements/position_elements', :locals => {:position => 6} %>
       </section>
     </div>
   </section>

@@ -4,12 +4,14 @@ class Element < ActiveRecord::Base
   belongs_to :elem, :polymorphic => true
 
   ELEM_TYPES = [
-    ["Text"           ,   "text_elems"          ],
+    ["Text"             ,   "text_elems"            ],
+    ["Link"             ,   "link_elems"            ],
+    ["Inventory Search" ,   "inventory_search_elems"],
+    ["Recent News"      ,   "recent_news_elems"     ],
+#    ["Login"            ,   "login_elems"           ],
     #    ["Blog"           ,   "blog_elems"          ],
-    ["Calendar"       ,   "calendar_elems"      ],
-    ["Link"           ,   "link_elems"          ],
-    ["Login"          ,   "login_elems"         ],
-    ["Photo Gallery"  ,   "photo_gallery_elems" ]
+#    ["Calendar"         ,   "calendar_elems"        ],
+#    ["Photo Gallery"    ,   "photo_gallery_elems"   ]
   ]
 
 

@@ -5,7 +5,9 @@ class TemplatesController < ApplicationController
   def show
   end
 
-  def edit
+  def home
+    @node = @home_node
+    get_template
   end
 
   

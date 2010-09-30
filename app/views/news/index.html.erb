@@ -1,6 +1,0 @@
-<table>
-  <% @articles.each do |article| %>
-    <tr><%= render :partial => 'article_list', :locals => {:article => article} %></tr>
-  <% end %>
-</table>
-<%= link_to "Home", home_path %> 

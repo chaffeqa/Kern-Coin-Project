@@ -10,6 +10,8 @@ Ckeditor.image_model.create!([
     {:data_file_name => 'view-archive.png', :data_content_type => 'image/png', :data_file_size => 8415, :type => 'Ckeditor::Picture', :locale => 0}
   ])
 
+inventory_search_element = home_page.elements.create(:position => 1, :column_order => 1, :title => 'Browse', :display_title => true, :elem_type => 'InventorySearchElem')
+
 buy_element = home_page.elements.create(:position => 2, :column_order => 1, :title => 'Buy', :display_title => true)
 buy_element.elem = TextElem.create(:text => '<p>
       We offer an inventory that is second-to-none featuring ancient,
@@ -59,6 +61,10 @@ welcome_link_element = home_page.elements.create(:position => 5, :column_order =
 welcome_link_element.elem = LinkElem.create(:link_name => 'Welcome', :link_type => 'Page', :node_id => 126, :is_image => true, :img_src => 'learn-more.png', :image_style => 'float: right; margin-top: 8px;', :target => '')
 welcome_link_element.save!
 
+recent_news_element = home_page.elements.create(:position => 6, :column_order => 1, :title => 'News', :display_title => true, :elem_type => 'RecentNewsElem')
+recent_news_link_element = home_page.elements.create(:position => 6, :column_order => 2, :title => 'View News Archive', :display_title => false)
+recent_news_link_element.elem = LinkElem.create(:link_name => 'View News Archive', :link_type => 'Page', :node_id => 7, :is_image => true, :img_src => 'view-archive.png', :image_style => 'float: right; margin-top: 19px;', :target => '')
+recent_news_link_element.save!
 
 
 
