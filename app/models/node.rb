@@ -18,17 +18,15 @@ class Node < ActiveRecord::Base
   ]
 
   def url
-    if self.page_type=='Template'
-      return "/#{self.shortcut}"
-    end
     if self.controller and self.action and self.page_id
       return "/#{self.controller}/#{self.action}/#{self.page_id}"
     end
-    if self.controller and self.action and not self.page_id
+    if self.controller and self.action
       return "/#{self.controller}/#{self.action}"
     end
-    if self.controller and not self.action and not self.page_id
+    if self.controller
       return "/#{self.controller}"
     end
+    return "/#{self.shortcut}"
   end
 end

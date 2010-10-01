@@ -2,7 +2,7 @@
 <!-- Element -->
 <article  class="<%= element.elem_type %>">
 
-  <% if admin? %>
+  <% if admin? and not (element.elem_type == 'InventorySearchElem' or element.elem_type == 'RecentNewsElem') %>
     <span class="controls">
       <%= link_to 'Edit Element', get_elem_link_to_action(element, 'edit'), :class => 'btn small' %>
       <%= link_to 'X', element_path(element, :shortcut => @node.shortcut) , :confirm => "Are you sure?", :method => :delete, :class => 'btn delete small' %>

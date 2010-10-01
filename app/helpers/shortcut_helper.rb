@@ -1,0 +1,2 @@
+module ShortcutHelper
+end

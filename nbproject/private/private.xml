@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/admins/sessions/new.html.erb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/admins/registrations/new.html.erb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/admins/shared/_links.erb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/config/routes.rb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/db/migrate/20100929171920_create_ckeditor_assets.rb</file>
-    </open-files>
 </project-private>

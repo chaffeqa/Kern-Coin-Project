@@ -1,9 +1,8 @@
 KernCoinProject::Application.routes.draw do
 
-
   devise_for :admins
 
-  root :to => 'admin/home#index'
+  root :to => 'templates#home'
   
   resources :elements, :only => [:destroy] do
     get :move, :on => :member
@@ -71,7 +70,7 @@ KernCoinProject::Application.routes.draw do
   
   match '/admin/:controller/:action(/:id)'
   match '/:controller/:action(/:id)'
-  match ':shortcut' => 'templates#show', :as => :shortcut
+  match ':shortcut' => 'shortcut#route', :as => :shortcut
   match ':shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
 
   #  match 'admin/:shortcut/:position/new_element' => 'templates#new_element', :as => :new_element

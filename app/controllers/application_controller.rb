@@ -23,21 +23,16 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def get_template
+  def get_node
     get_home_node
     @node = @node || (Node.where(:shortcut => params[:shortcut]).first if params[:shortcut])
-    if @node
-      if @node.page_type=='Template'
-        @templt = @node.page
-        @elements = @templt.elements.elem_order
-        @shortcut = @node.shortcut
-      end
-    end
+    @shortcut = @node.shortcut
   end
 
   #TODO
   def admin?
-    admin_signed_in?
+    true
+#    admin_signed_in?
   end
 
 

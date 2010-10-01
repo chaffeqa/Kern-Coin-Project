@@ -1,13 +1,14 @@
 class TemplatesController < ApplicationController
   layout  'pages'
-  before_filter :get_template, :except => [:home]
+  before_filter :get_node, :except => [:home]
   
   def show
   end
 
   def home
+    get_home_node
     @node = @home_node
-    get_template
+    get_node
   end
 
   

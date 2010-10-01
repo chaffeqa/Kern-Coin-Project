@@ -6,7 +6,7 @@
   </head>
 
   <body id="<%= yield :body_id %>" class="<%= yield :body_class %>">
-
+    <% if admin? %><%= render :partial => 'layouts/page_admin' %><% end %>
     <%= render :partial => 'layouts/header' %>
     <%= render :partial => 'layouts/nav_menu' %>
 
