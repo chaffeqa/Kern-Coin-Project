@@ -7,7 +7,7 @@ class Element < ActiveRecord::Base
     ["Text"             ,   "text_elems"            ],
     ["Link"             ,   "link_elems"            ],
     ["Inventory Search" ,   "inventory_search_elems"],
-    ["Recent News"      ,   "recent_news_elems"     ],
+#    ["Recent News"      ,   "recent_news_elems"     ],
     #    ["Login"            ,   "login_elems"           ],
     ["Blog"             ,   "blog_elems"                 ],
     #    ["Calendar"         ,   "calendar_elems"        ],

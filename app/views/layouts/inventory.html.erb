@@ -8,6 +8,7 @@
   <body  id="secPage" class="twoColumn">
 
     <%= render :partial => 'layouts/header' %>
+    <% if admin? %><%= render :partial => 'layouts/page_admin' %><% end %>
     <%= render :partial => 'layouts/nav_menu' %>
 
     <% if flash[:notice] %> <div id="notice"><%= flash[:notice] %></div> <% end %>

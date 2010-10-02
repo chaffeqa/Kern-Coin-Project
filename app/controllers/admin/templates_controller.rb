@@ -8,6 +8,7 @@ class Admin::TemplatesController < ApplicationController
 
 
   def new
+    get_home_node
     @templt = Template.new
     @templt.build_node(:displayed => true)
   end
@@ -19,6 +20,7 @@ class Admin::TemplatesController < ApplicationController
 
 
   def create
+    get_home_node
     @templt = Template.new(params[:node])
     if @templt.save
       redirect_to( admin_templates_path(@templt), :notice => 'Template was successfully created.')

@@ -24,7 +24,7 @@
     <%= f.collection_select :category_id, Category.order("title desc"), :id, :title %>
   </div>
   <div class="field">
-    <%= f.label :cost, "Starting Cost" %><br />
+    <%= f.label :cost, "Cost" %><br />
     $ <%= f.text_field :cost, :size => 7 %>
   </div>
 
@@ -35,16 +35,12 @@
       <%= f.text_field :item_id %>
     </div>
     <div class="field">
-      <%= f.label :display, "For Sale" %>
-      <%= f.radio_button :for_sale, true %><br />
-      <%= f.label :display, "Not For Sale" %>
-      <%= f.radio_button :for_sale, false %>
+      <%= f.radio_button :for_sale, true %> &nbsp; <%= f.label :display, "For Sale" %><br />
+      <%= f.radio_button :for_sale, false %> &nbsp; <%= f.label :display, "Not For Sale" %>
     </div>
     <div class="field">
-      <%= f.label :display, "Display Item" %>
-      <%= f.radio_button :display, true %><br />
-      <%= f.label :display, "Don't Display Item" %>
-      <%= f.radio_button :display, false %>
+    <%= f.radio_button :display, true %> &nbsp; <%= f.label :display, "Display Item" %><br />
+    <%= f.radio_button :display, false %> &nbsp; <%= f.label :display, "Don't Display Item" %>
     </div>
   <% end %>
 
