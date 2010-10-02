@@ -1,0 +1,48 @@
+<%= form_for([:admin,@blog]) do |tf| %>
+  <% if @blog.errors.any?   %>
+    <div id="error_explanation">
+      <h2><%= pluralize((@blog.errors.count), "error") %> prohibited this Blog from being saved:</h2>
+      <ul>
+        <% @blog.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= tf.fields_for :node do |f| %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :menu_name %><br />
+      <%= f.text_field :menu_name %>
+    </div>
+    <div class="field">
+      <%= f.label :shortcut %><br />
+      http://localhost/<%= f.text_field :shortcut %>
+    </div>
+    <div class="field">
+      <%= f.check_box :displayed%>
+      <%= f.label :displayed, "Display Page?" %>
+    </div>
+    <div class="field">
+      <%= f.label :node_id, "Where Should This Page Go?" %><br/>
+      <%= f.select :node_id, options_for_select([[@home_node.menu_name,@home_node.id]] + options_tree_recursive(@home_node, ""), "Home") %>
+    </div>
+
+  <% end %>
+
+
+
+  <div class="field">
+    <%= tf.label :banner, "Blog Banner" %><br />
+    <%= tf.cktext_area :banner %>
+  </div>
+
+
+  <div class="actions">
+    <%= tf.submit %>
+  </div>
+<% end %>

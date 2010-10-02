@@ -1,0 +1,33 @@
+<% @blog = @node.page %>
+
+<% content_for :page_admin_bar do %>
+  <%= link_to 'Page Settings',  edit_admin_blog_path(@blog), :class => 'btn large' %>
+  <%= link_to 'New Post', new_admin_blog_post_path(@blog), :class => 'btn large' %>
+  <a class="btn yellow large" href="#">Preview page</a>
+<% end %>
+<%= content_for :body_id do %>secPage<% end %>
+<%= content_for :body_class do %>twoColumn<% end %>
+
+<section id="content" class="clearfix">
+  <div id="wrapper">
+
+    <section id="subColumn" class="clearfix contents">
+      <div id="top"></div>
+      <%= render :partial => 'layouts/left_nav_menu' %>
+    </section>
+
+
+    <section id="mainColumn" class="clearfix contents">
+      <div id="top"></div>
+      <% if admin? %> <div class="admin clearfix"> <% end %>
+        <%= render :partial => 'layouts/breadcrumb' %>
+        <p><%=raw @blog.banner %></p>
+          <% @blog.posts.each do |post| %>
+            <%= render :partial => 'blogs/post_list', :locals => {:post => post} %>
+          <% end %>
+          <% if admin? %> </div><% end %>
+    </section>
+
+
+  </div>
+</section>

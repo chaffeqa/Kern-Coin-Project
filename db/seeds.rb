@@ -2,13 +2,13 @@ home_page = Template.create(:template_name => 'Home')
 home_node = home_page.create_node(:menu_name => 'Home', :title => 'Home', :shortcut => 'home', :displayed => true)
 
 
-Ckeditor.image_model.create!([
-    {:data_file_name => 'view-store.png', :data_content_type => 'image/png', :data_file_size => 9414, :type => 'Ckeditor::Picture', :locale => 0},
-    {:data_file_name => 'view-auctions.png', :data_content_type => 'image/png', :data_file_size => 9609, :type => 'Ckeditor::Picture', :locale => 0},
-    {:data_file_name => 'view-offers.png', :data_content_type => 'image/png', :data_file_size => 3946, :type => 'Ckeditor::Picture', :locale => 0},
-    {:data_file_name => 'learn-more.png', :data_content_type => 'image/png', :data_file_size => 7729, :type => 'Ckeditor::Picture', :locale => 0},
-    {:data_file_name => 'view-archive.png', :data_content_type => 'image/png', :data_file_size => 8415, :type => 'Ckeditor::Picture', :locale => 0}
-  ])
+#Ckeditor.image_model.create!([
+#    {:data_file_name => 'view-store.png', :data_content_type => 'image/png', :data_file_size => 9414, :type => 'Ckeditor::Picture', :locale => 0},
+#    {:data_file_name => 'view-auctions.png', :data_content_type => 'image/png', :data_file_size => 9609, :type => 'Ckeditor::Picture', :locale => 0},
+#    {:data_file_name => 'view-offers.png', :data_content_type => 'image/png', :data_file_size => 3946, :type => 'Ckeditor::Picture', :locale => 0},
+#    {:data_file_name => 'learn-more.png', :data_content_type => 'image/png', :data_file_size => 7729, :type => 'Ckeditor::Picture', :locale => 0},
+#    {:data_file_name => 'view-archive.png', :data_content_type => 'image/png', :data_file_size => 8415, :type => 'Ckeditor::Picture', :locale => 0}
+#  ])
 
 inventory_search_element = home_page.elements.create(:position => 1, :column_order => 1, :title => 'Browse', :display_title => true, :elem_type => 'InventorySearchElem')
 
@@ -61,10 +61,7 @@ welcome_link_element = home_page.elements.create(:position => 5, :column_order =
 welcome_link_element.elem = LinkElem.create(:link_name => 'Welcome', :link_type => 'Page', :node_id => 126, :is_image => true, :img_src => 'learn-more.png', :image_style => 'float: right; margin-top: 8px;', :target => '')
 welcome_link_element.save!
 
-recent_news_element = home_page.elements.create(:position => 6, :column_order => 1, :title => 'News', :display_title => true, :elem_type => 'RecentNewsElem')
-recent_news_link_element = home_page.elements.create(:position => 6, :column_order => 2, :title => 'View News Archive', :display_title => false)
-recent_news_link_element.elem = LinkElem.create(:link_name => 'View News Archive', :link_type => 'Page', :node_id => 7, :is_image => true, :img_src => 'view-archive.png', :image_style => 'float: right; margin-top: 19px;', :target => '')
-recent_news_link_element.save!
+
 
 
 
@@ -248,12 +245,10 @@ ancient.items.create([
 
 
 
-home_node.nodes.create([
-    {:menu_name => 'Auction', :title => 'Auction', :shortcut => 'auction', :displayed => true, :controller => 'auctions', :action => 'index'},
-    {:menu_name => 'Archives', :title => 'Archives', :shortcut => 'archives', :displayed => true, :controller => 'archives', :action => 'index'},
-    {:menu_name => 'Contact Us', :title => 'Contact Us', :shortcut => 'contact-us', :displayed => true, :controller => 'questions', :action => 'new'}
-  ])
 
+home_node.nodes.create(:menu_name => 'Auction', :title => 'Auction', :shortcut => 'auction', :displayed => true, :controller => 'auctions', :action => 'index')
+archives_node = home_node.nodes.create(:menu_name => 'Archives', :title => 'Archives', :shortcut => 'archives', :displayed => true, :controller => 'archives', :action => 'index')
+home_node.nodes.create(:menu_name => 'Contact Us', :title => 'Contact Us', :shortcut => 'contact-us', :displayed => true, :controller => 'questions', :action => 'new')
 about_us_page = Template.create(:template_name => 'Right Inside')
 about_us_node = home_node.nodes.create(:menu_name => 'About Us', :title => 'About Us', :shortcut => 'about_us', :displayed => true)
 about_us_page.node = about_us_node
@@ -267,6 +262,18 @@ about_us_element.elem = TextElem.create(:text => '<p>
       Morbi imperdiet augue quis tellus.
     </p>')
 about_us_element.save!
+
+news_page = Blog.create!(:banner => 'News Archive')
+news_node = news_page.create_node(:menu_name => 'News Archive', :title => 'News Archive', :shortcut => 'news-archive', :displayed => true)
+archives_node.nodes << news_node
+news_node.save!
+
+recent_news_element = home_page.elements.create(:position => 6, :column_order => 1, :title => 'Recent News', :display_title => true)
+recent_news_element.elem = news_page.blog_elems.create!(:limit => 5)
+recent_news_element.save!
+recent_news_link_element = home_page.elements.create(:position => 6, :column_order => 2, :title => 'View News Archive', :display_title => false)
+recent_news_link_element.elem = LinkElem.create(:link_name => 'View News Archive', :link_type => 'Page', :node_id => 7, :is_image => true, :img_src => 'view-archive.png', :image_style => 'float: right; margin-top: 19px;', :target => '')
+recent_news_link_element.save!
 
 #admin_node = home_node.nodes.create(:menu_name => 'Admin', :title => 'Admin', :shortcut => 'admin', :displayed => true, :controller => 'admin/home', :action => 'index')
 admin_node = Node.create(:menu_name => 'Admin', :title => 'Admin', :shortcut => 'admin', :displayed => true, :controller => 'admin/home', :action => 'index')

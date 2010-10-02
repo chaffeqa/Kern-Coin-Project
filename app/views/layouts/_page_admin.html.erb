@@ -11,6 +11,7 @@
               <li><%= link_to 'Categories', admin_categories_path %></li>
               <li><%= link_to 'Items', admin_items_path %></li>
               <li><%= link_to 'Client Messages', admin_questions_path %></li>
+              <li><%= link_to 'Blogs', admin_blogs_path %></li>
             </ul>
           </li>
 
@@ -19,13 +20,15 @@
               <li><%= link_to 'New Page', new_admin_template_path %></li>
               <li><%= link_to 'New Category', new_admin_category_path %></li>
               <li><%= link_to 'New Item', new_admin_item_path %></li>
+              <li><%= link_to 'New Blog', new_admin_blog_path %></li>
             </ul>
           </li>
 
         </ul>
       </li>
     </ul>
-    <%= link_to 'Page Settings', edit_admin_template_path(@node.page_id), :class => 'btn large' %>
-    <a class="btn yellow large" href="#">Preview page</a>
+    
+    <%= yield :page_admin_bar %>
+    
   </div>
 </section>

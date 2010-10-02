@@ -1,6 +1,6 @@
 class Admin::PageElems::LinkElemsController < ApplicationController
     layout 'admin'
-  before_filter :get_template
+  before_filter :get_node
 
   def new
     @element = Element.new(:position => params[:position], :column_order => Element.set_highest_column_order(params[:position]), :title => '', :display_title => true)
@@ -41,7 +41,7 @@ class Admin::PageElems::LinkElemsController < ApplicationController
 
 
   private
-  def get_template
+  def get_node
     if params[:id]
       @link_elem = LinkElem.find(params[:id])
       @node = @link_elem.element.template.node

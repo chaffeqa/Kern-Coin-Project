@@ -1,0 +1,12 @@
+<a class="rss" href="/feed">Subscribe</a>
+<% if elem and elem.blog %>
+<% @posts = elem.blog.posts.limit(elem.limit || 5) %>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <h2 class="postTitle"><%= link_to post.title, shortcut_path(post.node.shortcut) %></h2>
+        <div class="postInfo"><span class="postDate"><%= post.updated_at.strftime("%I %p - %b %d, %Y") %> </span></div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,38 @@
+<%= form_for([:admin,@blog_elem])  do |f| %>
+  <% if @blog_elem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize((@blog_elem.errors.count ), "error") %> prohibited this element from being saved:</h2>
+      <ul>
+        <% @blog_elem.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render :partial => 'admin/page_elems/form_element_fields' %>
+
+
+  <div class="field">
+    <%= f.label :blog_id %><br />
+    <%= f.select( :blog_id, options_for_select(Blog.all.map {|blog| [blog.node.title, blog.id]}) ) %>
+  </div>
+
+
+  <% if f.object.new_record? %>
+    <%= link_to 'Create New Blog', new_admin_blog_path %>
+  <% else %>
+    <%= link_to 'Edit Blog', edit_admin_blog_path(f.object.blog_id) %>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :limit, 'Limit on number of posts displayed:' %><br />
+    <%= f.text_field :limit %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

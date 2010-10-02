@@ -1,5 +1,4 @@
 KernCoinProject::Application.routes.draw do
-
   devise_for :admins
 
   root :to => 'templates#home'
@@ -54,12 +53,14 @@ KernCoinProject::Application.routes.draw do
     get "home/index", :as => :home
     resources :site_assets, :only => [:create, :index, :destroy]
     resources :templates, :except => [:show]
-    #    resources :site_text_sections
     resources :items
-#    resources :posts
+    resources :blogs, :except => [:show] do
+      resources :posts, :except => [:index]
+    end
     resources :categories, :except => [:show]
     resources :questions, :only => [:index, :show, :delete]
     scope :module => 'page_elems' do
+      resources :blog_elems, :except => [:index, :destroy, :show]
       resources :text_elems, :except => [:index, :destroy, :show]
       resources :link_elems, :except => [:index, :destroy] do
         post :file, :on => :member
