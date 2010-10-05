@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
   private
 
   def create_home_node
-    home_page = Template.create!(:template_name => 'Home')
+    home_page = DynamicPage.create!(:template_name => 'Home')
     @home_node = home_page.create_node(:menu_name => 'Home', :title => 'Home', :shortcut => 'home', :displayed => true)
   end
 

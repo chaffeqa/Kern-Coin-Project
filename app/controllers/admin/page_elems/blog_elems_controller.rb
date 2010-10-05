@@ -1,5 +1,5 @@
 class Admin::PageElems::BlogElemsController < ApplicationController
-  layout 'admin_page'
+  layout 'admin'
   before_filter :get_node, :check_admin
 
 

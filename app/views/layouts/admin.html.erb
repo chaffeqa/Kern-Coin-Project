@@ -4,13 +4,13 @@
     <%= render :partial => 'layouts/site_partials/head' %>
   </head>
 
-  <body id="<%= content_for?(:body_id) ? yield(:body_id) : 'admin' %>" class="<%=  content_for?(:body_class) ? yield(:body_class) : 'oneColumn' %>">
+  <body id="<%= content_for?(:body_id) ? yield(:body_id) : 'secPage' %>" class="<%= content_for?(:body_class) ? yield(:body_class) : 'twoColumn' %>">
     
     <% if admin? %><%= render :partial => 'layouts/site_partials/page_admin' %><% end %>
     <%= render :partial => 'layouts/site_partials/header' %>
     <%= render :partial => 'layouts/site_partials/nav_menu' %>
 
-    <%= render :partial => 'template_partials/inventory_page' %>
+    <%= render :partial => 'template_partials/admin' %>
 
     <%= render :partial => 'layouts/site_partials/footer' %>
   </body>

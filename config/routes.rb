@@ -1,6 +1,6 @@
 KernCoinProject::Application.routes.draw do
 
-  root :to => 'templates#home'
+  root :to => 'dynamic_pages#home'
 
   match "error" => 'shortcut#error', :as => :error
 
@@ -37,7 +37,7 @@ KernCoinProject::Application.routes.draw do
   namespace "admin" do
     get "home/index", :as => :home
     #    resources :site_assets, :only => [:create, :index, :destroy]
-    resources :templates, :except => [:show]
+    resources :dynamic_pages, :except => [:show]
     resources :items
     resources :blogs, :except => [:show] do
       resources :posts, :except => [:index]
@@ -57,7 +57,7 @@ KernCoinProject::Application.routes.draw do
   match '/admin/:controller/:action(/:id)'
   match '/:controller/:action(/:id)'
   match ':shortcut' => 'shortcut#route', :as => :shortcut
-  match ':shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
+  match ':shortcut/:position/new_element' => 'dynamic_pages#new_element', :as => :new_element
 
   
 end

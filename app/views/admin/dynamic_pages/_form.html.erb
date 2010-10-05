@@ -1,9 +1,9 @@
-<%= form_for([:admin,@templt]) do |tf| %>
-  <% if @templt.errors.any?   %>
+<%= form_for([:admin,@dynamic_page]) do |tf| %>
+  <% if @dynamic_page.errors.any?   %>
     <div id="error_explanation">
-      <h2><%= pluralize((@templt.errors.count), "error") %> prohibited this Page from being saved:</h2>
+      <h2><%= pluralize((@dynamic_page.errors.count), "error") %> prohibited this Page from being saved:</h2>
       <ul>
-        <% @templt.errors.full_messages.each do |msg| %>
+        <% @dynamic_page.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
@@ -82,7 +82,7 @@
 
   <div class="field">
     <%= tf.label :template_name, "Template Type" %><br />
-    <%= tf.select :template_name, ['Right Inside','Home'] %>
+    <%= tf.select :template_name, [  "Home", "Inside" ] %>
   </div>
 
 

@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-  layout 'admin_page'
+  layout 'admin'
   before_filter :check_admin
   before_filter :get_node, :except => [:new, :create]
 

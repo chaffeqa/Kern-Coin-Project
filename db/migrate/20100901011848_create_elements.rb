@@ -1,7 +1,7 @@
 class CreateElements < ActiveRecord::Migration
   def self.up
     create_table :elements do |t|
-      t.belongs_to :template
+      t.belongs_to :dynamic_page
       t.integer :position
       t.references :elem, :polymorphic => true
       t.integer :column_order

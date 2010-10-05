@@ -1,5 +1,5 @@
-class TemplatesController < ApplicationController
-  layout 'dynamic_page'
+class DynamicPagesController < ApplicationController
+  layout 'dynamic'
   before_filter :get_node, :except => [:home]
   
   def show

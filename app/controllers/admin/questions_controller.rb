@@ -1,5 +1,5 @@
 class Admin::QuestionsController < ApplicationController
-  layout 'admin_page'
+  layout 'admin'
   before_filter :check_admin
 
   def index

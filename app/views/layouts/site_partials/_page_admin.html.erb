@@ -11,7 +11,7 @@
           <li class="expandable"><a href="#">Manage... </a>
 
             <ul class="btn medium clearfix">
-              <li><%= link_to 'Pages', admin_templates_path %></li>
+              <li><%= link_to 'Pages', admin_dynamic_pages_path %></li>
               <li><%= link_to 'Categories', admin_categories_path %></li>
               <li><%= link_to 'Items', admin_items_path %></li>
               <li><%= link_to 'Client Messages', admin_questions_path %></li>
@@ -21,7 +21,7 @@
 
           <li class="expandable"><a href="#">Create... </a>
             <ul class="btn medium clearfix">
-              <li><%= link_to 'New Page', new_admin_template_path %></li>
+              <li><%= link_to 'New Page', new_admin_dynamic_page_path %></li>
               <li><%= link_to 'New Category', new_admin_category_path %></li>
               <li><%= link_to 'New Item', new_admin_item_path %></li>
               <li><%= link_to 'New Blog', new_admin_blog_path %></li>
@@ -32,7 +32,7 @@
       </li>
     </ul>
     <%= yield :page_admin_bar %>
-    <% if @node and @node.page_type == 'Template' %>   <%= link_to('Page Settings',  edit_admin_template_path(@node.page_id), :class => 'btn large') %> <% end %>
+    <% if @node and @node.page_type == 'DynamicPage' %>   <%= link_to('Page Settings',  edit_admin_dynamic_page_path(@node.page_id), :class => 'btn large') %> <% end %>
     <a class="btn yellow large" href="#">Preview page</a>
 
   </div>

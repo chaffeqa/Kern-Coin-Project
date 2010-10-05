@@ -1,0 +1,3 @@
+<% @dynamic_page = @dynamic_page || @node.page %>
+<% @elements = @elements || @dynamic_page.elements.elem_order %>
+<%= render :partial => "template_partials/#{@node.page.underscore_template_name}" %>

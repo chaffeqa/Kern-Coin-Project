@@ -1,15 +1,28 @@
+<!-- "/home" url and all dynamic_pages with the template_type = 'Home' -->
+
 <%= content_for :body_id do %>homePage<% end %>
 <%= content_for :body_class do %>threeColumn<% end %>
 
 
-  <section id="featured" class="clearfix">
-    <div id="wrapper">
-      <div id="extraColumn">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 1} %>
-      </div>
-      <div id="mainColumn">
+<section id="featured" class="clearfix">
+  <div id="wrapper">
+    <div id="extraColumn">
+      <!-- Element -->
+      <article  class="browse">
+        <p>Search our inventory</p>
+        <%= form_tag(inventory_list_path(), :method => 'get', :class => 'search') do %>
+          <%= text_field_tag :search_text %>
+          <%= select_tag :category_id, options_for_select(categories_for_items(Item.get_for_sale.displayed).map {|category| [category.title, category.id]} << ['Category',''],'') %>
+          <%= select_tag :cost_range, options_for_select([['$0 - $10','10'], ['$0 - $50','50'], ['$0 - $100','100'], [' < $500','500'], [' < $1000','1000'], ['Cost', ''] ], '') %>
+          <%= submit_tag('Search') %>
+        <% end %>
+
+      </article>
+      <!-- Element -->
+    </div>
+    <div id="mainColumn">
       <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
-	  </div>
+    </div>
     <div id="subColumn">
       <%= render :partial => 'elements/position_elements', :locals => {:position => 3} %>
     </div>
@@ -33,7 +46,7 @@
     <section id="subColumn" class="clearfix contents">
       <div id="top"></div>
       <div id="inner">
-	<%= render :partial => 'elements/position_elements', :locals => {:position => 6} %>
+        <%= render :partial => 'elements/position_elements', :locals => {:position => 6} %>
       </div>
     </section>
   </div>

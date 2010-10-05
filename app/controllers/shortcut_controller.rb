@@ -1,9 +1,9 @@
 class ShortcutController < ApplicationController
+  before_filter :get_node, :only => :route
   
   def route
-    get_node
-    if @node.page_type == 'Template'
-      render("#{@node.page_type.tableize.pluralize}/show", :layout => "dynamic_page")
+    if @node.page_type == 'DynamicPage'
+      render("#{@node.page_type.tableize.pluralize}/show", :layout => "dynamic")
     else
       render("#{@node.page_type.tableize.pluralize}/show")
     end

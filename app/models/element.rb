@@ -1,6 +1,6 @@
 #require  ActiveSupport::CoreExtensions::String
 class Element < ActiveRecord::Base
-  belongs_to :template
+  belongs_to :dynamic_page
   belongs_to :elem, :polymorphic => true
 
   ELEM_TYPES = [

@@ -1,0 +1,33 @@
+<h1>Listing Pages</h1>
+
+<table>
+  <tr>
+    <th>Template Type</th>
+    <th>Title</th>
+    <th>Menu name</th>
+    <th>Shortcut</th>
+    <th>Displayed</th>
+  </tr>
+
+  <% @dynamic_pages.each do |dynamic_page| %>
+    <tr>
+      <td><%= dynamic_page.template_name %></td>
+      <td><%= dynamic_page.node.title %></td>
+      <td><%= dynamic_page.node.menu_name %></td>
+      <td><%= dynamic_page.node.shortcut %></td>
+      <td><%= dynamic_page.node.displayed %></td>
+      <td><%= link_to 'Show', shortcut_path(dynamic_page.node.shortcut) %></td>
+      <td><%= link_to 'Edit', edit_admin_dynamic_page_path(dynamic_page) %></td>
+      <td><%= link_to 'Destroy', admin_dynamic_page_path(dynamic_page), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Page', new_admin_dynamic_page_path %> | <%= link_to 'Admin Home', admin_home_path() %>
+
+
+<p>
+  <%#=raw display_menu_list() %>
+</p>

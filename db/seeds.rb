@@ -1,4 +1,4 @@
-home_page = Template.create(:template_name => 'Home')
+home_page = DynamicPage.create(:template_name => 'Home')
 home_node = home_page.create_node(:menu_name => 'Home', :title => 'Home', :shortcut => 'home', :displayed => true)
 
 
@@ -10,7 +10,7 @@ home_node = home_page.create_node(:menu_name => 'Home', :title => 'Home', :short
 #    {:data_file_name => 'view-archive.png', :data_content_type => 'image/png', :data_file_size => 8415, :type => 'Ckeditor::Picture', :locale => 0}
 #  ])
 
-inventory_search_element = home_page.elements.create(:position => 1, :column_order => 1, :title => 'Browse', :display_title => true, :elem_type => 'InventorySearchElem')
+#inventory_search_element = home_page.elements.create(:position => 1, :column_order => 1, :title => 'Browse', :display_title => true, :elem_type => 'InventorySearchElem')
 
 buy_element = home_page.elements.create(:position => 2, :column_order => 1, :title => 'Buy', :display_title => true)
 buy_element.elem = TextElem.create(:text => '<p>
@@ -245,9 +245,14 @@ ancient.items.create([
 
 
 home_node.nodes.create(:menu_name => 'Auction', :title => 'Auction', :shortcut => 'auction', :displayed => true, :controller => 'auctions', :action => 'index')
-archives_node = home_node.nodes.create(:menu_name => 'Archives', :title => 'Archives', :shortcut => 'archives', :displayed => true, :controller => 'archives', :action => 'index')
+
+archives_page = DynamicPage.create(:template_name => 'Inside')
+archives_node = home_node.nodes.create(:menu_name => 'Archives', :title => 'Archives', :shortcut => 'archives', :displayed => true)
+archives_page.node = archives_node
+archives_page.save!
+
 home_node.nodes.create(:menu_name => 'Contact Us', :title => 'Contact Us', :shortcut => 'contact-us', :displayed => true, :controller => 'questions', :action => 'new')
-about_us_page = Template.create(:template_name => 'Right Inside')
+about_us_page = DynamicPage.create(:template_name => 'Inside')
 about_us_node = home_node.nodes.create(:menu_name => 'About Us', :title => 'About Us', :shortcut => 'about_us', :displayed => true)
 about_us_page.node = about_us_node
 about_us_page.save!
