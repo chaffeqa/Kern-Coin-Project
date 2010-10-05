@@ -47,19 +47,19 @@ nav {
 	height: 47px;
 	clear: both;
 }
-div#footerNav ul,
-nav#mainNav ul {
+#footerNav ul,
+#mainNav ul {
 	width: 960px;
 	margin: 0 auto;
 	padding: 8px 0;
 }
-div#footerNav ul {
+#footerNav ul {
 	border-bottom: 1px solid #fff;
 	height: 30px;
-	margin-bottom: 20px;
+	margin-bottom: 20px;	
 }
-	div#footerNav ul li,
-	nav#mainNav ul li {
+	#footerNav li,
+	#mainNav li {
 		float: left;
 		background: url(../template/nav-li-bg.png) center top no-repeat;
 		height: 26px;
@@ -68,12 +68,11 @@ div#footerNav ul {
 		width: 17%;
 		text-align: center;
 	}
-		div#footerNav ul li a,
-		nav#mainNav ul li a {
+		#footerNav li a,
+		#mainNav li a {
 			color: #fff;
 			font-size: 1.429em;
 		}
-
 
 
 
@@ -93,7 +92,7 @@ div#footerNav ul {
 }
 .threeColumn #extraColumn {
 	float: left;
-	width: 152px;
+	width: 132px;
 }
 .threeColumn #mainColumn {
 	float: left;
@@ -118,15 +117,14 @@ div#footerNav ul {
 
 /* Main Column */
 #mainColumn {
-	background: url(../template/main-bg-bot-home.png) 0 bottom no-repeat;
+	background: url(../template/main-bg-bot.png) 0 bottom no-repeat;
 	padding-bottom: 7px;
 }
 	#mainColumn #top {height: 6px; background: url(../template/main-bg-top.png);}
-	#mainColumn article {background: #FFF;}
+	#mainColumn #inner {background: #fff; padding: 10px; min-height: 300px; height: auto !important; height: 300px;}
 	
 /* Extra Column */
-#extraColumn {}
-	#extraColumn article {padding: 10px;}
+#extraColumn {padding: 10px;}
 
 /* Sub Column */
 #subColumn {
@@ -134,16 +132,12 @@ div#footerNav ul {
 	padding-bottom: 7px;
 }
 	#subColumn #top {height: 6px; background: url(../template/sub-bg-top.png);}
-	#subColumn article {background: url(../template/sub-bg-tile.png) repeat;}
+	#subColumn #inner {background: url(../template/sub-bg-tile.png); padding: 10px;}
 
 	#subColumn ul {margin: 0;}
 	#subColumn ul li {padding: 0; background: none;}
 	#subColumn ul li a {font-weight: bold; color: #000;}
 	#subColumn ul li a:before {content: "- ";}
-            #subColumn ul ul {margin: 0;}
-            #subColumn ul ul li {padding-left: 8px; background: none;}
-            #subColumn ul ul li a {font-weight: normal; color: #000;}
-            #subColumn ul ul li a:before {content: "- ";}
 
 
 
@@ -156,13 +150,12 @@ div#footerNav ul {
 	color: #fff;
 }
 	#homePage #featured h1 { font-size: 2.2em; padding-left: 50px; line-height: 1.7em;}
-	#homePage #featured article {padding: 15px; background: transparent;}
 #homePage #featured #mainColumn,
 #homePage #featured #subColumn,
 #homePage #featured #extraColumn {
-	padding: 0;
-	width: 304px;
-	height: 233px;
+	padding: 15px;
+	width: 274px;
+	height: 203px;
 	background: url(../template/featured-pane-bg.png) !important;
 }
 #homePage #featured #mainColumn {margin-left: 25px;}
@@ -172,7 +165,6 @@ div#footerNav ul {
 
 
 #homeFooter { padding: 10px 0 20px; }
-#homeFooter	article {padding: 0;}
 #homeFooter	article ul.categoryList {margin: 0 -10px;}
 #homeFooter	article ul.categoryList li {
 	float: left;
@@ -202,22 +194,21 @@ div#footerNav ul {
 #homePage #subColumn {background: url(../template/sub-bg-bot-home.png) 0 bottom no-repeat;}
 	#homePage #subColumn #top {background: url(../template/sub-bg-top-home.png);}
 
-		#homePage #content #mainColumn article,
-		#homePage #content #subColumn article {
-			background: #FFF;
-		}
+#homePage #mainColumn #inner,
+#homePage #subColumn #inner {
+	height: 271px;
+	padding: 3px 10px;
+	background: #fff;	
+}
 
 #homePage #extraColumn {
 	background: url(../template/extra-bg.png);
-	height: 256px;
+	height: 236px;
 }
 
 
 /* SECONDARY MISC */
 #secPage #mainColumn {
-}
-.item-list {
-    background: #D3D3D3 50%;
 }
 
 

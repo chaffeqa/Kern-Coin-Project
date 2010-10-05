@@ -1,20 +1,23 @@
 <%= content_for :body_id do %>secPage<% end %>
 <%= content_for :body_class do %>twoColumn<% end %>
 
-<% if @node.page and @node.page.template_name == "Right Inside" %>
+
   <section id="content" class="clearfix">
     <div id="wrapper">
       <section id="mainColumn" class="clearfix contents">
         <div id="top"></div>
-        <%= render :partial => 'layouts/breadcrumb' %>
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 1} %>
+	<div id="inner">
+          <%= render :partial => 'layouts/site_partials/breadcrumb' %>
+          <%= render :partial => 'elements/position_elements', :locals => {:position => 1} %>
+	</div>
       </section>
 
       <section id="subColumn" class="clearfix contents">
         <div id="top"></div>
-        <%= render :partial => 'layouts/left_nav_menu' %>
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
+	<div id="inner">
+          <%= render :partial => 'layouts/site_partials/left_nav_menu' %>
+          <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
+	</div>
       </section>
     </div>
   </section>
-<% end %>

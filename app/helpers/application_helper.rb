@@ -1,6 +1,6 @@
 module ApplicationHelper
 
- ################### Admin Helpers #####################
+  ################### Admin Helpers #####################
 
   # Anything passed into an <%= admin_area do %> ... <% end %> block in an .erb file will get surrounded by <div class="admin"></div>
   def admin_wrapper(&block)
@@ -23,14 +23,14 @@ module ApplicationHelper
     { :controller => "admin/page_elems/#{element.elem_type.tableize}", :action => action, :id => element.elem, :shortcut => @node.shortcut }
   end
 
-#  def hidden_div_if(condition, attributes = {}, &block)
-#    if condition
-#      attributes["style" ] = "display: none"
-#    end
-#    content_tag("div" , attributes, &block)
-#  end
+  #  def hidden_div_if(condition, attributes = {}, &block)
+  #    if condition
+  #      attributes["style" ] = "display: none"
+  #    end
+  #    content_tag("div" , attributes, &block)
+  #  end
 
-##########################################################
+  ##########################################################
 
   # Form Helpers
   def remove_child_link(name, f)
@@ -96,9 +96,11 @@ module ApplicationHelper
   def options_tree_recursive(node, addition)
     array = []
     node.nodes.each do |childnode|
-      array << ["#{addition} #{childnode.menu_name}", "#{childnode.id}"]
-      unless childnode.nodes.empty?
-        array += options_tree_recursive(childnode, "#{addition}---")
+      if childnode.shortcut and not childnode.shortcut == ""
+        array << ["#{addition} #{childnode.menu_name}", "#{childnode.id}"]
+        unless childnode.nodes.empty?
+          array += options_tree_recursive(childnode, "#{addition}---")
+        end
       end
     end
     array

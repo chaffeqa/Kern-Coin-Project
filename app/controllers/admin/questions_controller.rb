@@ -1,5 +1,6 @@
 class Admin::QuestionsController < ApplicationController
-  layout 'admin'
+  layout 'admin_page'
+  before_filter :check_admin
 
   def index
     @questions = Question.order("created_at ASC")

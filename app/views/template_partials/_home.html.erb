@@ -1,7 +1,6 @@
 <%= content_for :body_id do %>homePage<% end %>
 <%= content_for :body_class do %>threeColumn<% end %>
 
-<% if @node.page and @node.page.template_name == "Home" %>
 
   <section id="featured" class="clearfix">
     <div id="wrapper">
@@ -9,35 +8,40 @@
         <%= render :partial => 'elements/position_elements', :locals => {:position => 1} %>
       </div>
       <div id="mainColumn">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
-      </div>
-      <div id="subColumn">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 3} %>
-      </div>
+      <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
+	  </div>
+    <div id="subColumn">
+      <%= render :partial => 'elements/position_elements', :locals => {:position => 3} %>
     </div>
-  </section>
+  </div>
+</section>
 
-  <nav></nav>
+<nav></nav>
 
-  <section id="content" class="clearfix">
-    <div id="wrapper">
-      <section id="extraColumn" class="contents">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 4} %>
-      </section>
-      <section id="mainColumn" class="clearfix contents">
+<section id="content" class="clearfix">
+  <div id="wrapper">
+    <section id="extraColumn" class="contents">
+      <img style="padding: 6px 6px 15px;" src="/images/special-offers.png" alt="Special Offers" />
+      <%= render :partial => 'elements/position_elements', :locals => {:position => 4} %>
+    </section>
+    <section id="mainColumn" class="clearfix contents">
+      <div id="top"></div>
+      <div id="inner">
         <%= render :partial => 'elements/position_elements', :locals => {:position => 5} %>
-      </section>
-      <section id="subColumn" class="clearfix contents">
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 6} %>
-      </section>
-    </div>
-  </section>
+      </div>
+    </section>
+    <section id="subColumn" class="clearfix contents">
+      <div id="top"></div>
+      <div id="inner">
+	<%= render :partial => 'elements/position_elements', :locals => {:position => 6} %>
+      </div>
+    </section>
+  </div>
+</section>
 
-  <section id="homeFooter" class="clearfix">
-    <div id="wrapper">
-      <%= render :partial => 'layouts/categories' %>
-    </div>
-  </section>
+<section id="homeFooter" class="clearfix">
+  <div id="wrapper">
+    <%= render :partial => 'layouts/site_partials/categories' %>
+  </div>
+</section>
 
-
-<% end %>

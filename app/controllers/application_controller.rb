@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  layout 'application'
   helper :all
-  helper_method :current_user_session, :current_user, :categories_for_items, :get_home_node, :admin?
+  helper_method :get_node, :categories_for_items, :get_home_node, :admin?
   before_filter :side_panels
+  layout 'static_page'
 
   def categories_for_items(items = Item.all)
     items.collect {|item| item.category}.uniq
@@ -26,13 +26,23 @@ class ApplicationController < ActionController::Base
   def get_node
     get_home_node
     @node = @node || (Node.where(:shortcut => params[:shortcut]).first if params[:shortcut])
-    @shortcut = @node.shortcut
+    if @node
+      @shortcut = @node.shortcut
+    else
+      redirect_to(error_path(:shortcut => params[:shortcut] ))
+    end
   end
 
   #TODO
   def admin?
     true
-#    admin_signed_in?
+    #    admin_signed_in?
+  end
+
+  def check_admin
+    unless admin?
+      redirect_to error_path(:message => 'Unauthorized Access')
+    end
   end
 
 

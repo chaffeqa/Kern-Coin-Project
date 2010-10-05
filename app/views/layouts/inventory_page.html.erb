@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render :partial => 'layouts/site_partials/head' %>
+  </head>
+
+  <body id="<%= content_for?(:body_id) ? yield(:body_id) : 'admin' %>" class="<%=  content_for?(:body_class) ? yield(:body_class) : 'oneColumn' %>">
+    
+    <% if admin? %><%= render :partial => 'layouts/site_partials/page_admin' %><% end %>
+    <%= render :partial => 'layouts/site_partials/header' %>
+    <%= render :partial => 'layouts/site_partials/nav_menu' %>
+
+    <%= render :partial => 'template_partials/inventory_page' %>
+
+    <%= render :partial => 'layouts/site_partials/footer' %>
+  </body>
+</html>

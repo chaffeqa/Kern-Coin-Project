@@ -35,9 +35,7 @@ bid_link_element.elem = LinkElem.create(:link_name => 'Bid', :link_type => 'Page
 bid_link_element.save!
 
 special_offers_element = home_page.elements.create(:position => 4, :column_order => 1, :title => 'Special Offers', :display_title => false)
-special_offers_element.elem = TextElem.create(:text => '
-    <img alt="Special Offers" src="images/special-offers.png" style="padding: 6px 6px 15px;">
-    <p>
+special_offers_element.elem = TextElem.create(:text => '<p>
       Please take a moment to view our current special offers on coins of all sorts!
     </p>')
 special_offers_element.save!

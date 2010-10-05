@@ -1,6 +1,15 @@
+<% if admin? %>
+  <span class="controls">
+    <%= link_to 'Edit', edit_admin_blog_elem_path(elem.id), :class => 'btn small' %>
+    <%= link_to 'X', admin_blog_elem_path(elem, :shortcut => @node.shortcut) , :confirm => "Are you sure?", :method => :delete, :class => 'btn delete small' %>
+  </span>
+<% end %>
+
+<% if elem.element.display_title %><h1 class="title  <%= elem.element.html_id %> "><%= elem.element.title %></h1><% end %>
+
 <a class="rss" href="/feed">Subscribe</a>
 <% if elem and elem.blog %>
-<% @posts = elem.blog.posts.limit(elem.limit || 5) %>
+  <% @posts = elem.blog.posts.limit(elem.limit || 5) %>
   <ul>
     <% @posts.each do |post| %>
       <li>

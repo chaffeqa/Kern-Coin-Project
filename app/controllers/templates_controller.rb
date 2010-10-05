@@ -1,5 +1,5 @@
 class TemplatesController < ApplicationController
-  layout  'pages'
+  layout 'dynamic_page'
   before_filter :get_node, :except => [:home]
   
   def show
@@ -9,6 +9,7 @@ class TemplatesController < ApplicationController
     get_home_node
     @node = @home_node
     get_node
+    render 'show'
   end
 
   

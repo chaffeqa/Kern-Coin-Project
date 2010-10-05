@@ -1,5 +1,5 @@
 class Admin::SiteAssetsController < ApplicationController
-  layout 'admin'
+  layout 'admin_page'
     
   def create
     @asset = Ckeditor.image_model.create!(params[:asset])

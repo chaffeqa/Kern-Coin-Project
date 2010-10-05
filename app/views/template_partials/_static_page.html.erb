@@ -1,0 +1,19 @@
+<section id="content" class="clearfix">
+  <div id="wrapper">
+    <section id="mainColumn" class="clearfix contents">
+      <div id="top"></div>
+      <div id="inner">
+        <%= render :partial => 'layouts/site_partials/breadcrumb' %>
+        <%= yield %>
+      </div>
+    </section>
+
+    <section id="subColumn" class="clearfix contents">
+      <div id="top"></div>
+      <div id="inner">
+        <%= render :partial => 'layouts/site_partials/left_nav_menu' %>
+      </div>
+    </section>
+  </div>
+</section>
+

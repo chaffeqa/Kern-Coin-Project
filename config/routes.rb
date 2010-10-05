@@ -1,18 +1,17 @@
 KernCoinProject::Application.routes.draw do
-  devise_for :admins
 
   root :to => 'templates#home'
+
+  match "error" => 'shortcut#error', :as => :error
+
+  devise_for :admins
   
   resources :elements, :only => [:destroy] do
     get :move, :on => :member
   end
   
-  #  match 'admin/:shortcut' => 'templates#edit', :as => :admin_shortcut
-
-
-
-
   # Auctions Module
+  get "auctions/index"
   #  scope :module => "auction" do
   #    # CustomerAuctions Controller
   #    match "auctions/categories" => 'customer_auctions#categories', :as => :auctions_categories
@@ -29,29 +28,15 @@ KernCoinProject::Application.routes.draw do
 
   # Questions for 'Contact Us'
   resources :questions, :only => [:new, :create]
-  #
-  #
-  #
-  #  # Home Controller
-  #  match "home" => 'home#home', :as => :home
-  #  match "legal" => 'home#legal', :as => :legal
-  #  match "privacy_policy" => 'home#privacy_policy', :as => :privacy_policy
-  #  match "terms_of_use" => 'home#terms_of_use', :as => :terms_of_use
-  #  #  match ':shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
-  #  match 'inventory' => 'inventory#category'
-  #  match 'auctions' => 'inventory#category'
-  #  match 'archives' => 'inventory#category'
-  #  match 'admin' => 'admin/home#index'
-  #
-  #  match ':shortcut' => 'templates#show', :as => :shortcut
-  #  match 'home/news' => 'news#index', :as => :news
-  #  match 'home/news/article/:id' => 'news#article', :as => :news_article
+
+  # Archives Controller
+  get "archive/index"
 
 
   # Admin Namespace
   namespace "admin" do
     get "home/index", :as => :home
-    resources :site_assets, :only => [:create, :index, :destroy]
+    #    resources :site_assets, :only => [:create, :index, :destroy]
     resources :templates, :except => [:show]
     resources :items
     resources :blogs, :except => [:show] do
@@ -73,9 +58,6 @@ KernCoinProject::Application.routes.draw do
   match '/:controller/:action(/:id)'
   match ':shortcut' => 'shortcut#route', :as => :shortcut
   match ':shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
-
-  #  match 'admin/:shortcut/:position/new_element' => 'templates#new_element', :as => :new_element
-  #  match 'admin/:shortcut' => 'templates#edit', :as => :admin_shortcut
 
   
 end

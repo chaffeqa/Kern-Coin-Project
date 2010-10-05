@@ -2,41 +2,21 @@
 @post = @node.page
 @blog = @post.blog
 %>
-<%= content_for :body_id do %>secPage<% end %>
-<%= content_for :body_class do %>twoColumn<% end %>
 <% content_for :page_admin_bar do %>
-  <%= link_to 'Page Settings',  edit_admin_blog_post_path(@blog, @post), :class => 'btn large' %>
-  <a class="btn yellow large" href="#">Preview page</a>
+  <%= link_to 'Page Settings', edit_admin_blog_post_path(@blog, @post), :class => 'btn large' %>
 <% end %>
-
-
-<section id="content" class="clearfix">
-  <div id="wrapper">
-
-    <section id="subColumn" class="clearfix contents">
-      <div id="top"></div>
-      <%= render :partial => 'layouts/left_nav_menu' %>
-    </section>
-
-    <section id="mainColumn" class="clearfix contents">
-      <div id="top"></div>
-      <%= render :partial => 'layouts/breadcrumb' %>
-      <% if admin? %> <div class="admin clearfix"> <% end %>
-        <!-- Element -->
-        <article  class="post">
-          <% if admin? %>
-            <span class="controls">
-              <%= link_to 'Edit Post', edit_admin_blog_post_path(@blog, @post), :class => 'btn small' %>
-              <%= link_to 'X', admin_blog_posts_path(@blog, @post) , :confirm => "Are you sure?", :method => :delete, :class => 'btn delete small' %>
-            </span>
-          <% end %>
-          <h1 class="title"> <%= @post.title %> </h1>
-          <p class="created-at"><%= @post.created_at.strftime("%I %p - %b %d, %Y") %></p>
-          <p><%=raw @post.body %></p>
-        </article>
-        <!-- Element -->
-        <% if admin? %> </div><% end %>
-    </section>
-
-  </div>
-</section>
+<% if admin? %> <div class="admin clearfix"> <% end %>
+  <!-- Element -->
+  <article class="post">
+    <% if admin? %>
+      <span class="controls">
+        <%= link_to 'Edit Post', edit_admin_blog_post_path(@blog, @post), :class => 'btn small' %>
+        <%= link_to 'X', admin_blog_posts_path(@blog, @post) , :confirm => "Are you sure?", :method => :delete, :class => 'btn delete small' %>
+      </span>
+    <% end %>
+    <h1 class="title"> <%= @post.title %> </h1>
+    <p class="created-at"><%= @post.created_at.strftime("%I %p - %b %d, %Y") %></p>
+    <p><%=raw @post.body %></p>
+  </article>
+  <!-- Element -->
+  <% if admin? %> </div><% end %>

@@ -1,6 +1,6 @@
 class Admin::PageElems::LinkElemsController < ApplicationController
-    layout 'admin'
-  before_filter :get_node
+  layout 'admin_page'
+  before_filter :get_node, :check_admin
 
   def new
     @element = Element.new(:position => params[:position], :column_order => Element.set_highest_column_order(params[:position]), :title => '', :display_title => true)

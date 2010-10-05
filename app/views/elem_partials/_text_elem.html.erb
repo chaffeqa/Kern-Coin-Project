@@ -1,2 +1,11 @@
+<% if admin? %>
+  <span class="controls">
+    <%= link_to 'Edit', edit_admin_text_elem_path(elem), :class => 'btn small' %>
+    <%= link_to 'X', admin_text_elem_path(elem, :shortcut => @node.shortcut) , :confirm => "Are you sure?", :method => :delete, :class => 'btn delete small' %>
+  </span>
+<% end %>
+
+<% if elem.element.display_title %><h1 class="title  <%= elem.element.html_id %> "><%= elem.element.title %></h1><% end %>    
+
 <%=raw elem.text %>
 

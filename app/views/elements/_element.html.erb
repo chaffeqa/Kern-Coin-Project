@@ -2,14 +2,7 @@
 <!-- Element -->
 <article  class="<%= element.elem_type %>">
 
-  <% if admin? and not (element.elem_type == 'InventorySearchElem' or element.elem_type == 'RecentNewsElem') %>
-    <span class="controls">
-      <%= link_to 'Edit Element', get_elem_link_to_action(element, 'edit'), :class => 'btn small' %>
-      <%= link_to 'X', element_path(element, :shortcut => @node.shortcut) , :confirm => "Are you sure?", :method => :delete, :class => 'btn delete small' %>
-    </span>
-  <% end %>
-
-  <% if element.display_title %><h1 class="title  <%= element.html_id %> "><%= element.title %></h1><% end %>
+  
   <% if element.elem_id %>
     <%= render :partial => "elem_partials/#{(element.elem_type.tableize).singularize}", :locals => {:elem => element.elem} %>
   <% else %>

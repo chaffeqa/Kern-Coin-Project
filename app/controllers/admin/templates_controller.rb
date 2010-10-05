@@ -1,5 +1,6 @@
 class Admin::TemplatesController < ApplicationController
-  layout 'admin'
+  layout 'admin_page'
+  before_filter :check_admin
   before_filter :home_form?, :only => [ :edit, :update]
 
   def index

@@ -1,3 +1,12 @@
+<% if admin? %>
+  <span class="controls">
+    <%= link_to 'Edit', edit_admin_link_elem_path(elem), :class => 'btn small' %>
+    <%= link_to 'X', admin_link_elem_path(elem, :shortcut => @node.shortcut) , :confirm => "Are you sure?", :method => :delete, :class => 'btn delete small' %>
+  </span>
+<% end %>
+
+<% if elem.element.display_title %><h1 class="title  <%= elem.element.html_id %> "><%= elem.element.title %></h1><% end %>
+
 <% if elem.link_type == "Url" %>
   <%= link_to (elem.is_image ? image_tag(elem.img_src, :alt => elem.link_name, :style => elem.image_style) : elem.link_name), elem.link_url, :target => elem.target %>
 <% end %>

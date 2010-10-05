@@ -1,5 +1,7 @@
 class Admin::ItemsController < ApplicationController
-  layout 'admin'
+  layout 'admin_page'
+  before_filter :check_admin
+  before_filter :get_node, :except => [:new, :create, :index]
   
   # GET /items
   # GET /items.xml
