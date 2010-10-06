@@ -1,16 +1,23 @@
-<h2><%= @category.title %></h2>
+<h1><%= @category.title %></h1>
 <p><%= @category.description %></p>
-
-<% unless @category.items.empty? %>
-  <div class="item-list clearfix">
-    <h3>Items</h3>
+<hr />
+<% if !@category.items.empty? %>
+  <ul class="itemList clearfix">
     <% @category.items.each do |item|%>
-      <%= render :partial => 'item_list', :locals => { :item => item } %>
+    <h5 class="title"><%= link_to item.name, inventory_item_path(item) %></h5>
+    <p class="thumbnail">
+      <%= link_to image_tag(item.main_image ? item.main_image.thumbnail_image : "no_image.gif"), inventory_item_path(item) %>
+    </p>
+    <!--p class="cost"><%= number_to_currency(item.cost) %></p-->
     <% end %>
-  </div>
+  </ul>
+<% else %>
+  <ul class="categoryList">
+    <% @category.children.each do |child|%>
+    <h5 class="title"><%= link_to child.title, inventory_category_path(child) %></h5>
+    <p class="thumbnail">
+      <%= link_to image_tag(child.thumbnail_image ? child.thumbnail_image : "no_image.gif"), inventory_category_path(child) %>
+    </p>
+    <% end %>
+  </ul>
 <% end %>
-
-<% @category.children.each do |child_category|%>
-  <%= render :partial => 'category_list', :locals => { :category => child_category } %>
-<% end %>
-

@@ -1,15 +1,13 @@
-<% @blog = @node.page %>
-
-<% content_for :page_admin_bar do %>
-  <%= link_to 'Page Settings',  edit_admin_blog_path(@blog), :class => 'btn large' %>
-  <%= link_to 'New Post', new_admin_blog_post_path(@blog), :class => 'btn large' %>
-  <a class="btn yellow large" href="#">Preview page</a>
+<ul class="blogList">
+  <% @node.page.posts.each do |post| %>
+  <li>
+    <span class="postTitle">
+      <% if admin? %>
+        <%= link_to "Edit", "Fix-me-Quinn" %>
+      <% end %>
+      <%= link_to post.title, shortcut_path(post.node.shortcut) %>
+    </span>
+    <span class="postDate"><%= post.created_at.strftime("%B %d, %Y %l:%m%p") %> </span>
+  </li>
 <% end %>
-
-
-<% if admin? %> <div class="admin clearfix"> <% end %>
-  <p><%=raw @blog.banner %></p>
-  <% @blog.posts.each do |post| %>
-    <%= render :partial => 'blogs/post_list', :locals => {:post => post} %>
-  <% end %>
-  <% if admin? %> </div><% end %>
+</ul>

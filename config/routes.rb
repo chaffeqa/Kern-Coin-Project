@@ -24,7 +24,7 @@ KernCoinProject::Application.routes.draw do
   # Inventory Controller
   match 'inventory/category/:id' => 'inventory#category', :as => :inventory_category
   get 'inventory/list', :as => :inventory_list
-  match 'inventory/view/:id' => 'inventory#view', :as => :inventory_view
+  match 'inventory/item/:id' => 'inventory#item', :as => :inventory_item
 
   # Questions for 'Contact Us'
   resources :questions, :only => [:new, :create]
@@ -35,8 +35,6 @@ KernCoinProject::Application.routes.draw do
 
   # Admin Namespace
   namespace "admin" do
-    get "home/index", :as => :home
-    #    resources :site_assets, :only => [:create, :index, :destroy]
     resources :dynamic_pages, :except => [:show]
     resources :items
     resources :blogs, :except => [:show] do

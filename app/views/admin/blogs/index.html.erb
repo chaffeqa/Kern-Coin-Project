@@ -1,5 +1,7 @@
 <h1>Listing Blogs</h1>
 
+<p><%= link_to 'New Blog', new_admin_blog_path, :class => 'btn large' %></p>
+
 <table>
   <tr>
     <th>Title</th>
@@ -12,15 +14,11 @@
     <tr>
       <td><%= blog.node.title %></td>
       <td><%= blog.node.menu_name %></td>
-      <td><%= blog.node.shortcut %></td>
-      <td><%= blog.node.displayed %></td>
-      <td><%= link_to 'Show', shortcut_path(blog.node.shortcut) %></td>
-      <td><%= link_to 'Edit', edit_admin_blog_path(blog) %></td>
-      <td><%= link_to 'Destroy', admin_blog_path(blog), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><em><%= blog.node.shortcut %></em></td>
+      <td><%= blog.node.displayed ? 'Yes' : 'No' %></td>
+      <td><%= link_to 'List Posts', shortcut_path(blog.node.shortcut), :class => 'btn small' %></td>
+      <td><%= link_to 'Settings', edit_admin_blog_path(blog), :class => 'btn small' %></td>
+      <td><%= link_to 'Delete', admin_blog_path(blog), :confirm => 'Are you sure?', :method => :delete, :class => 'btn small' %></td>
     </tr>
   <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Blog', new_admin_blog_path %> | <%= link_to 'Admin Home', admin_home_path() %>

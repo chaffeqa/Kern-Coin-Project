@@ -131,13 +131,20 @@ nav {
 	background: url(../template/sub-bg-bot.png) 0 bottom no-repeat;
 	padding-bottom: 7px;
 }
-	#subColumn #top {height: 6px; background: url(../template/sub-bg-top.png);}
-	#subColumn #inner {background: url(../template/sub-bg-tile.png); padding: 10px;}
+#subColumn #top {height: 6px; background: url(../template/sub-bg-top.png);}
+#subColumn #inner {background: url(../template/sub-bg-tile.png); padding: 10px;}
 
-	#subColumn ul {margin: 0;}
-	#subColumn ul li {padding: 0; background: none;}
-	#subColumn ul li a {font-weight: bold; color: #000;}
-	#subColumn ul li a:before {content: "- ";}
+
+/* Product */
+.product .left {
+	float: left;
+	width: 315px;	
+}
+.product .right {
+	float: right;
+	width: 450px;	
+}
+.product .right h3 {font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;}
 
 
 
@@ -211,6 +218,16 @@ nav {
 #secPage #mainColumn {
 }
 
+#secPage #subColumn ul {margin: 0;}
+#secPage #subColumn ul li { padding: 0; background: none;}
+#secPage #subColumn ul li a {font-weight: bold; color: #000; font-size: 1.2em;}
+#secPage #subColumn ul li a:before {content: "- ";}
+
+#secPage #subColumn ul ul li {padding-left: .7em; background: url(../template/li-bullet-black.png) .2em .6em no-repeat;}
+#secPage #subColumn ul ul li a {font-weight: normal; font-size: 1em;}
+#secPage #subColumn ul ul li a:before {content: "";}
+
+#secPage #subColumn ul ul li.selected { background-color: #ffef85; }
 
 
 

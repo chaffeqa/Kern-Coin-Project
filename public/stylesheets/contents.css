@@ -135,6 +135,7 @@ article {margin: 0 0 20px;}
 article:last-child {margin-bottom: 0;}
 article h1.title {border-bottom: 1px solid #e2e2e2; padding-bottom: .6em;}
 
+.breadcrumb .nav-menu {display: inline;}
 .breadcrumb {padding: 0 0 10px;}
 .breadcrumb a {color: #000;}
 

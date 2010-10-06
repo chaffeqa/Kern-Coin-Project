@@ -4,13 +4,33 @@
     <%= render :partial => 'layouts/site_partials/head' %>
   </head>
 
-  <body id="<%= content_for?(:body_id) ? yield(:body_id) : 'secPage' %>" class="<%= content_for?(:body_class) ? yield(:body_class) : 'twoColumn' %>">
+  <body id="secPage" class="twoColumn">
     
     <% if admin? %><%= render :partial => 'layouts/site_partials/page_admin' %><% end %>
     <%= render :partial => 'layouts/site_partials/header' %>
     <%= render :partial => 'layouts/site_partials/nav_menu' %>
 
-    <%= render :partial => 'template_partials/inventory' %>
+    <section id="content" class="clearfix">
+      <div id="wrapper">
+	<section id="mainColumn" class="clearfix contents">
+	  <div id="top"></div>
+	  <div id="inner">
+            <%= render :partial => 'layouts/site_partials/breadcrumb' %>
+            <%= yield %>
+	  </div>
+	</section>
+
+	<section id="subColumn" class="clearfix contents">
+	  <div id="top"></div>
+	  <div id="inner">
+	    <h3>Inventory</h3>
+	    <div id="categoryList">
+	      <%= render_navigation(:level => 2..7) %>
+	    </div>
+	  </div>
+	</section>
+      </div>
+    </section>
 
     <%= render :partial => 'layouts/site_partials/footer' %>
   </body>

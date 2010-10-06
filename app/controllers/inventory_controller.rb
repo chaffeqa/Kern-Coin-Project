@@ -21,7 +21,7 @@ class InventoryController < ApplicationController
     end
   end
 
-  def view
+  def item
     @item = Item.find(params[:id])
   end
 

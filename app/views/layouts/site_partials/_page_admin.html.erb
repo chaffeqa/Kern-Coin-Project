@@ -1,9 +1,6 @@
 <section id="adminBar">
   <div id="wrapper">
 
-    <% if flash[:notice] %> <div id="notice"><%= flash[:notice] %></div> <% end %>
-    <% if flash[:alert] %> <div id="alert"><%= flash[:alert] %></div><% end %>
-
     <%= link_to image_tag('inventure-logo.png', :alt => 'Inventure'), 'http://www.inventure.com' %>
     <ul class="btn large clearfix" id="admin-menu">
       <li>Content management
@@ -32,8 +29,10 @@
       </li>
     </ul>
     <%= yield :page_admin_bar %>
+    <% if @node and @node.page_type == 'DynamicPage' %>   <%= link_to('Preview Page',  '#', :class => 'btn yellow large') %> <% end %>
     <% if @node and @node.page_type == 'DynamicPage' %>   <%= link_to('Page Settings',  edit_admin_dynamic_page_path(@node.page_id), :class => 'btn large') %> <% end %>
-    <a class="btn yellow large" href="#">Preview page</a>
 
   </div>
 </section>
+<% if flash[:notice] %> <div id="notice"><%= flash[:notice] %></div> <% end %>
+<% if flash[:alert] %> <div id="alert"><%= flash[:alert] %></div><% end %>

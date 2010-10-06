@@ -1,9 +1,9 @@
 <% category = locals[:category] %>
 
 <li title="<%= category.description || 'No Description' %>">
-  <%= category.title %> &nbsp;
-  | <%= link_to 'Edit', edit_admin_category_path(category) %> |
-  <%= link_to 'Destroy', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to category.title, "Fix-Me-Quinn" %> &nbsp;
+  <%= link_to 'Edit', edit_admin_category_path(category), :class => "btn small" %>
+  <%= link_to 'Delete', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %>
 </li>
 
 <% unless category.children.empty? %>

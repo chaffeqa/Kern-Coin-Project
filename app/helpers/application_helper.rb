@@ -106,6 +106,17 @@ module ApplicationHelper
     array
   end
 
+  def cat_options_tree_recursive(category, addition)
+    array = []
+    category.children.each do |childcat|
+      array << ["#{addition} #{childcat.title}", "#{childcat.id}"]
+      unless childcat.children.empty?
+        array += cat_options_tree_recursive(childcat, "#{addition}---")
+      end
+    end
+    array
+  end
+
 
   def color_select
     [

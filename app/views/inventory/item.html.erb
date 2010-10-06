@@ -1,0 +1,21 @@
+<article class="item">
+  <h1 class="title"><%= @item.category.title %></h1>
+  <div class="product">
+
+    <div class="left">
+      <%= link_to image_tag(@item.main_image ? @item.main_image.thumbnail_image : "no_image.gif"), inventory_item_path(@item) %>
+      <% if @item.product_images %>
+      <% @item.product_images.each do |product_image| %>
+      <%= link_to (image_tag product_image.thumbnail_image), product_image.display_image, :rel => 'group1' %>
+      <% end %>
+      <% end %>
+    </div>
+
+    <div class="right">
+      <h3><%= @item.name %></h3>
+      <p><%= number_to_currency(@item.cost) %></p>
+      <p><%= @item.item_id %></p>
+      <p><%=raw @item.details %></p>
+    </div>
+  </div>
+</article>

@@ -1,7 +1,9 @@
+<h1>List of Categories</h1>
+
+<p><%= link_to 'New Category', new_admin_category_path, :class => "btn large" %></p>
+
 <ul>
   <%= render 'category', :locals => {:category => @inventory} %>
 </ul>
 <br />
 
-<%= link_to 'Add Category', new_admin_category_path %>
----<%= link_to 'Admin Home', admin_home_url %>

@@ -3,12 +3,11 @@
 <%= content_for :body_id do %>homePage<% end %>
 <%= content_for :body_class do %>threeColumn<% end %>
 
-
 <section id="featured" class="clearfix">
   <div id="wrapper">
     <div id="extraColumn">
-      <!-- Element -->
       <article  class="browse">
+	<h1 class="browse">Browse</h1>
         <p>Search our inventory</p>
         <%= form_tag(inventory_list_path(), :method => 'get', :class => 'search') do %>
           <%= text_field_tag :search_text %>
@@ -18,7 +17,6 @@
         <% end %>
 
       </article>
-      <!-- Element -->
     </div>
     <div id="mainColumn">
       <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
@@ -54,7 +52,8 @@
 
 <section id="homeFooter" class="clearfix">
   <div id="wrapper">
-    <%= render :partial => 'layouts/site_partials/categories' %>
+    <!-- Temp fix for category element (COMING SOON) -->
+    <%= render :partial => 'elem_partials/category_list_elem' %>
   </div>
 </section>
 
