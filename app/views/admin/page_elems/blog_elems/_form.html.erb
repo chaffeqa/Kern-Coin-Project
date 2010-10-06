@@ -20,15 +20,31 @@
 
 
   <% if f.object.new_record? %>
-    <%= link_to 'Create New Blog', new_admin_blog_path %>
+    <div class="field">
+      <%= link_to 'Create New Blog', new_admin_blog_path %>
+    </div>
+    <div class="field">
+      <%= f.label :display_type %>
+      <%= f.select :display_type, options_for_select(BlogElem.display_type_select) %>
+    </div>
   <% else %>
     <%= link_to 'Edit Blog', edit_admin_blog_path(f.object.blog_id) %>
+    <div class="field">
+      <%= f.label :display_type %>
+      <%= f.select :display_type, options_for_select(BlogElem.display_type_select, f.object.display_type) %>
+    </div>
   <% end %>
 
 
+
   <div class="field">
-    <%= f.label :limit, 'Limit on number of posts displayed:' %><br />
-    <%= f.text_field :limit %>
+    <%= f.label :past_limit, 'Limit latest post displayed:' %><br />
+    <%= f.date_select :past_limit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :count_limit, 'Limit on number of posts displayed:' %><br />
+    <%= f.text_field :count_limit %>
   </div>
 
 

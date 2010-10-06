@@ -264,7 +264,7 @@ news_node = news_page.create_node(:menu_name => 'News Archive', :title => 'News 
 news_node.save!
 
 recent_news_element = home_page.elements.create(:position => 6, :column_order => 1, :title => 'Recent News', :display_title => true)
-recent_news_element.elem = news_page.blog_elems.create!(:limit => 5)
+recent_news_element.elem = news_page.blog_elems.create!(:count_limit => 5, :display_type => 'Archive')
 recent_news_element.save!
 recent_news_link_element = home_page.elements.create(:position => 6, :column_order => 2, :title => 'Recent News Archive', :display_title => false)
 recent_news_link_element.elem = TextElem.create(:text => '<a href="/archives"><img style="float: right; margin-top: 19px;" src="/site_assets/images/5/content_view-archive.png" alt="View News Archive" /></a>')

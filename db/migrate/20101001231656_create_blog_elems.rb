@@ -2,7 +2,9 @@ class CreateBlogElems < ActiveRecord::Migration
   def self.up
     create_table :blog_elems do |t|
       t.belongs_to :blog
-      t.integer :limit
+      t.integer :count_limit
+      t.date :past_limit
+      t.string :display_type
 
       t.timestamps
     end

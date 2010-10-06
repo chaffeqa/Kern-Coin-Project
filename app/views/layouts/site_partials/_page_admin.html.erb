@@ -29,8 +29,6 @@
       </li>
     </ul>
     <%= yield :page_admin_bar %>
-    <% if @node and @node.page_type == 'DynamicPage' %>   <%= link_to('Preview Page',  '#', :class => 'btn yellow large') %> <% end %>
-    <% if @node and @node.page_type == 'DynamicPage' %>   <%= link_to('Page Settings',  edit_admin_dynamic_page_path(@node.page_id), :class => 'btn large') %> <% end %>
 
   </div>
 </section>

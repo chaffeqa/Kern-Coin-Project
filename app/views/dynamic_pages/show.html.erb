@@ -4,3 +4,8 @@
 <% @dynamic_page = @dynamic_page || @node.page %>
 <% @elements = @elements || @dynamic_page.elements.elem_order %>
 <%= render :partial => "dynamic_pages/#{@node.page.underscore_template_name}" %>
+
+<% content_for :page_admin_bar do %>
+  <%= link_to('Preview Page',  '#', :class => 'btn yellow large') %>
+  <%= link_to('Page Settings',  edit_admin_dynamic_page_path(@dynamic_page), :class => 'btn large') %>
+<% end %>
