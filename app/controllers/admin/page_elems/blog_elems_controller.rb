@@ -40,7 +40,7 @@ class Admin::PageElems::BlogElemsController < ApplicationController
   def get_node
     if params[:id]
       @blog_elem = BlogElem.find(params[:id])
-      @node = @blog_elem.element.template.node
+      @node = @blog_elem.element.dynamic_page.node
     end
     super
   end

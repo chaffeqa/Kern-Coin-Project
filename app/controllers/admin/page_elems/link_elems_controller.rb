@@ -44,7 +44,7 @@ class Admin::PageElems::LinkElemsController < ApplicationController
   def get_node
     if params[:id]
       @link_elem = LinkElem.find(params[:id])
-      @node = @link_elem.element.template.node
+      @node = @link_elem.element.dynamic_page.node
     end
     super
   end

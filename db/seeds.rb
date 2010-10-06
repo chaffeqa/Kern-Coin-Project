@@ -17,31 +17,22 @@ buy_element.elem = TextElem.create(:text => '<p>
       We offer an inventory that is second-to-none featuring ancient,
       foreign, medieval, US and numerous other types of coins. Visit
       our online store, view our inventory, and purchase coins!
-    </p>')
+    </p><a href="/inventory"><img src="images/view-store.png" alt="View Our Online Store" /></a>')
 buy_element.save!
-buy_link_element = home_page.elements.create(:position => 2, :column_order => 2, :title => 'Buy', :display_title => false)
-buy_link_element.elem = LinkElem.create(:link_name => 'Buy', :link_type => 'Page', :node_id => 6, :is_image => true, :img_src => 'view-store.png', :image_style => '', :target => '')
-buy_link_element.save!
 
 bid_element = home_page.elements.create(:position => 3, :column_order => 1, :title => 'Bid', :display_title => true)
 bid_element.elem = TextElem.create(:text => '<p>
       Our website features a 100% exclusive auction
       that allows our loyal customers to bid on rare,
       unique and valuable coins!
-    </p>')
-bid_element.save!
-bid_link_element = home_page.elements.create(:position => 3, :column_order => 2, :title => 'Bid', :display_title => false)
-bid_link_element.elem = LinkElem.create(:link_name => 'Bid', :link_type => 'Page', :node_id => 1, :is_image => true, :img_src => 'view-auctions.png', :image_style => '', :target => '')
-bid_link_element.save!
+    </p><a href="/auction"><img src="images/view-auctions.png" alt="View Current Auctions" /></a>')
+bid_element.save! 
 
 special_offers_element = home_page.elements.create(:position => 4, :column_order => 1, :title => 'Special Offers', :display_title => false)
 special_offers_element.elem = TextElem.create(:text => '<p>
       Please take a moment to view our current special offers on coins of all sorts!
-    </p>')
+    </p><a href="/special"><img style="margin: 30px -4px 0;" src="images/view-offers.png" alt="View Offers" /></a>')
 special_offers_element.save!
-special_offers_link_element = home_page.elements.create(:position => 4, :column_order => 2, :title => 'Special Offers', :display_title => false)
-special_offers_link_element.elem = LinkElem.create(:link_name => 'Special Offers', :link_type => 'Page', :node_id => 7, :is_image => true, :img_src => 'view-offers.png', :image_style => 'margin: 30px -4px 0pt;', :target => '')
-special_offers_link_element.save!
 
 welcome_element = home_page.elements.create(:position => 5, :column_order => 1, :title => 'Welcome', :display_title => true)
 welcome_element.elem = TextElem.create(:text => '<p>
@@ -53,11 +44,8 @@ welcome_element.elem = TextElem.create(:text => '<p>
       We take great pride in putting the customer first. Please take a look at
       our current inventory listing or drop us a line so we may help you with
       your numismatic need.
-    </p>')
+    </p><a href="/about-us"><img style="float: right; margin-top: 8px;" src="images/learn-more.png" alt="Learn More About Us" /></a>')
 welcome_element.save!
-welcome_link_element = home_page.elements.create(:position => 5, :column_order => 2, :title => 'Welcome', :display_title => false)
-welcome_link_element.elem = LinkElem.create(:link_name => 'Welcome', :link_type => 'Page', :node_id => 126, :is_image => true, :img_src => 'learn-more.png', :image_style => 'float: right; margin-top: 8px;', :target => '')
-welcome_link_element.save!
 
 
 
@@ -232,19 +220,24 @@ foreign_strait.children.create([
   ])
 
 
-
 # Items
-ancient.items.create([
+special_offers = Category.where(:title => 'Special Offers').first
+special_offers.items.create([
     {:name => 'Bookmark', :cost => '12.52', :details => 'Just a bookmark. I am serious.', :item_id => '123154123', :for_sale => true, :display => true},
-    {:name => 'Glasses', :cost => '25.99', :details => 'Just a Glasses. I am serious.', :item_id => 'd12312311e1', :for_sale => true, :display => true},
+    {:name => 'Glasses', :cost => '25.99', :details => 'Just a Glasses. I am serious.', :item_id => 'd12312311e1', :for_sale => true, :display => true}
+  ])
+ancient_biblical = Category.where(:title => 'Biblical').first
+ancient_biblical.items.create([
     {:name => 'Coin Display Case', :cost => '51.00', :details => 'This is by far the coolest way to display your collection. Please use it wisely.', :item_id => '1e3121rt1rt12', :for_sale => true, :display => true},
     {:name => 'Pen', :cost => '2.11', :details => 'Just a Pen. I am serious.', :item_id => '12315421323123', :for_sale => true, :display => true}
   ])
 
 
+auction_page = DynamicPage.create(:template_name => 'Inside')
+auction_node = home_node.nodes.create(:menu_name => 'Auctions', :title => 'Auctions', :shortcut => 'auctions', :displayed => true)
+auction_page.node = auction_node
+auction_page.save!
 
-
-home_node.nodes.create(:menu_name => 'Auction', :title => 'Auction', :shortcut => 'auction', :displayed => true, :controller => 'auctions', :action => 'index')
 
 archives_page = DynamicPage.create(:template_name => 'Inside')
 archives_node = home_node.nodes.create(:menu_name => 'Archives', :title => 'Archives', :shortcut => 'archives', :displayed => true)
@@ -268,14 +261,13 @@ about_us_element.save!
 
 news_page = Blog.create!(:banner => 'News Archive')
 news_node = news_page.create_node(:menu_name => 'News Archive', :title => 'News Archive', :shortcut => 'news-archive', :displayed => true)
-archives_node.nodes << news_node
 news_node.save!
 
 recent_news_element = home_page.elements.create(:position => 6, :column_order => 1, :title => 'Recent News', :display_title => true)
 recent_news_element.elem = news_page.blog_elems.create!(:limit => 5)
 recent_news_element.save!
-recent_news_link_element = home_page.elements.create(:position => 6, :column_order => 2, :title => 'View News Archive', :display_title => false)
-recent_news_link_element.elem = LinkElem.create(:link_name => 'View News Archive', :link_type => 'Page', :node_id => 7, :is_image => true, :img_src => 'view-archive.png', :image_style => 'float: right; margin-top: 19px;', :target => '')
+recent_news_link_element = home_page.elements.create(:position => 6, :column_order => 2, :title => 'Recent News Archive', :display_title => false)
+recent_news_link_element.elem = TextElem.create(:text => '<a href="/archives"><img style="float: right; margin-top: 19px;" src="images/view-archive.png" alt="View News Archive" /></a>')
 recent_news_link_element.save!
 
 #admin_node = home_node.nodes.create(:menu_name => 'Admin', :title => 'Admin', :shortcut => 'admin', :displayed => true, :controller => 'admin/home', :action => 'index')

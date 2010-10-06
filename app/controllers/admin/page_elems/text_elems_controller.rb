@@ -40,7 +40,7 @@ class Admin::PageElems::TextElemsController < ApplicationController
   def get_node
     if params[:id]
       @text_elem = TextElem.find(params[:id])
-      @node = @text_elem.element.template.node
+      @node = @text_elem.element.dynamic_page.node
     end
     super
   end

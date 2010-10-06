@@ -5,17 +5,13 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Menu name</th>
     <th>Shortcut</th>
-    <th>Displayed</th>
   </tr>
 
   <% @blogs.each do |blog| %>
     <tr>
-      <td><%= blog.node.title %></td>
-      <td><%= blog.node.menu_name %></td>
-      <td><em><%= blog.node.shortcut %></em></td>
-      <td><%= blog.node.displayed ? 'Yes' : 'No' %></td>
+      <td><%= blog.node.title %></td> 
+      <td><em><%= blog.node.shortcut %></em></td> 
       <td><%= link_to 'List Posts', shortcut_path(blog.node.shortcut), :class => 'btn small' %></td>
       <td><%= link_to 'Settings', edit_admin_blog_path(blog), :class => 'btn small' %></td>
       <td><%= link_to 'Delete', admin_blog_path(blog), :confirm => 'Are you sure?', :method => :delete, :class => 'btn small' %></td>

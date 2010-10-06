@@ -1,7 +1,5 @@
-<% category = locals[:category] %>
-
 <li title="<%= category.description || 'No Description' %>">
-  <%= link_to category.title, "Fix-Me-Quinn" %> &nbsp;
+  <%= link_to category.title, category.node.url %> &nbsp;
   <%= link_to 'Edit', edit_admin_category_path(category), :class => "btn small" %>
   <%= link_to 'Delete', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %>
 </li>
@@ -9,7 +7,7 @@
 <% unless category.children.empty? %>
   <ul>
     <% category.children.each do |category| %>
-      <%= render 'category', :locals => {:category => category} %>
+      <%= render :partial => 'category', :locals => {:category => category} %>
     <% end %>
   </ul>
 <% end %>

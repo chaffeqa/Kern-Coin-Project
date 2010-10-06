@@ -29,9 +29,6 @@ KernCoinProject::Application.routes.draw do
   # Questions for 'Contact Us'
   resources :questions, :only => [:new, :create]
 
-  # Archives Controller
-  get "archive/index"
-
 
   # Admin Namespace
   namespace "admin" do

@@ -1,5 +1,5 @@
-<h1>Editing <%= @node.title %> Blog Settings</h1>
+<h1>Editing <%= @blog.node.title %>'s post: <%= @post.title %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Cancel', shortcut_path(@node.shortcut) %>
+<%= link_to 'Cancel', shortcut_path(@blog.node.shortcut) %>
