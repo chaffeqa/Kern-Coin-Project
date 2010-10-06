@@ -116,10 +116,7 @@ nav {
 
 
 /* Main Column */
-#mainColumn {
-	background: url(../template/main-bg-bot.png) 0 bottom no-repeat;
-	padding-bottom: 7px;
-}
+#mainColumn { padding-bottom: 7px; }
 	#mainColumn #top {height: 6px; background: url(../template/main-bg-top.png);}
 	#mainColumn #inner {background: #fff; padding: 10px; min-height: 300px; height: auto !important; height: 300px;}
 	

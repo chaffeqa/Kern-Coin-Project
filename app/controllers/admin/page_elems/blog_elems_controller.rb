@@ -27,13 +27,17 @@ class Admin::PageElems::BlogElemsController < ApplicationController
 
   def update
     @element = @blog_elem.element
-    if @blog_elem.update_attributes(params[:blog_elem])
+    if @blog_elem.update_attributes(params[:blog_elem]) and @element.update_attributes(:column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title], :position => params[:position])
       redirect_to(shortcut_path(@node.shortcut), :notice => "Blog Element successfully updated!")
     else
       render :action => 'edit'
     end
   end
 
+  def destroy
+    @text_elem.destroy
+    redirect_to(shortcut_path(@node.shortcut), :notice => 'Element successfully destroyed.')
+  end
 
 
   private

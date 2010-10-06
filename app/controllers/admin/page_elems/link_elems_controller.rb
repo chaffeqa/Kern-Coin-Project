@@ -40,6 +40,11 @@ class Admin::PageElems::LinkElemsController < ApplicationController
   end
 
 
+  def destroy
+    @text_elem.destroy
+    redirect_to(shortcut_path(@node.shortcut), :notice => 'Element successfully destroyed.')
+  end
+
   private
   def get_node
     if params[:id]

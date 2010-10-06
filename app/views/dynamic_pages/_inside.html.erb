@@ -16,9 +16,8 @@
     <section id="subColumn" class="clearfix contents">
       <div id="top"></div>
       <div id="inner">
-	<h3>&lt;Page Title&gt;</h3>
+	<h3><%=  @node.title %></h3>
 	<div id="categoryList">
-	  <%#= render_navigation(:level => 2..4, :expand_all => true) %>
 	  <%= render_navigation(:level => 2..7) %>
 	</div>
         <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>

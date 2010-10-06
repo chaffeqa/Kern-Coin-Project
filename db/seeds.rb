@@ -2,13 +2,13 @@ home_page = DynamicPage.create(:template_name => 'Home')
 home_node = home_page.create_node(:menu_name => 'Home', :title => 'Home', :shortcut => 'home', :displayed => true)
 
 
-#Ckeditor.image_model.create!([
-#    {:data_file_name => 'view-store.png', :data_content_type => 'image/png', :data_file_size => 9414, :type => 'Ckeditor::Picture', :locale => 0},
-#    {:data_file_name => 'view-auctions.png', :data_content_type => 'image/png', :data_file_size => 9609, :type => 'Ckeditor::Picture', :locale => 0},
-#    {:data_file_name => 'view-offers.png', :data_content_type => 'image/png', :data_file_size => 3946, :type => 'Ckeditor::Picture', :locale => 0},
-#    {:data_file_name => 'learn-more.png', :data_content_type => 'image/png', :data_file_size => 7729, :type => 'Ckeditor::Picture', :locale => 0},
-#    {:data_file_name => 'view-archive.png', :data_content_type => 'image/png', :data_file_size => 8415, :type => 'Ckeditor::Picture', :locale => 0}
-#  ])
+Ckeditor.image_model.create!([
+    {:data_file_name => 'view-store.png', :data_content_type => 'image/png', :data_file_size => 9414, :type => 'Ckeditor::Picture', :locale => 0},
+    {:data_file_name => 'view-auctions.png', :data_content_type => 'image/png', :data_file_size => 9609, :type => 'Ckeditor::Picture', :locale => 0},
+    {:data_file_name => 'view-offers.png', :data_content_type => 'image/png', :data_file_size => 3946, :type => 'Ckeditor::Picture', :locale => 0},
+    {:data_file_name => 'learn-more.png', :data_content_type => 'image/png', :data_file_size => 7729, :type => 'Ckeditor::Picture', :locale => 0},
+    {:data_file_name => 'view-archive.png', :data_content_type => 'image/png', :data_file_size => 8415, :type => 'Ckeditor::Picture', :locale => 0}
+  ])
 
 #inventory_search_element = home_page.elements.create(:position => 1, :column_order => 1, :title => 'Browse', :display_title => true, :elem_type => 'InventorySearchElem')
 
@@ -17,7 +17,7 @@ buy_element.elem = TextElem.create(:text => '<p>
       We offer an inventory that is second-to-none featuring ancient,
       foreign, medieval, US and numerous other types of coins. Visit
       our online store, view our inventory, and purchase coins!
-    </p><a href="/inventory"><img src="images/view-store.png" alt="View Our Online Store" /></a>')
+    </p><a href="/inventory"><img src="/site_assets/images/1/content_view-store.png" alt="View Our Online Store" /></a>')
 buy_element.save!
 
 bid_element = home_page.elements.create(:position => 3, :column_order => 1, :title => 'Bid', :display_title => true)
@@ -25,13 +25,13 @@ bid_element.elem = TextElem.create(:text => '<p>
       Our website features a 100% exclusive auction
       that allows our loyal customers to bid on rare,
       unique and valuable coins!
-    </p><a href="/auction"><img src="images/view-auctions.png" alt="View Current Auctions" /></a>')
+    </p><a href="/auction"><img src="/site_assets/images/2/content_view-auctions.png" alt="View Current Auctions" /></a>')
 bid_element.save! 
 
 special_offers_element = home_page.elements.create(:position => 4, :column_order => 1, :title => 'Special Offers', :display_title => false)
 special_offers_element.elem = TextElem.create(:text => '<p>
       Please take a moment to view our current special offers on coins of all sorts!
-    </p><a href="/special"><img style="margin: 30px -4px 0;" src="images/view-offers.png" alt="View Offers" /></a>')
+    </p><a href="/special"><img style="margin: 30px -4px 0;" src="/site_assets/images/3/content_view-offers.png" alt="View Offers" /></a>')
 special_offers_element.save!
 
 welcome_element = home_page.elements.create(:position => 5, :column_order => 1, :title => 'Welcome', :display_title => true)
@@ -44,7 +44,7 @@ welcome_element.elem = TextElem.create(:text => '<p>
       We take great pride in putting the customer first. Please take a look at
       our current inventory listing or drop us a line so we may help you with
       your numismatic need.
-    </p><a href="/about-us"><img style="float: right; margin-top: 8px;" src="images/learn-more.png" alt="Learn More About Us" /></a>')
+    </p><a href="/about-us"><img style="float: right; margin-top: 8px;" src="/site_assets/images/4/content_learn-more.png" alt="Learn More About Us" /></a>')
 welcome_element.save!
 
 
@@ -267,7 +267,7 @@ recent_news_element = home_page.elements.create(:position => 6, :column_order =>
 recent_news_element.elem = news_page.blog_elems.create!(:limit => 5)
 recent_news_element.save!
 recent_news_link_element = home_page.elements.create(:position => 6, :column_order => 2, :title => 'Recent News Archive', :display_title => false)
-recent_news_link_element.elem = TextElem.create(:text => '<a href="/archives"><img style="float: right; margin-top: 19px;" src="images/view-archive.png" alt="View News Archive" /></a>')
+recent_news_link_element.elem = TextElem.create(:text => '<a href="/archives"><img style="float: right; margin-top: 19px;" src="/site_assets/images/5/content_view-archive.png" alt="View News Archive" /></a>')
 recent_news_link_element.save!
 
 #admin_node = home_node.nodes.create(:menu_name => 'Admin', :title => 'Admin', :shortcut => 'admin', :displayed => true, :controller => 'admin/home', :action => 'index')

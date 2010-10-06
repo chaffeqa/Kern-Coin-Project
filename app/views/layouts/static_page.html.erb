@@ -24,7 +24,7 @@
 	<section id="subColumn" class="clearfix contents">
 	  <div id="top"></div>
 	  <div id="inner">
-	    <h3>Contact Us</h3>
+	    <h3><%= @node ? @node.title : '' %></h3>
 	    <div id="categoryList">
 	      <%= render_navigation(:level => 2..7) %>
 	    </div>

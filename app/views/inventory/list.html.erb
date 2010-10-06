@@ -1,13 +1,13 @@
 <% @items.each do |item|%>
   <div class="thumbnail-list">
     <div class="title">
-      <%= link_to item.name, inventory_view_path(item) %>
+      <%= link_to item.name, inventory_item_path(item) %>
     </div>
     <div class="thumbnail">
       <% if item.main_image %>
-        <%= link_to image_tag item.main_image.thumbnail_image, inventory_view_path(item) %>
+        <%= link_to image_tag item.main_image.thumbnail_image, inventory_item_path(item) %>
       <% else %>
-        <%= link_to (image_tag "no_image.gif"), inventory_view_path(item) %>
+        <%= link_to (image_tag "no_image.gif"), inventory_item_path(item) %>
       <% end %>
     </div>
     <div class="cost">

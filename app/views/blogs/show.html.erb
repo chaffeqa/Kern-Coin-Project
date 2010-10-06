@@ -1,13 +1,19 @@
+<h1><%= @node.title %></h1>
+<%=raw @node.page.banner %>
 <ul class="blogList">
   <% @node.page.posts.each do |post| %>
-  <li>
-    <span class="postTitle">
-      <% if admin? %>
-        <%= link_to "Edit", "Fix-me-Quinn" %>
-      <% end %>
-      <%= link_to post.title, shortcut_path(post.node.shortcut) %>
-    </span>
-    <span class="postDate"><%= post.created_at.strftime("%B %d, %Y %l:%m%p") %> </span>
-  </li>
-<% end %>
+    <li>
+
+      <span class="postTitle">
+        <%= link_to post.title, shortcut_path(post.node.shortcut) %>
+      </span>
+      <span class="postDate"><%= post.created_at.strftime("%B %d, %Y %l:%m%p") %> </span>
+      <span class="controls">
+        <% if admin? %>
+          <%= link_to "Edit", edit_admin_blog_post_path(post.blog, post), :class => 'btn small' %>
+          <%= link_to "X", admin_blog_post_path(post.blog, post) , :confirm => "Are you sure?", :method => :delete, :class => 'btn small' %>
+        <% end %>
+      </span>
+    </li>
+  <% end %>
 </ul>

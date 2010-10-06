@@ -16,7 +16,8 @@ class Admin::PageElems::TextElemsController < ApplicationController
 
   def create
     @element = Element.new(:position => params[:position], :column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title])
-    @text_elem = @element.elem=TextElem.new(params[:text_elem])
+    @text_elem = TextElem.new(params[:text_elem])
+    @element.elem= @text_elem
     if @text_elem.save and @element.save and @node.page.elements << @element
       redirect_to(shortcut_path(@node.shortcut), :notice => "Text Element successfully added!")
     else
@@ -27,11 +28,16 @@ class Admin::PageElems::TextElemsController < ApplicationController
 
   def update
     @element = @text_elem.element
-    if @text_elem.update_attributes(params[:text_elem])
+    if @text_elem.update_attributes(params[:text_elem]) and @element.update_attributes(:column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title], :position => params[:position])
       redirect_to(shortcut_path(@node.shortcut), :notice => "Text Element successfully updated!")
     else
       render :action => 'edit'
     end
+  end
+
+  def destroy
+    @text_elem.destroy
+    redirect_to(shortcut_path(@node.shortcut), :notice => 'Element successfully destroyed.')
   end
 
 
