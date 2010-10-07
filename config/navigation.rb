@@ -39,6 +39,14 @@ SimpleNavigation::Configuration.run do |navigation|
           menu_level_2.item child_node_2.menu_name.to_sym, child_node_2.menu_name, child_node_2.url do |menu_level_3|
             child_node_2.nodes.each do |child_node_3|
               menu_level_3.item child_node_3.menu_name.to_sym, child_node_3.menu_name, child_node_3.url do |menu_level_4|
+                child_node_3.nodes.each do |child_node_4|
+                  menu_level_4.item child_node_4.menu_name.to_sym, child_node_4.menu_name, child_node_4.url do |menu_level_5|
+                    child_node_4.nodes.each do |child_node_5|
+                      menu_level_5.item child_node_5.menu_name.to_sym, child_node_5.menu_name, child_node_5.url do |menu_level_6|
+                      end
+                    end
+                  end
+                end
               end
             end
           end

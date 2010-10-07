@@ -9,9 +9,9 @@ class Category < ActiveRecord::Base
   after_save :update_node_relationships
 
   has_attached_file :image,
-    :url  => "/images/categories/:id/image_:style.:extension",
-    :path => ":rails_root/public/images/categories/:id/image_:style.:extension",
-    :styles => { :thumb => ['80x80#', :gif] }
+    :url  => "/site_assets/categories/:id/image_:style.:extension",
+    :path => ":rails_root/public/site_assets/categories/:id/image_:style.:extension",
+    :styles => { :thumb => ['112x112#', :gif] }
 
   
   
@@ -30,11 +30,11 @@ class Category < ActiveRecord::Base
   end
 
   def thumbnail_image
-    self.image? ? self.image.url(:thumb) : 'no_image.gif'
+    self.image? ? self.image.url(:thumb) : 'no_image_preview.gif'
   end
 
   def original_image
-    self.image? ? self.image.url : 'no_image.gif'
+    self.image? ? self.image.url : 'no_image_full_size.gif'
   end
 
 

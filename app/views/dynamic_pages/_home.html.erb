@@ -6,14 +6,14 @@
 <section id="featured" class="clearfix">
   <div id="wrapper">
     <div id="extraColumn">
-      <article  class="browse">
-	<h1 class="browse">Browse</h1>
-        <p>Search our inventory</p>
+      <article  class="browseElem">
+	<h1 class="browse title">Browse</h1>
         <%= form_tag(inventory_list_path(), :method => 'get', :class => 'search') do %>
+          <label id="searchLabel">Search our inventory</label>
           <%= text_field_tag :search_text %>
           <%= select_tag :category_id, options_for_select(categories_for_items(Item.get_for_sale.displayed).map {|category| [category.title, category.id]} << ['Category',''],'') %>
           <%= select_tag :cost_range, options_for_select([['$0 - $10','10'], ['$0 - $50','50'], ['$0 - $100','100'], [' < $500','500'], [' < $1000','1000'], ['Cost', ''] ], '') %>
-          <%= submit_tag('Search') %>
+          <%= submit_tag('Search', :id => 'searchButton') %>
         <% end %>
 
       </article>

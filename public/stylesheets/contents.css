@@ -262,3 +262,16 @@ h3.commentsHead {
 	padding: 0 0 0 22px;
 	background: url(../template/icon_rss.png) no-repeat;
 }
+
+
+/* Category List */
+ul.itemList,
+ul.categoryList {margin: 0;}
+ul.categoryList li, 
+ul.itemList li {background: none; padding: 5px; float: left; width: 112px;}
+ul.categoryList li .thumbnail img, 
+ul.itemList li .thumbnail img {width: 112px; height: 112px; padding: 0;}
+ul.categoryList li p.title, 
+ul.itemList li p.title {display: none; text-align: center; line-height: 1em; height: 25px; background: rgba(0,0,0,.3); margin: -29px 0 0; position: relative; padding: 2px;}
+ul.categoryList li:hover p.title, 
+ul.itemList li:hover p.title {display: block;}

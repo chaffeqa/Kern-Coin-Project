@@ -38,7 +38,7 @@ KernCoinProject::Application.routes.draw do
       resources :posts, :except => [:index]
     end
     resources :categories, :except => [:show]
-    resources :questions, :only => [:index, :show, :delete]
+    resources :questions, :only => [:index, :show, :destroy]
     scope :module => 'page_elems' do
       resources :blog_elems, :except => [:index, :show]
       resources :text_elems, :except => [:index, :show]

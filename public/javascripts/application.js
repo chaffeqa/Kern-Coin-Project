@@ -26,13 +26,20 @@ $(function() {
     $('a.gallery').colorbox();
     
 
-    // For the store item list
-    $('tr.hover-tr').mouseover(function() {
-        $(this).addClass('hover');
-    });
-    $('tr.hover-tr').mouseout(function() {
-        $(this).removeClass('hover');
+   
+
+    var preview = $('a#preview');
+    preview.live('click', function() {
+        $("div.admin").toggleClass("preview");
     });
 
+    preview.live('click', function() {
+        if (preview.text() == 'Preview Page') {
+            preview.text('Admin View');
+        }
+        else {
+            preview.text('Preview Page');
+        }
+    });
 });
 

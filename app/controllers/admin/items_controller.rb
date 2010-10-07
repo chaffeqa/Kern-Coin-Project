@@ -3,33 +3,23 @@ class Admin::ItemsController < ApplicationController
   before_filter :check_admin
   before_filter :get_node, :except => [:new, :create, :index]
   
-  # GET /items
-  # GET /items.xml
   def index
     @items = Item.all
   end
 
-  # GET /items/1
-  # GET /items/1.xml
   def show
     @item = Item.find(params[:id])
   end
 
-  # GET /items/new
-  # GET /items/new.xml
   def new
     @item = Item.new
     #    build_product_images
   end
 
-  # GET /items/1/edit
   def edit
-    @item = Item.find(params[:id])
     #    build_product_images
   end
 
-  # POST /items
-  # POST /items.xml
   def create
     @item = Item.new(params[:item])
     if @item.save
@@ -40,10 +30,7 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  # PUT /items/1
-  # PUT /items/1.xml
   def update
-    @item = Item.find(params[:id])
     if @item.update_attributes(params[:item])
       redirect_to( admin_item_path(@item), :notice => 'Item was successfully updated.')
     else
@@ -52,10 +39,7 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.xml
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy_attached_files
     @item.destroy
     redirect_to(admin_items_url) 
@@ -65,4 +49,11 @@ class Admin::ItemsController < ApplicationController
   def build_product_images
     (10 - @item.product_images.count).times  { @item.product_images.build }
   end
+
+  def get_node
+    @item = Item.find(params[:id])
+    @node = @item.node
+    super
+  end
+
 end

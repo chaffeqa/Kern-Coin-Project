@@ -3,8 +3,7 @@
   <span class="controls">
 
     <%= form_tag(new_element_path(:shortcut => @shortcut, :position => position)) do %> 
-      <%= label_tag :elem_path, "Select an Element" %>
-      <%= select_tag :elem_controller, options_for_select(Element.get_elem_select) %>
+      <%= select_tag :elem_controller, options_for_select(Element.get_elem_select), :prompt => true %>
       <%= submit_tag "Add Element", :class => 'btn add small' %>
     <% end %>
 

@@ -29,7 +29,7 @@ class Item < ActiveRecord::Base
           :menu_name => self.name,
           :displayed => true,
           :controller => 'inventory',
-          :action => 'view'
+          :action => 'item'
         })
     end
   end

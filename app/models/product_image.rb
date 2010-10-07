@@ -2,9 +2,9 @@ class ProductImage < ActiveRecord::Base
   belongs_to :item
 
   has_attached_file :image,
-    :url  => "/images/items/:id/image_:style.:extension",
-    :path => ":rails_root/public/images/items/:id/image_:style.:extension",
-    :styles => {:display => ['250x250#', :gif], :thumb => ['80x80#', :gif] }
+    :url  => "/site_assets/items/:id/image_:style.:extension",
+    :path => ":rails_root/public/site_assets/items/:id/image_:style.:extension",
+    :styles => {:full_size => ['315x315#', :gif], :preview => ['75x75#', :gif], :thumb => ['112x112#', :gif] }
 
   validates_attachment_size :image, :less_than => 2.megabytes
   validates_attachment_content_type :image, :content_type => [ 'image/jpeg', 'image/png', 'image/gif', 'image/x-png', 'image/pjpeg' ]
@@ -15,15 +15,15 @@ class ProductImage < ActiveRecord::Base
   end
 
   def thumbnail_image
-    self.image ? self.image.url(:thumb) : 'no_image.gif'
+    self.image ? self.image.url(:thumb) : 'no_image_thumb.gif'
   end
 
-  def display_image
-    self.image ? self.image.url(:display) : 'no_image.gif'
+  def preview_image
+    self.image ? self.image.url(:preview) : 'no_image_preview.gif'
   end
 
-  def original_image
-    self.image ? self.image.url : 'no_image.gif'
+  def full_size_image
+    self.image ? self.image.url(:full_size) : 'no_image_full_size.gif'
   end
 
 

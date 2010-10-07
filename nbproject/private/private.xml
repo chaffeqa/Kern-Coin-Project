@@ -2,12 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/home/quinn/projects/Kern-Coin-Project/config/routes.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/db/seeds.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/models/item.rb</file>
         <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/dynamic_pages/show.html.erb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/public/stylesheets/contents.css</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/public/stylesheets/template.css</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/dynamic_pages/_inside.html.erb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/inventory/item.html.erb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/inventory/category.html.erb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/config/navigation.rb</file>
     </open-files>
 </project-private>

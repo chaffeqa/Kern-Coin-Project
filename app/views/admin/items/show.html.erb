@@ -2,7 +2,7 @@
 
 <div class="image">
   <% if @item.main_image %>
-    <%= image_tag @item.main_image.display_image %>
+    <%= image_tag @item.main_image.full_size_image %>
   <% else %>
     <%= image_tag "items/no_image.gif" %>
   <% end %>
@@ -42,7 +42,7 @@
   <div class="clearfloat">
     <strong>Other Images</strong><br/>
     <% @item.product_images.each do |product_image| %>
-      <%= link_to (image_tag product_image.thumbnail_image), product_image.original_image, :rel => 'group1', :class => 'image gallery' %>
+      <%= link_to (image_tag product_image.preview_image), product_image.original_image, :rel => 'group1', :class => 'image gallery' %>
     <% end %>
   </div>
 <% end %>

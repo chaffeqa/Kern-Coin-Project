@@ -1,4 +1,34 @@
 /* PHUSION CMS */
+#adminPage #subColumn ul {margin: 0;}
+#adminPage #subColumn ul li { padding: 0; background: none;}
+#adminPage #subColumn ul li a { font-weight: bold; color: #000; font-size: 1.2em; }
+#adminPage #subColumn ul li a:before {content: "- ";}
+
+#adminPage #subColumn ul li a.selected { background-color: #ffef85; }
+
+#adminPage #subColumn ul ul li {}
+#adminPage #subColumn ul ul li a {padding-left: .7em; background: url(../template/li-bullet-black.png) .2em .6em no-repeat; font-weight: normal; font-size: 1em;}
+#adminPage #subColumn ul ul li a:before {content: "";}
+
+
+#adminPage table {}
+
+	/* Thead */
+	#adminPage thead th { text-align: center; }
+	#adminPage thead td {}
+
+	/* Tbody */
+	#adminPage tbody td {padding: .5em .4em;}
+	#adminPage tbody th {}
+
+	#adminPage tbody .alt td {}
+	#adminPage tbody .alt th {}
+
+	/* Tfoot */
+	#adminPage tfoot th {}
+	#adminPage tfoot td {}
+
+
 #adminBar {
 	height: 30px;
 	padding: 8px 0;
@@ -80,10 +110,10 @@
 #notice { color: green; background-color: #9F9; padding: 2px 5px; border: green solid 2px;}
 #alert { color: red; background-color: #F99; padding: 2px 5px; border: red solid 2px;}
 
-.field_with_errors { padding: 2px; background-color: #888; }
-#error_explanation { width: 300px; border: 2px solid red; padding: 7px 7px 0 7px; margin-bottom: 20px; background-color: #f0f0f0; }
-#error_explanation h2 {padding: 5px 5px 5px 15px; font-size: 12px; margin: -7px -7px 0 -7px; background-color: #c00; color: #fff; }
-#error_explanation ul li { font-size: 12px; list-style: square; }
+.field_with_errors { border-left: red solid 2px; padding-left: 5px; margin-left: -5px;}
+#error_explanation { width: 300px; border: 2px solid red; padding: 7px 7px 0 7px; margin-bottom: 20px; background-color: #eee; }
+#error_explanation h2 {padding: 5px 5px 5px 15px; font-size: 1em; margin: -7px -7px 0 -7px; background-color: #D77; color: #fff }
+#error_explanation ul li {}
 
 
 
