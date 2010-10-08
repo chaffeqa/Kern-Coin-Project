@@ -166,25 +166,9 @@ nav {
 	#featured h1.browse { background: url(../template/magnifying-glass.png) no-repeat;}
 	#featured h1.buy { background: url(../template/sales-tag.png) no-repeat;}
 	#featured h1.bid { background: url(../template/bullseye.png) no-repeat;}
-
+#featured article h1.title {border-bottom: none; margin-bottom: .5em; padding-bottom: 0;}
 
 #homeFooter { padding: 10px 0 20px; }
-#homeFooter	article ul.categoryList {margin: 0 -10px;}
-#homeFooter	article ul.categoryList li {
-	float: left;
-	margin: 10px;
-}
-	#homeFooter	article ul.categoryList li a {
-		display: block;
-		background: url(../template/category-bg.png) 0 0 no-repeat;
-		height: 25px;
-		padding: 10px 0 10px 60px;
-		width: 244px;
-		font-size: 1.3em;
-		color: #000;
-		font-family: Georgia, "Times New Roman", Times, serif;
-	}
-
 
 
 

@@ -135,6 +135,7 @@ article {margin: 0 0 20px;}
 article:last-child {margin-bottom: 0;}
 article h1.title {border-bottom: 1px solid #e2e2e2; padding-bottom: .6em;}
 
+
 .breadcrumb .nav-menu {display: inline;}
 .breadcrumb {padding: 0 0 10px;}
 .breadcrumb a {color: #000;}
@@ -178,28 +179,29 @@ article h1.title {border-bottom: 1px solid #e2e2e2; padding-bottom: .6em;}
 /* ELEMENT SPECIFIC CALLINGS */
 
 /* SEARCH */
-.search {
-	float: right;
-	margin: 10px 20px 0;
-}
-	.search label {
-		text-transform: uppercase;
-		display: block;
-		font-weight: bold;
-		color: #FFF;
-		font-size: .9em;
+form.search { margin: 0; }
+	.search #searchLabel {
+	    margin: 0;
 	}
-	.search .searchInput {
-		width: 145px;
-		padding: 2px 3px;
-		height: 15px;
+	.search input {
+	    width: 100%;
 	}
-	.search .searchButton {
-		font-weight: bold;
-		height: 22px;
-		width: 25px;
-		border: none;
-		color: #fff;
+	.search select {
+	    width: 150px;
+	    float: left;
+	    margin-top: 5px;
+	}
+	.search #searchButton {
+	    clear: both;
+	    margin: 5px 0 0;
+	    cursor: pointer;
+	    display: block;
+	    text-indent: -9999px;
+	    float: right;
+	    border: none;
+	    width: 104px;
+	    height: 35px;
+	    background: url(../images/search.png) no-repeat;
 	}
 
 /* BLOG ITEM */
@@ -265,13 +267,27 @@ h3.commentsHead {
 
 
 /* Category List */
-ul.itemList,
-ul.categoryList {margin: 0;}
-ul.categoryList li, 
-ul.itemList li {background: none; padding: 5px; float: left; width: 112px;}
-ul.categoryList li .thumbnail img, 
-ul.itemList li .thumbnail img {width: 112px; height: 112px; padding: 0;}
-ul.categoryList li p.title, 
-ul.itemList li p.title {display: none; text-align: center; line-height: 1em; height: 25px; background: rgba(0,0,0,.3); margin: -29px 0 0; position: relative; padding: 2px;}
-ul.categoryList li:hover p.title, 
-ul.itemList li:hover p.title {display: block;}
+#secPage #mainColumn ul.itemList,
+#secPage #mainColumn ul.categoryList {margin: 0;}
+#secPage #mainColumn ul.categoryList li, 
+#secPage #mainColumn ul.itemList li {background: none; padding: 5px; float: left; width: 112px;}
+#secPage #mainColumn ul.categoryList li .thumbnail img, 
+#secPage #mainColumn ul.itemList li .thumbnail img {width: 112px; height: 112px; padding: 0;}
+#secPage #mainColumn ul.categoryList li p.title, 
+#secPage #mainColumn ul.itemList li p.title {display: none; text-align: center; line-height: 1em; height: 25px; background: rgba(0,0,0,.3); margin: -29px 0 0; position: relative; padding: 2px;}
+#secPage #mainColumn ul.categoryList li:hover p.title, 
+#secPage #mainColumn ul.itemList li:hover p.title {display: block;}
+
+
+#homeFooter ul.categoryList {margin: 0 -10px;}
+#homeFooter ul.categoryList li { float: left; margin: 10px; }
+	#homeFooter ul.categoryList li a {
+		display: block;
+		background: url(../template/category-bg.png) 0 0 no-repeat;
+		height: 25px;
+		padding: 10px 0 10px 60px;
+		width: 244px;
+		font-size: 1.3em;
+		color: #000;
+		font-family: Georgia, "Times New Roman", Times, serif;
+	}
