@@ -1,5 +1,5 @@
 class BlogElem < ActiveRecord::Base
-  has_one :element, :as => :elem
+  has_one :element, :as => :elem, :dependent => :destroy
   belongs_to :blog
   accepts_nested_attributes_for :element
 

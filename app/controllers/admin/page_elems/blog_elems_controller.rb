@@ -35,7 +35,7 @@ class Admin::PageElems::BlogElemsController < ApplicationController
   end
 
   def destroy
-    @text_elem.destroy
+    @blog_elem.destroy
     redirect_to(shortcut_path(@node.shortcut), :notice => 'Element successfully destroyed.')
   end
 

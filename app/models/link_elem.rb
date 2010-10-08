@@ -1,5 +1,5 @@
 class LinkElem < ActiveRecord::Base
-  has_one :element, :as => :elem
+  has_one :element, :as => :elem, :dependent => :destroy
   belongs_to :node
   belongs_to :image, :class_name => 'Ckeditor::Picture'
   accepts_nested_attributes_for :element
