@@ -19,7 +19,7 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :title, :first_name, :last_name, :street_address_1, :state, :country, :zip_code, :phone, :email, :subject
   validates :email, :email => true
-  validates :body, :body => true
+#  validates :body, :body => true
   validates :zip_code, :numericality => true
 #  validates :phone, :with => /\b[0-9-]\b/, :message => "Your number can only contain numbers."
   

@@ -1,6 +1,6 @@
 class DynamicPage < ActiveRecord::Base
 #  belongs_to :node
-  has_many :elements
+  has_many :elements, :order => :position
   
   # Associated Node attributes
   has_one :node, :as => :page

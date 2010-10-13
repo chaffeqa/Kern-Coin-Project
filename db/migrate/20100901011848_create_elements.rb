@@ -4,7 +4,7 @@ class CreateElements < ActiveRecord::Migration
       t.belongs_to :dynamic_page
       t.integer :position
       t.references :elem, :polymorphic => true
-      t.integer :column_order
+      t.integer :page_area
       t.string :title
       t.boolean :display_title, :default => true
       t.string :html_id

@@ -2,7 +2,7 @@
 <article class="admin">
   <span class="controls">
 
-    <%= form_tag(new_element_path(:shortcut => @shortcut, :position => position)) do %> 
+    <%= form_tag(new_element_path(:shortcut => @shortcut, :page_area => page_area)) do %>
       <%= select_tag :elem_controller, options_for_select(Element.get_elem_select), :prompt => true %>
       <%= submit_tag "Add Element", :class => 'btn add small' %>
     <% end %>

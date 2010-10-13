@@ -9,7 +9,7 @@
       <div id="top"></div>
       <div id="inner">
         <%= render :partial => 'layouts/site_partials/breadcrumb' %>
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 1} %>
+        <%= render :partial => 'elements/page_area_elements', :locals => {:page_area => 1} %>
       </div>
     </section>
 
@@ -20,7 +20,7 @@
 	<div id="categoryList">
 	  <%= render_navigation(:level => 2..7) %>
 	</div>
-        <%= render :partial => 'elements/position_elements', :locals => {:position => 2} %>
+        <%= render :partial => 'elements/page_area_elements', :locals => {:page_area => 2} %>
       </div>
     </section>
   </div>

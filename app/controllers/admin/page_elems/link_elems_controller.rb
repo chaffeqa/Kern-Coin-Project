@@ -3,20 +3,18 @@ class Admin::PageElems::LinkElemsController < ApplicationController
   before_filter :get_node, :check_admin
 
   def new
-    @element = Element.new(:position => params[:position], :column_order => Element.set_highest_column_order(params[:position]), :title => '', :display_title => true)
-    @link_elem = @element.elem=LinkElem.new(:link_type => 'Url')
+    @link_elem = LinkElem.new(:link_type => 'Url')
+    @text_elem.build_element(:page_area => params[:page_area], :display_title => true)
   end
 
 
   def edit
-    @element = @link_elem.element
   end
 
 
   def create
-    @element = Element.new(:position => params[:position], :column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title])
-    @link_elem = @element.elem=LinkElem.new(params[:link_elem])
-    if  @node.page.elements << @element and @element.save and @link_elem.save
+    @link_elem = LinkElem.new(params[:link_elem])
+    if @node.page.elements << @link_elem.element and @link_elem.save
       redirect_to shortcut_path(@node.shortcut), :notice => "Link Element successfully added!"
     else
       render :action => 'new'
@@ -25,8 +23,7 @@ class Admin::PageElems::LinkElemsController < ApplicationController
 
 
   def update
-    @element = @link_elem.element
-    if @link_elem.update_attributes(params[:link_elem]) and @element.update_attributes(:column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title], :position => params[:position])
+    if @link_elem.update_attributes(params[:link_elem])# and @element.update_attributes(:column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title], :position => params[:position])
       redirect_to shortcut_path(@node.shortcut), :notice => "Link Element successfully updated!"
     else
       render :action => 'edit'

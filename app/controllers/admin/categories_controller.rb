@@ -10,12 +10,14 @@ class Admin::CategoriesController < ApplicationController
   
   def new
     @category = Category.new
+    @category.build_node(:displayed => true)
   end
 
   def edit
   end
 
   def create
+    @category = Category.new(params[:category])
     if @category.save
       redirect_to(admin_categories_path, :notice => 'Category was successfully Added.')
     else
@@ -34,6 +36,16 @@ class Admin::CategoriesController < ApplicationController
   def destroy
     @category.destroy
     redirect_to(admin_categories_url, :notice => 'Category was successfully destroyed.')
+  end
+
+  def move_up
+    @category.node.move_higher
+    redirect_to admin_categories_path
+  end
+
+  def move_down
+    @category.node.move_lower
+    redirect_to admin_categories_path
   end
   
   private

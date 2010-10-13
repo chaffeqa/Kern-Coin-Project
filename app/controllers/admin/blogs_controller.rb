@@ -24,7 +24,7 @@ class Admin::BlogsController < ApplicationController
   def create
     get_home_node
     @blog = Blog.new(params[:blog])
-    if @blog.save
+    if Node.blog_node.children << @blog.node and @blog.save
       redirect_to( shortcut_path(@blog.node.shortcut), :notice => 'Blog was successfully created.')
     else
       render :action => "new"

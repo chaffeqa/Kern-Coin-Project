@@ -30,18 +30,18 @@ SimpleNavigation::Configuration.run do |navigation|
     # works for all levels of the menu
     #    menu_level_1.dom_id = 'nav-menu'
     menu_level_1.dom_class = 'nav-menu'
-    @home_node ||= Node.where(:menu_name => 'Home').first
+    @home_node ||= Node.root
 
     menu_level_1.item @home_node.menu_name.to_sym, 'Home', @home_node.url
-    @home_node.nodes.each do |child_node_1|
+    @home_node.children.displayed.each do |child_node_1|
       menu_level_1.item child_node_1.menu_name.to_sym, child_node_1.menu_name, child_node_1.url do |menu_level_2|
-        child_node_1.nodes.each do |child_node_2|
+        child_node_1.children.displayed.each do |child_node_2|
           menu_level_2.item child_node_2.menu_name.to_sym, child_node_2.menu_name, child_node_2.url do |menu_level_3|
-            child_node_2.nodes.each do |child_node_3|
+            child_node_2.children.displayed.each do |child_node_3|
               menu_level_3.item child_node_3.menu_name.to_sym, child_node_3.menu_name, child_node_3.url do |menu_level_4|
-                child_node_3.nodes.each do |child_node_4|
+                child_node_3.children.displayed.each do |child_node_4|
                   menu_level_4.item child_node_4.menu_name.to_sym, child_node_4.menu_name, child_node_4.url do |menu_level_5|
-                    child_node_4.nodes.each do |child_node_5|
+                    child_node_4.children.displayed.each do |child_node_5|
                       menu_level_5.item child_node_5.menu_name.to_sym, child_node_5.menu_name, child_node_5.url do |menu_level_6|
                       end
                     end
@@ -55,12 +55,12 @@ SimpleNavigation::Configuration.run do |navigation|
     end
     
     #    menu_level_1.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
-    #      inventory.children.each do |sub_category|
-    #        if sub_category.children.empty?
+    #      inventory.children.displayed.each do |sub_category|
+    #        if sub_category.children.displayed.empty?
     #          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category)
     #        else
     #          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category) do |level_2|
-    #            sub_category.children.each do |sub_sub_category|
+    #            sub_category.children.displayed.each do |sub_sub_category|
     #              level_2.item sub_sub_category.title.to_sym, sub_sub_category.title, inventory_category_path(sub_sub_category)
     #            end
     #          end

@@ -14,18 +14,32 @@
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
-  </div>
+
+
+    <%= f.fields_for :node do |node_f| %>
+      &nbsp; <%= node_f.check_box :displayed %> &nbsp;
+      <%= node_f.label :displayed, 'Display Category?' %>
+    </div>
+    <% unless f.object.title == 'Inventory' %>
+      <div class="field">
+        <%= node_f.label :parent_id, 'Parent Category' %><br />
+        <% if f.object.new_record? %>
+          <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
+        <% else %>
+          <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= node_f.hidden_field :parent, :value => Node.root %>
+    <% end %>
+  <% end %>
+
+
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
 
-  <div class="field">
-    <% unless f.object.title == 'Inventory' %>
-      <%= f.label :parent, 'Parent Category' %><br />
-      <%= f.select :parent, options_for_select(cat_options_tree_recursive(Category.get_inventory, '')), :prompt => true %>
-    <% end %>
-  </div>
 
   <div class="field">
     <% unless f.object.new_record? %>

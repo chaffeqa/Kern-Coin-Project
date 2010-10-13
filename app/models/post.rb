@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
       self.create_node(
         :title => self.title,
         :menu_name => self.title,
-        :shortcut => self.title.downcase.tableize,
+        :shortcut => self.title.downcase.parameterize.html_safe,
         :displayed => true
       )
     else
@@ -21,7 +21,7 @@ class Post < ActiveRecord::Base
         :shortcut => self.title.downcase.parameterize.html_safe
       )
     end
-    self.blog ? self.node.node = self.blog.node : self.node.node = nil
+    self.node.parent = self.blog.node if ( self.blog and not self.node.parent )
     self.node.save!
   end
 end

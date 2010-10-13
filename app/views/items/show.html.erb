@@ -1,0 +1,25 @@
+<% @item = @node.page %>
+
+<article class="item">
+  <h1 class="title"><%= @item.node.parent.page.title %></h1>
+  <div class="product">
+
+    <div class="left">
+      <%= link_to image_tag(@item.main_image ? @item.main_image.full_size_image : "no_image_full_size.gif"), shortcut_path(@node.shortcut) %>
+      <% if @item.product_images %>
+        <% @item.product_images.each do |product_image| %>
+          <%= link_to (image_tag product_image.preview_image), product_image.full_size_image, :rel => 'group1', :class => 'gallery' %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="right">
+      <h3><%= @item.name %></h3>
+      <p><%= number_to_currency(@item.cost) %></p>
+      <p><%= @item.item_id %></p>
+      <p><%=raw @item.details %></p>
+      <%= link_to 'Add To Cart', "https://KERN-Coin.foxycart.com/cart?name=#{@item.name}&price=#{@item.cost}&item-id=#{@item.item_id}", :class => 'foxycart add-to-cart' %>
+    </div>
+
+  </div>
+</article>

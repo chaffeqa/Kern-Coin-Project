@@ -25,12 +25,12 @@
         http://localhost/<%= f.text_field :shortcut %>
       </div>
       <div class="field">
-        <%= f.check_box :displayed, :checked => true %>
+        <%= f.check_box :displayed %>
         <%= f.label :displayed, "Display Page?" %>
       </div>
       <div class="field">
         <%= f.label :node_id, "Where Should This Page Go?" %><br/>
-        <%= f.select :node_id, options_for_select([[@home_node.menu_name,@home_node.id]] + options_tree_recursive(@home_node, ""), "Home") %>
+        <%= f.select :parent_id, options_for_select([[@home_node.menu_name,@home_node.id]] + dynamic_pages_options_tree_recursive(@home_node, ""), "Home") %>
       </div>
 
     <% else %>

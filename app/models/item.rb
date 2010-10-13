@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  belongs_to :category
+#  belongs_to :category
   has_many :product_images, :limit => 10
   has_one :main_image, :class_name => "ProductImage", :conditions => {:primary_image => true}
   accepts_nested_attributes_for :product_images, :allow_destroy => true, :reject_if => proc { |attributes| attributes['image'].blank? }
@@ -16,7 +16,13 @@ class Item < ActiveRecord::Base
   scope :get_for_sale, where(:for_sale => true)
   scope :displayed, where(:display => true)
 
- 
+  def thumbnail_image
+    self.main_image ? self.main_image.thumbnail_image : 'no_image_thumb.gif'
+  end
+
+  def original_image
+    self.main_image ? self.main_image.full_size_image : 'no_image_full_size.gif'
+  end
 
   def short_details
     return self.details[0,30] << "..."
@@ -28,15 +34,16 @@ class Item < ActiveRecord::Base
           :title => self.name,
           :menu_name => self.name,
           :displayed => true,
-          :controller => 'inventory',
-          :action => 'item'
+          :shortcut => self.name.downcase.parameterize.html_safe
+#          :controller => 'inventory',
+#          :action => 'item'
         })
     end
   end
 
   def update_node_relationships
     self.create_default_node
-    self.category ? self.node.node = self.category.node : self.node.node = nil
+#    self.category ? self.node.node = self.category.node : self.node.node = nil
     self.node.save!
   end
 end

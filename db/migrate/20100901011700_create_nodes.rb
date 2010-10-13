@@ -4,11 +4,12 @@ class CreateNodes < ActiveRecord::Migration
       t.string :title
       t.string :menu_name
       t.string :shortcut
-      t.belongs_to :node
+      t.belongs_to :parent
       t.boolean :displayed
       t.references :page, :polymorphic => true
       t.string :controller
       t.string :action
+      t.integer :position
 
 
       t.timestamps

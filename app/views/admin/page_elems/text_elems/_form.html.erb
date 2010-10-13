@@ -10,11 +10,11 @@
     </div>
   <% end %>
 
-  <%= render :partial => 'admin/page_elems/form_element_fields' %>
+  <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:form => f} %>
 
 
   <div class="field">
-    <%= f.label :text %><br />
+    <%= f.label :text, 'Body' %><br />
     <%= f.cktext_area :text %>
   </div>
 

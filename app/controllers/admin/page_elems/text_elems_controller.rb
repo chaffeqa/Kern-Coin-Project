@@ -4,21 +4,18 @@ class Admin::PageElems::TextElemsController < ApplicationController
 
 
   def new
-    @element = Element.new(:position => params[:position], :column_order => Element.set_highest_column_order(params[:position]), :title => '', :display_title => true)
-    @text_elem = @element.elem=TextElem.new
+    @text_elem = TextElem.new
+    @text_elem.build_element(:page_area => params[:page_area], :display_title => true)
   end
 
 
   def edit
-    @element = @text_elem.element
   end
 
 
   def create
-    @element = Element.new(:position => params[:position], :column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title])
     @text_elem = TextElem.new(params[:text_elem])
-    @element.elem= @text_elem
-    if @text_elem.save and @element.save and @node.page.elements << @element
+    if @node.page.elements << @text_elem.element and @text_elem.save
       redirect_to(shortcut_path(@node.shortcut), :notice => "Text Element successfully added!")
     else
       render :action => 'new'  
@@ -27,8 +24,7 @@ class Admin::PageElems::TextElemsController < ApplicationController
 
 
   def update
-    @element = @text_elem.element
-    if @text_elem.update_attributes(params[:text_elem]) and @element.update_attributes(:column_order => params[:column_order], :title => params[:title], :display_title => params[:display_title], :position => params[:position])
+    if @text_elem.update_attributes(params[:text_elem]) 
       redirect_to(shortcut_path(@node.shortcut), :notice => "Text Element successfully updated!")
     else
       render :action => 'edit'

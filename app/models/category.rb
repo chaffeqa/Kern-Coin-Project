@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
-  has_many :items
-  has_many :children, :class_name => "Category", :dependent => :nullify
-  belongs_to :parent, :class_name => "Category", :foreign_key => 'category_id'
+#  has_many :items
+#  has_many :children, :class_name => "Category", :dependent => :nullify
+#  belongs_to :parent, :class_name => "Category", :foreign_key => 'category_id'
 
   # Associated Node attributes
   has_one :node, :as => :page
@@ -22,7 +22,8 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :title
 
   def has_items?
-    not self.items.empty?
+    child = self.node.children.first
+    return child.page_type == 'Item'
   end
 
   def self.get_inventory
@@ -44,21 +45,20 @@ class Category < ActiveRecord::Base
           :title => self.title,
           :menu_name => self.title,
           :displayed => true,
-          :controller => 'inventory',
-          :action => 'category'
+          :shortcut => self.title.downcase.parameterize.html_safe
         })
     end
   end
 
   def update_node_relationships
     self.create_default_node
-    self.parent ? self.node.node = self.parent.node : self.node.node = nil
-    self.children.each do |child_category|
-      self.node.nodes << child_category.node unless self.node.nodes.exists?(child_category.node)
-    end
-    self.items.each do |item|
-      self.node.nodes << item.node unless self.node.nodes.exists?(item.node)
-    end
+#    self.parent ? self.node.node = self.parent.node : self.node.node = nil
+#    self.children.each do |child_category|
+#      self.node.nodes << child_category.node unless self.node.nodes.exists?(child_category.node)
+#    end
+#    self.items.each do |item|
+#      self.node.nodes << item.node unless self.node.nodes.exists?(item.node)
+#    end
     self.node.save!
   end
 end

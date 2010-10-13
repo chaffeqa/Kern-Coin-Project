@@ -1,0 +1,22 @@
+<% @category = @node.page %>
+
+<h1><%= @category.title %></h1>
+<p><%= @category.description %></p>
+<hr />
+
+<% if @node.children %>
+  <% has_items = @category.has_items? %>
+
+  <ul class="<%= has_items ? 'itemList' : 'categoryList'%>">
+    <% @node.children.each do |child|%>
+      <li>
+        <div class="thumbnail"> <%= link_to image_tag(child.page.thumbnail_image ? child.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(child.shortcut) %> </div>
+        <p class="title"><%= link_to ( has_items ? child.page.name : child.page.title), shortcut_path(child.shortcut) %></p>
+        <% if has_items %> <!--p class="cost"><%= number_to_currency(child.page.cost) %></p--> <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>This category has no items or sub categories</p>
+<% end %>

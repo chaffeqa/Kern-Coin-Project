@@ -1,8 +1,8 @@
 <article class="category">
   <h1 class="title">Select a category to see further information and sub-categories within that region...</h1>
   <ul class="categoryList">
-    <% Category.get_inventory.children.each do |category| %>
-      <li><%= link_to category.title, inventory_category_path(category) %></li>
+    <% Category.get_inventory.node.children.each do |child| %>
+      <li><%= link_to child.page.title, shortcut_path(child.shortcut) %></li>
     <% end %>
   </ul>
 </article>

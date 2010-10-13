@@ -13,3 +13,7 @@ gem 'paperclip'
 gem 'simple-navigation'#, :git => 'git://github.com/andi/simple-navigation.git'
   
 gem 'devise'
+
+gem 'acts_as_tree', :git => 'git://github.com/parasew/acts_as_tree.git'
+
+gem 'acts_as_list'

@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   layout 'static_page'
 
   def categories_for_items(items = Item.all)
-    items.collect {|item| item.category}.uniq
+    items.collect {|item| item.node.parent.page}.uniq
   end
 
   def get_home_node
     unless @home_node
-      @home_node = Node.where(:menu_name => 'Home').first
+      @home_node = Node.root
       if @home_node.nil?
         create_home_node
       end

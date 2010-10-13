@@ -1,10 +1,13 @@
-<div class="field">
-  <%= label_tag :title, 'Title' %><br/>
-  <%= text_field_tag :title, @element.title %>  &nbsp;
-  <%= check_box_tag :display_title, true, :checked=>@element.display_title %> &nbsp;
-  <%= label_tag :display_title, 'Display Title?' %>
 
-  <%= hidden_field_tag :column_order, @element.column_order %>
-  <%= hidden_field_tag :position, @element.position %>
-  <%= hidden_field_tag :shortcut, @shortcut %>
-</div>
+<%= hidden_field_tag :shortcut, @shortcut %>
+
+<%= form.fields_for :element do |element_f| %>
+  <div class="field">
+    <%= element_f.label :title %><br />
+    <%= element_f.text_field :title %> &nbsp;
+    <%= element_f.check_box :display_title %> &nbsp;
+    <%= element_f.label :display_title, "Display Title?" %>
+  </div>
+  <%= element_f.hidden_field :page_area %>
+  <%#= element_f.hidden_field :position %>
+<% end %>

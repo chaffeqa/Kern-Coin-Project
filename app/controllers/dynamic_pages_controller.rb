@@ -16,8 +16,8 @@ class DynamicPagesController < ApplicationController
   def new_element
     if request.post?
       respond_to do |format|
-        format.html { redirect_to(:controller => "admin/page_elems/#{params[:elem_controller]}", :action => 'new', :shortcut => params[:shortcut], :position => params[:position]) }
-        format.js { redirect_to(:controller => "admin/page_elems/#{params[:elem_controller]}", :action => 'new', :shortcut => params[:shortcut], :position => params[:position], :format => :js) }
+        format.html { redirect_to(:controller => "admin/page_elems/#{params[:elem_controller]}", :action => 'new', :shortcut => params[:shortcut], :page_area => params[:page_area]) }
+        format.js { redirect_to(:controller => "admin/page_elems/#{params[:elem_controller]}", :action => 'new', :shortcut => params[:shortcut], :page_area => params[:page_area], :format => :js) }
       end
     else
       flash[:alert] = "Error in building a new element."

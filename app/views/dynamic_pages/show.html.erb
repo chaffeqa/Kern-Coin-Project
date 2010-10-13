@@ -2,7 +2,7 @@
      and insert admin stuff all over the place. We'll let it slide for now...
 -->
 <% @dynamic_page = @dynamic_page || @node.page %>
-<% @elements = @elements || @dynamic_page.elements.elem_order %>
+<% @elements = @elements || @dynamic_page.elements %>
 <%= render :partial => "dynamic_pages/#{@node.page.underscore_template_name}" %>
 
 <% content_for :page_admin_bar do %>

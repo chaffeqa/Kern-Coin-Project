@@ -1,5 +1,4 @@
 KernCoinProject::Application.routes.draw do
-
   root :to => 'dynamic_pages#home'
 
   match "error" => 'shortcut#error', :as => :error
@@ -7,11 +6,12 @@ KernCoinProject::Application.routes.draw do
   devise_for :admins
   
   resources :elements, :only => [:destroy] do
-    get :move, :on => :member
+    post :move_up, :on => :member
+    post :move_down, :on => :member
   end
   
   # Auctions Module
-  get "auctions/index"
+#  get "auctions/index"
   #  scope :module => "auction" do
   #    # CustomerAuctions Controller
   #    match "auctions/categories" => 'customer_auctions#categories', :as => :auctions_categories
@@ -22,9 +22,9 @@ KernCoinProject::Application.routes.draw do
   #  end
 
   # Inventory Controller
-  match 'inventory/category/:id' => 'inventory#category', :as => :inventory_category
+#  match 'inventory/category/:id' => 'inventory#category', :as => :inventory_category
   get 'inventory/list', :as => :inventory_list
-  match 'inventory/item/:id' => 'inventory#item', :as => :inventory_item
+#  match 'inventory/item/:id' => 'inventory#item', :as => :inventory_item
 
   # Questions for 'Contact Us'
   resources :questions, :only => [:new, :create]
@@ -37,7 +37,10 @@ KernCoinProject::Application.routes.draw do
     resources :blogs, :except => [:show] do
       resources :posts, :except => [:index]
     end
-    resources :categories, :except => [:show]
+    resources :categories, :except => [:show] do
+      post :move_up, :on => :member
+      post :move_down, :on => :member
+    end
     resources :questions, :only => [:index, :show, :destroy]
     scope :module => 'page_elems' do
       resources :blog_elems, :except => [:index, :show]
@@ -52,7 +55,7 @@ KernCoinProject::Application.routes.draw do
   match '/admin/:controller/:action(/:id)'
   match '/:controller/:action(/:id)'
   match ':shortcut' => 'shortcut#route', :as => :shortcut
-  match ':shortcut/:position/new_element' => 'dynamic_pages#new_element', :as => :new_element
+  match ':shortcut/:page_area/new_element' => 'dynamic_pages#new_element', :as => :new_element
 
   
 end

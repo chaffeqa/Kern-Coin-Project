@@ -15,6 +15,7 @@ class ShortcutController < ApplicationController
     if @shortcut
       @similar_nodes = Node.where(["shortcut LIKE ?", @shortcut])
     end
+    render('error_page/error')
   end
 
 end

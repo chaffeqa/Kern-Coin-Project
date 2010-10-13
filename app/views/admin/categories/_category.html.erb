@@ -1,13 +1,15 @@
 <li title="<%= category.description || 'No Description' %>">
   <%= link_to category.title, category.node.url %> &nbsp;
   <%= link_to 'Edit', edit_admin_category_path(category), :class => "btn small" %>
-  <%= link_to 'Delete', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %>
+  <%= link_to 'Move Up', move_up_admin_category_path(category), :class => "btn small", :method => :post %>
+  <%= link_to 'Move Down', move_down_admin_category_path(category), :class => "btn small", :method => :post %>
+  <%= link_to 'X', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %>
 </li>
 
-<% unless category.children.empty? %>
+<% unless category.node.children.categories.empty? %>
   <ul>
-    <% category.children.each do |category| %>
-      <%= render :partial => 'category', :locals => {:category => category} %>
+    <% category.node.children.categories.each do |node| %>
+      <%= render :partial => 'category', :locals => {:category => node.page} %>
     <% end %>
   </ul>
 <% end %>

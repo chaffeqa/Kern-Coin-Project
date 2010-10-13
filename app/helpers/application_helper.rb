@@ -93,26 +93,20 @@ module ApplicationHelper
     ret
   end
 
-  def options_tree_recursive(node, addition)
+  def dynamic_pages_options_tree_recursive(node, addition)
     array = []
-    node.nodes.each do |childnode|
-      if childnode.shortcut and not childnode.shortcut == ""
-        array << ["#{addition} #{childnode.menu_name}", "#{childnode.id}"]
-        unless childnode.nodes.empty?
-          array += options_tree_recursive(childnode, "#{addition}---")
-        end
-      end
+    array << ["#{addition} #{node.menu_name}", "#{node.id}"]
+    node.children.dynamic_pages.each do |childnode|
+      array += dynamic_pages_options_tree_recursive(childnode, "#{addition}---")
     end
     array
   end
 
-  def cat_options_tree_recursive(category, addition)
+  def cat_options_tree_recursive(node, addition)
     array = []
-    category.children.each do |childcat|
-      array << ["#{addition} #{childcat.title}", "#{childcat.id}"]
-      unless childcat.children.empty?
-        array += cat_options_tree_recursive(childcat, "#{addition}---")
-      end
+    array << ["#{addition} #{node.title}", "#{node.id}"]
+    node.children.categories.each do |childnode|
+      array += cat_options_tree_recursive(childnode, "#{addition}---")
     end
     array
   end

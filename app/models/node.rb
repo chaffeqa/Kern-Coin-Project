@@ -1,7 +1,16 @@
 class Node < ActiveRecord::Base
-  belongs_to :node
-  has_many :nodes, :dependent => :nullify
+#  belongs_to :parent
+#  has_many :children, :dependent => :nullify
   belongs_to :page, :polymorphic => true
+
+  acts_as_tree :order => 'position'
+  acts_as_list :scope => :parent_id
+
+  scope :displayed, where(:displayed => true)
+  scope :dynamic_pages, where(:page_type => 'DynamicPage')
+  scope :categories, where(:page_type => 'Category')
+
+#  validates_uniqueness_of :shortcut
   
   PAGE_TYPES = [
     "Inventory",
@@ -28,5 +37,9 @@ class Node < ActiveRecord::Base
       return "/#{self.controller}"
     end
     return "/#{self.shortcut}"
+  end
+
+  def self.blog_node
+    self.where(:title => 'Blogs').first
   end
 end

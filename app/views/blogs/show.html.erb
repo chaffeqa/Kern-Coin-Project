@@ -17,3 +17,9 @@
     </li>
   <% end %>
 </ul>
+
+<% content_for :page_admin_bar do %>
+  <%= link_to('Blog Settings',  edit_admin_blog_path(@node.page), :class => 'btn large') %>
+  <%= link_to('New Post',  new_admin_blog_post_path(@node.page), :class => 'btn large') %>
+  <%= link_to('Preview Blog',  '#', :class => 'btn yellow large', :id => 'preview') %>
+<% end %>
