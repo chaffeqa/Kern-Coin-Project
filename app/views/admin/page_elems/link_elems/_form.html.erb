@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
+  <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:form => f} %>
 
   <div class="field">
     <%= f.label :link_name %><br />
@@ -22,7 +22,7 @@
     <%= f.label :link_type %><br />
     <%= f.select :link_type, LinkElem.link_type_options %> &nbsp;
 
-    <span id="link_url_select"><%= render :partial => 'link_url_select', :locals => {:f => f} %></span>
+    <span id="link_url_select"><%= render :partial => 'link_url_select', :locals => {:form => f} %></span>
 
     <script type="text/javascript" >
       $(function() {

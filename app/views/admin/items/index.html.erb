@@ -5,21 +5,16 @@
 <table>
   <tr>
     <th>Item</th>
-    <th>Description</th>
+    <th>Name</th>
     <th>Price</th>
   </tr>
 
   <% @items.each do |item| %>
     <tr>
-      <td class="thumb">
-	<% if item.main_image %>
-	<%= image_tag item.main_image.thumbnail_image %>
-	<% else %>
-	<%= image_tag "items/no_image.gif" %>
-	<% end %>
-
+      <td class="itemThumb">
+	<%= link_to (item.main_image ? image_tag(item.main_image.thumbnail_image) : image_tag("items/no_image.gif") ), shortcut_path(item.node.shortcut) %>
       </td>
-      <td><%=raw item.details %></td>
+      <td><%= item.name %></td>
       <td><%= number_to_currency(item.cost) %></td>
       <td><%= link_to 'Show', shortcut_path(item.node.shortcut), :class => "btn small" %></td>
       <td><%= link_to 'Edit', edit_admin_item_path(item), :class => "btn small" %></td>
