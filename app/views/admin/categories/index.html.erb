@@ -2,7 +2,7 @@
 
 <p><%= link_to 'New Category', new_admin_category_path, :class => "btn large" %></p>
 
-<ul>
+<ul class="categoryList">
   <%= render :partial => 'category', :locals => {:category => @inventory} %>
 </ul>
 <br />

@@ -28,6 +28,10 @@
 	#adminPage tfoot th {}
 	#adminPage tfoot td {}
 
+#adminPage ul.categoryList { margin: 0 5em 0 0; }
+#adminPage ul.categoryList ul { margin: 0 0 0 1em; }
+#adminPage ul.categoryList li { clear: both; padding: 1px 0 1px .7em; border-top: 1px solid #f0f0f0;}
+#adminPage ul.categoryList li .right { float: right; }
 
 #adminBar {
 	height: 30px;

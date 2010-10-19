@@ -21,7 +21,7 @@
       </td>
       <td><%=raw item.details %></td>
       <td><%= number_to_currency(item.cost) %></td>
-      <td><%= link_to 'Show', inventory_item_path(item), :class => "btn small" %></td>
+      <td><%= link_to 'Show', shortcut_path(item.node.shortcut), :class => "btn small" %></td>
       <td><%= link_to 'Edit', edit_admin_item_path(item), :class => "btn small" %></td>
       <td><%= link_to 'Delete', admin_item_path(item), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %></td>
     </tr>
