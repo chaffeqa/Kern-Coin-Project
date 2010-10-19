@@ -1,2 +1,3 @@
-<%= link_to 'Move Up', move_up_element_path(element), :class => 'btn small', :method => :post %>
-<%= link_to 'Move Down', move_down_element_path(element), :class => 'btn small', :method => :post %>
+<%= link_to 'X', admin_text_elem_path(element, :shortcut => @node.shortcut) , :confirm => "Are you sure?", :method => :delete, :class => 'btn control small' %>
+<%= link_to raw('&darr;'), move_down_element_path(element), :title => 'Move element down', :class => 'btn control small', :method => :post %>
+<%= link_to raw('&uarr;'), move_up_element_path(element), :title => 'Move element up', :class => 'btn control small', :method => :post %>
