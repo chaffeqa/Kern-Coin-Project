@@ -1,7 +1,7 @@
 <%= form_for([:admin,@blog, @post]) do |tf| %>
   <% if @post.errors.any?   %>
     <div id="error_explanation">
-      <h2><%= pluralize((@post.errors.count), "error") %> prohibited this Blog from being saved:</h2>
+      <h2><%= pluralize((@post.errors.count), "error") %> prohibited this Post from being saved:</h2>
       <ul>
         <% @post.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -12,15 +12,12 @@
 
   <%= tf.fields_for :node do |f| %>
     <div class="field">
-      <%= f.check_box :displayed %>
-      <%= f.label :displayed, "Display Post?" %>
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= tf.label :title %><br />
-    <%= tf.text_field :title %>
-  </div>
+
 
   <div class="field">
     <%= tf.label :body, "Body" %><br />

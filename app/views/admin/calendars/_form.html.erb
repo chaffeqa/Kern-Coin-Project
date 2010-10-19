@@ -1,0 +1,45 @@
+<%= form_for([:admin,@calendar]) do |tf| %>
+  <% if @calendar.errors.any?   %>
+    <div id="error_explanation">
+      <h2><%= pluralize((@calendar.errors.count), "error") %> prohibited this calendar from being saved:</h2>
+      <ul>
+        <% @calendar.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= tf.fields_for :node do |f| %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :shortcut %><br />
+      http://localhost/<%= f.text_field :shortcut %>
+    </div>
+
+  <% end %>
+
+
+
+  <div class="field">
+    <%= tf.label :banner, "Calendar Banner" %><br />
+    <%= tf.cktext_area :banner %>
+  </div>
+
+  <div class="field">
+    <%= tf.label :event_color %><br />
+    <%= tf.select :event_color, color_select %>
+  </div>
+  <div class="field">
+    <%= tf.label :background_color %><br />
+    <%= tf.select :background_color, color_select %>
+  </div>
+
+
+  <div class="actions">
+    <%= tf.submit %>
+  </div>
+<% end %>

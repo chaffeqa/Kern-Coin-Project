@@ -9,8 +9,11 @@ class Node < ActiveRecord::Base
   scope :displayed, where(:displayed => true)
   scope :dynamic_pages, where(:page_type => 'DynamicPage')
   scope :categories, where(:page_type => 'Category')
+  scope :calendars, where(:page_type => 'Calendar')
 
-#  validates_uniqueness_of :shortcut
+  validates_presence_of :shortcut, :title
+  validate :shortcut_html_safe?
+  validates_uniqueness_of :shortcut
   
   PAGE_TYPES = [
     "Inventory",
@@ -25,6 +28,13 @@ class Node < ActiveRecord::Base
     "Archives - Magazine",
     "Auction"
   ]
+
+
+  def shortcut_html_safe?
+    errors.add(:shortcut, "Shortcut cannot contain spaces") if shortcut.include? " "
+    errors.add(:shortcut, "Shortcut cannot contain slashes") if shortcut.include? "/"
+    errors.add(:shortcut, "Shortcut cannot contain '?'") if shortcut.include? "?"
+  end
 
   def url
     if self.controller and self.action and self.page_id
@@ -42,4 +52,10 @@ class Node < ActiveRecord::Base
   def self.blog_node
     self.where(:title => 'Blogs').first
   end
+
+
+  def self.calendar_node
+    self.where(:title => 'Calendars').first
+  end
+
 end
