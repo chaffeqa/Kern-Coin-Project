@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  banner: MyText
+  event_color: MyString
+  background_color: MyString
+
+two:
+  title: MyString
+  banner: MyText
+  event_color: MyString
+  background_color: MyString

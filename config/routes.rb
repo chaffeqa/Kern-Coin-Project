@@ -1,4 +1,5 @@
 KernCoinProject::Application.routes.draw do
+
   root :to => 'dynamic_pages#home'
 
   match "error" => 'shortcut#error', :as => :error
@@ -23,7 +24,7 @@ KernCoinProject::Application.routes.draw do
 
   # Inventory Controller
 #  match 'inventory/category/:id' => 'inventory#category', :as => :inventory_category
-  get 'inventory/list', :as => :inventory_list
+  
 #  match 'inventory/item/:id' => 'inventory#item', :as => :inventory_item
 
   # Questions for 'Contact Us'
@@ -42,8 +43,12 @@ KernCoinProject::Application.routes.draw do
       post :move_down, :on => :member
     end
     resources :questions, :only => [:index, :show, :destroy]
+    resources :calendars, :except => [:show] do
+      resources :events, :except => [:index]
+    end
     scope :module => 'page_elems' do
       resources :blog_elems, :except => [:index, :show]
+      resources :calendar_elems, :except => [:index, :show]
       resources :text_elems, :except => [:index, :show]
       resources :link_elems, :except => [:index] do
         post :file, :on => :member
@@ -51,9 +56,13 @@ KernCoinProject::Application.routes.draw do
     end
   end
 
+
+
+  match ':shortcut(/:year(/:month))' => 'shortcut#route', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  match 'Inventory/item_list' => 'inventory#list', :as => :inventory_list
   
-  match '/admin/:controller/:action(/:id)'
-  match '/:controller/:action(/:id)'
+#  match '/admin/:controller/:action(/:id)'
+#  match '/:controller/:action(/:id)'
   match ':shortcut' => 'shortcut#route', :as => :shortcut
   match ':shortcut/:page_area/new_element' => 'dynamic_pages#new_element', :as => :new_element
 

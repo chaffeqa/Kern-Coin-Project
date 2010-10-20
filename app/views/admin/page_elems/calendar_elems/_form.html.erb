@@ -1,0 +1,58 @@
+<%= form_for([:admin,@calendar_elem])  do |f| %>
+  <% if @calendar_elem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize((@calendar_elem.errors.count ), "error") %> prohibited this element from being saved:</h2>
+      <ul>
+        <% @calendar_elem.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
+
+  <div class="field">
+    <%= f.label :calendar_id %><br />
+    <%= f.select( :calendar_id, options_for_select(calendar.all.map {|calendar| [calendar.node.title, calendar.id]}) ) %>
+  </div>
+
+
+  <% if f.object.new_record? %>
+    <div class="field">
+      <%= link_to 'Create New calendar', new_admin_calendar_path %>
+    </div>
+    <div class="field">
+      <%= f.label :display_type %>
+      <%= f.select :display_type, options_for_select(calendarElem.display_type_select) %>
+    </div>
+  <% else %>
+    <%= link_to 'Edit calendar', edit_admin_calendar_path(f.object.calendar_id) %>
+    <div class="field">
+      <%= f.label :display_type %>
+      <%= f.select :display_type, options_for_select(CalendarElem.display_type_select, f.object.display_type) %>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= f.label :max_days_in_past, 'Limit the oldest events to be listed:' %><br />
+    <%= f.date_select :max_days_in_past %>
+  </div>
+
+  <div class="field">
+    <%= f.label :max_days_in_future, 'Limit the furthest future events to be listed:' %><br />
+    <%= f.date_select :max_days_in_future %>
+  </div>
+
+  <div class="field">
+    <%= f.label :max_events_shown, 'Limit the maximum number of events listed' %><br />
+    <%= f.text_field :max_events_shown %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

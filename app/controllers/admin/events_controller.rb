@@ -1,0 +1,52 @@
+class Admin::EventsController < ApplicationController
+  layout 'admin'
+  before_filter :check_admin
+  before_filter :get_node, :except => [:new, :create]
+
+
+  def new
+    @calendar = Calendar.find(params[:calendar_id])
+    @event = @calendar.events.new
+    @event.build_node(:displayed => true)
+  end
+
+
+  def edit
+    @event.build_node(:displayed => true) unless @event.node
+  end
+
+
+  def create
+    @calendar = Calendar.find(params[:calendar_id])
+    @event = @calendar.events.build(params[:event])
+    if @calendar.node.children << @event.node and @event.save
+      redirect_to( shortcut_path(@event.node.shortcut), :notice => 'Event was successfully created.')
+    else
+      render :action => "new"
+    end
+  end
+
+
+  def update
+    if @event.update_attributes(params[:event])
+      redirect_to( shortcut_path(@node.shortcut), :notice => 'Event was successfully updated.')
+    else
+      render :action => "edit"
+    end
+  end
+
+
+  def destroy
+    @event.destroy
+    redirect_to( shortcut_path(@calendar.node.shortcut), :notic => 'Event was successfully destroyed' )
+  end
+
+  private
+
+  def get_node
+    @calendar = Calendar.find(params[:calendar_id])
+    @event = Event.find(params[:id])
+    @node = @event.node
+    super
+  end
+end

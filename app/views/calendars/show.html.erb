@@ -1,0 +1,22 @@
+<%= content_for :head do %>
+  <!-- Probably move the stylesheet to you layout. Also make sure you include the javascript. -->
+  <%= stylesheet_link_tag "event_calendar" %>
+  <%= javascript_include_tag "event_calendar" %>
+<% end %>
+
+<% @calendar = @node.page
+@month = (params[:month] || Time.zone.now.month).to_i
+@year = (params[:year] || Time.zone.now.year).to_i
+@shown_month = Date.civil(@year, @month)
+@event_strips = @calendar.events.event_strips_for_month(@shown_month)
+%>
+
+<h1><%= @calendar.title %></h1>
+<%=raw @calendar.banner %>
+<%= raw(event_calendar) %>
+
+<% content_for :page_admin_bar do %>
+  <%= link_to('Calendar Settings',  edit_admin_blog_path(@calendar), :class => 'btn large') %>
+  <%= link_to('New Event',  new_admin_calendar_event_path(@calendar), :class => 'btn large') %>
+  <%= link_to('Preview Calendar',  '#', :class => 'btn yellow large', :id => 'preview') %>
+<% end %>

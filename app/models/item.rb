@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-#  belongs_to :category
+  #  belongs_to :category
   has_many :product_images, :limit => 10
   has_one :main_image, :class_name => "ProductImage", :conditions => {:primary_image => true}
   accepts_nested_attributes_for :product_images, :allow_destroy => true, :reject_if => proc { |attributes| attributes['image'].blank? }
@@ -7,10 +7,9 @@ class Item < ActiveRecord::Base
   # Associated Node attributes
   has_one :node, :as => :page
   accepts_nested_attributes_for :node
-  after_save :update_node_relationships
-
-
-  validates_presence_of :name, :item_id, :cost
+  
+  validates_associated :node
+  validates_presence_of :item_id, :cost, :name
   validates_numericality_of :cost
 
   scope :get_for_sale, where(:for_sale => true)
@@ -28,22 +27,25 @@ class Item < ActiveRecord::Base
     return self.details[0,30] << "..."
   end
 
-  def create_default_node
+  def default_node
     unless self.node
       self.create_node({
           :title => self.name,
           :menu_name => self.name,
           :displayed => true,
-          :shortcut => self.name.downcase.parameterize.html_safe
-#          :controller => 'inventory',
-#          :action => 'item'
+          :shortcut => self.name.parameterize.html_safe
         })
+    else
+      self.node.update_attributes(
+        :name => self.name,
+        :menu_name => self.name,
+        :shortcut => self.name.parameterize.html_safe 
+      )
     end
   end
 
-  def update_node_relationships
-    self.create_default_node
-#    self.category ? self.node.node = self.category.node : self.node.node = nil
+  def update_node
+    self.default_node
     self.node.save!
   end
 end

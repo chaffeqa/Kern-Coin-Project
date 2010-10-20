@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  display_style: MyString
+  max_events_shown: 1
+  max_days_in_past: 1
+  max_days_in_future: 1
+  calendar: 
+
+two:
+  display_style: MyString
+  max_events_shown: 1
+  max_days_in_past: 1
+  max_days_in_future: 1
+  calendar: 

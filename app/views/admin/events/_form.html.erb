@@ -1,0 +1,34 @@
+<%= form_for([:admin,@calendar, @event]) do |tf| %>
+  <% if @event.errors.any?   %>
+    <div id="error_explanation">
+      <h2><%= pluralize((@event.errors.count), "error") %> prohibited this Event from being saved:</h2>
+      <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= tf.fields_for :node do |f| %>
+    <div class="field">
+      <%= f.check_box :displayed %>
+      <%= f.label :displayed, "Display Event?" %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= tf.label :title %><br />
+    <%= tf.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= tf.label :description, "Event Description" %><br />
+    <%= tf.cktext_area :description %>
+  </div>
+
+
+  <div class="actions">
+    <%= tf.submit %>
+  </div>
+<% end %>
