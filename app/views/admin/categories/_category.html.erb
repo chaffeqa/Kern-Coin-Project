@@ -1,10 +1,12 @@
 <li title="<%= category.description || 'No Description' %>">
   <%= link_to category.title, category.node.url %> &nbsp;
+
+  <span class="right">
   <%= link_to 'Edit', edit_admin_category_path(category), :class => "btn small" %>
-  <%= link_to 'Move Up', move_up_admin_category_path(category), :class => "btn small", :method => :post %>
-  <%= link_to 'Move Down', move_down_admin_category_path(category), :class => "btn small", :method => :post %>
+  <%#= link_to raw('&uarr;'), move_up_admin_category_path(category), :class => "btn small", :method => :post %>
+  <%#= link_to raw('&darr;'), move_down_admin_category_path(category), :class => "btn small", :method => :post %>
   <%= link_to 'X', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %>
-</li>
+  </span>
 
 <% unless category.node.children.categories.empty? %>
   <ul>
@@ -13,3 +15,4 @@
     <% end %>
   </ul>
 <% end %>
+</li>

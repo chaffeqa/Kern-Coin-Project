@@ -3,14 +3,14 @@
 <table>
   <tr>
     <th>Date</th>
-    <th>Title</th>
+    <th>From</th>
     <th>Subject</th>
   </tr>
 
   <% @questions.each do |question| %>
     <tr>
       <td><%= question.created_at %></td>
-      <td><%= question.title %></td>
+      <td><%= question.last_name %>, <%= question.first_name %></td>
       <td><%= question.subject %></td>
       <td><%= link_to 'Show', admin_question_path(question) %></td>
       <td><%= link_to 'Destroy', admin_question_path(question), :confirm => 'Are you sure?', :method => :delete %></td>

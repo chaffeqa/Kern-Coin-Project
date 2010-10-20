@@ -5,7 +5,6 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Menu Name</th>
     <th>Shortcut</th>
     <th>Template</th>
     <th>Displayed</th>
@@ -14,10 +13,9 @@
   <% @dynamic_pages.each do |dynamic_page| %>
     <tr>
       <td><%= dynamic_page.node.title %></td>
-      <td><%= dynamic_page.node.menu_name %></td>
       <td><%= dynamic_page.node.shortcut %></td>
       <td><%= dynamic_page.template_name %></td>
-      <td><%= dynamic_page.node.displayed %></td>
+      <td><%= dynamic_page.node.displayed ? "Yes" : "No" %></td>
       <td><%= link_to 'Show', shortcut_path(dynamic_page.node.shortcut), :class => "btn small" %></td>
       <td><%= link_to 'Edit', edit_admin_dynamic_page_path(dynamic_page), :class => "btn small" %></td>
       <td><%= link_to 'Destroy', admin_dynamic_page_path(dynamic_page), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %></td>
