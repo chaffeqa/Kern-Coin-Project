@@ -11,15 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
 
 
-    <%= f.fields_for :node do |node_f| %>
-      &nbsp; <%= node_f.check_box :displayed %> &nbsp;
-      <%= node_f.label :displayed, 'Display Category?' %>
-    </div>
+  <%= f.fields_for :node do |node_f| %>
+    <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
     <% unless f.object.title == 'Inventory' %>
       <div class="field">
         <%= node_f.label :parent_id, 'Parent Category' %><br />
@@ -34,13 +29,14 @@
     <% end %>
   <% end %>
 
-
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
-
-
   <div class="field">
     <% unless f.object.new_record? %>
       <strong>Current Image:</strong><br/>

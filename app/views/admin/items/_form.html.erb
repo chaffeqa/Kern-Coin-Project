@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+  <%= f.fields_for :node do |node_f| %>
+    <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
+    <div class="field">
+      <%= node_f.label :parent_id, 'Category' %><br />
+      <% if f.object.new_record? %>
+        <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
+      <% else %>
+        <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -18,10 +30,6 @@
   <div class="field">
     <%= f.label :details %><br />
     <%= f.text_area :details %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.select :category_id, options_for_select(cat_options_tree_recursive(Category.get_inventory, '')), :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :cost, "Cost" %><br />
@@ -39,8 +47,8 @@
       <%= f.radio_button :for_sale, false %> &nbsp; <%= f.label :display, "Not For Sale" %>
     </div>
     <div class="field">
-    <%= f.radio_button :display, true %> &nbsp; <%= f.label :display, "Display Item" %><br />
-    <%= f.radio_button :display, false %> &nbsp; <%= f.label :display, "Don't Display Item" %>
+      <%= f.radio_button :display, true %> &nbsp; <%= f.label :display, "Display Item" %><br />
+      <%= f.radio_button :display, false %> &nbsp; <%= f.label :display, "Don't Display Item" %>
     </div>
   <% end %>
 

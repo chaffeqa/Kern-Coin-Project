@@ -9,16 +9,16 @@
       </ul>
     </div>
   <% end %>
-  
+
   <%= tf.fields_for :node do |f| %>
-    <div class="field">
-      <%= f.label :title %><br />
-      <%= f.text_field :title %>
-    </div>
+    <%= render :partial => 'admin/default_node_form', :locals => {:f => f} %>
   <% end %>
 
 
-
+  <div class="field">
+    <%= tf.label :title %><br />
+    <%= tf.text_field :title %>
+  </div>
   <div class="field">
     <%= tf.label :body, "Body" %><br />
     <%= tf.cktext_area :body %>

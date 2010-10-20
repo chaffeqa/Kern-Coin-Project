@@ -1,0 +1,20 @@
+<fieldset>
+  <legend>Menu Node Options</legend>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :menu_name %><br />
+    <%= f.text_field :menu_name %>
+  </div>
+  <div class="field">
+    <%= f.label :shortcut %><br />
+    http://localhost/<%= f.text_field :shortcut %>
+  </div>
+  <div class="field">
+    <%= f.check_box :displayed %> &nbsp;
+    <%= f.label :displayed, 'Display in menu tree?' %>
+  </div>
+
+</fieldset>
