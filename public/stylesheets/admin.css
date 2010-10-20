@@ -21,6 +21,23 @@
     float:right;
     width:200px;
 }
+#adminPage form p .hint a { cursor: pointer; }
+#adminPage form p span.expanded-hint {
+    display: block;
+    color: #777;
+    clear: both;
+    display: none;
+}
+#adminPage fieldset {
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+    margin-bottom: 1em;
+}
+#adminPage fieldset legend {
+    background-color: #fff;
+    font-size: 1.2em;
+    padding: 3px;
+}
 #adminPage label {
     display:inline-block;
     font-weight:bold;

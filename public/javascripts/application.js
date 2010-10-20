@@ -39,4 +39,9 @@ $(function() {
 		    preview.text('Preview Page');
 		}
 	    });
+
+	// Hint Expander
+	$(".expander").click(function() {
+		$(this).parent().siblings(".expanded-hint").toggle(200, function(){});
+	    });
     });

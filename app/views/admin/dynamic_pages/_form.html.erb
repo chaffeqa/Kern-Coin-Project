@@ -11,32 +11,35 @@
   <% end %>
 
   <%= tf.fields_for :node do |f| %>
-      <p>
-        <%= f.label :displayed, raw("&nbsp;") %>
-	<%= f.check_box :displayed %> Display Page?
-      </p>
-      <p>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-      </p>
-      <p><span class="hint">This is how the page will appear in your dynamic menus.</span>
-        <%= f.label :menu_name, "Menu Name" %>
-        <%= f.text_field :menu_name %>
-      </p>
-      <p>
-        <%= f.label :shortcut %>
-        http://localhost/<%= f.text_field :shortcut %>
-      </p>
-      <hr />
-      <p><span class="hint">Select where this page should exist within the site heirarchy.</span>
-        <%= f.label :node_id, "Parent" %>
-	<% unless @dynamic_page.node == @home_node %>
-          <%= f.select :parent_id, options_for_select(dynamic_pages_options_tree_recursive(@home_node, "")) %>
-	<% else %>
-          <%= f.select :parent_id, [["Home", ""]], :disabled => true %>
-	<% end %>
-      </p>
-      <hr />
+    <p>
+      <%= f.label :displayed, raw("&nbsp;") %>
+      <%= f.check_box :displayed %> Display as page?
+    </p>
+    <p><span class="hint"><a class="expander">explain this</a></span>
+      <%= f.label :title, "Page Title" %>
+      <%= f.text_field :title %><br />
+      <span class="expanded-hint">The page title appears in the title bar at the very top or your web browser window and is particularly important to search results so make it unique and descriptive. The page title is also shown by the "Page Title" token in your template.</span>
+    </p>
+    <p><span class="hint"><a class="expander">explain this</a></span>
+      <%= f.label :menu_name, "Menu Name" %>
+      <%= f.text_field :menu_name %><br />
+      <span class="expanded-hint">The menu name is used to display your page in the menus of your website. This is useful for making a long page title shorter and more manageable in menus.</span>
+    </p>
+    <p><span class="hint"><a class="expander">explain this</a></span>
+      <%= f.label :shortcut %>
+      http://www.jkerncoins.com/<%= f.text_field :shortcut %>
+      <span class="expanded-hint">The shortcut is used to give this page an easy to remember direct address. For example if you make your shortcut “<strong>New Product</strong>”, then anyone can type “<strong>www.yourwebsite.com/new-product</strong>” to visit it. This is useful for adding keywords to URLs for search engine marketing, traditional marketing, and creating easy-to-remember landing pages.</span>
+    </p>
+    <hr />
+    <p><span class="hint">Select where this page should exist within the site heirarchy.</span>
+      <%= f.label :node_id, "Parent" %>
+      <% unless @dynamic_page.node == @home_node %>
+      <%= f.select :parent_id, options_for_select(dynamic_pages_options_tree_recursive(@home_node, "")) %>
+      <% else %>
+      <%= f.select :parent_id, [["Home", ""]], :disabled => true %>
+      <% end %>
+    </p>
+    <hr />
   <% end %>
 
   <p><span class="hint">Choose the template you would like this page to use.</span>
