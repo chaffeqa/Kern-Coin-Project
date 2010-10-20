@@ -7,28 +7,19 @@
     <%= render :partial => 'elements/element_controls', :locals => {:element => elem.element} %>
   </span>
 <% end %>
+
+<%
+blog = elem.blog
+posts = blog.posts
+posts = posts.limit(elem.count_limit) unless elem.count_limit.nil?
+posts = posts.where("posts.created_at >= ?", elem.past_limit) unless elem.past_limit.nil?
+%>
+
+
 <div class="blogList">
   <% if elem.element.display_title %><h1 class="title  <%= elem.element.html_id %> "><%= elem.element.title %></h1><% end %>
   <a class="rss" href="/feed">Subscribe</a>
 
-
-  <% 
-    posts = elem.blog.posts
-    posts = posts.limit(elem.count_limit) unless elem.count_limit.nil?
-    posts = posts.where("posts.created_at >= ?", elem.past_limit) unless elem.past_limit.nil?
-  %>
-
-
-
-  <ul>
-    <% posts.each do |post| %>
-      <li>
-        <h2 class="postTitle"><% if admin? %><%= link_to "Edit", edit_admin_blog_post_path(elem.blog, post) %><% end %> <%= link_to post.title, shortcut_path(post.node.shortcut) %></h2>
-        <div class="postInfo"><span class="postDate"><%= post.updated_at.strftime("%I %p - %b %d, %Y") %> </span></div>
-        <% if elem.display_type == 'List with Body' %><div class="postBody"><%=raw post.body %></div><% end %>
-      </li>
-    <% end %>
-  </ul>
-
+  <%= render :partial => elem.display_type_partial, :locals => {:blog => blog, :posts => posts} %>
 
 </div>

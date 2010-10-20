@@ -215,7 +215,7 @@ end
 usterri = Category.where(:title => 'U.S. Territorial Gold').first
 usterri_categories = Category.create([
     { :title => 'California', :node_attributes=>{:menu_name => 'California', :title => 'California', :shortcut => 'California', :displayed => true} },
-    { :title => 'Southern-North Carolina and Georgia', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true} }
+    { :title => 'Southern-North Carolina and Georgia', :node_attributes=>{:menu_name => 'Southern-North Carolina and Georgia', :title => 'Southern-North Carolina and Georgia', :shortcut => 'Southern-North-Carolina-and-Georgia', :displayed => true} }
   ])
 usterri_categories.each do |category|
   usterri.node.children << category.node
@@ -228,7 +228,7 @@ end
 # Third Tier
 ancient_greek = Category.where(:title => 'Greek').first
 ancient_greek_categories = Category.create([
-    { :title => 'Alexander the Great and Family', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
+    { :title => 'Alexander the Great and Family', :node_attributes=>{:menu_name => 'Alexander the Great and Family', :title => 'Alexander the Great and Family', :shortcut => 'Alexander-the-Great-and-Family', :displayed => true}  },
     { :title => 'Egypt of the Greek Ptolemies', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  }
   ])
 ancient_greek_categories.each do |category|
@@ -236,65 +236,65 @@ ancient_greek_categories.each do |category|
 end
 foreign_aust_hung = Category.where(:title => 'Austro-Hungarian Lands and Cities').first
 foreign_aust_hung_categories = Category.create([
-    { :title => 'Salzburg ', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  }
+    { :title => 'Salzburg', :node_attributes=>{:menu_name => 'Salzburg', :title => 'Salzburg', :shortcut => 'Salzburg', :displayed => true}  }
   ])
 foreign_aust_hung_categories.each do |category|
   foreign_aust_hung.node.children << category.node
 end
 foreign_france = Category.where(:title => 'France').first
 foreign_france_categories = Category.create([
-    { :title => 'French Colonies ', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  }
+    { :title => 'French Colonies', :node_attributes=>{:menu_name => 'French Colonies', :title => 'French Colonies', :shortcut => 'French-Colonies', :displayed => true}  }
   ])
 foreign_france_categories.each do |category|
   foreign_france.node.children << category.node
 end
 foreign_germany = Category.where(:title => 'Germany').first
 foreign_germany_categories = Category.create([
-    { :title => 'Augsburg', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Bavaria', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Brandenburg-Bayreuth', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Bruns/Lune/Calen/Hann', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Brunswick Wolfenbuttel', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Brunswick-Luneburg', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Frankfurt', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Hamburg', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Hesse-Cassel', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Hesse-Homburg', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Jever', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Julich-Berg', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Montfort', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Nurnberg', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Prussia', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Regensburg', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Saxe-Meiningen', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Saxony', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Westphalia', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Wurttemberg', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  }
+    { :title => 'Augsburg', :node_attributes=>{:menu_name => 'Augsburg', :title => 'Augsburg', :shortcut => 'Augsburg', :displayed => true}  },
+    { :title => 'Bavaria', :node_attributes=>{:menu_name => 'Bavaria', :title => 'Bavaria', :shortcut => 'Bavaria', :displayed => true}  },
+    { :title => 'Brandenburg-Bayreuth', :node_attributes=>{:menu_name => 'Brandenburg-Bayreuth', :title => 'Brandenburg-Bayreuth', :shortcut => 'Brandenburg-Bayreuth', :displayed => true}  },
+    { :title => 'Bruns/Lune/Calen/Hann', :node_attributes=>{:menu_name => 'Bruns/Lune/Calen/Hann', :title => 'Bruns/Lune/Calen/Hann', :shortcut => 'Bruns-Lune-Calen-Hann', :displayed => true}  },
+    { :title => 'Brunswick Wolfenbuttel', :node_attributes=>{:menu_name => 'Brunswick Wolfenbuttel', :title => 'Brunswick Wolfenbuttel', :shortcut => 'Brunswick-Wolfenbuttel', :displayed => true}  },
+    { :title => 'Brunswick-Luneburg', :node_attributes=>{:menu_name => 'Brunswick-Luneburg', :title => 'Brunswick-Luneburg', :shortcut => 'Brunswick-Luneburg', :displayed => true}  },
+    { :title => 'Frankfurt', :node_attributes=>{:menu_name => 'Frankfurt', :title => 'Frankfurt', :shortcut => 'Frankfurt', :displayed => true}  },
+    { :title => 'Hamburg', :node_attributes=>{:menu_name => 'Hamburg', :title => 'Hamburg', :shortcut => 'Hamburg', :displayed => true}  },
+    { :title => 'Hesse-Cassel', :node_attributes=>{:menu_name => 'Hesse-Cassel', :title => 'Hesse-Cassel', :shortcut => 'Hesse-Cassel', :displayed => true}  },
+    { :title => 'Hesse-Homburg', :node_attributes=>{:menu_name => 'Hesse-Homburg', :title => 'Hesse-Homburg', :shortcut => 'Hesse-Homburg', :displayed => true}  },
+    { :title => 'Jever', :node_attributes=>{:menu_name => 'Jever', :title => 'Jever', :shortcut => 'Jever', :displayed => true}  },
+    { :title => 'Julich-Berg', :node_attributes=>{:menu_name => 'Julich-Berg', :title => 'Julich-Berg', :shortcut => 'Julich-Berg', :displayed => true}  },
+    { :title => 'Montfort', :node_attributes=>{:menu_name => 'Montfort', :title => 'Montfort', :shortcut => 'Montfort', :displayed => true}  },
+    { :title => 'Nurnberg', :node_attributes=>{:menu_name => 'Nurnberg', :title => 'Nurnberg', :shortcut => 'Nurnberg', :displayed => true}  },
+    { :title => 'Prussia', :node_attributes=>{:menu_name => 'Prussia', :title => 'Prussia', :shortcut => 'Prussia', :displayed => true}  },
+    { :title => 'Regensburg', :node_attributes=>{:menu_name => 'Regensburg', :title => 'Regensburg', :shortcut => 'Regensburg', :displayed => true}  },
+    { :title => 'Saxe-Meiningen', :node_attributes=>{:menu_name => 'Saxe-Meiningen', :title => 'Saxe-Meiningen', :shortcut => 'Saxe-Meiningen', :displayed => true}  },
+    { :title => 'Saxony', :node_attributes=>{:menu_name => 'Saxony', :title => 'Saxony', :shortcut => 'Saxony', :displayed => true}  },
+    { :title => 'Westphalia', :node_attributes=>{:menu_name => 'Westphalia', :title => 'Westphalia', :shortcut => 'Westphalia', :displayed => true}  },
+    { :title => 'Wurttemberg', :node_attributes=>{:menu_name => 'Wurttemberg', :title => 'Wurttemberg', :shortcut => 'Wurttemberg', :displayed => true}  }
   ])
 foreign_germany_categories.each do |category|
   foreign_germany.node.children << category.node
 end
 foreign_italy = Category.where(:title => 'Italy').first
 foreign_italy_categories = Category.create([
-    { :title => 'Florence', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Fosdinovo', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Papal States', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Sardinia', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Venice', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  }
+    { :title => 'Florence', :node_attributes=>{:menu_name => 'Florence', :title => 'Florence', :shortcut => 'Florence', :displayed => true}  },
+    { :title => 'Fosdinovo', :node_attributes=>{:menu_name => 'Fosdinovo', :title => 'Fosdinovo', :shortcut => 'Fosdinovo', :displayed => true}  },
+    { :title => 'Papal States', :node_attributes=>{:menu_name => 'Papal States', :title => 'Papal States', :shortcut => 'Papal-States', :displayed => true}  },
+    { :title => 'Sardinia', :node_attributes=>{:menu_name => 'Sardinia', :title => 'Sardinia', :shortcut => 'Sardinia', :displayed => true}  },
+    { :title => 'Venice', :node_attributes=>{:menu_name => 'Venice', :title => 'Venice', :shortcut => 'Venice', :displayed => true}  }
   ])
 foreign_italy_categories.each do |category|
   foreign_italy.node.children << category.node
 end
 foreign_portugal_col = Category.where(:title => 'Portugal and Colonies').first
 foreign_portugal_col_categories = Category.create([
-    { :title => 'Angola', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Cape Verde Islands', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Macao', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Mozambique', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Portugal, the Homeland', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Portuguese Guinea', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Portuguese India', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
-    { :title => 'Saint Thomas and Prince Islands', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  },
+    { :title => 'Angola', :node_attributes=>{:menu_name => 'Angola', :title => 'Angola', :shortcut => 'Angola', :displayed => true}  },
+    { :title => 'Cape Verde Islands', :node_attributes=>{:menu_name => 'Cape Verde Islands', :title => 'Cape Verde Islands', :shortcut => 'Cape-Verde-Islands', :displayed => true}  },
+    { :title => 'Macao', :node_attributes=>{:menu_name => 'Macao', :title => 'Macao', :shortcut => 'Macao', :displayed => true}  },
+    { :title => 'Mozambique', :node_attributes=>{:menu_name => 'Mozambique', :title => 'Mozambique', :shortcut => 'Mozambique', :displayed => true}  },
+    { :title => 'Portugal, the Homeland', :node_attributes=>{:menu_name => 'Portugal, the Homeland', :title => 'Portugal, the Homeland', :shortcut => 'Portugal-the-Homeland', :displayed => true}  },
+    { :title => 'Portuguese Guinea', :node_attributes=>{:menu_name => 'Portuguese Guinea', :title => 'Portuguese Guinea', :shortcut => 'Portuguese-Guinea', :displayed => true}  },
+    { :title => 'Portuguese India', :node_attributes=>{:menu_name => 'Portuguese India', :title => 'Portuguese India', :shortcut => 'Portuguese-India', :displayed => true}  },
+    { :title => 'Saint Thomas and Prince Islands', :node_attributes=>{:menu_name => 'Saint Thomas and Prince Islands', :title => 'Saint Thomas and Prince Islands', :shortcut => 'Saint-Thomas-and-Prince-Islands', :displayed => true}  },
     { :title => 'Timor', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  }
   ])
 foreign_portugal_col_categories.each do |category|
@@ -302,7 +302,7 @@ foreign_portugal_col_categories.each do |category|
 end
 foreign_strait = Category.where(:title => 'Straits Settlements').first
 foreign_strait_categories = Category.create([
-    { :title => 'East India Company', :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true}  }
+    { :title => 'East India Company', :node_attributes=>{:menu_name => 'East India Company', :title => 'East India Company', :shortcut => 'East-India-Company', :displayed => true}  }
   ])
 foreign_strait_categories.each do |category|
   foreign_strait.node.children << category.node
@@ -312,16 +312,16 @@ end
 # Items
 special_offers = Category.where(:title => 'Special Offers').first
 specia_offers_items = Item.create([
-    {:name => 'Bookmark', :cost => '12.52', :details => 'Just a bookmark. I am serious.', :item_id => '123154123', :for_sale => true, :display => true, :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true} },
-    {:name => 'Glasses', :cost => '25.99', :details => 'Just a Glasses. I am serious.', :item_id => 'd12312311e1', :for_sale => true, :display => true, :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true} }
+    {:name => 'Bookmark', :cost => '12.52', :details => 'Just a bookmark. I am serious.', :item_id => '123154123', :for_sale => true, :display => true, :node_attributes=>{:menu_name => 'Bookmark', :title => 'Bookmark', :shortcut => 'Bookmark', :displayed => true} },
+    {:name => 'Glasses', :cost => '25.99', :details => 'Just a Glasses. I am serious.', :item_id => 'd12312311e1', :for_sale => true, :display => true, :node_attributes=>{:menu_name => 'Glasses', :title => 'Glasses', :shortcut => 'Glasses', :displayed => true} }
   ])
 specia_offers_items.each do |category|
   special_offers.node.children << category.node
 end
 ancient_biblical = Category.where(:title => 'Biblical').first
 ancient_biblical_items = Item.create([
-    {:name => 'Coin Display Case', :cost => '51.00', :details => 'This is by far the coolest way to display your collection. Please use it wisely.', :item_id => '1e3121rt1rt12', :for_sale => true, :display => true, :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true} },
-    {:name => 'Pen', :cost => '2.11', :details => 'Just a Pen. I am serious.', :item_id => '12315421323123', :for_sale => true, :display => true, :node_attributes=>{:menu_name => '', :title => '', :shortcut => '', :displayed => true} }
+    {:name => 'Coin Display Case', :cost => '51.00', :details => 'This is by far the coolest way to display your collection. Please use it wisely.', :item_id => '1e3121rt1rt12', :for_sale => true, :display => true, :node_attributes=>{:menu_name => 'Coin Display Case', :title => 'Coin Display Case', :shortcut => 'Coin-Display-Case', :displayed => true} },
+    {:name => 'Pen', :cost => '2.11', :details => 'Just a Pen. I am serious.', :item_id => '12315421323123', :for_sale => true, :display => true, :node_attributes=>{:menu_name => 'Pen', :title => 'Pen', :shortcut => 'Pen', :displayed => true} }
   ])
 ancient_biblical_items.each do |category|
   ancient_biblical.node.children << category.node

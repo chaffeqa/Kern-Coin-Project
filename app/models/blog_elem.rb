@@ -19,4 +19,8 @@ class BlogElem < ActiveRecord::Base
   def self.display_type_select
     DISPLAY_TYPE
   end
+
+  def self.display_type_partial
+    self.display_type.downcase.gsub(" ", "_")
+  end
 end
