@@ -12,10 +12,11 @@
 
 
 /* Form Elements */
-#adminPage.form #content p {
+#adminPage form p {
+    clear: both;
     margin:0 0 6px;
 }
-#adminPage.form #content p .hint {
+#adminPage form p .hint {
     color:#777777;
     float:right;
     width:200px;
@@ -43,8 +44,7 @@
 #adminPage input[type="submit"] {
     border:2px solid #333333;
     cursor:pointer;
-    display:block;
-    margin:20px auto;
+    margin:0;
 }
 #adminPage textarea {
     height:60px;

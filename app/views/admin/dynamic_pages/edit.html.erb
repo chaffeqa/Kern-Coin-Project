@@ -1,5 +1,3 @@
-<h1>Editing <%= @node.title %> Page Settings</h1>
+<h1>Page Settings for <em><%= @node.title %></em></h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Cancel', shortcut_path(@node.shortcut) %>

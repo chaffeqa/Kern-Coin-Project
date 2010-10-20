@@ -11,64 +11,41 @@
   <% end %>
 
   <%= tf.fields_for :node do |f| %>
-    <% unless @home_form %>
-      <div class="field">
-        <%= f.label :title %><br />
+      <p>
+        <%= f.label :displayed, raw("&nbsp;") %>
+	<%= f.check_box :displayed %> Display Page?
+      </p>
+      <p>
+        <%= f.label :title %>
         <%= f.text_field :title %>
-      </div>
-      <div class="field">
-        <%= f.label :menu_name %><br />
+      </p>
+      <p><span class="hint">This is how the page will appear in your dynamic menus.</span>
+        <%= f.label :menu_name, "Menu Name" %>
         <%= f.text_field :menu_name %>
-      </div>
-      <div class="field">
-        <%= f.label :shortcut %><br />
+      </p>
+      <p>
+        <%= f.label :shortcut %>
         http://localhost/<%= f.text_field :shortcut %>
-      </div>
-      <div class="field">
-        <%= f.check_box :displayed %>
-        <%= f.label :displayed, "Display Page?" %>
-      </div>
-      <div class="field">
-        <%= f.label :node_id, "Where Should This Page Go?" %><br/>
-        <%= f.select :parent_id, options_for_select(dynamic_pages_options_tree_recursive(@home_node, "")) %>
-      </div>
-
-    <% else %>
-      <div class="field">
-        <%= f.label :title %><br />
-        <%= f.text_field :title, :disabled => 'disabled' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :menu_name %><br />
-        <%= f.text_field :menu_name, :disabled => 'disabled'  %>
-      </div>
-      <div class="field">
-        <%= f.label :shortcut %><br />
-        http://localhost/<%= f.text_field :shortcut, :disabled => 'disabled'  %>
-      </div>
-      <div class="field">
-        <%= f.check_box :displayed, :checked => true, :disabled => 'disabled'  %>
-        <%= f.label :displayed, "Display Page?" %>
-      </div>
-
-      <%= f.hidden_field :title %>
-      <%= f.hidden_field :displayed %>
-      <%= f.hidden_field :menu_name %>
-      <%= f.hidden_field :shortcut %>
-
-    <% end %>
+      </p>
+      <hr />
+      <p><span class="hint">Select where this page should exist within the site heirarchy.</span>
+        <%= f.label :node_id, "Parent" %>
+	<% unless @dynamic_page.node == @home_node %>
+          <%= f.select :parent_id, options_for_select(dynamic_pages_options_tree_recursive(@home_node, "")) %>
+	<% else %>
+          <%= f.select :parent_id, [["Home", ""]], :disabled => true %>
+	<% end %>
+      </p>
+      <hr />
   <% end %>
 
-
-
-  <div class="field">
-    <%= tf.label :template_name, "Template Type" %><br />
-    <%= tf.select :template_name, [  "Home", "Inside" ] %>
-  </div>
-
-
-  <div class="actions">
-    <%= tf.submit %>
-  </div>
+  <p><span class="hint">Choose the template you would like this page to use.</span>
+    <%= tf.label :template_name, "Template Type" %>
+    <%= tf.select :template_name, [ "Home", "Inside" ] %>
+  </p>
+  <hr />
+  <p>
+    <%= tf.label :submit, raw("&nbsp;") %>
+    <%= tf.submit "Update" %> <%= link_to 'Cancel', :back %>
+  </p>
 <% end %>
