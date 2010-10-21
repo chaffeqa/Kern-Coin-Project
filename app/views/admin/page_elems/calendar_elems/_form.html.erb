@@ -10,11 +10,11 @@
     </div>
   <% end %>
 
-  <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
+  <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:form => f} %>
 
   <div class="field">
     <%= f.label :calendar_id %><br />
-    <%= f.select( :calendar_id, options_for_select(calendar.all.map {|calendar| [calendar.node.title, calendar.id]}) ) %>
+    <%= f.select( :calendar_id, options_for_select(Calendar.all.map {|calendar| [calendar.node.title, calendar.id]}) ) %>
   </div>
 
 
@@ -23,14 +23,14 @@
       <%= link_to 'Create New calendar', new_admin_calendar_path %>
     </div>
     <div class="field">
-      <%= f.label :display_type %>
-      <%= f.select :display_type, options_for_select(calendarElem.display_type_select) %>
+      <%= f.label :display_style %>
+      <%= f.select :display_style, options_for_select(CalendarElem.display_type_select) %>
     </div>
   <% else %>
     <%= link_to 'Edit calendar', edit_admin_calendar_path(f.object.calendar_id) %>
     <div class="field">
-      <%= f.label :display_type %>
-      <%= f.select :display_type, options_for_select(CalendarElem.display_type_select, f.object.display_type) %>
+      <%= f.label :display_style %>
+      <%= f.select :display_style, options_for_select(CalendarElem.display_type_select, f.object.display_type) %>
     </div>
   <% end %>
 
