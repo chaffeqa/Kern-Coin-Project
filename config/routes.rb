@@ -47,6 +47,7 @@ KernCoinProject::Application.routes.draw do
       resources :events, :except => [:index]
     end
     scope :module => 'page_elems' do
+      resources :login_elems, :only => [:new]
       resources :blog_elems, :except => [:index, :show]
       resources :calendar_elems, :except => [:index, :show]
       resources :text_elems, :except => [:index, :show]

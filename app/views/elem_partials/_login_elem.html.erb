@@ -1,0 +1,17 @@
+<% if admin? %>
+  <span class="controls">
+    <%= link_to 'X', element_path(element) , :confirm => "Are you sure?", :method => :delete, :class => 'btn control small' %>
+    <%= render :partial => 'elements/element_controls', :locals => {:element => element} %>
+  </span>
+<% end %>
+
+<p>
+
+  <% if element.display_title %><h1 class="title  <%= element.html_id %> "><%= element.title %></h1><% end %>
+  
+  <% if admin_signed_in? %>
+    <%= link_to "Logout", destroy_admin_session_path %>
+  <% else %>
+    <%= link_to "Login", new_admin_session_path %>
+  <% end %>
+</p>

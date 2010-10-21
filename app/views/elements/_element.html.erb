@@ -6,7 +6,7 @@
   <% if element.elem_id %>
     <%= render :partial => "elem_partials/#{(element.elem_type.tableize).singularize}", :locals => {:elem => element.elem} %>
   <% else %>
-    <%= render :partial => "elem_partials/#{(element.elem_type.tableize).singularize}" %>
+    <%= render :partial => "elem_partials/#{(element.elem_type.tableize).singularize}", :locals => {:element => element} %>
   <% end %>
 
 </article>
