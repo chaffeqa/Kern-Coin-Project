@@ -1,0 +1,5 @@
+<ul>
+  <% events.each do |event| %>
+  <li><span class="dateTime"><%= event.start_at.strftime("%b %d") %>, <%= event.all_day ? 'All Day' : ("#{event.start_at.strftime("%I:%M %p")} - #{event.end_at.strftime("%I:%M %p")}") %></span> &nbsp; <%= link_to event.name, shortcut_path(event.node.shortcut) %>  </li>
+  <% end %>
+</ul>

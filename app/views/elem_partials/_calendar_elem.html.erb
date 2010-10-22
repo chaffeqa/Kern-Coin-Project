@@ -1,0 +1,25 @@
+<% if admin? %>
+  <span class="controls">
+    <%= link_to 'Add Event', new_admin_calendar_event_path(elem.calendar), :class => 'btn small' %>
+    <%= link_to 'Manage Calendar', shortcut_path(elem.calendar.node.shortcut), :class => 'btn small' %>
+    <%= link_to 'Settings', edit_admin_calendar_elem_path(elem), :class => 'btn small' %>
+    <%= link_to 'X', admin_calendar_elem_path(elem) , :confirm => "Are you sure?", :method => :delete, :class => 'btn control small' %>
+    <%= render :partial => 'elements/element_controls', :locals => {:element => elem.element} %>
+  </span>
+<% end %>
+
+<%
+calendar = elem.calendar
+events = calendar.events
+events = events.limit(elem.max_events_shown) unless elem.max_events_shown.nil?
+events = events.where("events.start_at >= ?", elem.max_days_in_past.days) unless elem.max_days_in_past.nil?
+events = events.where("events.end_at >= ?", elem.max_days_in_future.days) unless elem.max_days_in_future.nil?
+%>
+
+
+<div class="calendarElem">
+  <% if elem.element.display_title %><h1 class="title  <%= elem.element.html_id %> "><%= elem.element.title %></h1><% end %>
+
+  <%= render :partial => "elem_partials/calendar_elem_partials/#{elem.display_type_partial}", :locals => {:calendar => calendar, :events => events} %>
+
+</div>

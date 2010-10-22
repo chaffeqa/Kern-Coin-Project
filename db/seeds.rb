@@ -4,3 +4,6 @@ blogs_node = home_node.children.create(:menu_name => 'Blogs', :title => 'Blogs',
 calendars_node = home_node.children.create(:menu_name => 'Calendars', :title => 'Calendars', :shortcut => 'Calendars', :displayed => false)
 
 
+# Categories
+inventory = Category.create!({:title => 'Inventory', :node_attributes=>{:menu_name => 'Inventory', :title => 'Inventory', :shortcut => 'Inventory', :displayed => true}})
+home_node.children << inventory.node

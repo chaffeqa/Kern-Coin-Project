@@ -13,8 +13,10 @@ class Category < ActiveRecord::Base
   validates_associated :node  
 
   def has_items?
+    return false if self.node.children.empty?
     child = self.node.children.first
-    return child.page_type == 'Item'
+    return true if child.page_type == 'Item'
+    return false
   end
 
   def self.get_inventory

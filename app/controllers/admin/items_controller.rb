@@ -13,28 +13,26 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    #    build_product_images
+    @item.build_node(:displayed => true)
   end
 
   def edit
-    #    build_product_images
+    @item.build_node(:displayed => true) unless @item.node
   end
 
   def create
     @item = Item.new(params[:item])
     if @item.save
-      redirect_to(admin_item_path(@item), :notice => 'Item was successfully created.')
+      redirect_to(shortcut_path(@item.node.shortcut), :notice => 'Item was successfully created.')
     else
-      #      build_product_images
       render :action => "new"
     end
   end
 
   def update
     if @item.update_attributes(params[:item])
-      redirect_to( admin_item_path(@item), :notice => 'Item was successfully updated.')
+      redirect_to(shortcut_path(@item.node.shortcut), :notice => 'Item was successfully updated.')
     else
-      #      build_product_images
       render :action => "edit"
     end
   end

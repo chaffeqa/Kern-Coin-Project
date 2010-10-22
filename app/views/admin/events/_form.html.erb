@@ -24,6 +24,23 @@
     <%= tf.cktext_area :description %>
   </div>
 
+  <div class="field">
+    <%= tf.check_box :all_day %> &nbsp;
+    <%= tf.label :all_day, 'All Day Event?' %>
+  </div>
+
+  <div class="field">
+    <%= tf.label :start_at %><br />
+    <%= tf.date_select :start_at %>
+  </div>
+
+  <div class="field">
+    <%= tf.label :end_at %><br />
+    <%= tf.date_select :end_at %>
+  </div>
+
+<%= tf.hidden_field :color, :value => @calendar.event_color  %>
+
 
   <div class="actions">
     <%= tf.submit %>

@@ -4,33 +4,28 @@
 
 <% content_for :page_admin_bar do %>
   <%= link_to 'Calendar Settings', edit_admin_calendar_path(@calendar ), :class => 'btn large' %>
+  <%= link_to 'Delete Event', admin_calendar_event_path(@calendar, @event) , :confirm => "Are you sure?", :method => :delete, :class => 'btn large' %>
+  <%= link_to 'Edit Event', edit_admin_calendar_event_path(@calendar, @event), :class => 'btn large' %>
 <% end %>
 
 
 
 
-<% if admin? %> <div class="admin clearfix"> <% end %>
-  <article class="event">
-    <% if admin? %>
-      <span class="controls">
-        <%= link_to 'Edit Event', edit_admin_calendar_event_path(@calendar, @event), :class => 'btn small' %>
-        <%= link_to 'X', admin_calendar_events_path(@calendar, @event) , :confirm => "Are you sure?", :method => :delete, :class => 'btn delete small' %>
-      </span>
+<article class="event">
+
+  <h1 class="title"> <%= @event.name %> </h1>
+
+  <p class="event-time">
+    <% if @event.all_day %>
+      <span class="all-day"><%= @event.start_at.strftime("%B %d") %> - All Day</span>
+    <% else %>
+      <span class="starts-at"><%= @event.start_at.strftime("%B %d, %Y %l:%m%p") %></span> -
+      <span class="ends-at"><%= @event.end_at.strftime("%B %d, %Y %l:%m%p") %></span>
     <% end %>
-    <h1 class="title"> <%= @event.name %> </h1>
+  </p>
 
-    <p class="event-time">
-      <% if @event.all_day %>
-        <span class="all-day"><%= @event.start_at.strftime("%B %d") %> - All Day</span>
-      <% else %>
-        <span class="starts-at"><%= @event.start_at.strftime("%B %d, %Y %l:%m%p") %></span> -
-        <span class="ends-at"><%= @event.end_at.strftime("%B %d, %Y %l:%m%p") %></span>
-      <% end %>
-    </p>
-
-    <p><%=raw @event.description %></p>
-  </article>
-  <% if admin? %> </div><% end %>
+  <p><%=raw @event.description %></p>
+</article>
 
 <%= link_to 'Back to Calendar', shortcut_path(@calendar.node.shortcut) %>
 

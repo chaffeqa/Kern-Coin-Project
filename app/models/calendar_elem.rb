@@ -9,8 +9,15 @@ class CalendarElem < ActiveRecord::Base
   ]
 
 
+  validates_presence_of :calendar_id
+  validates_associated :calendar
+  validates :display_style, :inclusion => { :in => DISPLAY_TYPE }
 
   def self.display_type_select
     DISPLAY_TYPE
+  end
+
+  def display_type_partial
+    self.display_style.downcase.gsub(" ", "_")
   end
 end

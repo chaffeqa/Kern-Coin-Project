@@ -18,7 +18,7 @@
   </div>
 
 
-  <% if f.object.new_record? %>
+  <% if f.object.new_record? or not f.object.calendar %>
     <div class="field">
       <%= link_to 'Create New calendar', new_admin_calendar_path %>
     </div>
@@ -30,20 +30,20 @@
     <%= link_to 'Edit calendar', edit_admin_calendar_path(f.object.calendar_id) %>
     <div class="field">
       <%= f.label :display_style %>
-      <%= f.select :display_style, options_for_select(CalendarElem.display_type_select, f.object.display_type) %>
+      <%= f.select :display_style, options_for_select(CalendarElem.display_type_select, f.object.display_style) %>
     </div>
   <% end %>
 
 
 
   <div class="field">
-    <%= f.label :max_days_in_past, 'Limit the oldest events to be listed:' %><br />
-    <%= f.date_select :max_days_in_past %>
+    <%= f.label :max_days_in_past, 'Limit how many days back events are listed:' %><br />
+    <%= f.text_field :max_days_in_past %>
   </div>
 
   <div class="field">
-    <%= f.label :max_days_in_future, 'Limit the furthest future events to be listed:' %><br />
-    <%= f.date_select :max_days_in_future %>
+    <%= f.label :max_days_in_future, 'Limit how many days in the future events will listed:' %><br />
+    <%= f.text_field :max_days_in_future %>
   </div>
 
   <div class="field">

@@ -38,7 +38,7 @@ class Admin::EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to( shortcut_path(@calendar.node.shortcut), :notic => 'Event was successfully destroyed' )
+    redirect_to( shortcut_path(@calendar.node.shortcut), :notice => 'Event was successfully destroyed' )
   end
 
   private
