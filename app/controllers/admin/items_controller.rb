@@ -38,7 +38,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy_attached_files
     @item.destroy
     redirect_to(admin_items_url) 
   end
