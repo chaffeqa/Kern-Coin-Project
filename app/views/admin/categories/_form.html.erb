@@ -14,39 +14,47 @@
 
 
   <%= f.fields_for :node do |node_f| %>
-    <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
-    <% unless f.object.title == 'Inventory' %>
-      <div class="field">
-        <%= node_f.label :parent_id, 'Parent Category' %><br />
+    <fieldset>
+      <legend>Page Options</legend>
+      <p>This element can <em>optionally</em> be displayed as a page. The effect will be that this page will appear on your site menus and hold a spot within your <b>site heirarchy</b>.</p>
+      <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
+    </fieldset>
+
+    <p><span class="hint">Select this category's parent category</span>
+      <% unless f.object.title == 'Inventory' %>
+        <%= node_f.label :parent_id, 'Parent Category' %>
         <% if f.object.new_record? %>
           <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
         <% else %>
           <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
         <% end %>
-      </div>
-    <% else %>
-      <%= node_f.hidden_field :parent, :value => Node.root %>
-    <% end %>
+      <% else %>
+        <%= node_f.label :parent_id, raw('&nbsp;') %>
+        <%= node_f.hidden_field :parent, :value => Node.root %>
+      <% end %>
+    </p>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
+  <p>
+    <%= f.label :title %>
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
+  </p>
+  <p>
+    <%= f.label :description %>
     <%= f.text_area :description %>
-  </div>
-  <div class="field">
+  </p>
+  <p><span class="hint">Upload an image to represent the category.</span>
+    <%= f.label :image, 'Category Image' %>
     <% unless f.object.new_record? %>
       <strong>Current Image:</strong><br/>
       <%= image_tag (f.object.original_image) %><br/>
     <% end %>
-    <%= f.file_field :image %> &nbsp;
-    <%= f.label :image, 'Upload Category Image' %>
-  </div>
+    <%= f.file_field :image %>
+  </p>
 
-  <div class="actions">
+  <p>
+    <%= f.label raw('&nbsp') %>
     <%= f.submit :disable_with => "Please Wait..." %>
-  </div>
+    <%= link_to 'Cancel', :back %>
+  </p>
 <% end %>

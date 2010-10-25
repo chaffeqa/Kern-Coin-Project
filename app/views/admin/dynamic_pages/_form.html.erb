@@ -36,7 +36,7 @@
       <% unless @dynamic_page.node == @home_node %>
       <%= f.select :parent_id, options_for_select(dynamic_pages_options_tree_recursive(@home_node, "")) %>
       <% else %>
-      <%= f.select :parent_id, [["Home", ""]], :disabled => true %>
+      <%= f.text_field :parent_id, :value => "Home", :disabled => true %>
       <% end %>
     </p>
     <hr />

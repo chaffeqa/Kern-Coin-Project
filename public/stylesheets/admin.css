@@ -12,6 +12,9 @@
 
 
 /* Form Elements */
+#adminPage form {
+    padding: 10px;
+}
 #adminPage form p {
     clear: both;
     margin:0 0 6px;
@@ -30,6 +33,7 @@
 }
 #adminPage fieldset {
     border: 1px solid #f0f0f0;
+    margin: -10px;
     padding: 10px;
     margin-bottom: 1em;
 }
@@ -47,13 +51,18 @@
     color:red;
     content:" *";
 }
-#adminPage input[type="text"], #adminPage select {
-    border:1px solid #CCCCCC;
-    color:#999999;
-    font:inherit;
-    margin:2px 1px;
-    padding:2px;
-    width:200px;
+#adminPage input[type="text"], #adminPage input[type="file"], #adminPage select {
+    border: 1px solid #AAA;
+    color: #777;
+    font: inherit;
+    margin: 2px 1px;
+    padding: 2px;
+    width: 200px;
+}
+#adminPage input[disabled="disabled"], #adminPage select[disabled="disabled"] {
+    color: #AAA;
+    background-color: #FFF;
+    border: 1px solid #CCC;
 }
 #adminPage input[type="checkbox"] {
     width:auto;
@@ -64,6 +73,7 @@
     margin:0;
 }
 #adminPage textarea {
+    border:1px solid #AAA;
     height:60px;
     vertical-align:top;
     width:320px;
