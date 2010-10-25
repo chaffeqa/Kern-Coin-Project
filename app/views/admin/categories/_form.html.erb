@@ -39,7 +39,7 @@
     <%= f.label :title, "Category Name" %>
     <%= f.text_field :title %>
   </p>
-  <p><span class="hint">Enter a brief description of the category (often displayed promanently on the listing page for the category).</span>
+  <p><span class="hint">Describe the items in this category. The description is often prominently displayed on the listing page for the category).</span>
     <%= f.label :description %>
     <%= f.text_area :description %>
   </p>
@@ -54,11 +54,11 @@
   </p>
 
   <p>
-    <%= t.label :submit, raw("&nbsp;") %>
+    <%= f.label :submit, raw("&nbsp;") %>
     <% if f.object.new_record? %>
-      <%= t.submit "Create Category", :disable_with => "Please Wait..." %>
+      <%= f.submit "Create Category", :disable_with => "Please Wait..." %>
     <% else %>
-      <%= t.submit "Update", :disable_with => "Please Wait..." %>
+      <%= f.submit "Update", :disable_with => "Please Wait..." %>
     <% end %>
     <%= link_to 'Cancel', :back %>
   </p>

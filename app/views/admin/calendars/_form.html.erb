@@ -1,5 +1,5 @@
-<%= form_for([:admin,@calendar]) do |tf| %>
-  <% if @calendar.errors.any?   %>
+<%= form_for([:admin,@calendar]) do |f| %>
+  <% if @calendar.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize((@calendar.errors.count), "error") %> prohibited this calendar from being saved:</h2>
       <ul>
@@ -9,30 +9,43 @@
       </ul>
     </div>
   <% end %>
-  <%= tf.fields_for :node do |f| %>
-    <%= render :partial => 'admin/default_node_form', :locals => {:f => f} %>
+  <%= f.fields_for :node do |node_f| %>
+    <fieldset>
+      <legend>Page Options</legend>
+      <p>This element can <em>optionally</em> be displayed as a page. The effect will be that this page will appear on your site menus and hold a spot within your <b>site heirarchy</b>.</p>
+      <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
+    </fieldset>
   <% end %>
-  <div class="field">
-    <%= tf.label :title %><br />
-    <%= tf.text_field :title %>
-  </div>
+  <p>
+    <%= f.label :title, "Calendar Title" %>
+    <%= f.text_field :title %>
+  </p>
 
-  <div class="field">
-    <%= tf.label :banner, "Calendar Banner" %><br />
-    <%= tf.cktext_area :banner %>
-  </div>
+  <p>
+    <%= f.label :banner, "Calendar Banner" %>
+    <%= f.cktext_area :banner %>
+  </p>
 
-  <div class="field">
-    <%= tf.label :event_color %><br />
-    <%= tf.select :event_color, color_select %>
-  </div>
-  <div class="field">
-    <%= tf.label :background_color %><br />
-    <%= tf.select :background_color, color_select %>
-  </div>
+  <fieldset>
+    <legend>Calendar Colors</legend>
+    <p><span class="hint">Customize your calendar colors</span>
+      <%= f.label :event_color, "Event" %>
+      <%= f.select :event_color, color_select %>
+    </p>
 
-
-  <div class="actions">
-    <%= tf.submit %>
-  </div>
+    <p>
+      <%= f.label :background_color, "Background" %>
+      <%= f.select :background_color, color_select, :prompt => "Background" %>
+    </p>
+  </fieldset>
+  
+  <p>
+    <%= f.label :submit, raw("&nbsp;") %>
+    <% if f.object.new_record? %>
+      <%= f.submit "Create Calendar", :disable_with => "Please Wait..." %>
+    <% else %>
+      <%= f.submit "Update", :disable_with => "Please Wait..." %>
+    <% end %>
+    <%= link_to 'Cancel', :back %>
+  </p>
 <% end %>
