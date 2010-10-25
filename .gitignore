@@ -5,3 +5,4 @@ tmp/**/*
 db/*.sqlite3_test
 schema.rb
 public/ckeditor_assets
+public/site_assets
