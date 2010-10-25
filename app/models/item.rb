@@ -1,11 +1,11 @@
 class Item < ActiveRecord::Base
   #  belongs_to :category
-  has_many :product_images, :limit => 10
+  has_many :product_images, :limit => 10, :dependent => :destroy
   has_one :main_image, :class_name => "ProductImage", :conditions => {:primary_image => true}
   accepts_nested_attributes_for :product_images, :allow_destroy => true, :reject_if => proc { |attributes| attributes['image'].blank? }
 
   # Associated Node attributes
-  has_one :node, :as => :page
+  has_one :node, :as => :page, :dependent => :destroy
   accepts_nested_attributes_for :node
   
   validates_associated :node
