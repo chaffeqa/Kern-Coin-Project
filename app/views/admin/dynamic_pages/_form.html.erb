@@ -47,8 +47,14 @@
     <%= tf.select :template_name, [ "Home", "Inside" ] %>
   </p>
   <hr />
+
   <p>
-    <%= tf.label :submit, raw("&nbsp;") %>
-    <%= tf.submit "Update" %> <%= link_to 'Cancel', :back %>
+    <%= f.label :submit, raw("&nbsp;") %>
+    <% if f.object.new_record? %>
+      <%= f.submit "Create Page", :disable_with => "Please Wait..." %>
+    <% else %>
+      <%= f.submit "Update", :disable_with => "Please Wait..." %>
+    <% end %>
+    <%= link_to 'Cancel', :back %>
   </p>
 <% end %>

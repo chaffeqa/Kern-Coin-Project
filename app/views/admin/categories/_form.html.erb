@@ -54,8 +54,12 @@
   </p>
 
   <p>
-    <%= f.label raw('&nbsp') %>
-    <%= f.submit :disable_with => "Please Wait..." %>
+    <%= t.label :submit, raw("&nbsp;") %>
+    <% if f.object.new_record? %>
+      <%= t.submit "Create Category", :disable_with => "Please Wait..." %>
+    <% else %>
+      <%= t.submit "Update", :disable_with => "Please Wait..." %>
+    <% end %>
     <%= link_to 'Cancel', :back %>
   </p>
 <% end %>
