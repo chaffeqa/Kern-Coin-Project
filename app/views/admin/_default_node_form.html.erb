@@ -1,6 +1,6 @@
 <p>
   <%= f.label :displayed, raw("&nbsp;") %>
-  <%= f.check_box :displayed %> Display as page?
+  <%= f.check_box :displayed, :default => false %> Display as page?
 </p>
 <p><span class="hint"><a class="expander">explain this</a></span>
   <%= f.label :title, "Page Title" %>

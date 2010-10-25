@@ -26,11 +26,14 @@
 }
 #adminPage form p .hint a { cursor: pointer; }
 #adminPage form p span.expanded-hint {
-    display: block;
     color: #777;
     clear: both;
     display: none;
 }
+
+#adminPage .field_with_errors {display: inline;}
+#adminPage .field_with_errors input { border: red solid 1px; background-color: #FEE; }
+
 #adminPage fieldset {
     border: 1px solid #f0f0f0;
     margin: -10px;
@@ -57,7 +60,7 @@
     font: inherit;
     margin: 2px 1px;
     padding: 2px;
-    width: 200px;
+    width: 170px;
 }
 #adminPage input[disabled="disabled"], #adminPage select[disabled="disabled"] {
     color: #AAA;
@@ -189,7 +192,7 @@
 #notice { color: green; background-color: #9F9; padding: 2px 5px; border: green solid 2px;}
 #alert { color: red; background-color: #F99; padding: 2px 5px; border: red solid 2px;}
 
-.field_with_errors { border-left: red solid 2px; padding-left: 5px; margin-left: -5px;}
+.field_with_errors input { border: red solid 1px !important; background-color: #FEE; }
 #error_explanation { width: 300px; border: 2px solid red; padding: 7px 7px 0 7px; margin-bottom: 20px; background-color: #eee; }
 #error_explanation h2 {padding: 5px 5px 5px 15px; font-size: 1em; margin: -7px -7px 0 -7px; background-color: #D77; color: #fff }
 #error_explanation ul li {}

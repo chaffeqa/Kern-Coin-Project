@@ -20,7 +20,7 @@
       <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
     </fieldset>
 
-    <p><span class="hint">Select this category's parent category</span>
+    <p>
       <% unless f.object.title == 'Inventory' %>
         <%= node_f.label :parent_id, 'Parent Category' %>
         <% if f.object.new_record? %>
@@ -36,13 +36,14 @@
   <% end %>
 
   <p>
-    <%= f.label :title %>
+    <%= f.label :title, "Category Name" %>
     <%= f.text_field :title %>
   </p>
-  <p>
+  <p><span class="hint">Enter a brief description of the category (often displayed promanently on the listing page for the category).</span>
     <%= f.label :description %>
     <%= f.text_area :description %>
   </p>
+  <hr />
   <p><span class="hint">Upload an image to represent the category.</span>
     <%= f.label :image, 'Category Image' %>
     <% unless f.object.new_record? %>

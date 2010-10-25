@@ -1,22 +1,13 @@
 <div class="fields">
+  <label><%= remove_child_link "Remove", f %></label>
   <% if f.object.new_record? %>
-    <div class="field">
-      <%= f.file_field :image %> &nbsp;
-      <%= f.label :image %>
-    </div>
-    <div class="field">
-      <%= f.check_box :primary_image, :class => 'primary-image' %> &nbsp;
-      <%= f.label :primary_image %>
-    </div>
+    <%= f.file_field :image %><br />
+    <label>&nbsp;</label>
+    <%= f.check_box :primary_image, :class => 'primary-image' %> Primary image?
   <% else %>
-    <div class="field">
-      <div class="thumb"><%= image_tag f.object.thumbnail_image %></div>
-      <%= f.check_box :primary_image, :class => 'primary-image' %> &nbsp;
-      <%= f.label :primary_image %>
-    </div>
-    <%= f.hidden_field :_destroy, :value => '0' %>
+    <div class="thumb"><%= image_tag f.object.thumbnail_image %></div>
+    <label>&nbsp;</label>
+    <%= f.check_box :primary_image, :class => 'primary-image' %> Primary image?
   <% end %>
-
-
-  <%= remove_child_link "remove", f %>
+  <%= f.hidden_field :_destroy, :value => '0' %>
 </div>

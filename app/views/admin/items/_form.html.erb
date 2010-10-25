@@ -12,54 +12,61 @@
   <% end %>
 
   <%= f.fields_for :node do |node_f| %>
-    <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
-    <div class="field">
-      <%= node_f.label :parent_id, 'Category' %><br />
+    <fieldset>
+      <legend>Page Options</legend>
+      <p>This element can <em>optionally</em> be displayed as a page. The effect will be that this page will appear on your site menus and hold a spot within your <b>site heirarchy</b>.</p>
+      <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
+    </fieldset>
+
+    <p>
+      <%= node_f.label :parent_id, 'Category' %>
       <% if f.object.new_record? %>
         <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
       <% else %>
         <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
       <% end %>
-    </div>
+    </p>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br />
+  <p><span class="hint">Be sure to enter a unique item ID.</span>
+    <%= f.label :name, "Item Details" %>
+    <%= f.text_field :name, :title => "Item Name" %>
+    <% if f.object.new_record? %>
+      <%= f.text_field :item_id, :title => "Item ID", :style => "width: 100px;" %>
+    <% else %>
+      <%= f.text_field :item_id, :title => "Item ID", :disabled => true %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.label :details %>
     <%= f.text_area :details %>
-  </div>
-  <div class="field">
-    <%= f.label :cost, "Cost" %><br />
-    $ <%= f.text_field :cost, :size => 7 %>
-  </div>
+  </p>
+  <hr />
 
+  <p>
+    <%= f.label :cost, "Price" %>
+    $ <%= f.text_field :cost, :size => 7, :style => "width: 70px;", :title => "0.00" %>
+  </p>
+  <hr />
 
-  <% if f.object.new_record? %>
-    <div class="field">
-      <%= f.label :item_id, "Item ID" %><br />
-      <%= f.text_field :item_id %>
-    </div>
-    <div class="field">
-      <%= f.radio_button :for_sale, true %> &nbsp; <%= f.label :display, "For Sale" %><br />
-      <%= f.radio_button :for_sale, false %> &nbsp; <%= f.label :display, "Not For Sale" %>
-    </div>
-    <div class="field">
-      <%= f.radio_button :display, true %> &nbsp; <%= f.label :display, "Display Item" %><br />
-      <%= f.radio_button :display, false %> &nbsp; <%= f.label :display, "Don't Display Item" %>
-    </div>
-  <% end %>
+  <p>
+    <%= f.label :for_sale, "Item Options" %>
+    <%= f.check_box :for_sale %> List item for sale?
+  </p>
+  <p>
+    <%= f.label :display, raw('&nbsp') %>
+    <%= f.check_box :display %> Display publically?
+  </p>
+  <hr />
 
-
-  <% f.fields_for :product_images do |img_form| %>
-    <%= render :partial => 'product_image', :locals => { :f => img_form } %>
-  <% end %>
-  <p><%= add_child_link "Add Product Image", :product_images %></p>
+  <p><span class="hint">Manage images for this product.</span>
+    <% f.fields_for :product_images do |img_form| %>
+      <%= render :partial => 'product_image', :locals => { :f => img_form } %>
+    <% end %>
+    <label><%= add_child_link "Add Product Image", :product_images %></label>
+  </p>
   <%= new_child_fields_template(f, :product_images)%>
+  <hr />
 
-  <div class="actions">
-    <%= f.submit :disable_with => "Please Wait..." %>
-  </div>
+  <%= f.submit :disable_with => "Please Wait..." %> <%= link_to "Cancel", :back %>
 <% end %>
