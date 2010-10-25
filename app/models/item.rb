@@ -7,6 +7,13 @@ class Item < ActiveRecord::Base
   # Associated Node attributes
   has_one :node, :as => :page, :dependent => :destroy
   accepts_nested_attributes_for :node
+  before_validation :update_node
+
+  def update_node
+    self.node.title = self.node.title.nil? || self.node.title.empty? ? self.name : self.node.title
+    self.node.menu_name = self.node.menu_name.nil? || self.node.menu_name.empty? ? self.name : self.node.menu_name
+    self.node.shortcut = self.node.shortcut.nil? || self.node.shortcut.empty? ? self.name.parameterize.html_safe : self.node.shortcut
+  end
   
   validates_associated :node
   validates_presence_of :item_id, :cost, :name
@@ -27,25 +34,25 @@ class Item < ActiveRecord::Base
     return self.details[0,30] << "..."
   end
 
-  def default_node
-    unless self.node
-      self.create_node({
-          :title => self.name,
-          :menu_name => self.name,
-          :displayed => true,
-          :shortcut => self.name.parameterize.html_safe
-        })
-    else
-      self.node.update_attributes(
-        :name => self.name,
-        :menu_name => self.name,
-        :shortcut => self.name.parameterize.html_safe 
-      )
-    end
-  end
-
-  def update_node
-    self.default_node
-    self.node.save!
-  end
+#  def default_node
+#    unless self.node
+#      self.create_node({
+#          :title => self.name,
+#          :menu_name => self.name,
+#          :displayed => true,
+#          :shortcut => self.name.parameterize.html_safe
+#        })
+#    else
+#      self.node.update_attributes(
+#        :name => self.name,
+#        :menu_name => self.name,
+#        :shortcut => self.name.parameterize.html_safe
+#      )
+#    end
+#  end
+#
+#  def update_node
+#    self.default_node
+#    self.node.save!
+#  end
 end
