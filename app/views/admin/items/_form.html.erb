@@ -63,10 +63,10 @@
     <% f.fields_for :product_images do |img_form| %>
       <%= render :partial => 'product_image', :locals => { :f => img_form } %>
     <% end %>
+    <%= new_child_fields_template(f, :product_images)%>
     <label><%= add_child_link "Add Product Image", :product_images %></label>
   </p>
-  <%= new_child_fields_template(f, :product_images)%>
   <hr />
 
-  <%= f.submit :disable_with => "Please Wait..." %> <%= link_to "Cancel", :back %>
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Item'} %>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_for([:admin,@dynamic_page]) do |tf| %>
+<%= form_for([:admin,@dynamic_page]) do |f| %>
   <% if @dynamic_page.errors.any?   %>
     <div id="error_explanation">
       <h2><%= pluralize((@dynamic_page.errors.count), "error") %> prohibited this Page from being saved:</h2>
@@ -10,45 +10,43 @@
     </div>
   <% end %>
 
-  <%= tf.fields_for :node do |f| %>
+  <%= f.fields_for :node do |node_f| %>
     <p>
-      <%= f.label :displayed, raw("&nbsp;") %>
-      <%= f.check_box :displayed %> Display as page?
+      <%= node_f.label :displayed, raw("&nbsp;") %>
+      <%= node_f.check_box :displayed %> Display as page?
     </p>
-    <p><span class="hint"><a class="expander">explain this</a></span>
-      <%= f.label :title, "Page Title" %>
-      <%= f.text_field :title %><br />
+    <p><span class="hint"><a class="expander">Explain this</a></span>
+      <%= node_f.label :title, "Page Title" %>
+      <%= node_f.text_field :title %><br />
       <span class="expanded-hint">The page title appears in the title bar at the very top or your web browser window and is particularly important to search results so make it unique and descriptive. The page title is also shown by the "Page Title" token in your template.</span>
     </p>
-    <p><span class="hint"><a class="expander">explain this</a></span>
-      <%= f.label :menu_name, "Menu Name" %>
-      <%= f.text_field :menu_name %><br />
+    <p><span class="hint"><a class="expander">Explain this</a></span>
+      <%= node_f.label :menu_name, "Menu Name" %>
+      <%= node_f.text_field :menu_name %><br />
       <span class="expanded-hint">The menu name is used to display your page in the menus of your website. This is useful for making a long page title shorter and more manageable in menus.</span>
     </p>
-    <p><span class="hint"><a class="expander">explain this</a></span>
-      <%= f.label :shortcut %>
-      http://www.jkerncoins.com/<%= f.text_field :shortcut %>
+    <p><span class="hint"><a class="expander">Explain this</a></span>
+      <%= node_f.label :shortcut %>
+      http://www.jkerncoins.com/<%= node_f.text_field :shortcut %>
       <span class="expanded-hint">The shortcut is used to give this page an easy to remember direct address. For example if you make your shortcut “<strong>New Product</strong>”, then anyone can type “<strong>www.yourwebsite.com/new-product</strong>” to visit it. This is useful for adding keywords to URLs for search engine marketing, traditional marketing, and creating easy-to-remember landing pages.</span>
     </p>
     <hr />
     <p><span class="hint">Select where this page should exist within the site heirarchy.</span>
-      <%= f.label :node_id, "Parent" %>
+      <%= node_f.label :node_id, "Parent" %>
       <% unless @dynamic_page.node == @home_node %>
-      <%= f.select :parent_id, options_for_select(dynamic_pages_options_tree_recursive(@home_node, "")) %>
+      <%= node_f.select :parent_id, options_for_select(dynamic_pages_options_tree_recursive(@home_node, "")) %>
       <% else %>
-      <%= f.text_field :parent_id, :value => "Home", :disabled => true %>
+      <%= node_f.text_field :parent_id, :value => "Home", :disabled => true %>
       <% end %>
     </p>
     <hr />
   <% end %>
 
   <p><span class="hint">Choose the template you would like this page to use.</span>
-    <%= tf.label :template_name, "Template Type" %>
-    <%= tf.select :template_name, [ "Home", "Inside" ] %>
+    <%= f.label :template_name, "Template Type" %>
+    <%= f.select :template_name, [ "Home", "Inside" ] %>
   </p>
   <hr />
-  <p>
-    <%= tf.label :submit, raw("&nbsp;") %>
-    <%= tf.submit "Update" %> <%= link_to 'Cancel', :back %>
-  </p>
+
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Page'} %>
 <% end %>

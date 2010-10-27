@@ -51,8 +51,5 @@
     <%= f.text_field :max_events_shown %>
   </div>
 
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
 <% end %>

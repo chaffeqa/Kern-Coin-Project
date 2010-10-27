@@ -1,4 +1,4 @@
-<%= form_for([:admin,@calendar, @event]) do |tf| %>
+<%= form_for([:admin,@calendar, @event]) do |f| %>
   <% if @event.errors.any?   %>
     <div id="error_explanation">
       <h2><%= pluralize((@event.errors.count), "error") %> prohibited this Event from being saved:</h2>
@@ -10,39 +10,36 @@
     </div>
   <% end %>
 
-  <%= tf.fields_for :node do |f| %>
-    <%= render :partial => 'admin/default_node_form', :locals => {:f => f} %>
+  <%= f.fields_for :node do |node_f| %>
+    <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
   <% end %>
 
-  <div class="field">
-    <%= tf.label :name %><br />
-    <%= tf.text_field :name %>
-  </div>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
 
-  <div class="field">
-    <%= tf.label :description, "Event Description" %><br />
-    <%= tf.cktext_area :description %>
-  </div>
+  <p>
+    <%= f.label :description, "Details" %>
+    <%= f.cktext_area :description %>
+  </p>
 
-  <div class="field">
-    <%= tf.check_box :all_day %> &nbsp;
-    <%= tf.label :all_day, 'All Day Event?' %>
-  </div>
+  <p>
+    <%= f.label :all_day, raw('&nbsp') %>
+    <%= f.check_box :all_day %> All day event?
+  </p>
 
-  <div class="field">
-    <%= tf.label :start_at %><br />
-    <%= tf.date_select :start_at %>
-  </div>
+  <p>
+    <%= f.label :start_at %>
+    <%= f.date_select :start_at %>
+  </p>
 
-  <div class="field">
-    <%= tf.label :end_at %><br />
-    <%= tf.date_select :end_at %>
-  </div>
+  <p>
+    <%= f.label :end_at %>
+    <%= f.date_select :end_at %>
+  </p>
 
-<%= tf.hidden_field :color, :value => @calendar.event_color  %>
+  <%= f.hidden_field :color, :value => @calendar.event_color  %>
 
-
-  <div class="actions">
-    <%= tf.submit %>
-  </div>
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Event'} %>
 <% end %>

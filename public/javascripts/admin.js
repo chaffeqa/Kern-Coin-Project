@@ -6,7 +6,7 @@ $(function() {
 		if ($(this).width() > max)
 		    max = $(this).width();
 	    });
-	$("label").width(172);
+	$("label").width(max+10);
 	
 	// Function for forms with inline hints
 	$('input[title]').each(function() {
@@ -24,5 +24,10 @@ $(function() {
 			    $(this).val($(this).attr('title')).removeClass('focused');
 			}
 		    });
+	    });
+
+	// Hint Expander
+	$(".expander").click(function() {
+		$(this).parent().siblings(".expanded-hint").toggle(200, function(){});
 	    });
     });

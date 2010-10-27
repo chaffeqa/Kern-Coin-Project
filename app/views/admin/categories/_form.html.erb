@@ -39,7 +39,7 @@
     <%= f.label :title, "Category Name" %>
     <%= f.text_field :title %>
   </p>
-  <p><span class="hint">Enter a brief description of the category (often displayed promanently on the listing page for the category).</span>
+  <p><span class="hint">Describe the items in this category. The description is often prominently displayed on the listing page for the category).</span>
     <%= f.label :description %>
     <%= f.text_area :description %>
   </p>
@@ -53,9 +53,5 @@
     <%= f.file_field :image %>
   </p>
 
-  <p>
-    <%= f.label raw('&nbsp') %>
-    <%= f.submit :disable_with => "Please Wait..." %>
-    <%= link_to 'Cancel', :back %>
-  </p>
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Category'} %>
 <% end %>
