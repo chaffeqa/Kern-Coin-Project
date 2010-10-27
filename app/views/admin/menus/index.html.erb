@@ -1,13 +1,18 @@
-<ul id="menu-list">
-  <%= render :partial => 'menu', :locals => {:node => @home_node} %>
-</ul>
-<!--
+<%= content_for :head do %>
+  <%= stylesheet_link_tag '/javascripts/themes/classic/style' %>
+  <%= javascript_include_tag 'jquery.tree.min' %>
+<% end %>
+
+<div id="sortable-menu">
+  <%= content_tag :ul do %>
+    <%= raw(display_node_list(@home_node,'root')) %>
+  <% end %>
+</div>
+
 <script>
-  $(function() { setup_tree({
-      selector: '#sitemap',
-      post_url: 'admin/menus/sort',
-      draggable: true
-    }); } );
+  $(function() { setup_tree_old({
+      selector: '#sortable-menu',
+      post_url: 'menus/sort',
+      draggable: true}); } );
 </script>
 
--->
