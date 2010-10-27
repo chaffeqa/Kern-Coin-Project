@@ -29,49 +29,55 @@ $(function() {
 
     var preview = $('a#preview');
     preview.live('click', function() {
-	    $("div.admin").toggleClass("preview");
-	});
+        $("div.admin").toggleClass("preview");
+    });
     
     preview.live('click', function() {
-	    if (preview.text() == 'Preview Page') {
-		preview.text('Admin View');
-	    }
-	    else {
-		preview.text('Preview Page');
-	    }
-	});
+        if (preview.text() == 'Preview Page') {
+            preview.text('Admin View');
+        }
+        else {
+            preview.text('Preview Page');
+        }
     });
-<<<<<<< HEAD
 });
 
 
-function setup_tree(options) {
-  $(options.selector).tree({
-    types : {
-      "default" : {
-        clickable  : true,
-        renameable : false,
-        deletable  : false,
-        creatable  : false,
-        draggable  : options.draggable
-      }
-    },
-    callback : {
-      onchange : function(NODE,TREE_OBJ) {
-        // http://www.jstree.com/faq (see faq 4 on links in predefined html)
-        document.location = $(NODE).children("a:eq(0)").attr("href");
-      },
-      onmove : function(NODE,REF_NODE,TYPE,TREE_OBJ,RB) {
-        // might need to use rails' authenticity_token?
-        $.ajax({
-            url: options.post_url,
-            type: 'POST',
-            data: $.toJSON(TREE_OBJ.get(null, 'json')),
-            contentType: 'application/json; charset=utf-8',
-        });
-      }
-    }
-  });
+
+function setup_tree_old(options) {
+    $(options.selector).tree({
+        types : {
+            "default" : {
+                clickable  : true,
+                renameable : false,
+                deletable  : false,
+                creatable  : false,
+                draggable  : options.draggable
+            },
+            "root" : {
+                draggable : false,
+                valid_children : [ "default" ]
+            }
+        },
+        ui : {
+            theme_name : "classic"
+        },
+        plugins : ["dnd"],
+        callback : {
+            onchange : function(NODE,TREE_OBJ) {
+                // http://www.jstree.com/faq (see faq 4 on links in predefined html)
+                document.location = $(NODE).children("a:eq(0)").attr("href");
+            },
+            onmove : function(NODE,REF_NODE,TYPE,TREE_OBJ,RB) {
+                // might need to use rails' authenticity_token?
+                $.ajax({
+                    url: options.post_url,
+                    type: 'POST',
+                    data: $.toJSON(TREE_OBJ.get(null, 'json')),
+                    contentType: 'application/json; charset=utf-8'
+                });
+            }
+        }
+    });
+
 }
-=======
->>>>>>> 1575f1b257abcf8411b14c23ed9905c6193969a8

@@ -1,6 +1,6 @@
 class Node < ActiveRecord::Base
-#  belongs_to :parent
-#  has_many :children, :dependent => :nullify
+  #  belongs_to :parent
+  #  has_many :children, :dependent => :nullify
   belongs_to :page, :polymorphic => true
 
   acts_as_tree :order => 'position'
@@ -58,24 +58,41 @@ class Node < ActiveRecord::Base
     self.where(:title => 'Calendars').first
   end
 
-  def self.order json
+  def self.order_tree(json)
     Node.update_all(['position = ?', nil])
-    Node.order_helper json
+    Node.order_helper([json])
   end
 
   private
-  def self.order_helper json, position = 0, parent_id = nil
+  def self.order_helper( json, position = 0, parent_id = nil)
     json.each do |hash|
+      puts hash.keys
+      #      puts value['attributes']
       node_id = hash['attributes']['id'].delete('node_')
+#      puts node_id
       Node.update_all(['position = ?, parent_id = ?', position, parent_id], ['id = ?', node_id])
       position += 1
       if hash['children']
-        # doe hetzelfde recursief
-        position = order_helper hash['children'], position, node_id
+        #        # doe hetzelfde recursief
+        position = order_helper( hash['children'], position, node_id)
       end
     end
     position
   end
+
+  #{"data"=>{"title"=>"Home", "state"=>"open"},
+  #  "attributes"=>{"class"=>"node ", "id"=>"node_1"},
+  #  "children"=>[
+  #    {"data"=>{"title"=>"Inventory", "state"=>"open"},
+  #      "attributes"=>{"class"=>"node ", "id"=>"node_4"},
+  #      "children"=>[
+  #        {"data"=>{"title"=>"Test Cat"},
+  #          "attributes"=>{"class"=>"node ", "id"=>"node_6"}},
+  #        {"data"=>{"title"=>"item1", "state"=>"open"},
+  #          "attributes"=>{"class"=>"node ", "id"=>"node_7"},
+  #          "children"=>[
+  #            {"data"=>{"title"=>"Test Item"},
+  #              "attributes"=>{"class"=>"node dragged ", "id"=>"node_5"}}]}, {"data"=>{"title"=>"Great Scott"}, "attributes"=>{"class"=>"node ", "id"=>"node_8"}}]}]}
 
 
 

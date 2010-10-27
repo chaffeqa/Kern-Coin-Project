@@ -6,7 +6,7 @@ class Admin::MenusController < ApplicationController
   end
 
   def sort
-    Node.order params['_json']
+    Node.order_tree(params)
     render :nothing => true
   end
 

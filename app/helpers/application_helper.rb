@@ -55,23 +55,28 @@ module ApplicationHelper
 
   
 
-  def display_menu_list(html_id = 'menu-list')
-    ret = "<ul id='#{html_id}'><li id='#{@home_node.id}'> #{@home_node.menu_name}     #{link_to 'Show', @home_node.url}"
-    #    ret += " | #{link_to 'X', admin_node_path(@home_node.id), :confirm => 'Are you sure?', :method => :delete}"
-    ret += display_tree_recursive(@home_node)
-    ret += "</li>"
-    ret += "</ul>"
+  def display_nodes(nodes, parent_id )
+    ret = "<ul>"
+    for node in nodes
+      if node.parent_id == nil
+        node.parent_id = 0
+      elsif node.parent_id == parent_id
+        ret << display_node_list(node)
+      end
+    end
+    ret << "</ul>"
   end
 
-  def menu_tree_children(node)
-#    unless node.children.displayed.empty?
-#      content_tag(:ul) do
-#        node.children.displayed.each do |childnode|
-          render(:partial => 'admin/menus/menu', :locals => {:node => node})
-#        end
-#      end
-#    end
+  def display_node_list(node, type='')
+    ret = "<li id='node_#{node.id}' class='node' rel='#{type}'>"
+#    ret << "<ins class='jstree-icon'>&nbsp;</ins>"
+#    ret << link_to( node.menu_name , node.url )
+    ret << "<a href='#{node.url}'><ins class='jstree-icon'></ins>#{node.menu_name}</a>"
+    ret << display_nodes(node.children.displayed, node.id) if node.children.displayed.any?
+    ret << "</li>"
   end
+
+
 
   def dynamic_pages_options_tree_recursive(node, addition)
     array = []
