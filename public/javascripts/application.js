@@ -47,3 +47,33 @@ $(function() {
         $(this).parent().siblings(".expanded-hint").toggle(200, function(){});
     });
 });
+
+
+function setup_tree(options) {
+  $(options.selector).tree({
+    types : {
+      "default" : {
+        clickable  : true,
+        renameable : false,
+        deletable  : false,
+        creatable  : false,
+        draggable  : options.draggable
+      }
+    },
+    callback : {
+      onchange : function(NODE,TREE_OBJ) {
+        // http://www.jstree.com/faq (see faq 4 on links in predefined html)
+        document.location = $(NODE).children("a:eq(0)").attr("href");
+      },
+      onmove : function(NODE,REF_NODE,TYPE,TREE_OBJ,RB) {
+        // might need to use rails' authenticity_token?
+        $.ajax({
+            url: options.post_url,
+            type: 'POST',
+            data: $.toJSON(TREE_OBJ.get(null, 'json')),
+            contentType: 'application/json; charset=utf-8',
+        });
+      }
+    }
+  });
+}

@@ -1,0 +1,4 @@
+<%= content_tag_for :li, node do %>
+  <%= link_to node.menu_name, node.url %>
+  <%=  (menu_tree_children(node))%>
+<% end %>

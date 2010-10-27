@@ -55,42 +55,22 @@ module ApplicationHelper
 
   
 
-
-  def display_menu_list()
-    ret = "<ul><li>"
-    ret += "#{@home_node.menu_name}"
-    ret += "    #{link_to 'Show', admin_node_path(@home_node.id)}"
-    ret += "|#{link_to 'Edit', edit_admin_node_path(@home_node.id)}"
-    ret += "|#{link_to 'Destroy', admin_node_path(@home_node.id), :confirm => 'Are you sure?', :method => :delete}"
+  def display_menu_list(html_id = 'menu-list')
+    ret = "<ul id='#{html_id}'><li id='#{@home_node.id}'> #{@home_node.menu_name}     #{link_to 'Show', @home_node.url}"
+    #    ret += " | #{link_to 'X', admin_node_path(@home_node.id), :confirm => 'Are you sure?', :method => :delete}"
+    ret += display_tree_recursive(@home_node)
     ret += "</li>"
-    @home_node.nodes.each do |childnode|
-      ret += "<li>"
-      ret += "#{childnode.menu_name}"
-      ret += "    #{link_to 'Show', admin_node_path(childnode.id)}"
-      ret += "|#{link_to 'Edit', edit_admin_node_path(childnode.id)}"
-      ret += "|#{link_to 'Destroy', admin_node_path(childnode.id), :confirm => 'Are you sure?', :method => :delete}"
-      ret += display_tree_recursive(childnode)
-      ret += "</li>"
-    end
     ret += "</ul>"
   end
 
-  def display_tree_recursive(node)
-    ret = ""
-    unless node.nodes.empty?
-      ret += "<ul>"
-      node.nodes.each do |childnode|
-        ret += "<li>"
-        ret += "#{childnode.menu_name}"
-        ret += "    #{link_to 'Show', admin_node_path(childnode.id)}"
-        ret += "|#{link_to 'Edit', edit_admin_node_path(childnode.id)}"
-        ret += "|#{link_to 'Destroy', admin_node_path(childnode.id), :confirm => 'Are you sure?', :method => :delete}"
-        ret += display_tree_recursive(childnode)
-        ret += "</li>"
-      end
-      ret += "</ul>"
-    end
-    ret
+  def menu_tree_children(node)
+#    unless node.children.displayed.empty?
+#      content_tag(:ul) do
+#        node.children.displayed.each do |childnode|
+          render(:partial => 'admin/menus/menu', :locals => {:node => node})
+#        end
+#      end
+#    end
   end
 
   def dynamic_pages_options_tree_recursive(node, addition)

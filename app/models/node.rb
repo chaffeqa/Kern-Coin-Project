@@ -58,4 +58,25 @@ class Node < ActiveRecord::Base
     self.where(:title => 'Calendars').first
   end
 
+  def self.order json
+    Node.update_all(['position = ?', nil])
+    Node.order_helper json
+  end
+
+  private
+  def self.order_helper json, position = 0, parent_id = nil
+    json.each do |hash|
+      node_id = hash['attributes']['id'].delete('node_')
+      Node.update_all(['position = ?, parent_id = ?', position, parent_id], ['id = ?', node_id])
+      position += 1
+      if hash['children']
+        # doe hetzelfde recursief
+        position = order_helper hash['children'], position, node_id
+      end
+    end
+    position
+  end
+
+
+
 end

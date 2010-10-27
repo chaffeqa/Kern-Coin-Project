@@ -34,6 +34,9 @@ KernCoinProject::Application.routes.draw do
   # Admin Namespace
   namespace "admin" do
     resources :dynamic_pages, :except => [:show]
+    resources :menus, :only => [:index] do
+      post :sort, :on => :collection
+    end
     resources :items
     resources :blogs, :except => [:show] do
       resources :posts, :except => [:index]
