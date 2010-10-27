@@ -68,8 +68,5 @@
     <%= f.label :target, "Open Link in New Window?" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
 <% end %>

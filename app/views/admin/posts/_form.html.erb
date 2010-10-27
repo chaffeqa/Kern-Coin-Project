@@ -23,9 +23,10 @@
     <%= tf.text_field :title %>
   </p>
   <hr />
+
   <p>
     <%= tf.cktext_area :body %>
   <p>
 
-  <%= tf.submit %> <%= link_to 'Cancel', shortcut_path(@blog.node.shortcut) %>
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Post'} %>
 <% end %>

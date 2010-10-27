@@ -52,13 +52,5 @@
     <%= f.text_field :past_limit %>
   </p>
 
-  <p>
-    <%= f.label :submit, raw("&nbsp;") %>
-    <% if f.object.new_record? %>
-      <%= f.submit "Create Element", :disable_with => "Please Wait..." %>
-    <% else %>
-      <%= f.submit "Update", :disable_with => "Please Wait..." %>
-    <% end %>
-    <%= link_to 'Cancel', :back %>
-  </p>
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
 <% end %>
