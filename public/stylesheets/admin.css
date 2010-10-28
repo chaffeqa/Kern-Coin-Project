@@ -3,101 +3,125 @@
 #adminPage #subColumn ul li { padding: 0; background: none;}
 #adminPage #subColumn ul li a { font-weight: bold; color: #000; font-size: 1.2em; }
 #adminPage #subColumn ul li a:before {content: "- ";}
-
 #adminPage #subColumn ul li a.selected { background-color: #ffef85; }
 
 #adminPage #subColumn ul ul li {}
-#adminPage #subColumn ul ul li a {padding-left: .7em; background: url(../template/li-bullet-black.png) .2em .6em no-repeat; font-weight: normal; font-size: 1em;}
+#adminPage #subColumn ul ul li a {padding-left: .7em; background: url(../template/li-bullet-black.png) .2em .6em no-repeat; 
+				  font-weight: normal; font-size: 1em;}
 #adminPage #subColumn ul ul li a:before {content: "";}
 
 
-/* Form Elements */
+
+
+
+/****** Form Elements ******/
 #adminPage form {
     padding: 10px;
 }
-#adminPage form p {
+#adminPage form > fieldset > p {
     clear: both;
     margin:0 0 6px;
 }
-#adminPage form p .hint {
+#adminPage form > fieldset > p > .hint {
     color:#777777;
     float:right;
     width:200px;
 }
-#adminPage form p .hint a { cursor: pointer; }
-#adminPage form p span.expanded-hint {
+#adminPage form > fieldset > p > .hint > a { cursor: pointer; }
+#adminPage form > fieldset > p > span.expanded-hint {
     color: #777;
     clear: both;
     display: none;
 }
 
-#adminPage .field_with_errors {display: inline;}
-#adminPage .field_with_errors input { border: red solid 1px; background-color: #FEE; }
+#adminPage form > fieldset > .field_with_errors {display: inline;}
+#adminPage form > fieldset > .field_with_errors > input { border: red solid 1px; background-color: #FEE; }
 
-#adminPage fieldset {
+#adminPage form > fieldset.tab {
     border: 1px solid #f0f0f0;
     margin: 0 -10px;
     padding: 10px;
     margin-bottom: 1em;
 }
-#adminPage fieldset legend {
+#adminPage form > fieldset.tab > legend {
     background-color: #fff;
     font-size: 1.2em;
     padding: 3px;
 }
-#adminPage label {
+#adminPage form > fieldset > p > label {
     display:inline-block;
     font-weight:bold;
     padding:0 5px 0 0;
 }
-#adminPage label.req:after {
+#adminPage form > fieldset > p > label.req:after {
     color:red;
     content:" *";
 }
-#adminPage input[type="text"], #adminPage input[type="file"], #adminPage select {
-    border: 1px solid #AAA;
+#adminPage form > fieldset > p > input[type="text"], 
+#adminPage form > fieldset > p > input[type="file"], 
+#adminPage form > fieldset > p > select {
+    background: #fff;
+    border: 1px solid #999;
     color: #777;
     font: inherit;
     margin: 2px 1px;
     padding: 2px;
     width: 170px;
 }
-#adminPage input[disabled="disabled"], #adminPage select[disabled="disabled"] {
+#adminPage form > fieldset > p > .datetime > select {
+    background: #fff;
+    border: 1px solid #999;
+    color: #777;
+    font: inherit;
+    margin: 2px 1px;
+    padding: 2px;
+}
+#adminPage form > fieldset > p > input[disabled="disabled"], 
+#adminPage form > fieldset > p > select[disabled="disabled"] {
     color: #AAA;
     background-color: #FFF;
     border: 1px solid #CCC;
 }
-#adminPage input[type="checkbox"] {
+#adminPage form > fieldset > p > input[type="checkbox"] {
     width:auto;
+    vertical-align: middle;
+    margin: 0 0 2px 10px;
 }
-#adminPage textarea {
+#adminPage form > fieldset > p > textarea {
     border:1px solid #AAA;
     height:60px;
     vertical-align:top;
     width:320px;
 }
-#adminPage input:focus, #adminPage input.focused, #adminPage select:focus, #adminPage select.focused {
+#adminPage form > fieldset > p > input:focus, 
+#adminPage form > fieldset > p > input.focused, 
+#adminPage form > fieldset > p > select:focus, 
+#adminPage form > fieldset > p > select.focused {
     border-color:#000000;
     color:#333333;
 }
+/**************************/
 
 
-#adminPage table {}
+
+
+
+ table.adminTable {}
 
 	/* Thead */
-	#adminPage thead th { text-align: center; }
-	#adminPage thead td {}
+	 table.adminTable thead th { text-align: center; }
+	 table.adminTable thead td {}
 
 	/* Tbody */
-	#adminPage tbody td {padding: .5em .4em;}
-	#adminPage tbody th {}
+	 table.adminTable tbody td {padding: .5em .4em;}
+	 table.adminTable tbody th {}
 
-	#adminPage tbody .alt td {}
-	#adminPage tbody .alt th {}
+	 table.adminTable tbody .alt td {}
+	 table.adminTable tbody .alt th {}
 
 	/* Tfoot */
-	#adminPage tfoot th {}
-	#adminPage tfoot td {}
+	 table.adminTable tfoot th {}
+	 table.adminTable tfoot td {}
 
 #adminPage ul.categoryList { margin: 0 5em 0 0; }
 #adminPage ul.categoryList ul { margin: 0 0 0 1em; }
@@ -106,6 +130,11 @@
 
 #adminPage td.itemThumb img { vertical-align: middle; }
 
+
+
+
+
+/******** Admin Bar ********/
 #adminBar {
 	height: 30px;
 	padding: 8px 0;
@@ -114,6 +143,8 @@
 	border-bottom: 1px solid #777;
 }
 #adminBar .btn { float: right; margin-right: 5px; }
+
+
 #admin-menu:hover { padding-bottom: 60px; margin-bottom: -60px;}
 #admin-menu a { display: block; padding: 4px 10px; color: #aaa; }
 #admin-menu li li a { border-right: none padding: 4px 8px; }
@@ -181,9 +212,11 @@
 #admin-menu li li.iehover li.iehover li.iehover a {
   color: #aaa; width: 90%; /* IE */
 }
+/************************/
 
 
-/** FLASH MESSAGES **/
+
+/**** FLASH MESSAGES ****/
 #notice { color: green; background-color: #9F9; padding: 2px 5px; border: green solid 2px;}
 #alert { color: red; background-color: #F99; padding: 2px 5px; border: red solid 2px;}
 
@@ -191,12 +224,14 @@
 #error_explanation { width: 300px; border: 2px solid red; padding: 7px 7px 0 7px; margin-bottom: 20px; background-color: #eee; }
 #error_explanation h2 {padding: 5px 5px 5px 15px; font-size: 1em; margin: -7px -7px 0 -7px; background-color: #D77; color: #fff }
 #error_explanation ul li {}
+/************************/
 
 
 
+
+/**** Hover Controls ****/
 div.admin:hover * {z-index: 1;}
 article.admin {display: none;}
-
 
 /* Controls */
 div.admin article span.controls {display: none; margin: -5px -5px 5px; padding: 5px; background: rgba(30,30,30,.5); 
@@ -213,7 +248,12 @@ div.admin article.admin span.controls {display: block; margin-bottom: 0;}
 
 /* Preview */
 div.admin.preview article.admin {display: none;}
+/************************/
 
+
+
+
+/*********** Button **********/
 .btn {
 	background: #222 url(../template/phusion/gradient.png) repeat-x;
 	display: inline-block !important;
@@ -245,3 +285,4 @@ a.btn:hover {color: #AAA; text-decoration: none;}
 .orange.btn {background-color: #ff5c00;}
 .yellow.btn {background-color: #ffb515; text-shadow: 0 -1px 1px #695213;}
 a.btn.yellow:hover {color: #eddec2;}
+/******************************/

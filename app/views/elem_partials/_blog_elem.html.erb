@@ -16,10 +16,7 @@ posts = posts.where("posts.created_at >= ?", elem.past_limit) unless elem.past_l
 %>
 
 
-<div class="blogList">
-  <% if elem.element.display_title %><h1 class="title  <%= elem.element.html_id %> "><%= elem.element.title %></h1><% end %>
-  <a class="rss" href="/feed">Subscribe</a>
+<% if elem.element.display_title %><h1 class="title  <%= elem.element.html_id %> "><%= elem.element.title %></h1><% end %>
+<a class="rss" href="/feed">Subscribe</a>
 
-  <%= render :partial => "elem_partials/blog_elem_partials/#{elem.display_type_partial}", :locals => {:blog => blog, :posts => posts} %>
-
-</div>
+<%= render :partial => "elem_partials/blog_elem_partials/#{elem.display_type_partial}", :locals => {:blog => blog, :posts => posts} %>

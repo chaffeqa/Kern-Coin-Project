@@ -11,9 +11,10 @@
     </div>
   <% end %>
 
+<fieldset>
   <%= f.fields_for :node do |node_f| %>
     <p>
-      <%= node_f.label :parent_id, 'Category' %>
+      <%= node_f.label :parent_id, 'Category', :class => "req" %>
       <% if f.object.new_record? %>
         <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
       <% else %>
@@ -23,7 +24,7 @@
   <% end %>
 
   <p><span class="hint">Be sure to enter a unique item ID.</span>
-    <%= f.label :name, "Item Details" %>
+    <%= f.label :name, "Item Details", :class => "req" %>
     <%= f.text_field :name, :title => "Item Name" %>
     <% if f.object.new_record? %>
       <%= f.text_field :item_id, :title => "Item ID", :style => "width: 100px;" %>
@@ -39,7 +40,7 @@
 
   <p>
     <%= f.label :cost, "Price" %>
-    $ <%= f.text_field :cost, :size => 7, :style => "width: 70px;", :title => "0.00" %>
+    <%= f.text_field :cost, :size => 7, :style => "width: 70px;", :value => number_to_currency(@item.cost) %>
   </p>
   <hr />
 
@@ -63,4 +64,5 @@
   <hr />
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Item'} %>
+</fieldset>
 <% end %>
