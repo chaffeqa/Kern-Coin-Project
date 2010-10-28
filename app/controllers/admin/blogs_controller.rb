@@ -24,7 +24,7 @@ class Admin::BlogsController < ApplicationController
   def create
     get_home_node
     @blog = Blog.new(params[:blog])
-    if Node.blog_node.children << @blog.node and @blog.save
+    if @blog.save and Node.blog_node.children << @blog.node
       redirect_to( shortcut_path(@blog.node.shortcut), :notice => 'Blog was successfully created.')
     else
       render :action => "new"
@@ -43,7 +43,7 @@ class Admin::BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    redirect_to( admin_blog_url )
+    redirect_to( admin_blogs_url )
   end
 
   private

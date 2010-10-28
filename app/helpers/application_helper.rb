@@ -108,12 +108,6 @@ module ApplicationHelper
     ]
   end
 
-  def form_submit_button(form_builder, type='')
-    content_tag(:div, :class => "submit") do
-      form_builder.submit(:value => "Save #{type}", :disable_with => 'Submitting...')
-    end
-  end
-
 
   def new_asset
     unless @asset

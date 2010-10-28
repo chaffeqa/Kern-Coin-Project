@@ -1,4 +1,4 @@
-<%= form_for([:admin, @blog, @post]) do |tf| %>
+<%= form_for([:admin, @blog, @post]) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize((@post.errors.count), "error") %> prohibited this Post from being saved:</h2>
@@ -10,23 +10,23 @@
     </div>
   <% end %>
 
-  <%= tf.fields_for :node do |f| %>
+  <%= f.fields_for :node do |node_f| %>
   <fieldset>
     <legend>Page Options</legend>
     <p>This element can <em>optionally</em> be displayed as a page. The effect will be that this page will appear on your site menus and hold a spot within your <b>site heirarchy</b>.</p>
-    <%= render :partial => 'admin/default_node_form', :locals => {:f => f} %>
+    <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
   </fieldset>
   <% end %>
 
   <p>
-    <%= tf.label :title, "Post Title" %>
-    <%= tf.text_field :title %>
+    <%= f.label :title, "Post Title" %>
+    <%= f.text_field :title %>
   </p>
   <hr />
 
   <p>
-    <%= tf.cktext_area :body %>
-  <p>
+    <%= f.cktext_area :body %>
+  </p>
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Post'} %>
 <% end %>

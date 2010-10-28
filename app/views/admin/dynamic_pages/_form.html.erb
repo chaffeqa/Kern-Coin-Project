@@ -48,5 +48,5 @@
   </p>
   <hr />
 
-  <%= raw(form_submit_button(f, 'Page')) %>
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Page'} %>
 <% end %>

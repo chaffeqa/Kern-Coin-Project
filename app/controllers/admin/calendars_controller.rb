@@ -24,7 +24,7 @@ class Admin::CalendarsController < ApplicationController
   def create
     get_home_node
     @calendar = Calendar.new(params[:calendar])
-    if Node.calendar_node.children << @calendar.node and @calendar.save
+    if @calendar.save and Node.calendar_node.children << @calendar.node
       redirect_to( shortcut_path(@calendar.node.shortcut), :notice => 'Calendar was successfully created.')
     else
       render :action => "new"
@@ -43,7 +43,7 @@ class Admin::CalendarsController < ApplicationController
 
   def destroy
     @calendar.destroy
-    redirect_to( admin_calendar_url )
+    redirect_to( admin_calendars_url )
   end
 
   private

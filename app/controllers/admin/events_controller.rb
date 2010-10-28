@@ -19,7 +19,7 @@ class Admin::EventsController < ApplicationController
   def create
     @calendar = Calendar.find(params[:calendar_id])
     @event = @calendar.events.build(params[:event])
-    if @calendar.node.children << @event.node and @event.save
+    if @event.save and @calendar.node.children << @event.node
       redirect_to( shortcut_path(@event.node.shortcut), :notice => 'Event was successfully created.')
     else
       render :action => "new"

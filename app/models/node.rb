@@ -53,7 +53,6 @@ class Node < ActiveRecord::Base
     self.where(:title => 'Blogs').first
   end
 
-
   def self.calendar_node
     self.where(:title => 'Calendars').first
   end
