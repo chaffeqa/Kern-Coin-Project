@@ -5,7 +5,7 @@ tmp/**/*
 db/*.sqlite3_test
 schema.rb
 public/ckeditor_assets
-public/site_assets
+public/site_assets/*
 !public/site_assets/1
 !public/site_assets/2
 !public/site_assets/3
