@@ -10,6 +10,7 @@
     </div>
   <% end %>
 
+<fieldset>
   <%= f.fields_for :node do |node_f| %>
     <p>
       <%= node_f.label :parent_id, 'Blog' %>
@@ -24,12 +25,10 @@
   <hr />
 
   <p>
+    <%= f.label :body, "Body" %>
     <%= f.cktext_area :body %>
-<<<<<<< HEAD
-  <p>
-=======
   </p>
->>>>>>> f6184b352ab57e7956a32d25dd24e55de4a70926
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Post'} %>
+</fieldset>
 <% end %>

@@ -50,9 +50,7 @@ class Admin::DynamicPagesController < ApplicationController
     @home_form = false
     @dynamic_page = DynamicPage.find(params[:id])
     @node = @dynamic_page.node
-    @home_form = true if  @dynamic_page and @home_node == @node
+    @home_form = true if @dynamic_page and @home_node == @node
     get_node
   end
 end
-
-

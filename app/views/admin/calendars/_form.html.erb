@@ -10,15 +10,12 @@
     </div>
   <% end %>
   <%= f.fields_for :node do |node_f| %>
-<<<<<<< HEAD
     <fieldset class="tab">
       <legend>Page Options</legend>
       <p>This element can <em>optionally</em> be displayed as a page. The effect will be that this page will appear on your site menus and hold a spot within your <b>site heirarchy</b>.</p>
       <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
     </fieldset>
-=======
     <%=node_f.hidden_field :displayed, :value => true %>
->>>>>>> 113fe784f2a32cdcad8450bbea5af410583b7cc1
   <% end %>
 
   <fieldset>
@@ -45,6 +42,8 @@
       <%= f.select :background_color, color_select %>
     </p>
   </fieldset>
-  
-  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Calendar'} %>
+
+  <fieldset>
+    <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Calendar'} %>
+  </fieldset>
 <% end %>

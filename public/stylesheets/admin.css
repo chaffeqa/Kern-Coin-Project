@@ -60,12 +60,21 @@
 #adminPage form > fieldset > p > input[type="text"], 
 #adminPage form > fieldset > p > input[type="file"], 
 #adminPage form > fieldset > p > select {
-    border: 1px solid #AAA;
+    background: #fff;
+    border: 1px solid #999;
     color: #777;
     font: inherit;
     margin: 2px 1px;
     padding: 2px;
     width: 170px;
+}
+#adminPage form > fieldset > p > .datetime > select {
+    background: #fff;
+    border: 1px solid #999;
+    color: #777;
+    font: inherit;
+    margin: 2px 1px;
+    padding: 2px;
 }
 #adminPage form > fieldset > p > input[disabled="disabled"], 
 #adminPage form > fieldset > p > select[disabled="disabled"] {
