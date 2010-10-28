@@ -31,7 +31,7 @@ class Category < ActiveRecord::Base
   end
 
   def thumbnail_image
-    self.image? ? self.image.url(:thumb) : 'no_image_preview.gif'
+    self.image? ? self.image.url(:thumb) : 'no_image_thumb.gif'
   end
 
   def original_image

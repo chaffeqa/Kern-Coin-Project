@@ -14,26 +14,4 @@ class Post < ActiveRecord::Base
     self.node.shortcut = self.node.shortcut.nil? || self.node.shortcut.empty? ? self.title.parameterize.html_safe : self.node.shortcut
   end
 
-#  def update_node
-#    self.default_node
-#    self.node.parent = self.blog.node if ( self.blog and not self.node.parent )
-#    self.node.save!
-#  end
-#
-#  def default_node
-#    unless self.node
-#      self.create_node(
-#        :title => self.title,
-#        :menu_name => self.title,
-#        :shortcut => self.title.parameterize.html_safe ,
-#        :displayed => true
-#      )
-#    else
-#      self.node.update_attributes(
-#        :title => self.title,
-#        :menu_name => self.title,
-#        :shortcut => self.title.parameterize.html_safe
-#      )
-#    end
-#  end
 end

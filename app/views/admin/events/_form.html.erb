@@ -11,7 +11,10 @@
   <% end %>
 
   <%= f.fields_for :node do |node_f| %>
-    <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
+    <p>
+      <%= node_f.label :parent_id, 'Calendar' %>
+      <%= node_f.select :parent_id, options_from_collection_for_select(Node.where(:page_type => 'Calendar'), :id, :title, @blog.node.id) %>
+    </p>
   <% end %>
 
   <p>

@@ -10,11 +10,7 @@
     </div>
   <% end %>
   <%= f.fields_for :node do |node_f| %>
-    <fieldset>
-      <legend>Page Options</legend>
-      <p>This element can <em>optionally</em> be displayed as a page. The effect will be that this page will appear on your site menus and hold a spot within your <b>site heirarchy</b>.</p>
-      <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
-    </fieldset>
+    <%=node_f.hidden_field :displayed, :value => true %>
   <% end %>
   <p>
     <%= f.label :title, "Blog Title" %>
