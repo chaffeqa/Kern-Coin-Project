@@ -73,11 +73,11 @@ module ApplicationHelper
 
 
 
-  def dynamic_pages_options_tree_recursive(node, addition)
+  def dynamic_pages_options_tree_recursive(node, addition, neglected_id='')
     array = []
-    array << ["#{addition} #{node.menu_name}", "#{node.id}"]
+    array << ["#{addition} #{node.menu_name}", "#{node.id}"] unless node.id == neglected_id
     node.children.dynamic_pages.each do |childnode|
-      array += dynamic_pages_options_tree_recursive(childnode, "#{addition}---")
+      array += dynamic_pages_options_tree_recursive(childnode, "#{addition}---", neglected_id)
     end
     array
   end

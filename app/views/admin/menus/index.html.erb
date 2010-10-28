@@ -7,7 +7,8 @@
   <ul></ul>
 </div>
 
-<%= link_to 'Save Changes', '#' %>
+<%= link_to 'Save Changes', '#', :id => 'save-changes' %>
+<%= link_to 'Reset Menu', admin_menus_path() %>
 
 <script>
   $(function () {
@@ -17,22 +18,25 @@
         "animation" : 200
       },
       "html_data" : {
-        "data" : "<%=raw display_node_list(@home_node) %>",
-        "ajax" : { "url" : "menus/ajax_node" }
-      },
-      "dnd" : {
-        "drop_finish" : function() {
-          alert('good');
-        }
+        "data" : "<%=raw display_node_list(@home_node) %>"
       },
       "themes" : {
         "theme" : "default",
         "dots" : true,
         "icons" : true
       },
-      "plugins" : [ "themes", "html_data", "ui", "dnd" ]
+      "plugins" : [ "themes", "html_data", "ui", "dnd", "json_data" ]
     });
   });
 
+  $('#save-changes').click(function(){
+    $.ajax({
+      url: 'menus/sort',
+      type: 'POST',
+      data:  $.toJSON($('#sortable-menu').jstree("get_json", -1)),
+      contentType: 'application/json; charset=utf-8'
+    });
+  
+  })
 </script>
 
