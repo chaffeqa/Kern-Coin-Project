@@ -15,7 +15,7 @@
   <%= f.fields_for :node do |node_f| %>
     <p>
       <% unless f.object.title == 'Inventory' %>
-        <%= node_f.label :parent_id, 'Parent Category' %>
+        <%= node_f.label :parent_id, 'Parent Category', :class => "req" %>
         <% if f.object.new_record? %>
           <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
         <% else %>
@@ -29,7 +29,7 @@
   <% end %>
 
   <p>
-    <%= f.label :title, "Category Name" %>
+    <%= f.label :title, "Category Name", :class => "req" %>
     <%= f.text_field :title %>
   </p>
   <p><span class="hint">Describe the items in this category. The description is often prominently displayed on the listing page for the category).</span>
