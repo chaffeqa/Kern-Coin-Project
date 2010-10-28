@@ -148,7 +148,7 @@ article h1.title {border-bottom: 1px solid #e2e2e2; padding-bottom: .6em;}
 	margin: 1em 0 1.5em 1.5em;
 }
 	.contents ul li {
-		background: url(../template/li-bullet-black.png) 0 .7em no-repeat;
+		background: url(../template/li-bullet-black.png) 0 .5em no-repeat;
 		padding-left: .5em;
 	}
 .contents ol {
@@ -239,16 +239,16 @@ h3.commentsHead {
 	margin: 2.5em 1.5em 1.5em 0;
 }
 
-.eventsList ul,
-.blogList ul {
+ul.calendarList,
+ul.blogList {
 	margin: 0;
 }
-	.eventsList ul li,
-	.blogList ul li {
+	ul.calendarList li,
+	ul.blogList li {
 		margin: 0;
 		background: none;
 	}
-		.eventsList ul li a,
+		h2.eventTitle,
 		h2.postTitle {
 			padding: 0;
 			margin: 1em 0 0;

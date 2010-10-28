@@ -10,10 +10,11 @@
     </div>
   <% end %>
 
+<fieldset>
   <%= f.fields_for :node do |node_f| %>
     <p>
       <%= node_f.label :parent_id, 'Calendar' %>
-      <%= node_f.select :parent_id, options_from_collection_for_select(Node.where(:page_type => 'Calendar'), :id, :title, @blog.node.id) %>
+      <%= node_f.select :parent_id, options_from_collection_for_select(Node.where(:page_type => 'Calendar'), :id, :title, @calendar.node.id) %>
     </p>
   <% end %>
 
@@ -33,16 +34,17 @@
   </p>
 
   <p>
-    <%= f.label :start_at %>
-    <%= f.date_select :start_at %>
+    <%= f.label :start_at, "From" %>
+    <span class="datetime"><%= f.datetime_select :start_at %></span>
   </p>
 
   <p>
-    <%= f.label :end_at %>
-    <%= f.date_select :end_at %>
+    <%= f.label :end_at, "To" %>
+    <span class="datetime"><%= f.datetime_select :end_at %></span>
   </p>
 
   <%= f.hidden_field :color, :value => @calendar.event_color  %>
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Event'} %>
+</fieldset>
 <% end %>

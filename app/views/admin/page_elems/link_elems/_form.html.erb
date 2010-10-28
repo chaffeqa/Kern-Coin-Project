@@ -12,6 +12,7 @@
     </div>
   <% end %>
 
+<fieldset>
   <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:form => f} %>
 
   <div class="field">
@@ -47,8 +48,9 @@
     <%=  f.check_box :is_image %> &nbsp;
     <%= f.label :is_image, 'Make this link an image?' %>
   </div>
-
-  <fieldset>
+</fieldset>
+  
+  <fieldset class="tab">
     <legend>Image Details</legend>
 
     <div class="field">
@@ -63,10 +65,11 @@
     </div>
   </fieldset>
 
+<fieldset>
   <div class="field">
     <%= f.check_box :target, {}, '_blank', '' %>
     <%= f.label :target, "Open Link in New Window?" %>
   </div>
-
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
+</fieldset>
 <% end %>

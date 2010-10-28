@@ -10,6 +10,7 @@
     </div>
   <% end %>
 
+<fieldset>
   <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
   <hr />
 
@@ -52,4 +53,5 @@
   </p>
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
+</fieldset>
 <% end %>
