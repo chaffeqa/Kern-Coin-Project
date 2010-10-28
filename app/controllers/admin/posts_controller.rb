@@ -19,7 +19,7 @@ class Admin::PostsController < ApplicationController
   def create
     @blog = Blog.find(params[:blog_id])
     @post = @blog.posts.build(params[:post])
-    if @blog.node.children << @post.node and @post.save
+    if @post.save and @blog.node.children << @post.node
       redirect_to( shortcut_path(@post.node.shortcut), :notice => 'Post was successfully created.')
     else
       render :action => "new"

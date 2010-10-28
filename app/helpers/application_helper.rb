@@ -69,8 +69,8 @@ module ApplicationHelper
 
   def display_node_list(node, type='')
     ret = "<li id='node_#{node.id}' class='node' rel='#{type}'>"
-#    ret << "<ins class='jstree-icon'>&nbsp;</ins>"
-#    ret << link_to( node.menu_name , node.url )
+    #    ret << "<ins class='jstree-icon'>&nbsp;</ins>"
+    #    ret << link_to( node.menu_name , node.url )
     ret << "<a href='#{node.url}'><ins class='jstree-icon'></ins>#{node.menu_name}</a>"
     ret << display_nodes(node.children.displayed, node.id) if node.children.displayed.any?
     ret << "</li>"

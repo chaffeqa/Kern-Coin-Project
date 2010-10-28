@@ -9,6 +9,7 @@
       </ul>
     </div>
   <% end %>
+
   <%= f.fields_for :node do |node_f| %>
     <fieldset class="tab">
       <legend>Page Options</legend>
@@ -18,6 +19,10 @@
   <% end %>
 
   <fieldset>
+    <p>
+      <%= f.label :title, "Blog Title" %>
+      <%= f.text_field :title %>
+    </p>
     <p>
       <%= f.label :banner, "Blog Banner" %>
       <%= f.cktext_area :banner %>

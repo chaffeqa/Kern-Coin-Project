@@ -4,7 +4,7 @@
 
 <% content_for :page_admin_bar do %>
   <%= link_to 'Calendar Settings', edit_admin_calendar_path(@calendar ), :class => 'btn large' %>
-  <%= link_to 'Delete Event', admin_calendar_event_path(@calendar, @event) , :confirm => "Are you sure?", :method => :delete, :class => 'btn large' %>
+  <%= link_to 'Delete Event', admin_calendar_event_path(@calendar, @event) , :confirm => "Are you sure?", :method => :delete, :class => 'btn control large' %>
   <%= link_to 'Edit Event', edit_admin_calendar_event_path(@calendar, @event), :class => 'btn large' %>
 <% end %>
 

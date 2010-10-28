@@ -5,4 +5,12 @@ tmp/**/*
 db/*.sqlite3_test
 schema.rb
 public/ckeditor_assets
-public/site_assets
+public/site_assets/**
+!public/site_assets/images
+public/site_assets/images/**
+!public/site_assets/images/1/
+!public/site_assets/images/2/
+!public/site_assets/images/3/
+!public/site_assets/images/4/
+!public/site_assets/images/5/
+

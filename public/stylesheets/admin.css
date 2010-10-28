@@ -75,6 +75,8 @@
 }
 #adminPage form > fieldset > p > input[type="checkbox"] {
     width:auto;
+    vertical-align: middle;
+    margin: 0 0 2px 10px;
 }
 #adminPage form > fieldset > p > textarea {
     border:1px solid #AAA;

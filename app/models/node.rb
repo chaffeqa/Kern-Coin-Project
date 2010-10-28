@@ -53,7 +53,6 @@ class Node < ActiveRecord::Base
     self.where(:title => 'Blogs').first
   end
 
-
   def self.calendar_node
     self.where(:title => 'Calendars').first
   end
@@ -65,11 +64,8 @@ class Node < ActiveRecord::Base
 
   private
   def self.order_helper( json, position = 0, parent_id = nil)
-    json.each do |hash|
-      puts hash.keys
-      #      puts value['attributes']
+    json.each do |hash|  
       node_id = hash['attributes']['id'].delete('node_')
-#      puts node_id
       Node.update_all(['position = ?, parent_id = ?', position, parent_id], ['id = ?', node_id])
       position += 1
       if hash['children']
@@ -79,21 +75,5 @@ class Node < ActiveRecord::Base
     end
     position
   end
-
-  #{"data"=>{"title"=>"Home", "state"=>"open"},
-  #  "attributes"=>{"class"=>"node ", "id"=>"node_1"},
-  #  "children"=>[
-  #    {"data"=>{"title"=>"Inventory", "state"=>"open"},
-  #      "attributes"=>{"class"=>"node ", "id"=>"node_4"},
-  #      "children"=>[
-  #        {"data"=>{"title"=>"Test Cat"},
-  #          "attributes"=>{"class"=>"node ", "id"=>"node_6"}},
-  #        {"data"=>{"title"=>"item1", "state"=>"open"},
-  #          "attributes"=>{"class"=>"node ", "id"=>"node_7"},
-  #          "children"=>[
-  #            {"data"=>{"title"=>"Test Item"},
-  #              "attributes"=>{"class"=>"node dragged ", "id"=>"node_5"}}]}, {"data"=>{"title"=>"Great Scott"}, "attributes"=>{"class"=>"node ", "id"=>"node_8"}}]}]}
-
-
 
 end
