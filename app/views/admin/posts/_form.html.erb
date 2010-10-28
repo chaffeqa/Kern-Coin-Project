@@ -11,11 +11,10 @@
   <% end %>
 
   <%= f.fields_for :node do |node_f| %>
-  <fieldset>
-    <legend>Page Options</legend>
-    <p>This element can <em>optionally</em> be displayed as a page. The effect will be that this page will appear on your site menus and hold a spot within your <b>site heirarchy</b>.</p>
-    <%= render :partial => 'admin/default_node_form', :locals => {:f => node_f} %>
-  </fieldset>
+    <p>
+      <%= node_f.label :parent_id, 'Blog' %>
+      <%= node_f.select :parent_id, options_from_collection_for_select(Node.where(:page_type => 'Blog'), :id, :title, @blog.node.id) %>
+    </p>
   <% end %>
 
   <p>
