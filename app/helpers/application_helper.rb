@@ -65,7 +65,7 @@ module ApplicationHelper
 
   def display_node_list(node)
     ret = "<li id='node_#{node.id}'>"
-#    ret << link_to( node.menu_name , '#' )
+    #    ret << link_to( node.menu_name , '#' )
     ret << "<a href='#'>#{node.menu_name}</a>"
     ret << display_children_nodes(node.children.displayed) if node.children.displayed.any?
     ret << "</li>"
@@ -87,6 +87,16 @@ module ApplicationHelper
     array << ["#{addition} #{node.title}", "#{node.id}"]
     node.children.categories.each do |childnode|
       array += cat_options_tree_recursive(childnode, "#{addition}---")
+    end
+    array
+  end
+
+  def item_options_tree(categories)
+    array = []
+    categories.each do |cat|
+      if cat.has_items? or cat.node.children.empty?
+        array << ["#{cat.title}", "#{cat.node.id}"]
+      end
     end
     array
   end

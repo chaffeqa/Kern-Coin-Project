@@ -22,7 +22,9 @@ class Category < ActiveRecord::Base
   def has_items?
     return false if self.node.children.empty?
     child = self.node.children.first
-    return true if child.page_type == 'Item'
+    if child.page_type == 'Item'
+      return true
+    end
     return false
   end
 
