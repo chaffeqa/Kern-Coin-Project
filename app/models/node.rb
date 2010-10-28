@@ -11,9 +11,22 @@ class Node < ActiveRecord::Base
   scope :categories, where(:page_type => 'Category')
   scope :calendars, where(:page_type => 'Calendar')
 
-  validates_presence_of :shortcut, :title
+  validates_presence_of :shortcut, :title, :menu_name
   validate :shortcut_html_safe?
   validates_uniqueness_of :shortcut
+  before_validation :fill_missing_fields
+
+  def fill_missing_fields
+    unless self.title.blank?
+      self.menu_name = self.title if self.menu_name.blank?
+      self.shortcut = self.title.parameterize.html_safe if self.shortcut.blank?
+    else
+      unless self.menu_name.blank?
+        self.title = self.menu_name if self.title.blank?
+        self.shortcut = self.menu_name.parameterize.html_safe if self.shortcut.blank?
+      end
+    end
+  end
   
   PAGE_TYPES = [
     "Inventory",
