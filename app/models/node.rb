@@ -65,11 +65,8 @@ class Node < ActiveRecord::Base
 
   private
   def self.order_helper( json, position = 0, parent_id = nil)
-    json.each do |hash|
-      puts hash.keys
-      #      puts value['attributes']
+    json.each do |hash|  
       node_id = hash['attributes']['id'].delete('node_')
-#      puts node_id
       Node.update_all(['position = ?, parent_id = ?', position, parent_id], ['id = ?', node_id])
       position += 1
       if hash['children']
