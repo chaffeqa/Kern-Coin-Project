@@ -124,4 +124,12 @@ module ApplicationHelper
   end
   
 
+
+  ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+    if instance.error_message.kind_of?(Array)
+      %(<span class="field_with_errors">#{html_tag}</span>)
+    else
+      %(<span class="field_with_errors">#{html_tag}</span>)
+    end
+  end
 end

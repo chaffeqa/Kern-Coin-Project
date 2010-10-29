@@ -30,4 +30,5 @@ $(function() {
 	$(".expander").click(function() {
 		$(this).parent().siblings(".expanded-hint").toggle(200, function(){});
 	    });
+	$(".expanded-hint").hide(); // Hide initially
     });

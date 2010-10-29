@@ -17,8 +17,8 @@
       <%= node_f.check_box :displayed %> Display as page?
     </p>
     <p><span class="hint"><a class="expander">Explain this</a></span>
-      <%= node_f.label :title, "Page Title", :class => "req" %>
-      <%= node_f.text_field :title %>
+      <%=raw node_f.label :title, "Page Title", :class => "req" %>
+      <%=raw node_f.text_field :title %>
       <span class="expanded-hint">The page title appears in the title bar at the very top or your web browser window and is particularly important to search results so make it unique and descriptive. The page title is also shown by the "Page Title" token in your template.</span>
     </p>
     <p><span class="hint"><a class="expander">Explain this</a></span>

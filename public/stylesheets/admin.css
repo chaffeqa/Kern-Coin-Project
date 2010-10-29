@@ -31,7 +31,7 @@
 #adminPage form > fieldset > p > span.expanded-hint {
     color: #777;
     clear: both;
-    display: none;
+    display: block;
 }
 
 #adminPage form > fieldset > .field_with_errors {display: inline;}
