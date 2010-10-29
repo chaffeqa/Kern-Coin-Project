@@ -16,9 +16,9 @@
     <p>
       <%= node_f.label :parent_id, 'Category', :class => "req" %>
       <% if f.object.new_record? %>
-        <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
+        <%= node_f.select :parent_id, options_for_select(item_options_tree(Category.all), :prompt => true) %>
       <% else %>
-        <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
+        <%= node_f.select :parent_id, options_for_select(item_options_tree(Category.all), node_f.object.parent_id) %>
       <% end %>
     </p>
   <% end %>

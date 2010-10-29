@@ -55,34 +55,29 @@ module ApplicationHelper
 
   
 
-  def display_nodes(nodes, parent_id )
+  def display_children_nodes(nodes )
     ret = "<ul>"
     for node in nodes
-      if node.parent_id == nil
-        node.parent_id = 0
-      elsif node.parent_id == parent_id
-        ret << display_node_list(node)
-      end
+      ret << display_node_list(node)
     end
     ret << "</ul>"
   end
 
-  def display_node_list(node, type='')
-    ret = "<li id='node_#{node.id}' class='node' rel='#{type}'>"
-    #    ret << "<ins class='jstree-icon'>&nbsp;</ins>"
-    #    ret << link_to( node.menu_name , node.url )
-    ret << "<a href='#{node.url}'><ins class='jstree-icon'></ins>#{node.menu_name}</a>"
-    ret << display_nodes(node.children.displayed, node.id) if node.children.displayed.any?
+  def display_node_list(node)
+    ret = "<li id='node_#{node.id}'>"
+    #    ret << link_to( node.menu_name , '#' )
+    ret << "<a href='#'>#{node.menu_name}</a>"
+    ret << display_children_nodes(node.children.displayed) if node.children.displayed.any?
     ret << "</li>"
   end
 
 
 
-  def dynamic_pages_options_tree_recursive(node, addition)
+  def dynamic_pages_options_tree_recursive(node, addition, neglected_id='')
     array = []
-    array << ["#{addition} #{node.menu_name}", "#{node.id}"]
+    array << ["#{addition} #{node.menu_name}", "#{node.id}"] unless node.id == neglected_id
     node.children.dynamic_pages.each do |childnode|
-      array += dynamic_pages_options_tree_recursive(childnode, "#{addition}---")
+      array += dynamic_pages_options_tree_recursive(childnode, "#{addition}---", neglected_id)
     end
     array
   end
@@ -92,6 +87,16 @@ module ApplicationHelper
     array << ["#{addition} #{node.title}", "#{node.id}"]
     node.children.categories.each do |childnode|
       array += cat_options_tree_recursive(childnode, "#{addition}---")
+    end
+    array
+  end
+
+  def item_options_tree(categories)
+    array = []
+    categories.each do |cat|
+      if cat.has_items? or cat.node.children.empty?
+        array << ["#{cat.title}", "#{cat.node.id}"]
+      end
     end
     array
   end

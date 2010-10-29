@@ -1,20 +1,42 @@
 <%= content_for :head do %>
   <%= stylesheet_link_tag '/javascripts/themes/classic/style' %>
-  <%= javascript_include_tag 'jquery.tree.min' %>
+  <%= javascript_include_tag 'jquery.jstree', 'jquery.cookie', 'jquery.hotkeys' %>
 <% end %>
 
 <div id="sortable-menu">
-  <%= content_tag :ul do %>
-    <%= raw(display_node_list(@home_node,'root')) %>
-  <% end %>
+  <ul></ul>
 </div>
 
+<%= link_to 'Save Changes', '#', :id => 'save-changes' %>
+<%= link_to 'Reset Menu', admin_menus_path() %>
+
 <script>
-  $(function() { setup_tree_old({
-      selector: '#sortable-menu',
-      post_url: 'menus/sort',
-      draggable: true
+  $(function () {
+    $("#sortable-menu").jstree({
+      "core" : { 
+        "initially_open" : [ "<%= 'node_' + @home_node.id.to_s %>" ],
+        "animation" : 200
+      },
+      "html_data" : {
+        "data" : "<%=raw display_node_list(@home_node) %>"
+      },
+      "themes" : {
+        "theme" : "default",
+        "dots" : true,
+        "icons" : true
+      },
+      "plugins" : [ "themes", "html_data", "ui", "dnd", "json_data" ]
     });
-  } );
+  });
+
+  $('#save-changes').click(function(){
+    $.ajax({
+      url: 'menus/sort',
+      type: 'POST',
+      data:  $.toJSON($('#sortable-menu').jstree("get_json", -1)),
+      contentType: 'application/json; charset=utf-8'
+    });
+  
+  })
 </script>
 

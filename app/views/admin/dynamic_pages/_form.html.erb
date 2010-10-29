@@ -32,18 +32,15 @@
       <span class="expanded-hint">The shortcut is used to give this page an easy to remember direct address. For example if you make your shortcut “<strong>New Product</strong>”, then anyone can type “<strong>www.yourwebsite.com/new-product</strong>” to visit it. This is useful for adding keywords to URLs for search engine marketing, traditional marketing, and creating easy-to-remember landing pages.</span>
     </p>
     <hr />
-    <p>
-      <% unless @dynamic_page.node == @home_node %>
+
+    <% unless @dynamic_page.node == @home_node %>
+      <p>
         <span class="hint">Select where this page should exist within the site heirarchy.</span>
-        <%= node_f.label :node_id, "Parent", :class => "req" %>
-        <%= node_f.select :parent_id, options_for_select(dynamic_pages_options_tree_recursive(@home_node, "")) %>
-      <% else %>
-        <span class="hint">Home Page!</span>
-        <%= node_f.label :node_id, "Parent", :class => "req" %>
-        <%= node_f.text_field :parent_id, :value => "<none>", :disabled => true %>
-      <% end %>
-    </p>
-    <hr />
+        <%= node_f.label :node_id, "Parent" %>
+        <%= node_f.select :parent_id, options_for_select(dynamic_pages_options_tree_recursive(@home_node, "", node_f.object.new_record? ? '' : node_f.object.id)) %>
+      </p>
+      <hr />
+    <% end %>
   <% end %>
 
   <p><span class="hint">Choose the template you would like this page to use.</span>
