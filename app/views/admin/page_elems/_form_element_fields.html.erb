@@ -1,11 +1,11 @@
 <%= hidden_field_tag :shortcut, @shortcut %>
 
 <%= f.fields_for :element do |element_f| %>
-  <p>
+  <div class="field">
     <%= element_f.label :title %>
     <%= element_f.text_field :title %>
     <%= element_f.check_box :display_title %>&nbsp;
     <%= element_f.label :display_title, "Display Title?" %>
-  </p>
+  </div>
   <%= element_f.hidden_field :page_area %>
 <% end %>

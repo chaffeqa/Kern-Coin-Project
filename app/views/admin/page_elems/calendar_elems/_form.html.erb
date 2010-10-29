@@ -14,7 +14,7 @@
   <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
   <hr />
 
-  <p><span class="hint"><strong>
+  <div class="field"><span class="hint"><strong>
       <% if f.object.new_record? %>
         <%= link_to 'Create New Calendar', new_admin_calendar_path %>
       <% else %>
@@ -23,18 +23,18 @@
     </strong></span>
     <%= f.label :calendar_id, "Calendar Feed" %>
     <%= f.select( :calendar_id, options_for_select(Calendar.all.map {|cal| [cal.node.title, cal.id]}) ) %>
-  </p>
+  </div>
   <hr />
 
-  <p><span class="hint">How do you want your calendar to look? <a class="expander">Explain this</a></span>
+  <div class="field"><span class="hint">How do you want your calendar to look? <a class="expander">Explain this</a></span>
     <%= f.label :display_style, "Display Options" %>
     <%= f.select :display_style, options_for_select(CalendarElem.display_type_select) %>
     <%# f.object.display_style %>
     <span class="expanded-hint">Here you can choose what form your calendar will take. For instance, the "Calendar" view looks like a standard desktop calendar, whereas "List" displays your events in a convenient, compact list format.</span>
-  </p>
+  </div>
   <hr />
 
-  <p><span class="hint">How many days of events do you want to show? <a class="expander">Explain further</a></span>
+  <div class="field"><span class="hint">How many days of events do you want to show? <a class="expander">Explain further</a></span>
     <%= f.label :max_days_in_past, 'Event Dates' %>
     <%= f.text_field :max_days_in_past, :title => "Past", :style => "width: 60px;" %> - to -
     <%= f.text_field :max_days_in_future, :title => "Future", :style => "width: 60px;" %>
@@ -43,14 +43,14 @@
       <strong>Future</strong> - Choose how many days of future events you'd like to display. For example: "30" means include the next 30 days of events, and if left blank, the calendar will show the next year of events.<br />
       Please note, if you're using the "Calendar" view, this setting will have no effect.
     </span>
-  </p>
+  </div>
   <hr />
 
-  <p><span class="hint">How many events do you want to show? <a class="expander">Explain further</a></span>
+  <div class="field"><span class="hint">How many events do you want to show? <a class="expander">Explain further</a></span>
     <%= f.label :max_events_shown, 'Number of Events' %>
     <%= f.text_field :max_events_shown, :style => "width: 60px;" %>
     <span class="expanded-hint">Limit how many events you want to show by entering a number here. If you leave this value blank, all events will be shown. Please note, if you're using the "Calendar" view, this setting will have no effect.</span>
-  </p>
+  </div>
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
 </fieldset>

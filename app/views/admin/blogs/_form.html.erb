@@ -20,14 +20,14 @@
   <% end %>
 
   <fieldset>
-    <p>
-      <%= f.label :title, "Blog Title" %>
+    <div class="field">
+      <%= f.label :title, "Blog Title", :class => "req" %>
       <%= f.text_field :title %>
-    </p>
-    <p>
+    </div>
+    <div class="field">
       <%= f.label :banner, "Blog Banner" %>
       <%= f.cktext_area :banner %>
-    </p>
+    </div>
 
     <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Blog'} %>
   </fieldset>

@@ -19,28 +19,28 @@
   <% end %>
 
   <fieldset>
-    <p>
-      <%= f.label :title, "Calendar Title" %>
+    <div class="field">
+      <%= f.label :title, "Calendar Title", :class => "req" %>
       <%= f.text_field :title %>
-    </p>
+    </div>
 
-    <p>
+    <div class="field">
       <%= f.label :banner, "Calendar Banner" %>
       <%= f.cktext_area :banner %>
-    </p>
+    </div>
   </fieldset>
 
   <fieldset class="tab">
     <legend>Calendar Colors</legend>
-    <p><span class="hint">Customize your calendar colors</span>
+    <div class="field"><span class="hint">Customize your calendar colors</span>
       <%= f.label :event_color, "Event" %>
       <%= f.select :event_color, color_select %>
-    </p>
+    </div>
 
-    <p>
+    <div class="field">
       <%= f.label :background_color, "Background" %>
       <%= f.select :background_color, color_select %>
-    </p>
+    </div>
   </fieldset>
 
   <fieldset>

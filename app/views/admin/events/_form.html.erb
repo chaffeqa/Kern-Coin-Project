@@ -12,36 +12,36 @@
 
 <fieldset>
   <%= f.fields_for :node do |node_f| %>
-    <p>
+    <div class="field">
       <%= node_f.label :parent_id, 'Calendar' %>
       <%= node_f.select :parent_id, options_from_collection_for_select(Node.where(:page_type => 'Calendar'), :id, :title, @calendar.node.id) %>
-    </p>
+    </div>
   <% end %>
 
-  <p>
-    <%= f.label :name %>
+  <div class="field">
+    <%= f.label :name, :class => "req" %>
     <%= f.text_field :name %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= f.label :description, "Details" %>
     <%= f.cktext_area :description %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= f.label :all_day, raw('&nbsp') %>
     <%= f.check_box :all_day %> All day event?
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= f.label :start_at, "From" %>
     <span class="datetime"><%= f.datetime_select :start_at %></span>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= f.label :end_at, "To" %>
     <span class="datetime"><%= f.datetime_select :end_at %></span>
-  </p>
+  </div>
 
   <%= f.hidden_field :color, :value => @calendar.event_color  %>
 

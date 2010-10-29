@@ -1,19 +1,19 @@
-<p>
+<div class="field">
   <%= f.label :displayed, raw("&nbsp;") %>
   <%= f.check_box :displayed, :default => false %> Display as page?
-</p>
-<p><span class="hint"><a class="expander">explain this</a></span>
+</div>
+<div class="field"><span class="hint"><a class="expander">explain this</a></span>
   <%= f.label :title, "Page Title", :class => "req" %>
   <%= f.text_field :title %><br />
   <span class="expanded-hint">The page title appears in the title bar at the very top or your web browser window and is particularly important to search results so make it unique and descriptive. The page title is also shown by the "Page Title" token in your template.</span>
-</p>
-<p><span class="hint"><a class="expander">explain this</a></span>
+</div>
+<div class="field"><span class="hint"><a class="expander">explain this</a></span>
   <%= f.label :menu_name, "Menu Name" %>
   <%= f.text_field :menu_name %><br />
   <span class="expanded-hint">The menu name is used to display your page in the menus of your website. This is useful for making a long page title shorter and more manageable in menus.</span>
-</p>
-<p><span class="hint"><a class="expander">explain this</a></span>
+</div>
+<div class="field"><span class="hint"><a class="expander">explain this</a></span>
   <%= f.label :shortcut, :class => "req" %>
   http://www.jkerncoins.com/<%= f.text_field :shortcut %>
   <span class="expanded-hint">The shortcut is used to give this page an easy to remember direct address. For example if you make your shortcut “<strong>New Product</strong>”, then anyone can type “<strong>www.yourwebsite.com/new-product</strong>” to visit it. This is useful for adding keywords to URLs for search engine marketing, traditional marketing, and creating easy-to-remember landing pages.</span>
-</p>
+</div>

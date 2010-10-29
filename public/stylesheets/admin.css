@@ -18,24 +18,24 @@
 #adminPage form {
     padding: 10px;
 }
-#adminPage form > fieldset > p {
+#adminPage form > fieldset > .field {
     clear: both;
     margin:0 0 6px;
 }
-#adminPage form > fieldset > p > .hint {
+#adminPage form > fieldset > .field > .hint {
     color:#777777;
     float:right;
     width:200px;
 }
-#adminPage form > fieldset > p > .hint > a { cursor: pointer; }
-#adminPage form > fieldset > p > span.expanded-hint {
+#adminPage form > fieldset > .field > .hint > a { cursor: pointer; }
+#adminPage form > fieldset > .field > span.expanded-hint {
     color: #777;
     clear: both;
     display: block;
 }
 
-#adminPage form > fieldset > .field_with_errors {display: inline;}
-#adminPage form > fieldset > .field_with_errors > input { border: red solid 1px; background-color: #FEE; }
+#adminPage form > fieldset > .field > .field_with_errors {display: inline;}
+#adminPage form > fieldset > .field > .field_with_errors > input { border: red solid 1px; background-color: #FEE; }
 
 #adminPage form > fieldset.tab {
     border: 1px solid #f0f0f0;
@@ -48,18 +48,23 @@
     font-size: 1.2em;
     padding: 3px;
 }
-#adminPage form > fieldset > p > label {
+#adminPage form > fieldset > .field > label,
+#adminPage form > fieldset > .field > .field_with_errors > label {
     display:inline-block;
     font-weight:bold;
     padding:0 5px 0 0;
 }
-#adminPage form > fieldset > p > label.req:after {
+#adminPage form > fieldset > .field > label.req:after,
+#adminPage form > fieldset > .field > .field_with_errors > label.req:after {
     color:red;
     content:" *";
 }
-#adminPage form > fieldset > p > input[type="text"], 
-#adminPage form > fieldset > p > input[type="file"], 
-#adminPage form > fieldset > p > select {
+#adminPage form > fieldset > .field > input[type="text"], 
+#adminPage form > fieldset > .field > input[type="file"], 
+#adminPage form > fieldset > .field > select,
+#adminPage form > fieldset > .field > .field_with_errors > input[type="text"], 
+#adminPage form > fieldset > .field > .field_with_errors > input[type="file"], 
+#adminPage form > fieldset > .field > .field_with_errors > select {
     background: #fff;
     border: 1px solid #999;
     color: #777;
@@ -68,7 +73,8 @@
     padding: 2px;
     width: 170px;
 }
-#adminPage form > fieldset > p > .datetime > select {
+#adminPage form > fieldset > .field > .datetime > select,
+#adminPage form > fieldset > .field > .field_with_errors > .datetime > select {
     background: #fff;
     border: 1px solid #999;
     color: #777;
@@ -76,27 +82,35 @@
     margin: 2px 1px;
     padding: 2px;
 }
-#adminPage form > fieldset > p > input[disabled="disabled"], 
-#adminPage form > fieldset > p > select[disabled="disabled"] {
+#adminPage form > fieldset > .field > input[disabled="disabled"], 
+#adminPage form > fieldset > .field > select[disabled="disabled"],
+#adminPage form > fieldset > .field > .field_with_errors > input[disabled="disabled"], 
+#adminPage form > fieldset > .field > .field_with_errors > select[disabled="disabled"] {
     color: #AAA;
     background-color: #FFF;
     border: 1px solid #CCC;
 }
-#adminPage form > fieldset > p > input[type="checkbox"] {
+#adminPage form > fieldset > .field > input[type="checkbox"],
+#adminPage form > fieldset > .field > .field_with_errors > input[type="checkbox"] {
     width:auto;
     vertical-align: middle;
     margin: 0 0 2px 10px;
 }
-#adminPage form > fieldset > p > textarea {
+#adminPage form > fieldset > .field > textarea,
+#adminPage form > fieldset > .field > .field_with_errors > textarea {
     border:1px solid #AAA;
     height:60px;
     vertical-align:top;
     width:320px;
 }
-#adminPage form > fieldset > p > input:focus, 
-#adminPage form > fieldset > p > input.focused, 
-#adminPage form > fieldset > p > select:focus, 
-#adminPage form > fieldset > p > select.focused {
+#adminPage form > fieldset > .field > input:focus, 
+#adminPage form > fieldset > .field > input.focused, 
+#adminPage form > fieldset > .field > select:focus, 
+#adminPage form > fieldset > .field > select.focused,
+#adminPage form > fieldset > .field > .field_with_errors > input:focus, 
+#adminPage form > fieldset > .field > .field_with_errors > input.focused, 
+#adminPage form > fieldset > .field > .field_with_errors > select:focus, 
+#adminPage form > fieldset > .field > .field_with_errors > select.focused {
     border-color:#000000;
     color:#333333;
 }

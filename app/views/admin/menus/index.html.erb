@@ -3,12 +3,15 @@
   <%= javascript_include_tag 'jquery.jstree', 'jquery.cookie', 'jquery.hotkeys' %>
 <% end %>
 
+<h1 class="title">Manage Site Heirarchy</h1>
+<p>Here you can easily organize all the pages of your website in one place. To change the order of a page, select the page then click and drag it to another location. It's that easy. If you drag the page onto another page, the dragged page will now fall under the other page in the hierarchy. After you're satisfied with the heirarchy, click "update." Your page order will not be saved until you click "update."</p>
 <div id="sortable-menu">
   <ul></ul>
 </div>
-
-<%= link_to 'Save Changes', '#', :id => 'save-changes' %>
-<%= link_to 'Reset Menu', admin_menus_path() %>
+<br />
+<%= link_to 'Update', '#', :id => 'save-changes', :class => "btn medium" %>
+<%= link_to 'Reset', admin_menus_path(), :class => "btn medium" %>
+<%= link_to 'Cancel', :back %>
 
 <script>
   $(function () {

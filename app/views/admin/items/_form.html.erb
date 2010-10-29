@@ -13,17 +13,17 @@
 
 <fieldset>
   <%= f.fields_for :node do |node_f| %>
-    <p>
+    <div class="field">
       <%= node_f.label :parent_id, 'Category', :class => "req" %>
       <% if f.object.new_record? %>
         <%= node_f.select :parent_id, options_for_select(item_options_tree(Category.all), :prompt => true) %>
       <% else %>
         <%= node_f.select :parent_id, options_for_select(item_options_tree(Category.all), node_f.object.parent_id) %>
       <% end %>
-    </p>
+    </div>
   <% end %>
 
-  <p><span class="hint">Be sure to enter a unique item ID.</span>
+  <div class="field"><span class="hint">Be sure to enter a unique item ID.</span>
     <%= f.label :name, "Item Details", :class => "req" %>
     <%= f.text_field :name, :title => "Item Name" %>
     <% if f.object.new_record? %>
@@ -31,36 +31,36 @@
     <% else %>
       <%= f.text_field :item_id, :title => "Item ID", :disabled => true %>
     <% end %>
-  </p>
-  <p>
+  </div>
+  <div class="field">
     <%= f.label :details %>
     <%= f.text_area :details %>
-  </p>
+  </div>
   <hr />
 
-  <p>
+  <div class="field">
     <%= f.label :cost, "Price" %>
     <%= f.text_field :cost, :style => "width: 70px;" %>
-  </p>
+  </div>
   <hr />
 
-  <p>
+  <div class="field">
     <%= f.label :for_sale, "Item Options" %>
     <%= f.check_box :for_sale %> List item for sale?
-  </p>
-  <p>
+  </div>
+  <div class="field">
     <%= f.label :display, raw('&nbsp') %>
     <%= f.check_box :display %> Display publically?
-  </p>
+  </div>
   <hr />
 
-  <p><span class="hint">Manage images for this product.</span>
+  <div class="field"><span class="hint">Manage images for this product.</span>
     <% f.fields_for :product_images do |img_form| %>
       <%= render :partial => 'product_image', :locals => { :f => img_form } %>
     <% end %>
     <%= new_child_fields_template(f, :product_images)%>
     <label><%= add_child_link "Add Product Image", :product_images %></label>
-  </p>
+  </div>
   <hr />
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Item'} %>

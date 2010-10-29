@@ -13,10 +13,10 @@
 <fieldset>
   <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
 
-  <p>
+  <div class="field">
     <%= f.label :text, 'Body' %>
     <%= f.cktext_area :text %>
-  </p>
+  </div>
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
 </fieldset>

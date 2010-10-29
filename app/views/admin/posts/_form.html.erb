@@ -12,22 +12,22 @@
 
 <fieldset>
   <%= f.fields_for :node do |node_f| %>
-    <p>
+    <div class="field">
       <%= node_f.label :parent_id, 'Blog' %>
       <%= node_f.select :parent_id, options_from_collection_for_select(Node.where(:page_type => 'Blog'), :id, :title, @blog.node.id) %>
-    </p>
+    </div>
   <% end %>
 
-  <p>
-    <%= f.label :title, "Post Title" %>
+  <div class="field">
+    <%= f.label :title, "Post Title", :class => "req" %>
     <%= f.text_field :title %>
-  </p>
+  </div>
   <hr />
 
-  <p>
+  <div class="field">
     <%= f.label :body, "Body" %>
     <%= f.cktext_area :body %>
-  </p>
+  </div>
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Post'} %>
 </fieldset>
