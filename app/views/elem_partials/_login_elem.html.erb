@@ -7,11 +7,16 @@
 
 <p>
 
-  <% if element.display_title %><h1 class="title  <%= element.html_id %> "><%= element.title %></h1><% end %>
-  
-  <% if admin_signed_in? %>
-    <%= link_to "Logout", destroy_admin_session_path %>
-  <% else %>
-    <%= link_to "Login", new_admin_session_path %>
+<% if element.display_title %><h1 class="title  <%= element.html_id %> "><%= element.title %></h1><% end %>
+
+<% if admin_signed_in? %>
+  <%= link_to "Logout", destroy_admin_session_path %>
+<% else %>
+  <%= form_tag new_admin_session_path do %>
+    <div class="field"><%= text_field_tag 'admin[email]' %> &nbsp; <%= label_tag 'admin[email]', 'Email' %></div>
+    <div class="field"><%= password_field_tag 'admin[password]' %> &nbsp; <%= label_tag 'admin[password]', 'Password' %></div>
+    <div class="submit"><%= submit_tag 'Login', :disable_with => '...Authenticating' %> &nbsp; or &nbsp; <%= link_to 'Sign Up', new_admin_registration_path() %></div>
   <% end %>
+
+<% end %>
 </p>

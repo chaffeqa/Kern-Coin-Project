@@ -41,7 +41,7 @@
   <div class="field">
     <%= f.label :city, raw('&nbsp') %>
     <%= f.text_field :city, :title => "City" %>
-    <%= f.text_field :state, :title => "State", :style => "width: 35px;" %>
+    <%= f.select :state, Question.state_selector, :prompt => 'State', :size => 30, :style => "width: 35px;" %>
     <%= f.text_field :zip_code, :title => "Zip", :style => "width: 50px;" %>
   </div>
   <div class="field">

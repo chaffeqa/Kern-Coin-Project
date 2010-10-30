@@ -13,7 +13,8 @@ class Node < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :menu_name
   validate :shortcut_html_safe?
-  validate :unique_shortcut?
+  validate :create_unique_shortcut?, :on => :create
+  validate :update_unique_shortcut?, :on => :update
   before_validation :fill_missing_fields
 
   def fill_missing_fields
@@ -28,8 +29,16 @@ class Node < ActiveRecord::Base
     end
   end
 
-  def unique_shortcut?
+  def create_unique_shortcut?
     if Node.exists?(:shortcut => shortcut)
+      addition = Node.where('shortcut LIKE ?', shortcut).count
+      suggested = self.shortcut + "_" + addition.to_s
+      errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
+    end
+  end
+
+  def update_unique_shortcut?
+    if Node.where(:shortcut => shortcut).count > 1
       addition = Node.where('shortcut LIKE ?', shortcut).count
       suggested = self.shortcut + "_" + addition.to_s
       errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
