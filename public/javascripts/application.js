@@ -28,8 +28,9 @@ $(function() {
 
 
     var preview = $('a#preview');
+    var admin_divs = $('div.admin')
     preview.live('click', function() {
-        $("div.admin").toggleClass("preview");
+        admin_divs.toggleClass("admin");
     });
     
     preview.live('click', function() {

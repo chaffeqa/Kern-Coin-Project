@@ -244,6 +244,8 @@
 
 
 /**** Hover Controls ****/
+div.admin span.controls {display:inline;}
+span.controls {display:none;}
 div.admin:hover * {z-index: 1;}
 article.admin {display: none;}
 
