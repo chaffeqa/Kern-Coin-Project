@@ -40,12 +40,12 @@
   <div class="field">
     <%= f.label :city, raw('&nbsp') %>
     <%= f.text_field :city, :title => "City" %>
-    <%= f.select :state, Question.state_selector, {:prompt => 'State'}, {:style => "width: 65px;"} %>
+    <%= f.select :state, Carmen::state_codes, {:prompt => "State"}, {:style => "width: 65px;"} %>
     <%= f.text_field :zip_code, :title => "Zip", :style => "width: 50px;" %>
   </div>
   <div class="field">
     <%= f.label :country, raw('&nbsp') %>
-    <%= f.text_field :country, :title => "Country" %>
+    <%= f.select :country, Carmen::country_names %>
   </div>
   <hr />
   <div class="field">

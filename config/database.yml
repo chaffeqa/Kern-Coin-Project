@@ -23,7 +23,7 @@ production:
   encoding: utf8
   database: kern_coin_production
   username: root
-  password: chaffee
+  password: invent0809 
   host: localhost
   socket: /var/run/mysqld/mysqld.sock
 

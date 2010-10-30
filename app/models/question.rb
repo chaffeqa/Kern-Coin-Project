@@ -20,10 +20,10 @@ class Question < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :street_address_1, :presence => true
-  validates :state, :presence => true
   validates :city, :presence => true
   validates :zip_code, :presence => true
-  validates :country, :presence => true
+  validates :state, :inclusion => {:in => Carmen::state_codes, :message => "does not exist"}
+  validates :country, :inclusion => {:in => Carmen::country_names, :message => "does not exist"}
   validates :phone, :presence => true
   validates :subject, :presence => true
   validates :body, :presence => true
