@@ -40,3 +40,11 @@
 
   </div>
 </article>
+
+<!-- Content_for components to insert into static_page -->
+<%= content_for :subColumn do %>
+  <h3>Inventory</h3>
+  <div id="categorySub">
+    <%= render_navigation(:level => 2..10) %>
+  </div>
+<% end %>
