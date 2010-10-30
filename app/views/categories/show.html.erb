@@ -1,21 +1,39 @@
-<% @category = @node.page %>
+<% @category = @node.page
+children = @node.children  %>
 
 <h1><%= @category.title %></h1>
 <p><%= @category.description %></p>
 <hr />
 
-<% if @node.children %>
-  <% has_items = @category.has_items? %>
+<% if children %>
+  <% item_nodes = children.items
+  cat_nodes = children.categories %>
 
-  <ul class="<%= has_items ? 'itemList' : 'categoryList'%>">
-    <% @node.children.each do |child|%>
-      <li>
-        <div class="thumbnail"> <%= link_to image_tag(child.page.thumbnail_image ? child.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(child.shortcut) %> </div>
-        <p class="title"><%= link_to ( has_items ? child.page.name : child.page.title), shortcut_path(child.shortcut) %></p>
-        <% if has_items %> <!--p class="cost"><%= number_to_currency(child.page.cost) %></p--> <% end %>
-      </li>
-    <% end %>
-  </ul>
+  <% unless item_nodes.empty? %>
+    <ul class="itemList">
+      <% item_nodes.each do |child|%>
+        <%= content_tag_for :li, child do %>
+          <div class="thumbnail"> <%= link_to image_tag(child.page.thumbnail_image ? child.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(child.shortcut) %> </div>
+          <p class="title"><%= link_to child.page.name, shortcut_path(child.shortcut) %></p>
+          <p class="cost"><%= number_to_currency(child.page.cost) %></p>
+        <% end %>
+      <% end %>
+    </ul>
+    <hr/>
+  <% end %>
+
+
+
+  <% unless cat_nodes.empty? %>
+    <ul class="categoryList">
+      <% cat_nodes.each do |child|%>
+        <%= content_tag_for :li, child do %>
+          <div class="thumbnail"> <%= link_to image_tag(child.page.thumbnail_image ? child.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(child.shortcut) %> </div>
+          <p class="title"><%= link_to child.page.title, shortcut_path(child.shortcut) %></p>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
 
 <% else %>
   <p>This category has no items or sub categories</p>
