@@ -25,6 +25,7 @@ children = @node.children  %>
 
 
   <% unless cat_nodes.empty? %>
+    <h3>Sub-categories</h3>
     <ul class="categoryList">
       <% cat_nodes.each do |child|%>
         <%= content_tag_for :li, child do %>

@@ -287,7 +287,8 @@ div.admin.preview article.admin {display: none;}
 	cursor: pointer;
 }
 .control.btn {float: right; margin-bottom: margin-bottom: -10px;}
-a.btn:hover {color: #AAA; text-decoration: none;}
+a.btn:hover {color: #AAA; text-decoration: none;
+	     -moz-box-shadow: 0 2px 6px #999; -webkit-box-shadow: 0 2px 6px #999;}
 
 /* Sizes ---------- */
 .small.btn {font-size: 11px; padding: 5px 8px 4px;}
@@ -299,6 +300,8 @@ a.btn:hover {color: #AAA; text-decoration: none;}
 .red.btn {background-color: #e33100;}
 .magenta.btn {background-color: #a9014b;}
 .orange.btn {background-color: #ff5c00;}
-.yellow.btn {background-color: #ffb515; text-shadow: 0 -1px 1px #695213;}
-a.btn.yellow:hover {color: #eddec2;}
+.yellow.btn {background-color: #ffb515; border-bottom: 1px solid #de9e15;
+	     text-shadow: 0 -1px 1px #bb8207;
+}
+a.btn.yellow:hover {color: #fff;}
 /******************************/
