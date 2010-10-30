@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :node
 
 
-  validates_associated :node
+#  validates_associated :node
   before_validation :update_node
 
   def update_node

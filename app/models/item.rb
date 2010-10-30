@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
     self.node.shortcut = self.node.shortcut.nil? || self.node.shortcut.empty? ? self.name.parameterize.html_safe : self.node.shortcut
   end
   
-  validates_associated :node
+#  validates_associated :node
   validates_presence_of :item_id, :cost, :name
   validates_numericality_of :cost
 

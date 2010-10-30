@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   has_one :node, :as => :page, :dependent => :destroy
   accepts_nested_attributes_for :node
 
-  validates_associated :node
+#  validates_associated :node
   before_validation :update_node
 
   def update_node

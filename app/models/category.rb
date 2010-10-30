@@ -10,7 +10,7 @@ class Category < ActiveRecord::Base
     :path => ":rails_root/public/site_assets/categories/:id/image_:style.:extension",
     :styles => { :thumb => ['112x112#', :gif] }
 
-  validates_associated :node
+#  validates_associated :node
   before_validation :update_node
 
   def update_node

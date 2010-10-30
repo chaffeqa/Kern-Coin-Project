@@ -1,6 +1,4 @@
 class Node < ActiveRecord::Base
-  #  belongs_to :parent
-  #  has_many :children, :dependent => :nullify
   belongs_to :page, :polymorphic => true
 
   acts_as_tree :order => 'position'
@@ -11,9 +9,11 @@ class Node < ActiveRecord::Base
   scope :categories, where(:page_type => 'Category')
   scope :calendars, where(:page_type => 'Calendar')
 
-  validates_presence_of :shortcut, :title, :menu_name
+  validates_presence_of :shortcut, :message => 'URL cannot be blank.'
+  validates_presence_of :title
+  validates_presence_of :menu_name
   validate :shortcut_html_safe?
-  validates_uniqueness_of :shortcut
+  validate :unique_shortcut?
   before_validation :fill_missing_fields
 
   def fill_missing_fields
@@ -25,6 +25,14 @@ class Node < ActiveRecord::Base
         self.title = self.menu_name if self.title.blank?
         self.shortcut = self.menu_name.parameterize.html_safe if self.shortcut.blank?
       end
+    end
+  end
+
+  def unique_shortcut?
+    if Node.exists?(:shortcut => shortcut)
+      addition = Node.where('shortcut LIKE ?', shortcut).count
+      suggested = self.shortcut + "_" + addition.to_s
+      errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
     end
   end
   

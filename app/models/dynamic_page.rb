@@ -6,7 +6,7 @@ class DynamicPage < ActiveRecord::Base
   has_one :node, :as => :page
   accepts_nested_attributes_for :node
 
-  validates_associated :node
+#  validates_associated :node
 
   VIEW_NAMES = [
     "Home",

@@ -7,7 +7,7 @@ class Blog < ActiveRecord::Base
   accepts_nested_attributes_for :node
 
   before_validation :update_node
-  validates_associated :node
+#  validates_associated :node
 
   def update_node
     self.node.title = self.node.title.nil? || self.node.title.empty? ? self.title : self.node.title
