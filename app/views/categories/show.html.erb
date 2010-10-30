@@ -39,3 +39,17 @@ children = @node.children  %>
 <% else %>
   <p>This category has no items or sub categories</p>
 <% end %>
+
+
+<!-- Content_for componenst to insert into static_page -->
+<%= content_for :subColumn do %>
+  <h3><%= @node.menu_name %></h3>
+  <div id="categorySub">
+    <%= render_navigation(:level => 2..10) %>
+  </div>
+<% end %>
+
+<%= content_for :breadcrumb do %>
+  <%= render :partial => 'layouts/site_partials/breadcrumb' %>
+<% end %>
+<!-- End -->
