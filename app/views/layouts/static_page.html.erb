@@ -17,7 +17,7 @@
 	<section id="mainColumn" class="clearfix contents">
 	  <div id="top"></div>
 	  <div id="inner">
-            <%= render :partial => 'layouts/site_partials/breadcrumb' %>
+            <%= yield :breadcrumb %>
             <%= yield %>
 	  </div>
 	</section>
@@ -25,10 +25,7 @@
 	<section id="subColumn" class="clearfix contents">
 	  <div id="top"></div>
 	  <div id="inner">
-	    <h3><%= @node ? @node.title : '' %></h3>
-	    <div id="categoryList">
-	      <%= render_navigation(:level => 2..7) %>
-	    </div>
+	    <%= yield :subColumn %>
 	  </div>
 	</section>
       </div>

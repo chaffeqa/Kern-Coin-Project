@@ -21,8 +21,23 @@
   <% end %>
 </ul>
 
+
+<!-- Content_for componenst to insert into static_page -->
+<%= content_for :subColumn do %>
+  <h3><%= @node.menu_name %></h3>
+  <div id="categorySub">
+    <%= render_navigation(:level => 2..10) %>
+  </div>
+<% end %>
+
+<%= content_for :breadcrumb do %>
+  <div class="breadcrumb">
+  <%= render_navigation(:renderer => :breadcrumbs, :join_with => " &gt; ") %>
+</div>
+<% end %>
+
 <% content_for :page_admin_bar do %>
   <%= link_to('Blog Settings',  edit_admin_blog_path(@node.page), :class => 'btn large') %>
   <%= link_to('New Post',  new_admin_blog_post_path(@node.page), :class => 'btn large') %>
-  <%#= link_to('Preview Blog',  '#', :class => 'btn yellow large', :id => 'preview') %>
 <% end %>
+<!-- End -->
