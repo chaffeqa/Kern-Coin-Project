@@ -11,58 +11,58 @@
     </div>
   <% end %>
 
-<fieldset>
-  <%= f.fields_for :node do |node_f| %>
-    <div class="field">
-      <%= node_f.label :parent_id, 'Category', :class => "req" %>
+  <fieldset>
+    <%= f.fields_for :node do |node_f| %>
+      <div class="field">
+        <%= node_f.label :parent_id, 'Category', :class => "req" %>
+        <% if f.object.new_record? %>
+          <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
+        <% else %>
+          <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="field"><span class="hint">Be sure to enter a unique item ID.</span>
+      <%= f.label :name, "Item Details", :class => "req" %>
+      <%= f.text_field :name, :title => "Item Name" %>
       <% if f.object.new_record? %>
-        <%= node_f.select :parent_id, options_for_select(item_options_tree(Category.all), :prompt => true) %>
+        <%= f.text_field :item_id, :title => "Item ID", :style => "width: 100px;" %>
       <% else %>
-        <%= node_f.select :parent_id, options_for_select(item_options_tree(Category.all), node_f.object.parent_id) %>
+        <%= f.text_field :item_id, :title => "Item ID", :disabled => true %>
       <% end %>
     </div>
-  <% end %>
+    <div class="field">
+      <%= f.label :details %>
+      <%= f.text_area :details %>
+    </div>
+    <hr />
 
-  <div class="field"><span class="hint">Be sure to enter a unique item ID.</span>
-    <%= f.label :name, "Item Details", :class => "req" %>
-    <%= f.text_field :name, :title => "Item Name" %>
-    <% if f.object.new_record? %>
-      <%= f.text_field :item_id, :title => "Item ID", :style => "width: 100px;" %>
-    <% else %>
-      <%= f.text_field :item_id, :title => "Item ID", :disabled => true %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :details %>
-    <%= f.text_area :details %>
-  </div>
-  <hr />
+    <div class="field">
+      <%= f.label :cost, "Price" %>
+      <%= f.text_field :cost, :style => "width: 70px;" %>
+    </div>
+    <hr />
 
-  <div class="field">
-    <%= f.label :cost, "Price" %>
-    <%= f.text_field :cost, :style => "width: 70px;" %>
-  </div>
-  <hr />
+    <div class="field">
+      <%= f.label :for_sale, "Item Options" %>
+      <%= f.check_box :for_sale %> List item for sale?
+    </div>
+    <div class="field">
+      <%= f.label :display, raw('&nbsp') %>
+      <%= f.check_box :display %> Display publically?
+    </div>
+    <hr />
 
-  <div class="field">
-    <%= f.label :for_sale, "Item Options" %>
-    <%= f.check_box :for_sale %> List item for sale?
-  </div>
-  <div class="field">
-    <%= f.label :display, raw('&nbsp') %>
-    <%= f.check_box :display %> Display publically?
-  </div>
-  <hr />
+    <div class="field"><span class="hint">Manage images for this product.</span>
+      <% f.fields_for :product_images do |img_form| %>
+        <%= render :partial => 'product_image', :locals => { :f => img_form } %>
+      <% end %>
+      <%= new_child_fields_template(f, :product_images)%>
+      <label><%= add_child_link "Add Product Image", :product_images %></label>
+    </div>
+    <hr />
 
-  <div class="field"><span class="hint">Manage images for this product.</span>
-    <% f.fields_for :product_images do |img_form| %>
-      <%= render :partial => 'product_image', :locals => { :f => img_form } %>
-    <% end %>
-    <%= new_child_fields_template(f, :product_images)%>
-    <label><%= add_child_link "Add Product Image", :product_images %></label>
-  </div>
-  <hr />
-
-  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Item'} %>
-</fieldset>
+    <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Item'} %>
+  </fieldset>
 <% end %>

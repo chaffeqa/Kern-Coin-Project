@@ -23,7 +23,7 @@ $(function() {
 
     
 
-    //	$('a.gallery').colorbox();
+    $('a.gallery').colorbox();
 
 
 
