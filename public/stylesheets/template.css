@@ -118,7 +118,7 @@ nav {
 /* Main Column */
 #mainColumn { padding-bottom: 7px; }
 	#mainColumn #top {height: 6px; background: url(../template/main-bg-top.png);}
-	#mainColumn #inner {background: #fff; padding: 10px; min-height: 300px; height: auto !important; height: 300px;}
+	#mainColumn #inner {background: #fff; padding: 10px; min-height: 271px; height: auto !important; height: 271px;}
 	
 /* Extra Column */
 #extraColumn {padding: 10px;}
@@ -129,7 +129,8 @@ nav {
 	padding-bottom: 7px;
 }
 #subColumn #top {height: 6px; background: url(../template/sub-bg-top.png);}
-#subColumn #inner {background: url(../template/sub-bg-tile.png); padding: 10px;}
+#subColumn #inner {background: url(../template/sub-bg-tile.png); padding: 10px;
+		  min-height: 271px; height: auto !important; height: 271px;}
 
 
 /* Product */
@@ -184,7 +185,6 @@ nav {
 
 #homePage #mainColumn #inner,
 #homePage #subColumn #inner {
-	height: 271px;
 	padding: 3px 10px;
 	background: #fff;	
 }

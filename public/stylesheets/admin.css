@@ -60,9 +60,11 @@
     content:" *";
 }
 #adminPage form > fieldset > .field > input[type="text"], 
+#adminPage form > fieldset > .field > input[type="password"], 
 #adminPage form > fieldset > .field > input[type="file"], 
 #adminPage form > fieldset > .field > select,
 #adminPage form > fieldset > .field > .field_with_errors > input[type="text"], 
+#adminPage form > fieldset > .field > .field_with_errors > input[type="password"], 
 #adminPage form > fieldset > .field > .field_with_errors > input[type="file"], 
 #adminPage form > fieldset > .field > .field_with_errors > select {
     background: #fff;
