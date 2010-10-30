@@ -35,7 +35,10 @@
 }
 
 #adminPage form > fieldset > .field > .field_with_errors {display: inline;}
-#adminPage form > fieldset > .field > .field_with_errors > input { border: red solid 1px; background-color: #FEE; }
+#adminPage form > fieldset > .field > .field_with_errors > select,
+#adminPage form > fieldset > .field > .field_with_errors > textarea,
+#adminPage form > fieldset > .field > .field_with_errors > input { 
+    border: red solid 1px !important; }
 
 #adminPage form > fieldset.tab {
     border: 1px solid #f0f0f0;

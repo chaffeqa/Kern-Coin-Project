@@ -1,7 +1,7 @@
 
 class EmailValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    record.errors[attribute] << (options[:message] || "is not an email") unless
+    record.errors[attribute] << (options[:message] || "is not a valid email address") unless
     value =~ /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   end
 end
@@ -17,7 +17,17 @@ class Question < ActiveRecord::Base
   #  require 'lib/email_validator.rb'
   belongs_to :user
 
-  validates_presence_of :title, :first_name, :last_name, :street_address_1, :state, :country, :zip_code, :phone, :email, :subject
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
+  validates :street_address_1, :presence => true
+  validates :state, :presence => true
+  validates :city, :presence => true
+  validates :zip_code, :presence => true
+  validates :country, :presence => true
+  validates :phone, :presence => true
+  validates :subject, :presence => true
+  validates :body, :presence => true
+  
   validates :email, :email => true
   #  validates :body, :body => true
   validates :zip_code, :numericality => true
@@ -26,7 +36,7 @@ class Question < ActiveRecord::Base
 
   def self.state_selector
     '
-<option value="AL">AL</option>
+        <option value="AL">AL</option>
 	<option value="AK">AK</option>
 	<option value="AZ">AZ</option>
 	<option value="AR">AR</option>

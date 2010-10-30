@@ -32,3 +32,11 @@ $(function() {
 	    });
 	$(".expanded-hint").hide(); // Hide initially
     });
+
+function stripTitles() {
+    $('input[title]').each(function() {
+	    if($(this).val() == $(this).attr('title')) {
+		$(this).val('');
+	    };
+	});
+}
