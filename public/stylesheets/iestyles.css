@@ -7,5 +7,3 @@
 
 div.admin span.controls {background-image: url(../template/control-bg.png); background-repeat: repeat;}
 div.admin span.controls:hover {background-image: url(../template/control-bg-active.png); background-repeat: repeat;}
-article span.controls a {display: none;}
-div.admin article span.controls a {display: inline;}

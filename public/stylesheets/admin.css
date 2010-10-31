@@ -249,23 +249,20 @@
 
 
 /**** Hover Controls ****/
-span.controls {display:none;}
-div.admin:hover article,
-div.admin:hover span.controls {z-index: 999;}
+span.controls {display: none; margin: -5px -5px 5px; padding: 5px; background: rgba(30,30,30,.5); position: relative;
+	       box-shadow: 0 1px 3px #000; -moz-box-shadow: 0 1px 3px #000; -webkit-box-shadow: 0 1px 3px #000;}
+span.controls:hover {background: rgba(30,30,30,.7);}
+article.admin span.controls {display: block; margin-bottom: 0;}
 article.admin {display: none;}
 
-/* Controls */
-div.admin article span.controls {display: none; margin: -5px -5px 5px; padding: 5px; background: rgba(30,30,30,.5); 
-	box-shadow: 0 1px 3px #000; -moz-box-shadow: 0 1px 3px #000; -webkit-box-shadow: 0 1px 3px #000; position: relative;}
-
+/* Admin View */
 div.admin article:hover {margin: -37px -6px 19px; padding: 5px 5px 0; border: 1px solid #999; 
 	box-shadow: 0 1px 3px #999; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; }
-div.admin article:hover span.controls {display: block;}
-div.admin article span.controls:hover {background: rgba(30,30,30,.7);}
-
-div.admin article.admin {display: block;}
 div.admin article.admin:hover {margin: -6px -6px -1px;}
-div.admin article.admin span.controls {display: block; margin-bottom: 0;}
+div.admin article:hover span.controls {display: block;}
+div.admin article.admin {display: block;}
+div.admin:hover article,
+div.admin:hover span.controls {z-index: 999;}
 /************************/
 
 
