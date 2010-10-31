@@ -249,9 +249,9 @@
 
 
 /**** Hover Controls ****/
-div.admin span.controls {display:inline;}
-div.admin span.controls {display:none;}
-div.admin:hover * {z-index: 1;}
+span.controls {display:none;}
+div.admin:hover article,
+div.admin:hover span.controls {z-index: 999;}
 article.admin {display: none;}
 
 /* Controls */
@@ -266,9 +266,6 @@ div.admin article span.controls:hover {background: rgba(30,30,30,.7);}
 div.admin article.admin {display: block;}
 div.admin article.admin:hover {margin: -6px -6px -1px;}
 div.admin article.admin span.controls {display: block; margin-bottom: 0;}
-
-/* Preview */
-div.admin.preview article.admin {display: none;}
 /************************/
 
 
