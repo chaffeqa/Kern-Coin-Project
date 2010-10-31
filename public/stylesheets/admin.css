@@ -249,6 +249,7 @@
 
 
 /**** Hover Controls ****/
+span.controls {display: block;}
 span.controls {display: none; margin: -5px -5px 5px; padding: 5px; position: relative; background: rgba(30,30,30,.5); 
 	       box-shadow: 0 1px 3px #000; -moz-box-shadow: 0 1px 3px #000; -webkit-box-shadow: 0 1px 3px #000;}
 span.controls:hover {background: rgba(30,30,30,.7);}
