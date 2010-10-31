@@ -8,4 +8,4 @@
 div.admin span.controls {background-image: url(../template/control-bg.png); background-repeat: repeat;}
 div.admin span.controls:hover {background-image: url(../template/control-bg-active.png); background-repeat: repeat;}
 span.controls a {display: none;}
-div.admin article:hover span.controls a {display: inline;}
+div.admin article:hover span.controls a {display: inline-block;}
