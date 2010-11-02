@@ -64,9 +64,9 @@ module ApplicationHelper
   end
 
   def display_node_list(node)
-    ret = "<li id='node_#{node.id}'>"
+    ret = "<li id='node_#{h(node.id)}'>"
     #    ret << link_to( node.menu_name , '#' )
-    ret << "<a href='#'>#{node.menu_name}</a>"
+    ret << "<a href='#'>#{h(node.menu_name)}</a>"
     ret << display_children_nodes(node.children.displayed) if node.children.displayed.any?
     ret << "</li>"
   end
@@ -75,7 +75,7 @@ module ApplicationHelper
 
   def dynamic_pages_options_tree_recursive(node, addition, neglected_id='')
     array = []
-    array << ["#{addition} #{node.menu_name}", "#{node.id}"] unless node.id == neglected_id
+    array << ["#{addition} #{h(node.menu_name)}", "#{node.id}"] unless node.id == neglected_id
     node.children.dynamic_pages.each do |childnode|
       array += dynamic_pages_options_tree_recursive(childnode, "#{addition}---", neglected_id)
     end
@@ -84,7 +84,7 @@ module ApplicationHelper
 
   def cat_options_tree_recursive(node, addition)
     array = []
-    array << ["#{addition} #{node.title}", "#{node.id}"]
+    array << ["#{addition} #{h(node.title)}", "#{node.id}"]
     node.children.categories.each do |childnode|
       array += cat_options_tree_recursive(childnode, "#{addition}---")
     end
@@ -95,7 +95,7 @@ module ApplicationHelper
     array = []
     categories.each do |cat|
       if cat.has_items? or cat.node.children.empty?
-        array << ["#{cat.title}", "#{cat.node.id}"]
+        array << ["#{h(cat.title)}", "#{cat.node.id}"]
       end
     end
     array
