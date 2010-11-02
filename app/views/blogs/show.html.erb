@@ -32,12 +32,17 @@
 
 <%= content_for :breadcrumb do %>
   <div class="breadcrumb">
-  <%= render_navigation(:renderer => :breadcrumbs, :join_with => " &gt; ") %>
-</div>
+    <%= render_navigation(:renderer => :breadcrumbs, :join_with => " &gt; ") %>
+  </div>
 <% end %>
 
 <% content_for :page_admin_bar do %>
   <%= link_to('Blog Settings',  edit_admin_blog_path(@node.page), :class => 'btn large') %>
   <%= link_to('New Post',  new_admin_blog_post_path(@node.page), :class => 'btn large') %>
+<% end %>
+
+
+<% content_for :page_title do %>
+  <%= @node.title %>
 <% end %>
 <!-- End -->

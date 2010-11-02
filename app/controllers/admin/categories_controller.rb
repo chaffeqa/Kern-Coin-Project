@@ -52,6 +52,7 @@ class Admin::CategoriesController < ApplicationController
 
   def get_node
     @category = Category.find(params[:id])
+    @category.build_node(:displayed => true) unless @category.node
     @node = @category.node
     super
   end
