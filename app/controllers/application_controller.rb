@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   layout 'static_page'
 
   def categories_for_items(items = Item.all)
-    items.collect {|item| item.node.parent.page}.uniq
+    items.collect {|item| item.node.parent.page unless item.node.nil? }.uniq.compact
   end
 
   def get_home_node

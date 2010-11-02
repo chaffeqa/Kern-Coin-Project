@@ -17,7 +17,6 @@ class Admin::CalendarsController < ApplicationController
 
 
   def edit
-    @calendar.build_node(:displayed => true) unless @calendar.node
   end
 
 
@@ -50,6 +49,7 @@ class Admin::CalendarsController < ApplicationController
 
   def get_node
     @calendar = Calendar.find(params[:id])
+    @calendar.build_node(:displayed => true) unless @calendar.node
     @node = @calendar.node
     super
   end

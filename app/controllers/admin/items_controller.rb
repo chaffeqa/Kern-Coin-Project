@@ -17,7 +17,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
-    @item.build_node(:displayed => true) unless @item.node
   end
 
   def create
@@ -49,6 +48,7 @@ class Admin::ItemsController < ApplicationController
 
   def get_node
     @item = Item.find(params[:id])
+    @item.build_node(:displayed => true) unless @item.node
     @node = @item.node
     super
   end

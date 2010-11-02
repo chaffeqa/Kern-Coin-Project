@@ -17,7 +17,6 @@ class Admin::BlogsController < ApplicationController
 
 
   def edit
-    @blog.build_node(:displayed => true) unless @blog.node
   end
 
 
@@ -50,6 +49,7 @@ class Admin::BlogsController < ApplicationController
 
   def get_node
     @blog = Blog.find(params[:id])
+    @blog.build_node(:displayed => true) unless @blog.node
     @node = @blog.node
     super
   end
