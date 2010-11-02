@@ -6,8 +6,8 @@
   <tr>
     <th>Primary Image</th>
     <th>ID</th>
-    <th><%= link_to 'Name', admin_blogs_path(blog, :order_by => 'name') %></th>
-    <th><%= link_to 'Price', admin_blogs_path(blog, :order_by => 'cost') %></th>
+    <th><%= link_to 'Name', admin_items_path( :order_by => 'name') %></th>
+    <th><%= link_to 'Price', admin_items_path( :order_by => 'cost') %></th>
   </tr>
 
   <% @items.each do |item| %>
