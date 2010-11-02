@@ -5,7 +5,7 @@ class Admin::CalendarsController < ApplicationController
 
   def index
     get_home_node
-    @calendars = Calendar.all
+    @calendars = Calendar.paginate :page => params[:page], :order => (params[:order_by].blank? ? 'updated_at DESC' : params[:order_by])
   end
 
 

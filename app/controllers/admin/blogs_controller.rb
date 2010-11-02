@@ -5,7 +5,7 @@ class Admin::BlogsController < ApplicationController
 
   def index
     get_home_node
-    @blogs = Blog.all
+    @blogs = Blog.paginate :page => params[:page], :order => (params[:order_by].blank? ? 'updated_at DESC' : params[:order_by])
   end
 
 

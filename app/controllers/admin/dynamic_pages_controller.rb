@@ -4,7 +4,7 @@ class Admin::DynamicPagesController < ApplicationController
   before_filter :home_form?, :only => [ :edit, :update, :destroy]
 
   def index
-    @dynamic_pages = DynamicPage.all
+    @dynamic_pages = DynamicPage.paginate :page => params[:page], :order => (params[:order_by].blank? ? 'updated_at DESC' : params[:order_by])
   end
 
 

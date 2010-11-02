@@ -4,7 +4,7 @@ class Admin::ItemsController < ApplicationController
   before_filter :get_node, :except => [:new, :create, :index]
   
   def index
-    @items = Item.all
+    @items = Item.paginate :page => params[:page], :order => (params[:order_by].blank? ? 'updated_at DESC' : params[:order_by])
   end
 
   def show
