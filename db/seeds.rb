@@ -309,21 +309,3 @@ foreign_strait_categories.each do |category|
 end
 
 
-# Items
-special_offers = Category.where(:title => 'Special Offers').first
-specia_offers_items = Item.create([
-    {:name => 'Bookmark', :cost => '12.52', :details => 'Just a bookmark. I am serious.', :item_id => '123154123', :for_sale => true, :display => true, :node_attributes=>{:menu_name => 'Bookmark', :title => 'Bookmark', :shortcut => 'Bookmark', :displayed => true} },
-    {:name => 'Glasses', :cost => '25.99', :details => 'Just a Glasses. I am serious.', :item_id => 'd12312311e1', :for_sale => true, :display => true, :node_attributes=>{:menu_name => 'Glasses', :title => 'Glasses', :shortcut => 'Glasses', :displayed => true} }
-  ])
-specia_offers_items.each do |category|
-  special_offers.node.children << category.node
-end
-ancient_biblical = Category.where(:title => 'Biblical').first
-ancient_biblical_items = Item.create([
-    {:name => 'Coin Display Case', :cost => '51.00', :details => 'This is by far the coolest way to display your collection. Please use it wisely.', :item_id => '1e3121rt1rt12', :for_sale => true, :display => true, :node_attributes=>{:menu_name => 'Coin Display Case', :title => 'Coin Display Case', :shortcut => 'Coin-Display-Case', :displayed => true} },
-    {:name => 'Pen', :cost => '2.11', :details => 'Just a Pen. I am serious.', :item_id => '12315421323123', :for_sale => true, :display => true, :node_attributes=>{:menu_name => 'Pen', :title => 'Pen', :shortcut => 'Pen', :displayed => true} }
-  ])
-ancient_biblical_items.each do |category|
-  ancient_biblical.node.children << category.node
-end
-

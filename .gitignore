@@ -3,6 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 db/*.sqlite3_test
+config/database.yml
 schema.rb
 public/ckeditor_assets
 public/site_assets/**
