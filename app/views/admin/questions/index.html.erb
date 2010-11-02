@@ -2,9 +2,9 @@
 
 <table>
   <tr>
-    <th>Date</th>
-    <th>From</th>
-    <th>Subject</th>
+    <th><%= link_to 'Date', admin_blogs_path(blog, :order_by => 'created_at') %></th>
+    <th><%= link_to 'From', admin_blogs_path(blog, :order_by => 'last_name') %></th>
+    <th><%= link_to 'Subject', admin_blogs_path(blog, :order_by => 'subject') %></th>
   </tr>
 
   <% @questions.each do |question| %>
