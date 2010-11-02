@@ -10,9 +10,9 @@ class Item < ActiveRecord::Base
   before_validation :update_node
 
   def update_node
-    self.node.title = self.node.title.nil? || self.node.title.empty? ? self.name : self.node.title
-    self.node.menu_name = self.node.menu_name.nil? || self.node.menu_name.empty? ? self.name : self.node.menu_name
-    self.node.shortcut = self.node.shortcut.nil? || self.node.shortcut.empty? ? self.name.parameterize.html_safe : self.node.shortcut
+    self.node.title =  self.name
+    self.node.menu_name =  self.name
+    self.node.shortcut = self.name.parameterize.html_safe
   end
   
 #  validates_associated :node
