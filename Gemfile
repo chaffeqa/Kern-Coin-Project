@@ -19,3 +19,5 @@ gem 'acts_as_tree'#, :git => 'git://github.com/parasew/acts_as_tree.git'
 gem 'acts_as_list'
 
 gem 'carmen'
+
+gem "will_paginate", "~> 3.0.pre2"

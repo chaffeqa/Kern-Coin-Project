@@ -3,7 +3,7 @@ class Admin::QuestionsController < ApplicationController
   before_filter :check_admin
 
   def index
-    @questions = Question.order("created_at ASC")
+    @questions = Question.paginate :page => params[:page], :order => (params[:order_by].blank? ? 'updated_at DESC' : params[:order_by])
   end
 
   def show
