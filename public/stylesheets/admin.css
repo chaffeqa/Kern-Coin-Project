@@ -35,7 +35,10 @@
 }
 
 #adminPage form > fieldset > .field > .field_with_errors {display: inline;}
-#adminPage form > fieldset > .field > .field_with_errors > input { border: red solid 1px; background-color: #FEE; }
+#adminPage form > fieldset > .field > .field_with_errors > select,
+#adminPage form > fieldset > .field > .field_with_errors > textarea,
+#adminPage form > fieldset > .field > .field_with_errors > input { 
+    border: red solid 1px !important; }
 
 #adminPage form > fieldset.tab {
     border: 1px solid #f0f0f0;
@@ -60,9 +63,11 @@
     content:" *";
 }
 #adminPage form > fieldset > .field > input[type="text"], 
+#adminPage form > fieldset > .field > input[type="password"], 
 #adminPage form > fieldset > .field > input[type="file"], 
 #adminPage form > fieldset > .field > select,
 #adminPage form > fieldset > .field > .field_with_errors > input[type="text"], 
+#adminPage form > fieldset > .field > .field_with_errors > input[type="password"], 
 #adminPage form > fieldset > .field > .field_with_errors > input[type="file"], 
 #adminPage form > fieldset > .field > .field_with_errors > select {
     background: #fff;
@@ -244,26 +249,26 @@
 
 
 /**** Hover Controls ****/
-div.admin span.controls {display:inline;}
-span.controls {display:none;}
-div.admin:hover * {z-index: 1;}
-article.admin {display: none;}
+span.controls {display: block;}
+span.controls {display: none; margin: -5px -5px 5px; padding: 5px; position: relative; background: rgba(30,30,30,.5); 
+	       box-shadow: 0 1px 3px #000; -moz-box-shadow: 0 1px 3px #000; -webkit-box-shadow: 0 1px 3px #000;}
+span.controls:hover {background: rgba(30,30,30,.7);}
 
-/* Controls */
-div.admin article span.controls {display: none; margin: -5px -5px 5px; padding: 5px; background: rgba(30,30,30,.5); 
-	box-shadow: 0 1px 3px #000; -moz-box-shadow: 0 1px 3px #000; -webkit-box-shadow: 0 1px 3px #000; position: relative;}
-
+/* Admin View */
 div.admin article:hover {margin: -37px -6px 19px; padding: 5px 5px 0; border: 1px solid #999; 
 	box-shadow: 0 1px 3px #999; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; }
 div.admin article:hover span.controls {display: block;}
-div.admin article span.controls:hover {background: rgba(30,30,30,.7);}
+div.admin:hover article,
+div.admin:hover span.controls {z-index: 999;}
+
+
+
+article.admin {display: none;}
+article.admin span.controls {display: block; margin-bottom: 0;}
 
 div.admin article.admin {display: block;}
 div.admin article.admin:hover {margin: -6px -6px -1px;}
-div.admin article.admin span.controls {display: block; margin-bottom: 0;}
 
-/* Preview */
-div.admin.preview article.admin {display: none;}
 /************************/
 
 
@@ -287,7 +292,8 @@ div.admin.preview article.admin {display: none;}
 	cursor: pointer;
 }
 .control.btn {float: right; margin-bottom: margin-bottom: -10px;}
-a.btn:hover {color: #AAA; text-decoration: none;}
+a.btn:hover {color: #AAA; text-decoration: none;
+	     -moz-box-shadow: 0 2px 6px #999; -webkit-box-shadow: 0 2px 6px #999;}
 
 /* Sizes ---------- */
 .small.btn {font-size: 11px; padding: 5px 8px 4px;}
@@ -299,6 +305,8 @@ a.btn:hover {color: #AAA; text-decoration: none;}
 .red.btn {background-color: #e33100;}
 .magenta.btn {background-color: #a9014b;}
 .orange.btn {background-color: #ff5c00;}
-.yellow.btn {background-color: #ffb515; text-shadow: 0 -1px 1px #695213;}
-a.btn.yellow:hover {color: #eddec2;}
+.yellow.btn {background-color: #ffb515; border-bottom: 1px solid #de9e15;
+	     text-shadow: 0 -1px 1px #bb8207;
+}
+a.btn.yellow:hover {color: #fff;}
 /******************************/

@@ -1,0 +1,11 @@
+/*
+
+	~ IE STYLES ~
+	This contains all styling for that dreaded browser...
+
+*/
+
+div.admin span.controls {background-image: url(../template/control-bg.png); background-repeat: repeat;}
+div.admin span.controls:hover {background-image: url(../template/control-bg-active.png); background-repeat: repeat;}
+span.controls a.btn {display: none;}
+div.admin article:hover span.controls a.btn {display: inline-block;}

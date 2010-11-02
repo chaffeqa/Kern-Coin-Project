@@ -25,6 +25,7 @@ children = @node.children  %>
 
 
   <% unless cat_nodes.empty? %>
+    <h3>Sub-categories</h3>
     <ul class="categoryList">
       <% cat_nodes.each do |child|%>
         <%= content_tag_for :li, child do %>
@@ -40,7 +41,7 @@ children = @node.children  %>
 <% end %>
 
 
-<!-- Content_for componenst to insert into static_page -->
+<!-- Content_for components to insert into static_page -->
 <%= content_for :subColumn do %>
   <h3><%= @node.menu_name %></h3>
   <div id="categorySub">
@@ -51,9 +52,13 @@ children = @node.children  %>
 <%= content_for :breadcrumb do %>
   <%= render :partial => 'layouts/site_partials/breadcrumb' %>
 <% end %>
+<<<<<<< HEAD
 
 
 <% content_for :page_title do %>
   <%= @node.title %>
 <% end %>
 <!-- End -->
+=======
+<!-- End -->
+>>>>>>> 07a8a6bbead51f06e0ebbf10e47d9feec77f2925

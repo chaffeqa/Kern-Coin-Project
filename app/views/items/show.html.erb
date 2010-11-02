@@ -35,8 +35,16 @@
       <p><%= number_to_currency(@item.cost) %></p>
       <p><%= @item.item_id %></p>
       <p><%=raw @item.details %></p>
-      <%= link_to 'Add To Cart', "https://KERN-Coin.foxycart.com/cart?name=#{@item.name}&price=#{@item.cost}&item-id=#{@item.item_id}", :class => 'foxycart add-to-cart' %>
+      <%= link_to 'Add To Cart', "https://KERN-Coin.foxycart.com/cart?name=#{@item.name}&price=#{@item.cost}&item-id=#{@item.item_id}", :class => 'foxycart add-to-cart btn large yellow' %>
     </div>
 
   </div>
 </article>
+
+<!-- Content_for components to insert into static_page -->
+<%= content_for :subColumn do %>
+  <h3>Inventory</h3>
+  <div id="categorySub">
+    <%= render_navigation(:level => 2..10) %>
+  </div>
+<% end %>

@@ -88,6 +88,7 @@ p {margin-bottom: 1.143em;}
 	padding: 0;
 }
 article:after,
+.controls:after,
 .clearfix:after {
 	content: ".";
 	display: block;
@@ -135,6 +136,7 @@ article {margin: 0 0 20px;}
 article:last-child {margin-bottom: 0;}
 article h1.title {border-bottom: 1px solid #e2e2e2; padding-bottom: .6em;}
 
+article.LoginElem label { width: 60px; text-align: right; margin-right: 5px;}
 
 .breadcrumb .nav-menu {display: inline;}
 .breadcrumb {padding: 0 0 10px;}
