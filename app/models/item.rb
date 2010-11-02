@@ -13,6 +13,7 @@ class Item < ActiveRecord::Base
     self.node.title =  self.name
     self.node.menu_name =  self.name
     self.node.shortcut = self.name.parameterize.html_safe
+    self.node.displayed = self.displayed
   end
   
 #  validates_associated :node

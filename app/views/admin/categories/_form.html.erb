@@ -11,41 +11,44 @@
     </div>
   <% end %>
 
-<fieldset>
-  <%= f.fields_for :node do |node_f| %>
-    <div class="field">
-      <% unless f.object.title == 'Inventory' %>
-        <%= node_f.label :parent_id, 'Parent Category', :class => "req" %>
-        <% if f.object.new_record? %>
-          <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
+  <fieldset>
+    <%= f.fields_for :node do |node_f| %>
+      <div class="field">
+        <% unless f.object.title == 'Inventory' %>
+          <%= node_f.label :parent_id, 'Parent Category', :class => "req" %>
+          <% if f.object.new_record? %>
+            <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
+          <% else %>
+            <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
+          <% end %>
         <% else %>
-          <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
+          <%= node_f.label :parent_id, raw('&nbsp;') %>
+          <%= node_f.hidden_field :parent, :value => Node.root %>
         <% end %>
-      <% else %>
-        <%= node_f.label :parent_id, raw('&nbsp;') %>
-        <%= node_f.hidden_field :parent, :value => Node.root %>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
 
-  <div class="field">
-    <%= f.label :title, "Category Name", :class => "req" %>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field"><span class="hint">Describe the items in this category. The description is often prominently displayed on the listing page for the category).</span>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-  <hr />
-  <div class="field"><span class="hint">Upload an image to represent the category.</span>
-    <%= f.label :image, 'Category Image' %>
-    <% unless f.object.new_record? %>
-      <%= image_tag (f.object.thumbnail_image) %><br />
-      <%= f.label :image, raw('&nbsp;') %>
+      <div class="field">
+        <%= f.label :title, "Category Name", :class => "req" %>
+        <%= f.text_field :title %>
+        <%= node_f.hidden_field :displayed, :value => true %>
+      </div>
     <% end %>
-    <%= f.file_field :image %>
-  </div>
 
-  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Category'} %>
-</fieldset>
+
+    <div class="field"><span class="hint">Describe the items in this category. The description is often prominently displayed on the listing page for the category).</span>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <hr />
+    <div class="field"><span class="hint">Upload an image to represent the category.</span>
+      <%= f.label :image, 'Category Image' %>
+      <% unless f.object.new_record? %>
+        <%= image_tag (f.object.thumbnail_image) %><br />
+        <%= f.label :image, raw('&nbsp;') %>
+      <% end %>
+      <%= f.file_field :image %>
+    </div>
+
+    <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Category'} %>
+  </fieldset>
 <% end %>
