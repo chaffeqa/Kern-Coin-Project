@@ -21,7 +21,9 @@ Web: Apache 2.2.8 (built from source)
 
 == Resources
 
-I will try to keep the site resources I find useful here.
+Updating Jquery and Rails.js:
+'rails generate jquery:install #--ui to enable jQuery UI --version to install specific version'
+
 
 
 == Git Help
