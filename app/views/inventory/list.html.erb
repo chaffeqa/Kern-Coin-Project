@@ -1,38 +1,31 @@
 <h1 class="title">Items</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th><%= sortable "item_id", "Item ID", @params %></th>
-    <th><%= sortable "name", "Name", @params %></th>
-    <th><%= sortable "cost", "Price", @params %></th>
-  </tr>
-
-  <% @items.each do |item| %>
-    <% if item.node %>
-      <tr>
-        <td class="itemThumb"> <%= link_to(image_tag(item.thumbnail_image), shortcut_path(item.node.shortcut))  %> </td>
-        <td><%= item.item_id %></td>
-        <td><%= link_to item.name, shortcut_path(item.node.shortcut) %></td>
-        <td><%= number_to_currency(item.cost) %></td>
-      </tr>
-    <% end %>
+  <% unless @items.empty? %>
+    <ul class="itemList">
+      <% @items.each do |item|%>
+        <%= content_tag_for :li, item do %>
+          <div class="thumbnail"> <%= link_to image_tag(item.page.thumbnail_image ? item.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(item.shortcut) %> </div>
+          <p class="title"><%= link_to item.page.name, shortcut_path(item.shortcut) %></p>
+          <p class="cost"><%= number_to_currency(item.page.cost) %></p>
+        <% end %>
+      <% end %>
+    </ul>
+    <hr/>
+    <div class="pagination"><%= will_paginate @items %></div>
+  <% else %>
+    <p>No items matched your search.</p>
   <% end %>
-</table>
-<div class="pagination"><%= will_paginate @items %></div>
-
 
 <!-- Content_for components to insert into static_page -->
 <%= content_for :subColumn do %>
-  <h3>Inventory Search</h3>
+  <h3>Search Results</h3>
 <% end %>
 
 <%= content_for :breadcrumb do %>
-  <a href="/">Home</a> &gt; <a href="/">Inventory</a> &gt; <%= link_to 'Search', {}.merge(@params) %>
+  <div class="breadcrumb"><a href="/">Home</a> &gt; <div class="nav-menu"><a href="/">Inventory</a> &gt; Search Results</div></div>
 <% end %>
 
-
 <% content_for :page_title do %>
-  Inventory Search
+  Search Results
 <% end %>
 <!-- End -->
