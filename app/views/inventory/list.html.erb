@@ -1,17 +1,36 @@
-<% @items.each do |item|%>
-  <div class="thumbnail-list">
-    <div class="title">
-      <%= link_to item.name, inventory_item_path(item) %>
-    </div>
-    <div class="thumbnail">
-      <% if item.main_image %>
-        <%= link_to image_tag item.main_image.thumbnail_image, inventory_item_path(item) %>
-      <% else %>
-        <%= link_to (image_tag "no_image.gif"), inventory_item_path(item) %>
-      <% end %>
-    </div>
-    <div class="cost">
-      <%= number_to_currency(item.cost) %>
-    </div>
-  </div>
+<h1 class="title">Items</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th><%= sortable "item_id", "Item ID", @params %></th>
+    <th><%= sortable "name", "Name", @params %></th>
+    <th><%= sortable "cost", "Price", @params %></th>
+  </tr>
+
+  <% @items.each do |item| %>
+    <tr>
+      <td class="itemThumb"> <%= link_to(image_tag(item.thumbnail_image), shortcut_path(item.node.shortcut))  %> </td>
+      <td><%= item.item_id %></td>
+      <td><%= link_to item.name, shortcut_path(item.node.shortcut) %></td>
+      <td><%= number_to_currency(item.cost) %></td>
+    </tr>
+  <% end %>
+</table>
+<div class="pagination"><%= will_paginate @items %></div>
+
+
+<!-- Content_for components to insert into static_page -->
+<%= content_for :subColumn do %>
+  <h3>Inventory Search</h3>
 <% end %>
+
+<%= content_for :breadcrumb do %>
+  <a href="/">Home</a> &gt; <a href="/">Inventory</a> &gt; <%= link_to 'Search', {}.merge(@params) %>
+<% end %>
+
+
+<% content_for :page_title do %>
+  Inventory Search
+<% end %>
+<!-- End -->
