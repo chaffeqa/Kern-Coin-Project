@@ -43,7 +43,7 @@ class Admin::CalendarsController < ApplicationController
 
   def destroy
     @calendar.destroy
-    redirect_to( admin_calendars_url )
+    redirect_to( admin_calendars_url, :notice => 'Calendar was successfully destroyed.'  )
   end
 
   private

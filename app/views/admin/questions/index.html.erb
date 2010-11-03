@@ -14,8 +14,8 @@
       <td><%= question.created_at %></td>
       <td><%= question.last_name %>, <%= question.first_name %></td>
       <td><%= question.subject %></td>
-      <td><%= link_to 'Show', admin_question_path(question) %></td>
-      <td><%= link_to 'Destroy', admin_question_path(question), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Show', admin_question_path(question), :class => "btn small"  %></td>
+      <td><%= link_to 'Destroy', admin_question_path(question), :confirm => 'Are you sure?', :method => :delete, :class => "btn small"  %></td>
     </tr>
   <% end %>
 </table>

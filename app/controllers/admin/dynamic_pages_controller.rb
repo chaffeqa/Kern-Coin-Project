@@ -42,7 +42,7 @@ class Admin::DynamicPagesController < ApplicationController
 
   def destroy
     @dynamic_page.destroy
-    redirect_to( admin_dynamic_pages_url )
+    redirect_to( admin_dynamic_pages_url, :notice => 'Page was successfully destroyed.'  )
   end
 
   

@@ -43,7 +43,7 @@ class Admin::BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    redirect_to( admin_blogs_url )
+    redirect_to( admin_blogs_url, :notice => 'Blog was successfully destroyed.' )
   end
 
   private

@@ -39,7 +39,7 @@ class Admin::ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to(admin_items_url) 
+    redirect_to(admin_items_url, :notice => 'Item was successfully destroyed.' )
   end
 
   private
