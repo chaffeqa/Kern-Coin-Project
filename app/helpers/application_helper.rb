@@ -128,7 +128,11 @@ module ApplicationHelper
     @image_assets
   end
   
-
+def sortable(column, title, addition_params={})
+  css_class = column == sort_column ? "current #{sort_direction}" : nil
+  direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"
+  link_to title, {:sort => column, :direction => direction}.merge(addition_params), {:class => css_class}
+end
 
 #  ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
 #    if instance.error_message.kind_of?(Array)
