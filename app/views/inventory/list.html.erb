@@ -1,38 +1,42 @@
 <h1 class="title">Items</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th><%= sortable "item_id", "Item ID", @parameters %></th>
-    <th><%= sortable "name", "Name", @parameters %></th>
-    <th><%= sortable "cost", "Price", @parameters %></th>
-  </tr>
 
-  <% @items.each do |item| %>
-    <% if item.node %>
-      <tr>
-        <td class="itemThumb"> <%= link_to(image_tag(item.thumbnail_image), shortcut_path(item.node.shortcut))  %> </td>
-        <td><%= item.item_id %></td>
-        <td><%= link_to item.name, shortcut_path(item.node.shortcut) %></td>
-        <td><%= number_to_currency(item.cost) %></td>
-      </tr>
+<% unless @items.empty? %>
+  <table>
+    <tr>
+      <th></th>
+      <th><%= sortable "item_id", "Item ID", @parameters %></th>
+      <th><%= sortable "name", "Name", @parameters %></th>
+      <th><%= sortable "cost", "Price", @parameters %></th>
+    </tr> 
+    <% @items.each do |item| %>
+      <% if item.node %>
+        <tr>
+          <td class="itemThumb"> <%= link_to(image_tag(item.thumbnail_image), shortcut_path(item.node.shortcut))  %> </td>
+          <td><%= item.item_id %></td>
+          <td><%= link_to item.name, shortcut_path(item.node.shortcut) %></td>
+          <td><%= number_to_currency(item.cost) %></td>
+        </tr>
+      <% end %>
     <% end %>
-  <% end %>
-</table>
-<div class="pagination"><%= will_paginate @items %></div>
+  </table>
+  <hr/>
+  <div class="pagination"><%= will_paginate @items %></div>
 
+<% else %>
+  <p>No items matched your search.</p>
+<% end %>
 
 <!-- Content_for components to insert into static_page -->
 <%= content_for :subColumn do %>
-  <h3>Inventory Search</h3>
+  <h3>Search Results</h3>
 <% end %>
 
 <%= content_for :breadcrumb do %>
-  <a href="/">Home</a> &gt; <a href="/">Inventory</a> &gt; <%= link_to 'Search', {}.merge(@parameters) %>
+  <div class="breadcrumb"><a href="/">Home</a> &gt; <a href="/">Inventory</a> &gt; <%= link_to 'Search Results', {}.merge(@parameters) %></div>
 <% end %>
 
-
 <% content_for :page_title do %>
-  Inventory Search
+  Search Results
 <% end %>
 <!-- End -->

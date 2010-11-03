@@ -9,7 +9,7 @@
         <% for post in post_months[month] %>
           <li>
 	    <h2 class="postTitle">
-	      <% if admin? %><%= link_to (image_tag "edit.png", :alt => "Edit"), edit_admin_blog_post_path(blog, post) %><% end %> 
+	      <% if admin? %><%= link_to (image_tag "edit.png", :alt => "Edit", :class => "adminEdit"), edit_admin_blog_post_path(blog, post) %><% end %> 
 	      <%= link_to post.title, shortcut_path(post.node.shortcut) %>
 	    </h2>
 	    <p class="postInfo">
