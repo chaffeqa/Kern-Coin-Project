@@ -4,9 +4,9 @@
     <ul class="itemList">
       <% @items.each do |item|%>
         <%= content_tag_for :li, item do %>
-          <div class="thumbnail"> <%= link_to image_tag(item.page.thumbnail_image ? item.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(item.shortcut) %> </div>
-          <p class="title"><%= link_to item.page.name, shortcut_path(item.shortcut) %></p>
-          <p class="cost"><%= number_to_currency(item.page.cost) %></p>
+          <div class="thumbnail"> <%= link_to image_tag(item.thumbnail_image ? item.thumbnail_image : "no_image_thumb.gif"), shortcut_path(item.node.shortcut) %> </div>
+          <p class="title"><%= link_to item.name, shortcut_path(item.node.shortcut) %></p>
+          <p class="cost"><%= number_to_currency(item.cost) %></p>
         <% end %>
       <% end %>
     </ul>

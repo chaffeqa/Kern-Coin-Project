@@ -2,7 +2,7 @@
   <% events.each do |event| %>
     <li>
       <h2 class="eventTitle">
-	<% if admin? %><%= link_to (image_tag "edit.png", :alt => "Edit"), edit_admin_calendar_event_path(event.calendar, event) %><% end %>
+	<% if admin? %><%= link_to (image_tag "edit.png", :alt => "Edit", :class => "adminEdit"), edit_admin_calendar_event_path(event.calendar, event) %><% end %>
 	<%= link_to event.name, shortcut_path(event.node.shortcut) %>
       </h2>
       <p class="postInfo">
