@@ -4,14 +4,19 @@
 
 <table>
   <tr>
-    <th><%= link_to 'Title', admin_blogs_path( :order_by => 'title') %></th>
+    <th><%= sortable "title", "Title" %></th>
     <th>Shortcut</th>
+    <th><%= sortable "event_color", "Event Color" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
   <% @calendars.each do |calendar| %>
     <tr>
-      <td><%= calendar.node.title %></td>
-      <td><em><%= calendar.node.shortcut %></em></td>
+      <td><%= calendar.title %></td>
+      <td><em><%= calendar.node ? calendar.node.shortcut : 'No Shortcut' %></em></td>
+      <td><%= calendar.event_color %></td>
       <td><%= link_to 'Show Calendar', shortcut_path(calendar.node.shortcut), :class => 'btn small' %></td>
       <td><%= link_to 'Settings', edit_admin_calendar_path(calendar), :class => 'btn small' %></td>
       <td><%= link_to 'Delete', admin_calendar_path(calendar), :confirm => 'Are you sure?', :method => :delete, :class => 'btn small' %></td>

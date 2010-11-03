@@ -3,9 +3,9 @@
 <table>
   <tr>
     <th></th>
-    <th><%= sortable "item_id", "Item ID", @params %></th>
-    <th><%= sortable "name", "Name", @params %></th>
-    <th><%= sortable "cost", "Price", @params %></th>
+    <th><%= sortable "item_id", "Item ID", @parameters %></th>
+    <th><%= sortable "name", "Name", @parameters %></th>
+    <th><%= sortable "cost", "Price", @parameters %></th>
   </tr>
 
   <% @items.each do |item| %>
@@ -28,7 +28,7 @@
 <% end %>
 
 <%= content_for :breadcrumb do %>
-  <a href="/">Home</a> &gt; <a href="/">Inventory</a> &gt; <%= link_to 'Search', {}.merge(@params) %>
+  <a href="/">Home</a> &gt; <a href="/">Inventory</a> &gt; <%= link_to 'Search', {}.merge(@parameters) %>
 <% end %>
 
 

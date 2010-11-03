@@ -11,23 +11,25 @@ class InventoryController < ApplicationController
     @items = @items.paginate :page => params[:page]
 
     
-    @params = params
-    @params.delete('action')
-    @params.delete('controller')
-    @params.delete('utf8')
-    @params.delete('commit')
-    @params.delete('sort')
-    @params.delete('direction')
+    @parameters = params
+    @parameters.delete('action')
+    @parameters.delete('controller')
+    @parameters.delete('utf8')
+    @parameters.delete('commit')
+    @parameters.delete('sort')
+    @parameters.delete('direction')
   end
 
   private
 
   def sort_column
-    Item.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    @sort = @sort || params[:sort] || ''
+    Item.column_names.include?(@sort) ? @sort : "name"
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    @direction = @direction || params[:direction] || ''
+    "ASC DESC".include?(@direction) ? @direction : "ASC"
   end
 
  

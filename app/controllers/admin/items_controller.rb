@@ -1,10 +1,11 @@
 class Admin::ItemsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   layout 'admin'
   before_filter :check_admin
   before_filter :get_node, :except => [:new, :create, :index]
   
   def index
-    @items = Item.paginate :page => params[:page], :order => (params[:order_by].blank? ? 'updated_at DESC' : params[:order_by])
+    @items = Item.paginate :page => params[:page], :order => (sort_column + " " + sort_direction)
   end
 
   def show
@@ -51,6 +52,16 @@ class Admin::ItemsController < ApplicationController
     @item.build_node(:displayed => true) unless @item.node
     @node = @item.node
     super
+  end
+
+  def sort_column
+    @sort = @sort || params[:sort] || ''
+    Item.column_names.include?(@sort) ? @sort : "name"
+  end
+
+  def sort_direction
+    @direction = @direction || params[:direction] || ''
+    "ASC DESC".include?(@direction) ? @direction : "ASC"
   end
 
 end

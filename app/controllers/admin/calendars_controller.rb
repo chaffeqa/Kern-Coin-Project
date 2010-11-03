@@ -1,11 +1,12 @@
 class Admin::CalendarsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   layout 'admin'
   before_filter :check_admin
   before_filter :get_node, :except => [:new, :create, :index]
 
   def index
     get_home_node
-    @calendars = Calendar.paginate :page => params[:page], :order => (params[:order_by].blank? ? 'updated_at DESC' : params[:order_by])
+    @calendars = Calendar.paginate :page => params[:page], :order => (sort_column + " " + sort_direction)
   end
 
 
@@ -53,4 +54,15 @@ class Admin::CalendarsController < ApplicationController
     @node = @calendar.node
     super
   end
+
+  def sort_column
+    @sort = @sort || params[:sort] || ''
+    Calendar.column_names.include?(@sort) ? @sort : "title"
+  end
+
+  def sort_direction
+    @direction = @direction || params[:direction] || ''
+    "ASC DESC".include?(@direction) ? @direction : "ASC"
+  end
+
 end

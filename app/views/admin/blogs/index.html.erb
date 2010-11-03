@@ -4,14 +4,17 @@
 
 <table>
   <tr>
-    <th><%= link_to 'Title', admin_blogs_path( :order_by => 'title') %></th>
+    <th><%= sortable "title", "Title" %></th>
     <th>Shortcut</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
   <% @blogs.each do |blog| %>
     <tr>
       <td><%= blog.title %></td>
-      <td><em><%= blog.node? ? link_to(blog.node.shortcut, shortcut_path(blog.node.shortcut)) : 'No Shortcut' %></em></td>
+      <td><em><%= blog.node ? link_to(blog.node.shortcut, shortcut_path(blog.node.shortcut)) : 'No Shortcut' %></em></td>
       <td><%= link_to 'List Posts', shortcut_path(blog.node.shortcut), :class => 'btn small' %></td>
       <td><%= link_to 'Settings', edit_admin_blog_path(blog), :class => 'btn small' %></td>
       <td><%= link_to 'Delete', admin_blog_path(blog), :confirm => 'Are you sure?', :method => :delete, :class => 'btn small' %></td>
