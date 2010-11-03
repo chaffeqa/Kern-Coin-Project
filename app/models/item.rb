@@ -34,6 +34,7 @@ class Item < ActiveRecord::Base
   def short_details
     return self.details[0,30] << "..."
   end
+  
 
 #  def default_node
 #    unless self.node
