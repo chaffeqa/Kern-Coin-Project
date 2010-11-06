@@ -11,13 +11,13 @@ $(function() {
     });
 
     $('form a.remove-new-child').live('click', function() {
-        $(this).parents('.fields').remove();
+        $(this).parents('.child-field').remove();
         return false;
     });
     $('form a.remove-old-child').live('click', function() {
         var hidden_destroy_field = $(this).next('input.destroy-field');
         hidden_destroy_field.val(1);
-        $(this).parents('.fields').hide();
+        $(this).parents('.child-field').hide();
         return false;
     });
 

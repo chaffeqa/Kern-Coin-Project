@@ -5,18 +5,27 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :product_images, :allow_destroy => true, :reject_if => proc { |attributes| attributes['image'].blank? }
 
   # Associated Node attributes
-  has_one :node, :as => :page, :dependent => :destroy
-  accepts_nested_attributes_for :node
-  before_validation :update_node
+  has_many :categories, :finder_sql =>
+    'SELECT cats.* FROM categories AS cats
+    JOIN nodes AS parent_n ON parent_n.page_id = cats.id AND parent_n.page_type = "Category"
+    JOIN nodes AS item_n ON parent_n.id = item_n.parent_id 
+    WHERE item_n.page_id = #{id} AND item_n.page_type = "Item"'
+  has_many :nodes, :as => :page, :dependent => :destroy
+  accepts_nested_attributes_for :nodes, :allow_destroy => true, :reject_if => proc { |attributes| attributes['parent_id'].blank? }
+  before_validation :update_nodes
 
-  def update_node
-    self.node.title =  self.name
-    self.node.menu_name =  self.name
-    self.node.shortcut = self.name.parameterize.html_safe
-    self.node.displayed = self.display
+  def update_nodes
+    count = 0
+    self.nodes.each do |node|
+      node.title =  self.name
+      node.menu_name =  self.name
+      node.shortcut = self.name.parameterize.html_safe + "-#{count}"
+      node.displayed = self.display
+      count += 1
+    end
   end
   
-#  validates_associated :node
+  #  validates_associated :node
   validates_presence_of :item_id, :cost, :name
   validates_numericality_of :cost
 
@@ -36,25 +45,25 @@ class Item < ActiveRecord::Base
   end
   
 
-#  def default_node
-#    unless self.node
-#      self.create_node({
-#          :title => self.name,
-#          :menu_name => self.name,
-#          :displayed => true,
-#          :shortcut => self.name.parameterize.html_safe
-#        })
-#    else
-#      self.node.update_attributes(
-#        :name => self.name,
-#        :menu_name => self.name,
-#        :shortcut => self.name.parameterize.html_safe
-#      )
-#    end
-#  end
-#
-#  def update_node
-#    self.default_node
-#    self.node.save!
-#  end
+  #  def default_node
+  #    unless self.node
+  #      self.create_node({
+  #          :title => self.name,
+  #          :menu_name => self.name,
+  #          :displayed => true,
+  #          :shortcut => self.name.parameterize.html_safe
+  #        })
+  #    else
+  #      self.node.update_attributes(
+  #        :name => self.name,
+  #        :menu_name => self.name,
+  #        :shortcut => self.name.parameterize.html_safe
+  #      )
+  #    end
+  #  end
+  #
+  #  def update_node
+  #    self.default_node
+  #    self.node.save!
+  #  end
 end

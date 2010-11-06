@@ -28,7 +28,7 @@
 
   <div class="field"><span class="hint">How do you want your blog to look? <a class="expander">Explain this</a></span>
     <%= f.label :display_type, "Display Options" %>
-    <%= f.select :display_type, options_for_select(BlogElem.display_type_select) %>
+    <%= f.select :display_type, options_for_select(BlogElem.display_type_select, (f.object.new_record? ? BlogElem.display_type_select[0] : f.object.display_type)) %>
     <span class="expanded-hint">
       <strong>Archive</strong><br />
       This is a list of all posts organized by month and year. You’ll want to provide an archive somewhere on your website so your readers can find older posts.<br /><br />

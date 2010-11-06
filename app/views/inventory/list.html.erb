@@ -10,11 +10,11 @@
       <th><%= sortable "cost", "Price", @parameters %></th>
     </tr> 
     <% @items.each do |item| %>
-      <% if item.node %>
+      <% if item.nodes.any? %>
         <tr>
-          <td class="itemThumb"> <%= link_to(image_tag(item.thumbnail_image), shortcut_path(item.node.shortcut))  %> </td>
+          <td class="itemThumb"> <%= link_to(image_tag(item.thumbnail_image), shortcut_path(item.nodes.first.shortcut))  %> </td>
           <td><%= item.item_id %></td>
-          <td><%= link_to item.name, shortcut_path(item.node.shortcut) %></td>
+          <td><%= link_to item.name, shortcut_path(item.nodes.first.shortcut) %></td>
           <td><%= number_to_currency(item.cost) %></td>
         </tr>
       <% end %>

@@ -17,7 +17,7 @@
     <tr>
       <td class="itemThumb"> <%= image_tag(item.thumbnail_image)  %> </td>
       <td><%= item.item_id %></td>
-      <td><%= item.node ? link_to (item.name, shortcut_path(item.node.shortcut)) : item.name %></td>
+      <td><%= item.nodes.any? ? link_to(item.name, shortcut_path(item.nodes.first.shortcut)) : item.name %></td>
       <td><%= number_to_currency(item.cost) %></td>
       <td><%= item.display %></td>
       <td><%= link_to 'Edit', edit_admin_item_path(item), :class => "btn small" %></td>

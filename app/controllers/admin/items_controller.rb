@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.build_node(:displayed => true)
+    @item.nodes.build(:displayed => true)
   end
 
   def edit
@@ -23,7 +23,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
     if @item.save
-      redirect_to(shortcut_path(@item.node.shortcut), :notice => 'Item was successfully created.')
+      redirect_to(shortcut_path(@item.nodes.first.shortcut), :notice => 'Item was successfully created.')
     else
       render :action => "new"
     end
@@ -31,7 +31,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     if @item.update_attributes(params[:item])
-      redirect_to(shortcut_path(@item.node.shortcut), :notice => 'Item was successfully updated.')
+      redirect_to(shortcut_path(@item.nodes.first.shortcut), :notice => 'Item was successfully updated.')
     else
       render :action => "edit"
     end
@@ -49,8 +49,8 @@ class Admin::ItemsController < ApplicationController
 
   def get_node
     @item = Item.find(params[:id])
-    @item.build_node(:displayed => true) unless @item.node
-    @node = @item.node
+    @item.nodes.build(:displayed => true) unless @item.nodes.count > 0
+    @node = @item.nodes.first
     super
   end
 

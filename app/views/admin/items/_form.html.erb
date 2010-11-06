@@ -12,16 +12,14 @@
   <% end %>
 
   <fieldset>
-    <%= f.fields_for :node do |node_f| %>
-      <div class="field">
-        <%= node_f.label :parent_id, 'Category', :class => "req" %>
-        <% if f.object.new_record? %>
-          <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
-        <% else %>
-          <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="field"><span class="hint">Add This product to multiple Inventory Categories.</span>
+      <% f.fields_for :nodes do |nodes_form| %>
+        <%= render :partial => 'node', :locals => { :f => nodes_form } %>
+      <% end %>
+      <%= new_child_fields_template(f, :nodes)%>
+      <label><%= add_child_link "Add Category", :nodes %></label>
+    </div>
+    <hr />
 
     <div class="field"><span class="hint">Be sure to enter a unique item ID.</span>
       <%= f.label :name, "Item Details", :class => "req" %>

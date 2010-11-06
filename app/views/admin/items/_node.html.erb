@@ -1,0 +1,18 @@
+<div class="child-field field">
+
+  <% if f.object.new_record? %>
+    <label> <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-new-child' %> </label>
+  <% else %>
+    <label>
+      <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-old-child' %>
+      <%= f.hidden_field :_destroy, :class => 'destroy-field', :value => '0' %>
+    </label>
+  <% end %>
+    
+  <% if f.object.new_record? %>
+    <%= f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
+  <% else %>
+    <%= f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), f.object.parent_id) %>
+  <% end %>
+
+</div>
