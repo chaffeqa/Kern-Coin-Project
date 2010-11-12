@@ -180,7 +180,7 @@
 #admin-menu li ul { position: absolute; margin: 0; width: 160px; left: -999em; display: none; line-height: 1.2em; }
 
 /* third-and-above-level lists */
-#admin-menu li li ul { margin: -20px 0 0 160px; }
+#admin-menu li li ul { margin: -20px 0 0 80px; }
 
 #admin-menu li:hover ul ul,
 #admin-menu li:hover ul ul ul,
@@ -292,7 +292,7 @@ div.admin article.admin:hover {margin: -6px -6px -1px;}
 	-moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999;
 	cursor: pointer;
 }
-.control.btn {float: right; margin-bottom: margin-bottom: -10px;}
+.controls .control {float: right; margin: 0 2px -2px; font-size: 20px; line-height: 1em;}
 a.btn:hover {color: #AAA; text-decoration: none;
 	     -moz-box-shadow: 0 2px 6px #999; -webkit-box-shadow: 0 2px 6px #999;}
 

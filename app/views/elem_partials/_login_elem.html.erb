@@ -1,6 +1,6 @@
 <% if admin? %>
   <span class="controls">
-    <%= link_to 'X', element_path(element) , :confirm => "Are you sure?", :method => :delete, :class => 'btn control small' %>
+    <%= link_to image_tag("delete.png", :alt => 'X'), element_path(element), :confirm => "Are you sure?", :method => :delete, :class => 'control' %>
     <%= render :partial => 'elements/element_controls', :locals => {:element => element} %>
   </span>
 <% end %>
