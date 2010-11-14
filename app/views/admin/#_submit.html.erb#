@@ -1,0 +1,9 @@
+  <div class="field">
+    <%= f.label :submit, raw("&nbsp;") %>
+    <% if f.object.new_record? %>
+    <%= f.submit "Create "+type, :disable_with => "Please Wait...", :class => "btn medium" %>
+    <% else %>
+      <%= f.submit "Update", :disable_with => "Please Wait...", :class => "btn medium" %>
+    <% end %>
+    <%= link_to 'Cancel', :back %>
+  </div>

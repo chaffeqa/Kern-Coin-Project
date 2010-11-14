@@ -276,14 +276,15 @@ ul.blogList {
 #secPage #mainColumn ul.categoryList li .thumbnail img, 
 #secPage #mainColumn ul.itemList li .thumbnail img {width: 112px; height: 112px; padding: 0;}
 #secPage #mainColumn ul.categoryList li p.title,
-#secPage #mainColumn ul.itemList li p.title {display: none; text-align: center; line-height: 1em; height: 29px; background-color: #333; background-color: rgba(0,0,0,.5); margin: -33px 0 0; position: relative; padding: 2px;}
+#secPage #mainColumn ul.itemList li p.title {dislay: block; text-align: center; line-height: 1em; height: 29px; background-color: #333; background-color: rgba(0,0,0,.5); margin: -33px 0 0; position: relative; padding: 2px;}
 #secPage #mainColumn ul.categoryList li p.title a,
 #secPage #mainColumn ul.itemList li p.title a {color: #fbd748;}
 #secPage #mainColumn ul.categoryList li p.title a:hover,
 #secPage #mainColumn ul.itemList li p.title a:hover {color: #fff; text-decoration: none;}
+/*
 #secPage #mainColumn ul.categoryList li:hover p.title, 
 #secPage #mainColumn ul.itemList li:hover p.title {display: block;}
-
+*/
 
 #homeFooter ul.categoryList {margin: 0 -10px;}
 #homeFooter ul.categoryList li { float: left; margin: 10px; }
