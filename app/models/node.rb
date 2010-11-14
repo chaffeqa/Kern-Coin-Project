@@ -1,5 +1,6 @@
 class Node < ActiveRecord::Base
   belongs_to :page, :polymorphic => true
+  belongs_to :category, :class_name => 'Category', :foreign_key => "page_id"
 
   acts_as_tree :order => 'position'
   acts_as_list :scope => :parent_id

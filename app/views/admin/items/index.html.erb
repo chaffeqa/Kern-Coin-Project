@@ -2,27 +2,33 @@
 
 <p><%= link_to 'New Item', new_admin_item_path, :class => "btn large" %></p>
 
+
+
 <table>
   <tr>
     <th></th>
-    <th><%= sortable "item_id", "Item ID" %></th>
-    <th><%= sortable "name", "Name" %></th>
-    <th><%= sortable "cost", "Price" %></th>
-    <th><%= sortable "display", "Displayed" %></th>
+    <th><%= sortable "item_id", "Item ID", parsed_params %></th>
+    <th><%= sortable "name", "Name", parsed_params %></th>
+    <th>Categories</th>
+    <th><%= sortable "cost", "Price", parsed_params %></th>
+    <th><%= sortable "display", "Displayed", parsed_params %></th>
     <th></th>
     <th></th>
   </tr>
 
+  <%= render :partial => 'query_form' %>
+
   <% @items.each do |item| %>
-    <tr>
+    <%= content_tag_for :tr, item do %>
       <td class="itemThumb"> <%= image_tag(item.thumbnail_image)  %> </td>
       <td><%= item.item_id %></td>
       <td><%= item.nodes.any? ? link_to(item.name, shortcut_path(item.nodes.first.shortcut)) : item.name %></td>
+      <td><%=raw item.categories.collect {|cat| (link_to(cat.title, shortcut_path(cat.node.shortcut)) + raw('<br/>')) } %></td>
       <td><%= number_to_currency(item.cost) %></td>
       <td><%= item.display %></td>
       <td><%= link_to 'Edit', edit_admin_item_path(item), :class => "btn small" %></td>
       <td><%= link_to 'Delete', admin_item_path(item), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %></td>
-    </tr>
+    <% end %>
   <% end %>
 </table>
 <div class="pagination"><%= will_paginate @items %></div>

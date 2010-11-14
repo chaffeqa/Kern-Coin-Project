@@ -1,0 +1,12 @@
+<%= form_tag(admin_items_path, :method => :get) do %>
+  <tr>
+    <td><%= submit_tag 'Search', :disable_with => 'Searching Items...'  %></td>
+    <td><%= text_field_tag :item_id,  params[:item_id].blank? ? '' : params[:item_id], :size => 10 %></td>
+    <td><%= text_field_tag :name,  params[:name].blank? ? '' : params[:name], :size => 10 %></td>
+    <td><%= text_field_tag :category, params[:category].blank? ? '' : params[:category], :size => 10 %></td>
+    <td><%= text_field_tag(:min_price, params[:min_price].blank? ? '' : params[:min_price], :size => 2) -%> - <%= range_field_tag :max_price, '', :size => 2  -%></td>
+    <td><%= select_tag :displayed, options_for_select([['Yes','t'],['No','f']], params[:displayed].blank? ? '' : params[:displayed]), :include_blank => true %></td>
+    <td></td>
+    <td></td>
+  </tr>
+<% end %>

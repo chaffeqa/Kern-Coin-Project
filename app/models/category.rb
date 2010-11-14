@@ -3,6 +3,8 @@ class Category < ActiveRecord::Base
   # Associated Node attributes
   has_one :node, :as => :page, :dependent => :destroy
   accepts_nested_attributes_for :node
+
+  scope :title_like, lambda {|title| where('title LIKE ?', title)}
   
 
   has_attached_file :image,

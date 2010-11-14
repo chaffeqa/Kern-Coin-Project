@@ -134,6 +134,18 @@ def sortable(column, title, addition_params={})
   link_to title, {:sort => column, :direction => direction}.merge(addition_params), {:class => css_class}
 end
 
+def parsed_params
+  new_params = {}
+  new_params[:name]=params[:name] unless params[:name].blank?
+  new_params[:item_id]=params[:item_id] unless params[:item_id].blank?
+  new_params[:displayed]=params[:displayed] unless params[:displayed].blank?
+  new_params[:for_sale]=params[:for_sale] unless params[:for_sale].blank?
+  new_params[:min_price]=params[:min_price] unless params[:min_price].blank?
+  new_params[:max_price]=params[:max_price] unless params[:max_price].blank?
+  new_params[:category]=params[:category] unless params[:category].blank?
+  new_params
+end
+
 #  ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
 #    if instance.error_message.kind_of?(Array)
 #      %(<span class="field_with_errors">#{html_tag}</span>)

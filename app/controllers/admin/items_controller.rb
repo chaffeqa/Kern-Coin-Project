@@ -5,7 +5,18 @@ class Admin::ItemsController < ApplicationController
   before_filter :get_node, :except => [:new, :create, :index]
   
   def index
-    @items = Item.paginate :page => params[:page], :order => (sort_column + " " + sort_direction)
+#    @item_max = @item_max || Item.maximum("cost")
+#    @item_min = @item_min || Item.minimum("cost")
+    @items = Item.scoped
+    @items = @items.scope_display(params[:displayed]) unless params[:displayed].blank?
+    @items = @items.scope_for_sale(params[:for_sale]) unless params[:for_sale].blank?
+    @items = @items.scope_category(params[:category]) unless params[:category].blank?
+    @items = @items.scope_name(params[:name]) unless params[:name].blank?
+    @items = @items.scope_item_id(params[:item_id]) unless params[:item_id].blank?
+    @items = @items.scope_max_price(params[:max_price]) unless params[:max_price].blank?
+    @items = @items.scope_min_price(params[:min_price]) unless params[:min_price].blank?
+    @items = @items.paginate :page => params[:page], :order => (sort_column + " " + sort_direction)
+    
   end
 
   def show
