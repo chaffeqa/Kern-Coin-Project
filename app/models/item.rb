@@ -54,25 +54,4 @@ class Item < ActiveRecord::Base
     end
   
 
-    #  def default_node
-    #    unless self.node
-    #      self.create_node({
-    #          :title => self.name,
-    #          :menu_name => self.name,
-    #          :displayed => true,
-    #          :shortcut => self.name.parameterize.html_safe
-    #        })
-    #    else
-    #      self.node.update_attributes(
-    #        :name => self.name,
-    #        :menu_name => self.name,
-    #        :shortcut => self.name.parameterize.html_safe
-    #      )
-    #    end
-    #  end
-    #
-    #  def update_node
-    #    self.default_node
-    #    self.node.save!
-    #  end
   end

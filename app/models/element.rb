@@ -8,6 +8,7 @@ class Element < ActiveRecord::Base
   ELEM_TYPES = [
     ["Text"             ,   "text_elems"            ],
     ["Link"             ,   "link_elems"            ],
+    ["Item"             ,   "item_elem"             ],
     #    ["Inventory Search" ,   "inventory_search_elems"],
     #    ["Recent News"      ,   "recent_news_elems"     ],
     ["Login"            ,   "login_elems"           ],

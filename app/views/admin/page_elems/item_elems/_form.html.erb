@@ -1,0 +1,44 @@
+<%= form_for([:admin,@item_elem])  do |f| %>
+  <% if @item_elem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize((@item_elem.errors.count ), "error") %> prohibited this element from being saved:</h2>
+      <ul>
+        <% @item_elem.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<fieldset>
+  <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
+  <hr />
+
+  <div class="field"><span class="hint"><strong>
+      <% if f.object.new_record? %>
+        <%= link_to 'New Item', new_admin_item_path %>
+      <% else %>
+        <%= link_to 'Edit Item', edit_admin_item_path(f.object.item_id) %>
+      <% end %>
+    </strong></span>
+    <%= f.label :item_id, "Blog Feed" %>
+    <%= f.select( :item_id, options_for_select(Item.all.map {|item| [item.name, item.id]}) ) %>
+  </div>
+  <hr />
+
+  <div class="field"><span class="hint">How do you want your item to be displayed? <a class="expander">Explain this</a></span>
+    <%= f.label :display_type, "Display Options" %>
+    <%= f.select :display_type, options_for_select(ItemElem.display_type_select, (f.object.new_record? ? ItemElem.display_type_select[0] : f.object.display_type)) %>
+    <span class="expanded-hint">
+      <strong>Thumbnail</strong><br />
+      A simple thumbnail image of the item along with the item's name underneath.  Use this when creating a quick reference to an item.<br /><br />
+      <strong>Full Display</strong><br />
+      A full description of the item along with all images.<br /><br />
+      <strong>Limited Display</strong><br />
+      A smaller display of the item.  Use this when providing a brief glimpse of an item to the viewer.
+    </span>
+  </div>
+
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
+</fieldset>
+<% end %>
