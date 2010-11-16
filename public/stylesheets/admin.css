@@ -121,9 +121,29 @@
 }
 /**************************/
 
+#itemAdminTable tr.inputRow td {padding: 0 1em 3em 0;}
 
+#itemAdminTable select,
+#itemAdminTable input[type="text"] {
+    background: #fff;
+    border: 1px solid #999;
+    color: #000;
+    font: inherit;
+    margin: 2px 1px;
+    padding: 2px;
+    width: 100%;
+}
 
-
+#itemAdminTable tr.sorters td { padding: 0; }
+#itemAdminTable tr.sorters td span,
+#itemAdminTable tr.sorters td a { font-weight: bold; background: #E1E2DC; border: 1px solid #bebfb9; padding: 0.5em 0.4em; display: block; }
+#itemAdminTable tr.sorters td a.ASC { background: #bebfb9 url(../template/phusion/arrow-asc.png) 90% .6em no-repeat; }
+#itemAdminTable tr.sorters td a.DESC { background: #bebfb9 url(../template/phusion/arrow-desc.png) 90% .6em no-repeat; }
+#itemAdminTable td.sorted {
+    background: rgba(230, 230, 250, .7);
+    border-left: 1px solid #bebfb9; 
+    border-right: 1px solid #bebfb9; 
+}
 
  table.adminTable {}
 

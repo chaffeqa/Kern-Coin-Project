@@ -3,7 +3,7 @@
     <%= link_to 'Add Event', new_admin_calendar_event_path(elem.calendar), :class => 'btn small' %>
     <%#= link_to 'Manage Events', shortcut_path(elem.calendar.node.shortcut), :class => 'btn small' %>
     <%= link_to 'Settings', edit_admin_calendar_elem_path(elem), :class => 'btn small' %>
-    <%= link_to image_tag("delete.png", :alt => 'X'), admin_calendar_elem_path(elem), :confirm => "Are you sure?", :method => :delete, :class => 'control' %>
+    <%= link_to image_tag("delete.png", :alt => 'X'), admin_calendar_elem_path(elem), :confirm => "Are you sure you wish to delete this element?", :method => :delete, :class => 'control' %>
     <%= render :partial => 'elements/element_controls', :locals => {:element => elem.element} %>
   </span>
 <% end %>

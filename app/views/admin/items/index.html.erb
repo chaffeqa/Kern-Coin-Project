@@ -1,31 +1,41 @@
 <h1 class="title">Items</h1>
 
+<p>[Instructions here...]</p>
+
 <p><%= link_to 'New Item', new_admin_item_path, :class => "btn large" %></p>
 
-
-
-<table>
+<table id="itemAdminTable">
   <tr>
-    <th></th>
-    <th><%= sortable "item_id", "Item ID", parsed_params %></th>
-    <th><%= sortable "name", "Name", parsed_params %></th>
+    <!--th></th-->
+    <th>Item ID</th>
+    <th>Name</th>
     <th>Categories</th>
-    <th><%= sortable "cost", "Price", parsed_params %></th>
-    <th><%= sortable "display", "Displayed", parsed_params %></th>
-    <th></th>
-    <th></th>
+    <th>Price Range</th>
+    <th>Displayed</th>
+    <th colspan="2"></th>
   </tr>
 
   <%= render :partial => 'query_form' %>
 
-  <% @items.each do |item| %>
-    <%= content_tag_for :tr, item do %>
-      <td class="itemThumb"> <%= image_tag(item.thumbnail_image)  %> </td>
-      <td><%= item.item_id %></td>
-      <td><%= item.nodes.any? ? link_to(item.name, shortcut_path(item.nodes.first.shortcut)) : item.name %></td>
-      <td><%=raw item.categories.collect {|cat| (link_to(cat.title, shortcut_path(cat.node.shortcut)) + raw('<br/>')) } %></td>
-      <td><%= number_to_currency(item.cost) %></td>
-      <td><%= item.display %></td>
+  <tr class="sorters">
+    <!--td></td-->
+    <td><%= sortable "item_id", "Item ID", parsed_params %></td>
+    <td><%= sortable "name", "Name", parsed_params %></td>
+    <td><span>Categories</span></td>
+    <td><%= sortable "cost", "Price", parsed_params %></td>
+    <td><%= sortable "display", "Displayed", parsed_params %></td>
+    <td colspan="2"><span>Options</span></td>
+  </tr>
+  <% even = true
+     @items.each do |item| 
+     even = !even %>
+    <%= content_tag_for :tr, item, :class => (even ? "even" : "odd") do %>
+      <!--td class="itemThumb"> <%#= image_tag(item.thumbnail_image)  %> </td-->
+      <td class='<%= (params[:sort] == "item_id") ? "sorted" : "" %>'><%= item.item_id %></td>
+      <td class='<%= (params[:sort] == "name") ? "sorted" : "" %>'><%= item.nodes.any? ? link_to(item.name, shortcut_path(item.nodes.first.shortcut)) : item.name %></td>
+      <td><%=raw item.categories.collect {|cat| (link_to(cat.title, shortcut_path(cat.node.shortcut)) + (cat == item.categories.last ? raw('<br />') : raw(',<br />'))) } %></td>
+      <td class='<%= (params[:sort] == "cost") ? "sorted" : "" %>'><%= number_to_currency(item.cost) %></td>
+      <td class='<%= (params[:sort] == "display") ? "sorted" : "" %>'><%= item.display ? "Yes" : "No" %></td>
       <td><%= link_to 'Edit', edit_admin_item_path(item), :class => "btn small" %></td>
       <td><%= link_to 'Delete', admin_item_path(item), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %></td>
     <% end %>

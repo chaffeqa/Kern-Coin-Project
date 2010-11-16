@@ -13,12 +13,14 @@
 
   <fieldset>
     <div class="field"><span class="hint">Add This product to multiple Inventory Categories.</span>
+      <label>Categorize</label><br />
       <% f.fields_for :nodes do |nodes_form| %>
         <%= render :partial => 'node', :locals => { :f => nodes_form } %>
       <% end %>
       <%= new_child_fields_template(f, :nodes)%>
       <label><%= add_child_link "Add Category", :nodes %></label>
     </div>
+    
     <hr />
 
     <div class="field"><span class="hint">Be sure to enter a unique item ID.</span>
@@ -38,7 +40,8 @@
 
     <div class="field">
       <%= f.label :cost, "Price" %>
-      <%= f.text_field :cost, :style => "width: 70px;" %>
+      <% val = (@item.cost > 0) ? @item.cost : "0.00"  %>
+      $ <%= f.text_field :cost, :style => "width: 70px;", :title => val, :value => val %>
     </div>
     <hr />
 
