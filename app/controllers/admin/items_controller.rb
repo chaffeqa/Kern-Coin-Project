@@ -5,8 +5,7 @@ class Admin::ItemsController < ApplicationController
   before_filter :get_node, :except => [:new, :create, :index]
   
   def index
-#    @item_max = @item_max || Item.maximum("cost")
-#    @item_min = @item_min || Item.minimum("cost")
+    @per_page = params[:per_page] || 10
     @items = Item.scoped
     @items = @items.scope_display(params[:displayed]) unless params[:displayed].blank?
     @items = @items.scope_for_sale(params[:for_sale]) unless params[:for_sale].blank?
@@ -15,8 +14,7 @@ class Admin::ItemsController < ApplicationController
     @items = @items.scope_item_id(params[:item_id]) unless params[:item_id].blank?
     @items = @items.scope_max_price(params[:max_price]) unless params[:max_price].blank?
     @items = @items.scope_min_price(params[:min_price]) unless params[:min_price].blank?
-    @items = @items.paginate :page => params[:page], :order => (sort_column + " " + sort_direction)
-    
+    @items = @items.paginate :page => params[:page], :per_page => @per_page, :order => (sort_column + " " + sort_direction)
   end
 
   def show
@@ -34,7 +32,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
     if @item.save
-      redirect_to(shortcut_path(@item.nodes.first.shortcut), :notice => 'Item was successfully created.')
+      redirect_to(admin_items_path, :notice => 'Item was successfully created.')
     else
       render :action => "new"
     end
@@ -42,7 +40,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     if @item.update_attributes(params[:item])
-      redirect_to(shortcut_path(@item.nodes.first.shortcut), :notice => 'Item was successfully updated.')
+      redirect_to(admin_items_path, :notice => 'Item was successfully updated.')
     else
       render :action => "edit"
     end
@@ -50,13 +48,10 @@ class Admin::ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to(admin_items_url, :notice => 'Item was successfully destroyed.' )
+    redirect_to(admin_items_url(), :notice => 'Item was successfully destroyed.' )
   end
 
   private
-  def build_product_images
-    (10 - @item.product_images.count).times  { @item.product_images.build }
-  end
 
   def get_node
     @item = Item.find(params[:id])

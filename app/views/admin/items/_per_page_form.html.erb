@@ -1,0 +1,18 @@
+<%= form_tag(admin_items_path(), :method => :get, :class => 'per-page-form') do %>
+  <div class="field">
+    Display how many items per page? &nbsp;
+    <%= select_tag(:per_page, options_for_select(['5','10','15','20','25','30'], @per_page)) %>
+
+    <%= hidden_field_tag(:name, params[:name]) unless params[:name].blank? %>
+    <%= hidden_field_tag(:item_id, params[:item_id]) unless params[:item_id].blank? %>
+    <%= hidden_field_tag(:displayed, params[:displayed]) unless params[:displayed].blank? %>
+    <%= hidden_field_tag(:for_sale, params[:for_sale]) unless params[:for_sale].blank? %>
+    <%= hidden_field_tag(:min_price, params[:min_price]) unless params[:min_price].blank? %>
+    <%= hidden_field_tag(:max_price, params[:max_price]) unless params[:max_price].blank? %>
+    <%= hidden_field_tag(:category, params[:category]) unless params[:category].blank? %>
+    <%= hidden_field_tag(:sort, params[:sort]) unless params[:sort].blank? %>
+    <%= hidden_field_tag(:direction, params[:direction]) unless params[:direction].blank? %>
+
+    <%= submit_tag('Update Results', :disable_with => 'Updating results...') %>
+  </div>
+<% end %>
