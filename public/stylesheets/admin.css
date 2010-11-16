@@ -121,10 +121,12 @@
 }
 /**************************/
 
+#itemAdminTable {border-bottom: 1px solid #bebfb9;}
 #itemAdminTable tr.inputRow td {padding: 0 1em 3em 0;}
 
 #itemAdminTable select,
-#itemAdminTable input[type="text"] {
+#itemAdminTable input[type="text"],
+#itemAdminTable input[type="range"] {
     background: #fff;
     border: 1px solid #999;
     color: #000;
