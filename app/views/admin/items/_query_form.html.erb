@@ -1,5 +1,10 @@
 <%= form_tag(admin_items_path, :method => :get) do %>
   <tr class="inputRow">
+
+    <%= hidden_field_tag(:per_page, @per_page) %>
+    <%= hidden_field_tag(:sort, params[:sort]) unless params[:sort].blank? %>
+    <%= hidden_field_tag(:direction, params[:direction]) unless params[:direction].blank? %>
+
     <!--td></td-->
     <td><%= text_field_tag :item_id,  params[:item_id].blank? ? '' : params[:item_id] %></td>
     <td><%= text_field_tag :name,  params[:name].blank? ? '' : params[:name] %></td>
@@ -7,7 +12,7 @@
     <td style="min-width: 100px;">
       <%= text_field_tag(:min_price, params[:min_price].blank? ? '' : params[:min_price], :style => "width: 25px;") -%>
       - 
-      <%= range_field_tag :max_price, '', :style => "width: 25px;" -%>
+      <%= text_field_tag(:max_price, params[:max_price].blank? ? '' : params[:max_price], :style => "width: 25px;") -%>
     </td>
     <td><%= select_tag :displayed, options_for_select([['Yes','t'],['No','f']], params[:displayed].blank? ? '' : params[:displayed]), :include_blank => true, :style => "width: 60px;" %></td>
     <td colspan="2"><%= submit_tag 'Apply Filter', :disable_with => 'Searching Items...', :class => "btn small yellow"  %></td>

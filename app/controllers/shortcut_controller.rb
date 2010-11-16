@@ -13,7 +13,7 @@ class ShortcutController < ApplicationController
     @message = params[:message]
     @shortcut = params[:shortcut]
     if @shortcut
-      @similar_nodes = Node.where(["shortcut LIKE ?", @shortcut])
+      @similar_nodes = Node.where(["shortcut LIKE ?", "%"+@shortcut+"%"])
     end
     render('error_page/error')
   end

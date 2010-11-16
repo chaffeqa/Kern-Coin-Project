@@ -34,11 +34,11 @@ class Item < ActiveRecord::Base
 
   scope :scope_display, lambda {|display| where(:display => display)}
   scope :scope_for_sale, lambda {|for_sale| where(:for_sale => for_sale)}
-  scope :scope_name, lambda {|name| where('name LIKE ?', name)}
-  scope :scope_item_id, lambda {|item_id| where('item_id LIKE ?', item_id)}
-  scope :scope_category, lambda {|title| joins(:nodes => {:parent => :category}) & where('categories.title LIKE ?', title)}
+  scope :scope_name, lambda {|name| where('name LIKE ?', "%"+name+"%")}
+  scope :scope_item_id, lambda {|item_id| where('item_id LIKE ?', "%"+item_id+"%")}
+  scope :scope_category, lambda {|title| joins(:nodes => {:parent => :category}) & where('categories.title LIKE ?', "%"+title+"%")}
   scope :scope_min_price, lambda {|price| where('cost >= ?', price)}
-  scope :scope_max_price, lambda {|price| where('cost <= ?', price)}  
+  scope :scope_max_price, lambda {|price| where('cost <= ?', price)}
 
 
     def thumbnail_image
