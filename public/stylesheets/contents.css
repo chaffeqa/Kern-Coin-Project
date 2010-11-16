@@ -117,7 +117,7 @@ table {margin: .5em auto 1.5em auto; width: 98%;}
 	tbody td {padding: .5em .4em;}
 	tbody th {}
 
-	tbody tr.odd { background: #DDD; }
+	tbody tr.even { background: #F0F0F0; }
 
 	/* Tfoot */
 	tfoot th {}
