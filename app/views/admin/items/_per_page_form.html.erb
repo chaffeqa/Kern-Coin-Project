@@ -1,7 +1,7 @@
 <%= form_tag(admin_items_path(), :method => :get, :class => 'per-page-form') do %>
   <div class="field">
     Display how many items per page? &nbsp;
-    <%= select_tag(:per_page, options_for_select(['5','10','15','20','25','30'], @per_page)) %>
+    <%= select_tag(:per_page, options_for_select(['10','25','50','75','100'], @per_page)) %>
 
     <%= hidden_field_tag(:name, params[:name]) unless params[:name].blank? %>
     <%= hidden_field_tag(:item_id, params[:item_id]) unless params[:item_id].blank? %>
