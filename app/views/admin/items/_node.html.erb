@@ -1,6 +1,6 @@
-<label>
-</label>
-<div class="child-field">
+<div class="child-field field">
+  <label>
+  </label>
   <% if f.object.new_record? %>
     <%= f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), {:prompt => true}%>
   <% else %>

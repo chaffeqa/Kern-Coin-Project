@@ -1,13 +1,12 @@
 <div class="child-field field">
-
   <% if f.object.new_record? %>
-    <label> <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-new-child' %> </label>
+    <label><%= link_to "Remove", 'javascript:void(0)', :class => 'remove-new-child' %></label>
     <%= f.file_field :image %><br />
     <label>&nbsp;</label>
     <%= f.check_box :primary_image, :checked => false, :class => 'primary-image' %> Primary image?
   <% else %>
     <label>
-       <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-old-child' %>
+      <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-old-child', :style => "margin-left: 60px;" %>
       <%= f.hidden_field :_destroy, :class => 'destroy-field', :value => '0' %>
     </label>
     <div class="thumb"><%= image_tag f.object.thumbnail_image %></div>

@@ -14,12 +14,12 @@
   <fieldset>
     <div class="field"><span class="hint">Add This product to multiple Inventory Categories.</span>
       <label>Categorize</label><br />
-      <% f.fields_for :nodes do |nodes_form| %>
-        <%= render :partial => 'node', :locals => { :f => nodes_form } %>
-      <% end %>
-      <%= new_child_fields_template(f, :nodes)%>
-      <label><%= add_child_link "Add Category", :nodes %></label>
     </div>
+    <% f.fields_for :nodes do |nodes_form| %>
+      <%= render :partial => 'node', :locals => { :f => nodes_form } %>
+    <% end %>
+    <%= new_child_fields_template(f, :nodes)%>
+    <div class="field"><label></label><%= add_child_link "Add Category", :nodes %></div>
     
     <hr />
 
@@ -56,12 +56,13 @@
     <hr />
 
     <div class="field"><span class="hint">Manage images for this product.</span>
-      <% f.fields_for :product_images do |img_form| %>
-        <%= render :partial => 'product_image', :locals => { :f => img_form } %>
-      <% end %>
-      <%= new_child_fields_template(f, :product_images)%>
-      <label><%= add_child_link "Add Product Image", :product_images %></label>
+      <label>Images</label>
     </div>
+    <% f.fields_for :product_images do |img_form| %>
+      <%= render :partial => 'product_image', :locals => { :f => img_form } %>
+    <% end %>
+    <%= new_child_fields_template(f, :product_images)%>
+    <div class="field"><label></label><%= add_child_link "Add Product Image", :product_images %></div>
     <hr />
 
     <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Item'} %>
