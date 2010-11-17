@@ -1,15 +1,4 @@
 <% @item = @node.page %>
-<%= content_for :head do %>
-  <script>
-    if (typeof(FoxyDomain) == 'undefined') {
-      var FoxyDomain = "KERN-Coin.foxycart.com";
-    }
-  </script>
-  <script src="http://cdn.foxycart.com/yourdomain/foxycart.js"></script>
-  <script src="http://cdn.foxycart.com/yourdomain/foxybox.js"></script>
-  <link rel="stylesheet" href="http://KERN-Coin.foxycart.com/files/foxybox.css" type="text/css" media="screen" charset="utf-8" />
-  <link rel="stylesheet" href="http://KERN-Coin.foxycart.com/themes/standard/theme.foxybox.css" type="text/css" media="screen" charset="utf-8" />
-<% end %>
 <% if admin? %>
   <% content_for :page_admin_bar do %>
     <%= link_to 'Delete Item', admin_item_path(@item) , :confirm => "Are you sure?", :method => :delete, :class => 'btn large' %>
@@ -35,7 +24,11 @@
       <p><%= number_to_currency(@item.cost) %></p>
       <p><%= @item.item_id %></p>
       <p><%=raw @item.details %></p>
+      <% if @item.for_sale %>
       <%= link_to 'Add To Cart', "https://KERN-Coin.foxycart.com/cart?name=#{@item.name}&price=#{@item.cost}&item-id=#{@item.item_id}", :class => 'foxycart add-to-cart btn large yellow' %>
+      <% else %>
+      <p><strong>Out of stock</strong></p>
+      <% end %>
     </div>
 
   </div>

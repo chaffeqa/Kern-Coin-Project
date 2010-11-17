@@ -297,3 +297,8 @@ ul.blogList {
 		color: #000;
 		font-family: Georgia, "Times New Roman", Times, serif;
 	}
+
+#fc_minicart {background: #222; color: #fff; border-bottom: 1px solid #444; padding: 3px 0;}
+#fc_minicart p {width: 960px; margin: 0 auto; text-align: right;}
+#fc_minicart p a {color: #fed543;}
+#fc_minicart p a img {vertical-align: middle;}
