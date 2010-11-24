@@ -3,9 +3,7 @@
 
   <span class="right">
   <%= link_to 'Edit', edit_admin_category_path(category), :class => "btn small" %>
-  <%#= link_to raw('&uarr;'), move_up_admin_category_path(category), :class => "btn small", :method => :post %>
-  <%#= link_to raw('&darr;'), move_down_admin_category_path(category), :class => "btn small", :method => :post %>
-  <%= link_to 'X', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %>
+  <%= link_to 'Delete', admin_category_path(category), :confirm => 'Are you sure you want to delete this page?', :method => :delete, :class => "btn small" %>
   </span>
 
 <% unless category.node.children.categories.empty? %>

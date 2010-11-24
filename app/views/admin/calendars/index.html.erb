@@ -19,7 +19,7 @@
       <td><%= calendar.event_color %></td>
       <td><%= link_to 'Show Calendar', shortcut_path(calendar.node.shortcut), :class => 'btn small' %></td>
       <td><%= link_to 'Settings', edit_admin_calendar_path(calendar), :class => 'btn small' %></td>
-      <td><%= link_to 'Delete', admin_calendar_path(calendar), :confirm => 'Are you sure?', :method => :delete, :class => 'btn small' %></td>
+      <td><%= link_to 'Delete', admin_calendar_path(calendar), :confirm => 'Are you sure you want to delete this calendar?', :method => :delete, :class => 'btn small' %></td>
     </tr>
   <% end %>
 </table>

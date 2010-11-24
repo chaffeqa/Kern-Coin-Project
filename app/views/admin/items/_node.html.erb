@@ -12,4 +12,10 @@
     <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-old-child' %>
     <%= f.hidden_field :_destroy, :class => 'destroy-field', :value => '0' %>
   <% end %>
+  <% if f.object.new_record? %>
+    <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-new-child' %>
+  <% else %>
+    <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-old-child' %>
+    <%= f.hidden_field :_destroy, :class => 'destroy-field', :value => '0' %>
+  <% end %>
 </div>

@@ -18,7 +18,7 @@
       <td><%= dynamic_page.node.displayed ? "Yes" : "No" %></td>
       <td><%= link_to 'Show', shortcut_path(dynamic_page.node.shortcut), :class => "btn small" %></td>
       <td><%= link_to 'Edit', edit_admin_dynamic_page_path(dynamic_page), :class => "btn small" %></td>
-      <td><%= link_to 'Destroy', admin_dynamic_page_path(dynamic_page), :confirm => 'Are you sure?', :method => :delete, :class => "btn small" %></td>
+      <td><%= link_to 'Destroy', admin_dynamic_page_path(dynamic_page), :confirm => 'Are you sure you want to delete this page?', :method => :delete, :class => "btn small" %></td>
     </tr>
   <% end %>
 </table>
