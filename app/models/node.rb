@@ -17,6 +17,7 @@ class Node < ActiveRecord::Base
   validate :shortcut_html_safe?
   validate :create_unique_shortcut?, :on => :create
   validate :update_unique_shortcut?, :on => :update
+  validate :ensure_unique_root_node
   before_validation :fill_missing_fields
 
   def fill_missing_fields
@@ -29,6 +30,15 @@ class Node < ActiveRecord::Base
         self.shortcut = self.menu_name.parameterize.html_safe if self.shortcut.blank?
       end
     end
+  end
+
+  def ensure_unique_root_node
+    root_nodes = Node.where(:parent_id => nil)
+    if root_nodes.count > 1
+      problem_nodes = root_nodes - (Node.where(:parent_id => nil).where(:title => 'Home') )
+      problem_nodes.each {|node| node.update_attributes(:displayed => false, :parent_id => ' ') }
+    end
+    true
   end
 
   def create_unique_shortcut?
@@ -46,20 +56,11 @@ class Node < ActiveRecord::Base
       errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
     end
   end
-  
-  PAGE_TYPES = [
-    "Inventory",
-    "Inventory Item",
-    "Inventory Category",
-    "Page - Basic",
-    "Page - Side Panel",
-    "Page - Home",
-    "Blog",
-    "Blog Post",
-    "Archives - Article",
-    "Archives - Magazine",
-    "Auction"
-  ]
+
+
+  def self.home
+    self.where('shortcut LIKE ?', 'Home').count == 1 ? self.root.where('shortcut LIKE ?', 'Home') : nil
+  end
 
 
   def shortcut_html_safe?
@@ -87,6 +88,10 @@ class Node < ActiveRecord::Base
 
   def self.calendar_node
     self.where(:title => 'Calendars').first
+  end
+
+  def self.inventory_node
+    self.where(:title => 'Inventory').first
   end
 
   def self.order_tree(json)

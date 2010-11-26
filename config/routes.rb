@@ -1,6 +1,6 @@
 KernCoinProject::Application.routes.draw do
 
-  root :to => 'dynamic_pages#home'
+  root :to => 'shortcut#home'
 
   match "error" => 'shortcut#error', :as => :error
 
@@ -51,6 +51,8 @@ KernCoinProject::Application.routes.draw do
     end
     scope :module => 'page_elems' do
       resources :login_elems, :only => [:new]
+      resources :item_elems, :except => [:index, :show]
+      resources :item_list_elems, :except => [:index, :show]
       resources :blog_elems, :except => [:index, :show]
       resources :calendar_elems, :except => [:index, :show]
       resources :text_elems, :except => [:index, :show]

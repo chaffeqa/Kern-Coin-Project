@@ -3,7 +3,7 @@ class DynamicPage < ActiveRecord::Base
   has_many :elements, :order => :position
   
   # Associated Node attributes
-  has_one :node, :as => :page
+  has_one :node, :as => :page, :dependent => :destroy
   accepts_nested_attributes_for :node
 
 #  validates_associated :node

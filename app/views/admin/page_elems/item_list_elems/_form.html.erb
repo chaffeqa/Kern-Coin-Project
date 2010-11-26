@@ -1,0 +1,59 @@
+<%= form_for([:admin,@item_list_elem])  do |f| %>
+  <% if @item_list_elem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize((@item_list_elem.errors.count ), "error") %> prohibited this element from being saved:</h2>
+      <ul>
+        <% @item_list_elem.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<fieldset>
+  <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
+  <hr />
+
+  <div class="field">
+    <span class="hint"><strong>Select a Category if you wish to pull from only it's items</strong></span>
+    <%= f.label :category_id, "Category" %>
+    <%= f.select( :category_id, options_for_select(cat_id_options_tree_recursive(Node.inventory_node,''), f.object.new_record? ? '' : f.object.category_id), :prompt => 'Optional: Select a Category...' ) %>
+  </div>
+  <hr />
+
+  <div class="field"><span class="hint">How do you want your items to be displayed? <a class="expander">Explain this</a></span>
+    <%= f.label :display_type, "Display Options" %>
+    <%= f.select :display_type, options_for_select(ItemListElem.display_type_select, (f.object.new_record? ? ItemListElem.display_type_select[0] : f.object.display_type)) %>
+    <span class="expanded-hint">
+      <strong>Thumbnail List</strong><br />
+      A simple thumbnail image of each item along with the item's name underneath.  Use this when creating a simple and pretty list of the items.<br /><br />
+      <strong>Table List</strong><br />
+      Lists the items in a table manor, displaying only text attributes of each item such as Name and Price.<br /><br />
+      <strong>Full Display List</strong><br />
+      Lists the items with both images and short description.  Use this when providing a brief glimpse of an item to the viewer.
+    </span>
+  </div>
+  <hr />
+
+  <div class="field"><span class="hint">How many posts do you want to show? <a class="expander">Explain further</a></span>
+    <%= f.label :limit, 'Maximum Number of Items Displayed' %>
+    <%= f.text_field :limit %>
+    <span class="expanded-hint">Choose how many items to display in this list.
+    </span>
+  </div>
+  <hr />
+
+  <div class="field"><span class="hint">Use this option to limit the price range of the item list.</span>
+    <%= f.label :max_price, 'Maximum Price Limit' %>
+    $<%= f.text_field :max_price %>
+  </div>
+
+  <div class="field"><span class="hint">Use this option to limit the price range of the item list.</span>
+    <%= f.label :min_price, 'Minimum Price Limit' %>
+    $<%= f.text_field :min_price %>
+  </div>
+
+
+  <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
+</fieldset>
+<% end %>

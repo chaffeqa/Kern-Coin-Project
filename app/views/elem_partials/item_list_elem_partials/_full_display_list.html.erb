@@ -1,0 +1,13 @@
+<ul class="item-list-limited-display">
+  <% items.each do |item| %>
+    <%= content_tag_for :li, item do %>
+      <span class="left">
+        <%= link_to image_tag(item.main_image ? item.main_image.preview_image : "no_image_preview.gif"), shortcut_path(item.nodes.first.shortcut) %>
+      </span>
+      <span class="right">
+        <h3><%= item.name %></h3>
+        <p><%= number_to_currency(item.cost) %></p>
+      </span>
+    <% end %>
+  <% end %>
+</ul>

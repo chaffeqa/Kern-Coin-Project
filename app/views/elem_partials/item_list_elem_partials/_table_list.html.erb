@@ -1,0 +1,17 @@
+<table class="item-list-table">
+  <tr>
+    <!--th></th-->
+    <th>Item ID</th>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  <% even = true
+  items.each do |item|
+    even = !even %>
+    <%= content_tag_for :tr, item, :class => (even ? "even" : "odd") do %>
+      <td><%= item.item_id %></td>
+      <td><%= item.nodes.any? ? link_to(item.name, shortcut_path(item.nodes.first.shortcut)) : item.name %></td>
+      <td><%= number_to_currency(item.cost) %></td>
+    <% end %>
+  <% end %>
+</table>

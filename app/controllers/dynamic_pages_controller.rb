@@ -5,13 +5,6 @@ class DynamicPagesController < ApplicationController
   def show
   end
 
-  def home
-    get_home_node
-    @node = @home_node
-    get_node
-    render 'show'
-  end
-
   
   def new_element
     if request.post?

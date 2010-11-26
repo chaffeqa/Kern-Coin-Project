@@ -21,8 +21,8 @@
         <%= link_to 'Edit Item', edit_admin_item_path(f.object.item_id) %>
       <% end %>
     </strong></span>
-    <%= f.label :item_id, "Blog Feed" %>
-    <%= f.select( :item_id, options_for_select(Item.all.map {|item| [item.name, item.id]}) ) %>
+    <%= f.label :item_id, "Item to Display" %>
+    <%= f.select( :item_id, options_for_select(Item.displayed.map {|item| [item.name, item.id]}) ) %>
   </div>
   <hr />
 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  category: 
+  limit: 1
+  min_price: 9.99
+  max_price: 9.99
+  display_type: MyString
+
+two:
+  category: 
+  limit: 1
+  min_price: 9.99
+  max_price: 9.99
+  display_type: MyString
