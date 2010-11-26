@@ -17,7 +17,7 @@ class Node < ActiveRecord::Base
   validate :shortcut_html_safe?
   validate :create_unique_shortcut?, :on => :create
   validate :update_unique_shortcut?, :on => :update
-  validate :ensure_unique_root_node
+#  validate :ensure_unique_root_node
   before_validation :fill_missing_fields
 
   def fill_missing_fields
