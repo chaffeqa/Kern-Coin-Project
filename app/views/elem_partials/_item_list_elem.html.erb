@@ -9,9 +9,9 @@
 <%
 items = Item.scoped
 items = items.limit(elem.limit) unless elem.limit.blank?
-items = items.where("cost <= ?", elem.max_price) unless elem.max_price.blank?
-items = items.where("cost <= ?", elem.min_price) unless elem.min_price.blank?
-items = (elem.category ? items & elem.category.items : items)
+items = items.where("cost <= ?", elem.max_price) if elem.max_price_exists?
+items = items.where("cost >= ?", elem.min_price) if elem.min_price_exists?
+items = (elem.category ? items.to_a & elem.category.items : items.to_a)
 %>
 
 

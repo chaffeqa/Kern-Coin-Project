@@ -11,7 +11,7 @@ class ItemListElem < ActiveRecord::Base
 
 
 
-#  validates_numericality_of :limit
+  #  validates_numericality_of :limit
   validates :display_type, :inclusion => { :in => DISPLAY_TYPE }
   validates_numericality_of :limit, :allow_nil => true
   validates_numericality_of :max_price, :allow_nil => true
@@ -19,6 +19,28 @@ class ItemListElem < ActiveRecord::Base
 
   def self.display_type_select
     DISPLAY_TYPE
+  end
+
+  def max_price_exists?
+    unless max_price.blank?
+      if max_price > 0
+        if max_price >= min_price
+          return true
+        end
+      end
+    end
+    return false
+  end
+
+  def min_price_exists?
+    unless min_price.blank?
+      if min_price > 0
+        if max_price >= min_price
+          return true
+        end
+      end
+    end
+    return false
   end
 
   def display_type_partial
