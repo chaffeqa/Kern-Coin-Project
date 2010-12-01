@@ -2,7 +2,6 @@ class Admin::ItemsController < ApplicationController
   helper_method :sort_column, :sort_direction
   layout 'admin'
   before_filter :check_admin
-  before_filter :get_node, :except => [:new, :create, :index]
   
   def index
     @per_page = params[:per_page] || 10
@@ -17,9 +16,6 @@ class Admin::ItemsController < ApplicationController
     @items = @items.paginate :page => params[:page], :per_page => @per_page, :order => (sort_column + " " + sort_direction)
   end
 
-  def show
-    @item = Item.find(params[:id])
-  end
 
   def new
     @item = Item.new
@@ -27,6 +23,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @item.nodes.build(:displayed => true) unless @item.nodes.count > 0
   end
 
   def create
@@ -39,6 +37,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
     if @item.update_attributes(params[:item])
       redirect_to(admin_items_path, :notice => 'Item was successfully updated.')
     else
@@ -47,6 +46,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def destroy
+    @item = Item.find(params[:id])
     @item.destroy
     redirect_to(admin_items_url(), :notice => 'Item was successfully destroyed.' )
   end
@@ -54,9 +54,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def get_node
-    @item = Item.find(params[:id])
-    @item.nodes.build(:displayed => true) unless @item.nodes.count > 0
-    @node = @item.nodes.first
     super
   end
 
