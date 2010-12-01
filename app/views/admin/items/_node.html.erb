@@ -2,7 +2,7 @@
   <label>
   </label>
   <% if f.object.new_record? %>
-    <%= f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''))%>
+    <%= f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), {:prompt => true}%>
   <% else %>
     <%= f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), f.object.parent_id) %>
   <% end %>

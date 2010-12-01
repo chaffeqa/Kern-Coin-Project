@@ -17,7 +17,7 @@ class Node < ActiveRecord::Base
   validate :shortcut_html_safe?
   validate :create_unique_shortcut?, :on => :create
   validate :update_unique_shortcut?, :on => :update
-#  validate :ensure_unique_root_node
+  #  validate :ensure_unique_root_node
   before_validation :fill_missing_fields
 
   def fill_missing_fields
@@ -44,16 +44,24 @@ class Node < ActiveRecord::Base
   def create_unique_shortcut?
     if Node.exists?(:shortcut => shortcut)
       addition = Node.where('shortcut LIKE ?', shortcut).count
-      suggested = self.shortcut + "_" + addition.to_s
-      errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
+      if page_type == "Item"
+        self.shortcut = shortcut + addition.to_s
+      else
+        suggested = self.shortcut + "_" + addition.to_s
+        errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
+      end
     end
   end
 
   def update_unique_shortcut?
-    if Node.where(:shortcut => shortcut).count > 1
+    if Node.where('shortcut LIKE ?', shortcut).count > 1
       addition = Node.where('shortcut LIKE ?', shortcut).count
-      suggested = self.shortcut + "_" + addition.to_s
-      errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
+      if page_type == "Item"
+        self.shortcut = shortcut + addition.to_s
+      else
+        suggested = self.shortcut + "_" + addition.to_s
+        errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
+      end
     end
   end
 

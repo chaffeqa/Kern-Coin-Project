@@ -28,6 +28,7 @@ class Item < ActiveRecord::Base
   #  validates_associated :node
   validates_presence_of :item_id, :cost, :name
   validates_numericality_of :cost
+  validates_associated :nodes
 
   scope :get_for_sale, where(:for_sale => true)
   scope :displayed, where(:display => true)
