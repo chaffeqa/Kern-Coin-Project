@@ -1,5 +1,5 @@
 <% @category = @node.page
-children = @node.children  %>
+children = @node.children.displayed  %>
 
 <h1><%= @category.title %></h1>
 <p><%= @category.description %></p>
