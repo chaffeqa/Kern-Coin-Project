@@ -11,7 +11,7 @@ class Item < ActiveRecord::Base
     JOIN nodes AS item_n ON parent_n.id = item_n.parent_id 
     WHERE item_n.page_id = #{id} AND item_n.page_type = "Item"'
   has_many :nodes, :as => :page, :dependent => :destroy
-  accepts_nested_attributes_for :nodes, :allow_destroy => true, :reject_if => proc { |attributes| attributes['parent_id'].blank? }
+  accepts_nested_attributes_for :nodes, :allow_destroy => true, :reject_if => :all_blank
   before_validation :update_nodes
 
   def update_nodes
