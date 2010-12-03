@@ -30,7 +30,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
     if @item.save
-      redirect_to(admin_items_path, :notice => 'Item was successfully created.')
+      redirect_to(shortcut_path(@item.nodes.first.shortcut), :notice => 'Item was successfully created.')
     else
       render :action => "new"
     end
@@ -39,7 +39,7 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update_attributes(params[:item])
-      redirect_to(admin_items_path, :notice => 'Item was successfully updated.')
+      redirect_to(shortcut_path(@item.nodes.first.shortcut), :notice => 'Item was successfully updated.')
     else
       render :action => "edit"
     end

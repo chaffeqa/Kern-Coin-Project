@@ -26,5 +26,9 @@ class ProductImage < ActiveRecord::Base
     self.image ? self.image.url(:full_size) : 'no_image_full_size.gif'
   end
 
+  def original_image
+    self.image ? self.image.url(:original) : 'no_image_full_size.gif'
+  end
+
 
 end

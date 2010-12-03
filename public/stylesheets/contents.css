@@ -273,17 +273,15 @@ ul.blogList {
 #secPage #mainColumn ul.categoryList li, 
 #secPage #mainColumn ul.itemList li {background: none; padding: 5px; float: left; width: 112px;}
 #secPage #mainColumn ul.categoryList li .thumbnail img, 
-#secPage #mainColumn ul.itemList li .thumbnail img {width: 112px; height: 112px; padding: 0;}
+#secPage #mainColumn ul.itemList li .thumbnail img {width: 112px; height: 112px; padding: 0; margin: 0;}
+#secPage #mainColumn ul.categoryList li .thumbnail a, 
+#secPage #mainColumn ul.itemList li .thumbnail a {display: block; line-height: 0em;}
 #secPage #mainColumn ul.categoryList li p.title,
-#secPage #mainColumn ul.itemList li p.title {dislay: block; text-align: center; line-height: 1em; height: 29px; background-color: #333; background-color: rgba(0,0,0,.5); margin: -33px 0 0; position: relative; padding: 2px;}
+#secPage #mainColumn ul.itemList li p.title {text-align: center; line-height: 1em; padding: 3px 0; margin: 0; background: #EEE; border: 1px solid #CCC;}
 #secPage #mainColumn ul.categoryList li p.title a,
-#secPage #mainColumn ul.itemList li p.title a {color: #fbd748;}
+#secPage #mainColumn ul.itemList li p.title a {color: #333;}
 #secPage #mainColumn ul.categoryList li p.title a:hover,
-#secPage #mainColumn ul.itemList li p.title a:hover {color: #fff; text-decoration: none;}
-/*
-#secPage #mainColumn ul.categoryList li:hover p.title, 
-#secPage #mainColumn ul.itemList li:hover p.title {display: block;}
-*/
+#secPage #mainColumn ul.itemList li p.title a:hover {color: #000; text-decoration: none;}
 
 #homeFooter ul.categoryList {margin: 0 -10px;}
 #homeFooter ul.categoryList li { float: left; margin: 10px; }

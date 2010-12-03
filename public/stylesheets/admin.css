@@ -78,6 +78,11 @@
     padding: 2px;
     width: 170px;
 }
+#adminPage form > fieldset > .field > input[type="file"],
+#adminPage form > fieldset > .field > .field_with_errors > input[type="file"] {
+    width: auto;
+} 
+
 #adminPage form > fieldset > .field > .datetime > select,
 #adminPage form > fieldset > .field > .field_with_errors > .datetime > select {
     background: #fff;
