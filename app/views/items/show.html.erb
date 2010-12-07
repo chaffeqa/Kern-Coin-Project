@@ -25,7 +25,8 @@
       <p><%= @item.item_id %></p>
       <p><%=raw @item.details %></p>
       <% if @item.for_sale %>
-      <%= link_to 'Add To Cart', "https://KERN-Coin.foxycart.com/cart?quantity_max=1&name=#{@item.name}&price=#{@item.cost}&item-id=#{@item.item_id}", :class => 'foxycart add-to-cart btn large yellow' %>
+      <%#= link_to 'Add To Cart', "https://KERN-Coin.foxycart.com/cart?quantity_max=1&name=#{@item.name}&price=#{@item.cost}&item-id=#{@item.item_id}", :class => 'foxycart add-to-cart btn large yellow' %>
+      <p><strong>To order, call (859)-269-1614</strong></p>
       <% else %>
       <p><strong>Out of stock</strong></p>
       <% end %>
