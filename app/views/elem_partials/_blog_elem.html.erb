@@ -1,22 +1,40 @@
 <% if admin? %>
   <span class="controls">
+    <% if elem.blog.nil? %>
+    <% else %>
     <%= link_to 'Add Post', new_admin_blog_post_path(elem.blog), :class => 'btn small' %>
     <%= link_to 'Manage Posts', shortcut_path(elem.blog.node.shortcut), :class => 'btn small' %>
+    <% end %>
     <%= link_to 'Settings', edit_admin_blog_elem_path(elem), :class => 'btn small' %>
     <%= link_to image_tag("delete.png", :alt => 'X'), admin_blog_elem_path(elem) , :confirm => "Are you sure you wish to delete this element?", :method => :delete, :class => 'control' %>
     <%= render :partial => 'elements/element_controls', :locals => {:element => elem.element} %>
   </span>
 <% end %>
 
-<%
-blog = elem.blog
-posts = blog.posts
-posts = posts.limit(elem.count_limit) unless elem.count_limit.nil?
-posts = posts.where("posts.created_at >= ?", elem.past_limit) unless elem.past_limit.nil?
-%>
+<% if !elem.blog.nil? %>
+  <%
+     blog = elem.blog
+     posts = blog.posts
+     posts = posts.limit(elem.count_limit) unless elem.count_limit.nil?
+     posts = posts.where("posts.created_at >= ?", elem.past_limit) unless elem.past_limit.nil?
+     %>
 
 
-<% if elem.element.display_title %><h1 class="title  <%= elem.element.html_id %> "><%= elem.element.title %></h1><% end %>
-<a class="rss" href="/feed">Subscribe</a>
+  <% if elem.element.display_title %>
+    <h1 class="title <%= elem.element.html_id %>"><%= elem.element.title %></h1>  
+    <a class="rss" href="/feed">Subscribe</a>
+  <% end %>
 
-<%= render :partial => "elem_partials/blog_elem_partials/#{elem.display_type_partial}", :locals => {:blog => blog, :posts => posts} %>
+  <% if posts[0] %>
+    <%= render :partial => "elem_partials/blog_elem_partials/#{elem.display_type_partial}", :locals => {:blog => blog, :posts => posts} %>
+  <% else %>
+    <p>Right now, you do not have any blog posts displayed. 
+      Click &#8220;New Post&#8221; on the menu above or click &#8220;Settings&#8221; to import posts or change how the blog is displayed.</p>
+    <p><em><strong>Hint:</strong> You can create an archive list of older posts organized by month and year simply by adding a blog element and choosing the &#8220;Archive&#8221; skin from the blog settings.</em></p>
+  <% end %>
+<% elsif admin? %>
+  <h2>Blog Not Found</h2>
+  <p>The blog this element was pulling from no longer exists.
+    Please check your settings or delete this element.
+  </p>
+<% end %>
