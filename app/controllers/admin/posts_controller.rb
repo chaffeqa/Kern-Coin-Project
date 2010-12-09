@@ -37,7 +37,7 @@ class Admin::PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to( shortcut_path(@blog.node.shortcut), :notic => 'Post was successfully destroyed' )
+    redirect_to( shortcut_path(@blog.node.shortcut), :notice => 'Post was successfully destroyed' )
   end
 
   private

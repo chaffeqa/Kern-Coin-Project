@@ -12,10 +12,7 @@
 
 <fieldset>
   <%= f.fields_for :node do |node_f| %>
-    <div class="field">
-      <%= node_f.label :parent_id, 'Blog' %>
-      <%= node_f.select :parent_id, options_from_collection_for_select(Node.where(:page_type => 'Blog'), :id, :title, @blog.node.id) %>
-    </div>
+      <%= node_f.hidden_field :parent_id, :value => @blog.node.id %>
   <% end %>
 
   <div class="field">
