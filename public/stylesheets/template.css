@@ -143,7 +143,7 @@ nav {
 	width: 450px;	
 }
 .product .right h3 {font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;}
-
+.product .thumb {float: left; width: 75px;}
 
 
 
