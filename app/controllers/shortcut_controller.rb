@@ -2,6 +2,9 @@ class ShortcutController < ApplicationController
   before_filter :get_node, :only => :route
   
   def route
+    if not @node.displayed and not admin?
+      error_redirect(:message => 'We are sorry, the Item or Page you are trying to view is no longer publicly listed.')
+    end
     if @node.page_type == 'DynamicPage'
       render("#{@node.page_type.tableize.pluralize}/show", :layout => "dynamic")
     else
