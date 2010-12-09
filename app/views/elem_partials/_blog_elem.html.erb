@@ -1,9 +1,8 @@
 <% if admin? %>
   <span class="controls">
-    <% if elem.blog.nil? %>
-    <% else %>
-    <%= link_to 'Add Post', new_admin_blog_post_path(elem.blog), :class => 'btn small' %>
-    <%= link_to 'Manage Posts', shortcut_path(elem.blog.node.shortcut), :class => 'btn small' %>
+    <% if elem.blog %>
+      <%= link_to 'Add Post', new_admin_blog_post_path(elem.blog), :class => 'btn small' %>
+      <%= link_to 'Manage Posts', shortcut_path(elem.blog.node.shortcut), :class => 'btn small' %>
     <% end %>
     <%= link_to 'Settings', edit_admin_blog_elem_path(elem), :class => 'btn small' %>
     <%= link_to image_tag("delete.png", :alt => 'X'), admin_blog_elem_path(elem) , :confirm => "Are you sure you wish to delete this element?", :method => :delete, :class => 'control' %>
@@ -11,24 +10,26 @@
   </span>
 <% end %>
 
-<% if !elem.blog.nil? %>
+<% if elem.blog %>
   <%
-     blog = elem.blog
-     posts = blog.posts
-     posts = posts.limit(elem.count_limit) unless elem.count_limit.nil?
-     posts = posts.where("posts.created_at >= ?", elem.past_limit) unless elem.past_limit.nil?
-     %>
+  blog = elem.blog
+  other_blogs = elem.blogs
+  posts = Post.order("created_at")
+  posts = posts.limit(elem.count_limit) unless elem.count_limit.blank?
+  posts = posts.where("posts.created_at >= ?", elem.past_limit) unless elem.past_limit.blank?
+  posts = posts.where("posts.blog_id IN (?)", [blog.id] + other_blogs.collect {|b| b.id })
+%>
 
 
   <% if elem.element.display_title %>
-    <h1 class="title <%= elem.element.html_id %>"><%= elem.element.title %></h1>  
+    <h1 class="title <%= elem.element.html_id %>"><%= elem.element.title %></h1>
     <a class="rss" href="/feed">Subscribe</a>
   <% end %>
 
   <% if posts[0] %>
     <%= render :partial => "elem_partials/blog_elem_partials/#{elem.display_type_partial}", :locals => {:blog => blog, :posts => posts} %>
   <% else %>
-    <p>Right now, you do not have any blog posts displayed. 
+    <p>Right now, you do not have any blog posts displayed.
       Click &#8220;New Post&#8221; on the menu above or click &#8220;Settings&#8221; to import posts or change how the blog is displayed.</p>
     <p><em><strong>Hint:</strong> You can create an archive list of older posts organized by month and year simply by adding a blog element and choosing the &#8220;Archive&#8221; skin from the blog settings.</em></p>
   <% end %>

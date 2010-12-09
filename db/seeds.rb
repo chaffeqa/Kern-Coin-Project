@@ -76,13 +76,8 @@ about_us_element.elem = TextElem.create(:text => '<p>
 about_us_element.save!
 
 
-
-news_page = Blog.create!(:banner => '', :title => 'News', :node_attributes=>{:menu_name => 'News', :title => 'News', :shortcut => 'News', :displayed => true})
-blogs_node.children << news_page.node
-news_page.save!
-
 recent_news_element = home_page.elements.create(:page_area => 6, :title => 'Recent News', :display_title => true)
-recent_news_element.elem = news_page.blog_elems.create!(:count_limit => 5, :display_type => 'Archive')
+recent_news_element.elem = BlogElem.create!(:count_limit => 5, :display_type => 'Archive')
 recent_news_element.save!
 recent_news_link_element = home_page.elements.create(:page_area => 6,  :title => 'Recent News Archive', :display_title => false)
 recent_news_link_element.elem = TextElem.create(:text => '<a href="/Archives"><img style="float: right; margin-top: 19px;" src="/site_assets/images/5/content_view-archive.png" alt="View News Archive" /></a>')

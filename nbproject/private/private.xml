@@ -2,6 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/elem_partials/_category_list_elem.html.erb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/admin/items/_product_image.html.erb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/admin/items/_form.html.erb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/models/item.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/models/product_image.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/controllers/inventory_controller.rb</file>
     </open-files>
 </project-private>

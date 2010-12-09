@@ -6,27 +6,34 @@ class Admin::PageElems::BlogElemsController < ApplicationController
   def new
     @blog_elem = BlogElem.new
     @blog_elem.build_element(:page_area => params[:page_area], :display_title => true)
+    @blog_elem.build_blog
+    get_available_blogs
   end
 
 
   def edit
+    get_available_blogs
   end
 
 
   def create
     @blog_elem = BlogElem.new(params[:blog_elem])
-    if @node.page.elements << @blog_elem.element and @blog_elem.save
+    @blog_elem.blog.title = @blog_elem.element.title
+    if @blog_elem.save and @node.page.elements << @blog_elem.element and Node.blog_node.children << @blog_elem.blog.node
       redirect_to(shortcut_path(@node.shortcut), :notice => "Blog Element successfully added!")
     else
+    get_available_blogs
       render :action => 'new'
     end
   end
 
 
   def update
+    params[:blog_elem][:blog_ids] ||= []
     if @blog_elem.update_attributes(params[:blog_elem])
       redirect_to(shortcut_path(@node.shortcut), :notice => "Blog Element successfully updated!")
     else
+    get_available_blogs
       render :action => 'edit'
     end
   end
@@ -44,6 +51,10 @@ class Admin::PageElems::BlogElemsController < ApplicationController
       @node = @blog_elem.element.dynamic_page.node
     end
     super
+  end
+
+  def get_available_blogs
+    @available_blogs = Blog.all - [@blog_elem.blog]
   end
 
 end
