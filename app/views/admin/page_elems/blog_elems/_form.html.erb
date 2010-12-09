@@ -28,8 +28,9 @@
 
   <fieldset>
     <% unless @available_blogs.empty? %>
-      <div class="field"><span class="hint"><strong>  Display the posts of an existing blog?  </strong></span>
-        <ul>
+      <div class="field"><span class="hint"><strong>Display the posts of an existing blog?</strong></span>
+	<label>&nbsp;</label>
+        <ul style="margin: 0 0 0 130px; float: left;">
           <% @available_blogs.each do |blog| %>
             <%= content_tag_for :li, blog do %>
               <%= check_box_tag "blog_elem[blog_ids][]", blog.id, (f.object.new_record? ? false : @blog_elem.blogs.include?(blog)) %>
