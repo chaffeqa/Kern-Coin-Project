@@ -43,6 +43,11 @@ class Item < ActiveRecord::Base
   scope :scope_max_price, lambda {|price| where('cost <= ?', price)}
 
 
+#  def under_category(cat)
+#    return self.parent = cat or self.parent.under_category(cat) unless self.parent = nil
+#    return false
+#  end
+
     def thumbnail_image
       self.main_image ? self.main_image.thumbnail_image : 'no_image_thumb.gif'
     end
