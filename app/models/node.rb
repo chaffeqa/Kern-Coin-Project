@@ -10,6 +10,7 @@ class Node < ActiveRecord::Base
   scope :categories, where(:page_type => 'Category')
   scope :calendars, where(:page_type => 'Calendar')
   scope :items, where(:page_type => 'Item')
+  scope :no_items, where("page_type != 'Item'")
 
   validates_presence_of :shortcut, :message => 'URL cannot be blank.'
   validates_presence_of :title
