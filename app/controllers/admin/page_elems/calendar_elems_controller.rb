@@ -15,7 +15,7 @@ class Admin::PageElems::CalendarElemsController < ApplicationController
 
   def create
     @calendar_elem = CalendarElem.new(params[:calendar_elem])
-    if @node.page.elements << @calendar_elem.element and @calendar_elem.save
+    if  @calendar_elem.save and @node.page.elements << @calendar_elem.element
       redirect_to(shortcut_path(@node.shortcut), :notice => "Calendar Element successfully added!")
     else
       render :action => 'new'

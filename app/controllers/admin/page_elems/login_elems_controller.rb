@@ -19,7 +19,7 @@ class Admin::PageElems::LoginElemsController < ApplicationController
 
   def create
     @blog_elem = BlogElem.new(params[:blog_elem])
-    if @node.page.elements << @blog_elem.element and @blog_elem.save
+    if @blog_elem.save and  @node.page.elements << @blog_elem.element
       redirect_to(shortcut_path(@node.shortcut), :notice => "Blog Element successfully added!")
     else
       render :action => 'new'

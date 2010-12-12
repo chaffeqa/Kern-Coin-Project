@@ -15,7 +15,7 @@ class Admin::PageElems::ItemElemsController < ApplicationController
 
   def create
     @item_elem = ItemElem.new(params[:item_elem])
-    if @node.page.elements << @item_elem.element and @item_elem.save
+    if @item_elem.save and @node.page.elements << @item_elem.element
       redirect_to(shortcut_path(@node.shortcut), :notice => "Item Display Element successfully added!")
     else
       render :action => 'new'

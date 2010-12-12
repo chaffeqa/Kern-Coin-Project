@@ -14,7 +14,7 @@ class Admin::PageElems::LinkElemsController < ApplicationController
 
   def create
     @link_elem = LinkElem.new(params[:link_elem])
-    if @node.page.elements << @link_elem.element and @link_elem.save
+    if  @link_elem.save and @node.page.elements << @link_elem.element
       redirect_to shortcut_path(@node.shortcut), :notice => "Link Element successfully added!"
     else
       render :action => 'new'
