@@ -16,6 +16,7 @@ class Item < ActiveRecord::Base
 
   def update_nodes
     count = 0
+#    count += 1 unless self.new_record?
     self.nodes.each do |node|
       node.title =  self.name
       node.menu_name =  self.name

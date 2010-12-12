@@ -15,7 +15,7 @@ class Admin::PageElems::TextElemsController < ApplicationController
 
   def create
     @text_elem = TextElem.new(params[:text_elem])
-    if @node.page.elements << @text_elem.element and @text_elem.save
+    if @text_elem.save and @node.page.elements << @text_elem.element
       redirect_to(shortcut_path(@node.shortcut), :notice => "Text Element successfully added!")
     else
       render :action => 'new'  
