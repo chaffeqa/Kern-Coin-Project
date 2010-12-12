@@ -16,8 +16,8 @@
         <% @item.product_images.each do |product_image| %>
 	<div class="thumb">
           <%= link_to (image_tag product_image.preview_image), product_image.original_image, :rel => 'group1', :class => 'gallery' %><br />
-	  <%= (product_image.id == @item.product_images[0].id) ? "Obverse" : "" %>
-	  <%= (@item.product_images[1] and (product_image.id == @item.product_images[1].id)) ? "Reverse" : "" %>
+	  <%#= (product_image.id == @item.product_images[0].id) ? "Obverse" : "" %>
+	  <%#= (@item.product_images[1] and (product_image.id == @item.product_images[1].id)) ? "Reverse" : "" %>
 	</div>
         <% end %>
       <% end %>
