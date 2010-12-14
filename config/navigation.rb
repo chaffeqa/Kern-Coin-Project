@@ -33,16 +33,16 @@ SimpleNavigation::Configuration.run do |navigation|
     @home_node ||= Node.root
 
     menu_level_1.item @home_node.menu_name.to_sym, 'Home', @home_node.url
-    @home_node.children.displayed.no_items.each do |child_node_1|
-      menu_level_1.item child_node_1.menu_name.to_sym, child_node_1.menu_name, child_node_1.url do |menu_level_2|
-        child_node_1.children.displayed.no_items.each do |child_node_2|
-          menu_level_2.item child_node_2.menu_name.to_sym, child_node_2.menu_name, child_node_2.url do |menu_level_3|
-            child_node_2.children.displayed.no_items.each do |child_node_3|
-              menu_level_3.item child_node_3.menu_name.to_sym, child_node_3.menu_name, child_node_3.url do |menu_level_4|
-                child_node_3.children.displayed.no_items.each do |child_node_4|
-                  menu_level_4.item child_node_4.menu_name.to_sym, child_node_4.menu_name, child_node_4.url do |menu_level_5|
-                    child_node_4.children.displayed.no_items.each do |child_node_5|
-                      menu_level_5.item child_node_5.menu_name.to_sym, child_node_5.menu_name, child_node_5.url do |menu_level_6|
+    @home_node.children.displayed.each do |child_node_1|
+      menu_level_1.item child_node_1.menu_name.to_sym, child_node_1.menu_name, child_node_1.url, :class => child_node_1.page_type do |menu_level_2|
+        child_node_1.children.displayed.each do |child_node_2|
+          menu_level_2.item child_node_2.menu_name.to_sym, child_node_2.menu_name, child_node_2.url, :class => child_node_2.page_type do |menu_level_3|
+            child_node_2.children.displayed.each do |child_node_3|
+              menu_level_3.item child_node_3.menu_name.to_sym, child_node_3.menu_name, child_node_3.url, :class => child_node_3.page_type do |menu_level_4|
+                child_node_3.children.displayed.each do |child_node_4|
+                  menu_level_4.item child_node_4.menu_name.to_sym, child_node_4.menu_name, child_node_4.url, :class => child_node_4.page_type do |menu_level_5|
+                    child_node_4.children.displayed.each do |child_node_5|
+                      menu_level_5.item child_node_5.menu_name.to_sym, child_node_5.menu_name, child_node_5.url, :class => child_node_5.page_type do |menu_level_6|
                       end
                     end
                   end
@@ -55,12 +55,12 @@ SimpleNavigation::Configuration.run do |navigation|
     end
     
     #    menu_level_1.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
-    #      inventory.children.displayed.no_items.each do |sub_category|
-    #        if sub_category.children.displayed.no_items.empty?
+    #      inventory.children.displayed.each do |sub_category|
+    #        if sub_category.children.displayed.empty?
     #          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category)
     #        else
     #          level_1.item sub_category.title.to_sym, sub_category.title, inventory_category_path(sub_category) do |level_2|
-    #            sub_category.children.displayed.no_items.each do |sub_sub_category|
+    #            sub_category.children.displayed.each do |sub_sub_category|
     #              level_2.item sub_sub_category.title.to_sym, sub_sub_category.title, inventory_category_path(sub_sub_category)
     #            end
     #          end

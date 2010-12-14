@@ -14,11 +14,11 @@
       <%= link_to image_tag(@item.main_image ? @item.main_image.full_size_image : "no_image_full_size.gif"), shortcut_path(@node.shortcut) %>
       <% if @item.product_images %>
         <% @item.product_images.each do |product_image| %>
-	<div class="thumb">
-          <%= link_to (image_tag product_image.preview_image), product_image.original_image, :rel => 'group1', :class => 'gallery' %><br />
-	  <%#= (product_image.id == @item.product_images[0].id) ? "Obverse" : "" %>
-	  <%#= (@item.product_images[1] and (product_image.id == @item.product_images[1].id)) ? "Reverse" : "" %>
-	</div>
+          <div class="thumb">
+            <%= link_to (image_tag product_image.preview_image), product_image.original_image, :rel => 'group1', :class => 'gallery' %><br />
+    <%#= (product_image.id == @item.product_images[0].id) ? "Obverse" : "" %>
+    <%#= (@item.product_images[1] and (product_image.id == @item.product_images[1].id)) ? "Reverse" : "" %>
+          </div>
         <% end %>
       <% end %>
     </div>
@@ -29,10 +29,10 @@
       <p><%= @item.item_id %></p>
       <p><%=raw @item.details %></p>
       <% if @item.for_sale %>
-      <%#= link_to 'Add To Cart', "https://KERN-Coin.foxycart.com/cart?quantity_max=1&name=#{@item.name}&price=#{@item.cost}&item-id=#{@item.item_id}", :class => 'foxycart add-to-cart btn large yellow' %>
-      <p><strong>To order, call (859)-269-1614</strong></p>
+  <%#= link_to 'Add To Cart', "https://KERN-Coin.foxycart.com/cart?quantity_max=1&name=#{@item.name}&price=#{@item.cost}&item-id=#{@item.item_id}", :class => 'foxycart add-to-cart btn large yellow' %>
+        <p><strong>To order, call (859)-269-1614</strong></p>
       <% else %>
-      <p><strong>Out of stock</strong></p>
+        <p><strong>Out of stock</strong></p>
       <% end %>
     </div>
 
@@ -48,6 +48,10 @@
   </div>
 <% end %>
 
+<!-- Content_for components to insert into static_page -->
+<%= content_for :breadcrumb do %>
+  <%= render :partial => 'layouts/site_partials/breadcrumb' %>
+<% end %>
 
 
 <% content_for :page_title do %>
