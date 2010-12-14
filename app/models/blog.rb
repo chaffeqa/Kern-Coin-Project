@@ -18,6 +18,7 @@ class Blog < ActiveRecord::Base
     this_node.title = this_node.title.blank? ? self.title : this_node.title
     this_node.menu_name = this_node.menu_name.blank? ? self.title : this_node.menu_name
     this_node.shortcut = this_node.shortcut.blank? ? self.title.parameterize.html_safe : this_node.shortcut
+    this_node.displayed = true
     this_node.save!
   end
 

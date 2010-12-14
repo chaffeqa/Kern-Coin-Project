@@ -16,8 +16,7 @@ class Node < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :menu_name
   validate :shortcut_html_safe?
-  validate :create_unique_shortcut?, :on => :create
-  validate :update_unique_shortcut?, :on => :update
+  validate :check_unique_shortcut?
 #  validate :ensure_unique_root_node
   before_validation :fill_missing_fields
 
@@ -42,22 +41,13 @@ class Node < ActiveRecord::Base
     true
   end
 
-  def create_unique_shortcut?
-    if Node.exists?(:shortcut => shortcut)
+  def check_unique_shortcut?    
+    if Node.where(:shortcut => shortcut).count > 1 or (Node.exists?(:shortcut => shortcut) and self.new_record?)
       addition = Node.where('shortcut LIKE ?', shortcut).count
       suggested = self.shortcut + "_" + addition.to_s
       errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
     end
   end
-
-  def update_unique_shortcut?
-    if Node.where(:shortcut => shortcut).count > 1
-      addition = Node.where('shortcut LIKE ?', shortcut).count
-      suggested = self.shortcut + "_" + addition.to_s
-      errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
-    end
-  end
-
 
   def self.home
     self.where('shortcut LIKE ?', 'Home').count == 1 ? self.root.where('shortcut LIKE ?', 'Home') : nil

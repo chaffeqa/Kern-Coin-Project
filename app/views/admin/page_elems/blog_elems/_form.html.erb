@@ -11,14 +11,24 @@
   <% end %>
 
   <fieldset>
+    <%= hidden_field_tag :shortcut, @shortcut %>
+    <div class="field">
 
-    <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
-    <%= f.fields_for :blog do |blog_f| %>
-      <%= blog_f.fields_for :node do |node_f| %>
-        <%= node_f.hidden_field :displayed, :value => true %>
+      <%= f.fields_for :blog do |blog_f| %>
+        <%= blog_f.fields_for :node do |node_f| %>
+          <%= node_f.label :title, 'Blog Title', :class => 'req' %>
+          <%= node_f.text_field :title %>
+          <%= node_f.hidden_field :displayed, :value => true %>
+        <% end %>
       <% end %>
-    <% end %>
 
+      <%= f.fields_for :element do |element_f| %>
+        <%= element_f.check_box :display_title %>&nbsp;
+        <%= element_f.label :display_title, "Display Title?" %>
+        <%= element_f.hidden_field :page_area %>
+      <% end %>
+
+    </div>
   </fieldset>
   <hr />
 

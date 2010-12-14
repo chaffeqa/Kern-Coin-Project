@@ -7,6 +7,7 @@ class Admin::PageElems::BlogElemsController < ApplicationController
     @blog_elem = BlogElem.new
     @blog_elem.build_element(:page_area => params[:page_area], :display_title => true)
     @blog_elem.build_blog
+    @blog_elem.blog.build_node
     get_available_blogs
   end
 
@@ -18,7 +19,8 @@ class Admin::PageElems::BlogElemsController < ApplicationController
 
   def create
     @blog_elem = BlogElem.new(params[:blog_elem])
-    @blog_elem.blog.title = @blog_elem.element.title
+    @blog_elem.element.title = @blog_elem.blog.node.title
+    @blog_elem.blog.title = @blog_elem.blog.node.title
     if @blog_elem.save and @node.page.elements << @blog_elem.element and Node.blog_node.children << @blog_elem.blog.node
       redirect_to(shortcut_path(@node.shortcut), :notice => "Blog Element successfully added!")
     else
