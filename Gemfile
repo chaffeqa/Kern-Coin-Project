@@ -6,7 +6,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3', :group => [:development, :test]
 
 gem 'mysql', :group => :production
 
-gem 'ckeditor', '3.4.2.pre'
+gem 'ckeditor', '3.4.3.pre'
 
 gem 'paperclip'
 

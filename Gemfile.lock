@@ -34,7 +34,7 @@ GEM
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     carmen (0.2.1)
-    ckeditor (3.4.2.pre)
+    ckeditor (3.4.3.pre)
       mime-types (>= 1.16)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
@@ -93,7 +93,7 @@ DEPENDENCIES
   acts_as_list
   acts_as_tree
   carmen
-  ckeditor (= 3.4.2.pre)
+  ckeditor (= 3.4.3.pre)
   devise
   jquery-rails
   mysql
