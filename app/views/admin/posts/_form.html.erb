@@ -19,6 +19,12 @@
     <%= f.label :title, "Post Title", :class => "req" %>
     <%= f.text_field :title %>
   </div>
+
+  <div class="field">
+    <%= f.label :post_date, "Post Date", :class => "req" %>
+    <span class="datetime"><%= f.datetime_select :post_date, :default => Time.now, :discard_minute => true, :discard_hour => true %></span>
+  </div>
+  
   <hr />
 
   <div class="field">

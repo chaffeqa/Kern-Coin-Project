@@ -7,7 +7,7 @@ class UpdateBlogElem < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :blog_elem_links
+    remove_column :blogs, :blog_elem_id
     change_table :blog_elems do |t|
       t.belongs_to :blog
     end

@@ -19,7 +19,7 @@
     </span>
     <% end %>
     <h1 class="title"> <%= @post.title %> </h1>
-    <p class="created-at"><%= @post.created_at.strftime("%B %d, %Y %l:%m%p") %></p>
+    <p class="created-at"><%= @post.post_date.strftime("%B %d, %Y %l:%m%p") %></p>
     <p><%=raw @post.body %></p>
   </article>
 <% if admin? %> </div><% end %>

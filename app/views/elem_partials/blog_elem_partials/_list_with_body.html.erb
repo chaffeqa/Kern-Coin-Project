@@ -2,11 +2,11 @@
   <% posts.each do |post| %>
     <li>
       <h2 class="postTitle">
-	<% if admin? %><%= link_to (image_tag "edit.png", :alt => "Edit", :class => "adminEdit"), edit_admin_blog_post_path(blog, post) %><% end %> 
-	<%= link_to post.title, shortcut_path(post.node.shortcut) %>
+        <% if admin? %><%= link_to "Edit", edit_admin_blog_post_path(blog, post), :class => "adminEdit" %><% end %>
+        <%= link_to post.title, shortcut_path(post.node.shortcut) %>
       </h2>
       <p class="postInfo">
-	<span class="postDate"><%= post.created_at.strftime("%B %d, %Y %l:%m%p") %></span>
+        <span class="postDate"><%= post.post_date.strftime("%B %d, %Y %l:%m%p") %></span>
       </p>
       <div class="postBody"><%=raw post.body %></div>
     </li>

@@ -14,13 +14,9 @@
 
     <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
     <%= f.fields_for :blog do |blog_f| %>
-      <div class="field">
-        <%= blog_f.label :banner, "Blog Banner" %>
-        <%= blog_f.cktext_area :banner %>
-        <%= blog_f.fields_for :node do |node_f| %>
-          <%= node_f.hidden_field :displayed, :value => true %>
-        <% end %>
-      </div>
+      <%= blog_f.fields_for :node do |node_f| %>
+        <%= node_f.hidden_field :displayed, :value => true %>
+      <% end %>
     <% end %>
 
   </fieldset>
@@ -29,7 +25,7 @@
   <fieldset>
     <% unless @available_blogs.empty? %>
       <div class="field"><span class="hint">Pull posts from another existing blog?</span>
-	<label>Blog Feed</label>
+        <label>Blog Feed</label>
         <ul style="margin: 0 0 0 130px;">
           <% @available_blogs.each do |blog| %>
             <%= content_tag_for :li, blog do %>
