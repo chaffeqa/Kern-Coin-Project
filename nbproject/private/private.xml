@@ -2,10 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/admin/items/_product_image.html.erb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/admin/items/_form.html.erb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/models/item.rb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/models/product_image.rb</file>
-        <file>file:/home/quinn/projects/Kern-Coin-Project/app/controllers/inventory_controller.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/controllers/admin/page_elems/blog_elems_controller.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/admin/page_elems/blog_elems/_form.html.erb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/views/admin/page_elems/_form_element_fields.html.erb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/models/blog.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/models/blog_elem.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/models/node.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/controllers/shortcut_controller.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/controllers/dynamic_pages_controller.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/app/controllers/application_controller.rb</file>
+        <file>file:/home/quinn/projects/Kern-Coin-Project/Gemfile</file>
     </open-files>
 </project-private>

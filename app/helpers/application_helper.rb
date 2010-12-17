@@ -104,6 +104,17 @@ module ApplicationHelper
     array
   end
 
+  # returns an array representing the inventory category tree.  Uses the category.title and category.title.
+  # Ex. [..., ['Biblical','Biblical'], ['...Babylon', 'Babylon'], ...]
+  def cat_title_options_tree_recursive(node, addition)
+    array = []
+    array << ["#{addition} #{h(node.title)}", "#{node.title}"] if node.page_type == 'Category'
+    node.children.categories.each do |childnode|
+      array += cat_title_options_tree_recursive(childnode, "#{addition}---")
+    end
+    array
+  end
+
   def item_options_tree(categories)
     array = []
     categories.each do |cat|
