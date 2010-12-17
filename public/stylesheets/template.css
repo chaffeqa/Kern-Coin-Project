@@ -201,7 +201,7 @@ nav {
 }
 
 #secPage #subColumn ul {margin: 0;}
-#secPage #subColumn ul li { padding: 0; background: none;}
+#secPage #subColumn ul li { padding: 2px 0; background: none;}
 #secPage #subColumn ul li.Item { display: none;}
 #secPage #subColumn ul li a { font-weight: bold; color: #000; font-size: 1.2em; display: block; }
 #secPage #subColumn ul li a:before {content: "- ";}

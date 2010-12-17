@@ -9,6 +9,7 @@
     <td><%= text_field_tag :item_id,  params[:item_id].blank? ? '' : params[:item_id] %></td>
     <td><%= text_field_tag :name,  params[:name].blank? ? '' : params[:name] %></td>
     <td><%= text_field_tag :category, params[:category].blank? ? '' : params[:category] %></td>
+<!--    <td><%#= select_tag :category, options_for_select( , params[:category].blank? ? '' : params[:category]), :include_blank => true %></td> -->
     <td style="min-width: 100px;">
       <%= text_field_tag(:min_price, params[:min_price].blank? ? '' : params[:min_price], :style => "width: 35px;") -%>
       - 

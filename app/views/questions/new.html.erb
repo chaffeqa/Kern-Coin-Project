@@ -5,6 +5,8 @@
 
 <div id="adminPage">
 <h1>Send us a Message</h1>
+<p>To contact us please email as at (Email: <a href="mailto:jon@jkerncoins.com">Jonathan Kern</a>, Email: <a href="mailto:dino@jkerncoins.com">Dino Payne</a>), OR use the contact form below.
+</p>
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
@@ -30,7 +32,7 @@
   </div>
   <hr />
   <div class="field">
-    <%= f.label :street_address_1, "Address", :class => "req" %>
+    <%= f.label :street_address_1, "Address" %>
     <%= f.text_field :street_address_1, :title => "Address 1" %>
   </div>
   <div class="field">
@@ -49,7 +51,7 @@
   </div>
   <hr />
   <div class="field">
-    <%= f.label :phone, :class => "req" %>
+    <%= f.label :phone %>
     <%= f.text_field :phone %>
   </div>
   <div class="field">
