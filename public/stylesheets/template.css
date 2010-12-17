@@ -155,7 +155,7 @@ nav {
 	padding: 20px 0;
 	color: #fff;
 }
-	#homePage #featured h1 { font-size: 2.2em; padding-left: 50px; line-height: 1.7em;}
+	#homePage #featured h1 { font-size: 2.2em; line-height: 1.7em;}
 #homePage #featured #mainColumn,
 #homePage #featured #subColumn,
 #homePage #featured #extraColumn {
@@ -165,9 +165,9 @@ nav {
 	background: url(../template/featured-pane-bg.png) !important;
 }
 #homePage #featured #mainColumn {margin-left: 25px;}
-	#featured h1.browse { background: url(../template/magnifying-glass.png) no-repeat;}
-	#featured h1.buy { background: url(../template/sales-tag.png) no-repeat;}
-	#featured h1.bid { background: url(../template/bullseye.png) no-repeat;}
+	#featured h1.browse { padding-left: 50px; background: url(../template/magnifying-glass.png) no-repeat;}
+	#featured h1.buy { padding-left: 50px; background: url(../template/sales-tag.png) no-repeat;}
+	#featured h1.bid { padding-left: 50px; background: url(../template/bullseye.png) no-repeat;}
 #featured article h1.title {border-bottom: none; margin-bottom: .5em; padding-bottom: 0;}
 
 #homeFooter { padding: 10px 0 20px; }
