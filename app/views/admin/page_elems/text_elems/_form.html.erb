@@ -13,9 +13,9 @@
 <fieldset>
   <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
 
-  <div class="field">
+  <div class="ckeditor">
     <%= f.label :text, 'Body' %>
-    <%= f.cktext_area :text %>
+    <%= f.cktext_area :text, :width=>'750px', :heigth=>'300px' %>
   </div>
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>

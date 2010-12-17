@@ -12,7 +12,7 @@ CKEDITOR.editorConfig = function( config )
 
   //config.ContextMenu = ['Generic','Anchor','Flash','Select','Textarea','Checkbox','Radio','TextField','HiddenField','ImageButton','Button','BulletedList','NumberedList','Table','Form'] ; 
   
-  config.height = '400px';
+  config.height = '300px';
   config.width = '600px';
   
   //config.resize_enabled = false;
@@ -28,16 +28,16 @@ CKEDITOR.editorConfig = function( config )
   
   config.toolbar_Easy =
     [
-        ['Source','-','Preview','Templates'],
-        ['Cut','Copy','Paste','PasteText','PasteFromWord',],
-        ['Maximize','-','About'],
-        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-        ['Styles','Format'],
-        ['Bold','Italic','Underline','Strike','-','Subscript','Superscript', 'TextColor'],
-        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-        ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-        ['Link','Unlink','Anchor'],
-        ['Image','Embed','Flash','Attachment','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
+     ['Source','-','Preview','Templates'],
+     ['Maximize','-','About'],
+     ['Cut','Copy','Paste','PasteText','PasteFromWord',],
+     ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+     ['Image','Embed','Flash','Attachment','Table','HorizontalRule','SpecialChar','PageBreak'], // Smiley
+     ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+     ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+     ['Bold','Italic','Underline','Strike','-','Subscript','Superscript', 'TextColor'],
+     ['Styles','Format'],
+     ['Link','Unlink','Anchor'],
     ];
 };
 

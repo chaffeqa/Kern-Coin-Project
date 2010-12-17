@@ -22,6 +22,15 @@
     clear: both;
     margin:0 0 6px;
 }
+
+/* CKEDITOR HACKS */
+#adminPage form > fieldset > div.ckeditor {
+    max-width: 750px; 
+    min-height: 300px;
+}
+#adminPage form > fieldset > #cke_contents_text_elem_text_editor {
+    min-height: 200px;
+}
 #adminPage form > fieldset > .field > .hint {
     color:#777777;
     float:right;
