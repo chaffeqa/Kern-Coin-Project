@@ -27,9 +27,9 @@
   
   <hr />
 
-  <div class="field">
+  <div class="ckeditor">
     <%= f.label :body, "Body" %>
-    <%= f.cktext_area :body %>
+    <%= f.cktext_area :body, :width=>'750px', :heigth=>'300px' %>
   </div>
 
   <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Post'} %>
