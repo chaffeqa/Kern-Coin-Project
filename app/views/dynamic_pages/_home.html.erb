@@ -11,7 +11,7 @@
         <%= form_tag(inventory_list_path(), :method => 'get', :class => 'search') do %>
           <label id="searchLabel">Search our inventory</label>
           <%= text_field_tag :search_text %>
-          <%= select_tag :category_id, options_for_select( ((   Item.get_for_sale.displayed.collect {|item| item.categories}   ).uniq.compact.flatten).uniq.map {|category| [category.title, category.id]} << ['Category',''],'') %>
+          <%= select_tag :category_id, options_for_select( (( Node.inventory_node.children.categories.collect {|category| [category.page.title, category.page.id] } ) << ['Category','']),'') %>
           <%= select_tag :cost_range, options_for_select([['$0 - $100','0-100'], ['$100 - $2000','100-2000'], ['$2000 - $5000','2000-5000'], ['$5000 - $20000','5000-20000'], ['$20000 > ','20000-1000000000'], ['Cost', ''] ], '') %>
           <%= submit_tag('Search', :id => 'searchButton') %>
         <% end %>

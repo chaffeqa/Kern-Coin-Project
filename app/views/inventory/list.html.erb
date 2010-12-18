@@ -1,6 +1,7 @@
 <h1 class="title">Items</h1>
 
 
+
 <% unless @items.empty? %>
   <table>
     <tr>
@@ -8,7 +9,7 @@
       <th><%= sortable "item_id", "Item ID", @parameters %></th>
       <th><%= sortable "name", "Name", @parameters %></th>
       <th><%= sortable "cost", "Price", @parameters %></th>
-    </tr> 
+    </tr>
     <% @items.each do |item| %>
       <% if item.nodes.any? %>
         <tr>
@@ -29,7 +30,12 @@
 
 <!-- Content_for components to insert into static_page -->
 <%= content_for :subColumn do %>
-  <h3>Search Results</h3>
+  <h3>Your Search Parameters:</h3>
+  <ul>
+    <% unless params[:search_text].blank? %> <li><strong>Search Text:</strong><br/> "<%= params[:search_text] %>"</li> <% end %>
+    <% unless params[:category_id].blank? %> <li><strong>Under Category:</strong><br/> <%= @category.title %></li> <% end %>
+    <% unless params[:cost_range].blank? %> <li><strong>Cost Range:</strong><br/> $<%= params[:cost_range] %></li> <% end %>
+  </ul>
 <% end %>
 
 <%= content_for :breadcrumb do %>
