@@ -271,7 +271,7 @@ ul.blogList {
 #secPage #mainColumn ul.itemList,
 #secPage #mainColumn ul.categoryList {margin: 0;}
 #secPage #mainColumn ul.categoryList li, 
-#secPage #mainColumn ul.itemList li {background: none; padding: 5px; float: left; width: 112px; height: 174px;}
+#secPage #mainColumn ul.itemList li {background: none; padding: 20px; float: left; width: 112px; height: 190px;}
 #secPage #mainColumn ul.categoryList li .thumbnail img, 
 #secPage #mainColumn ul.itemList li .thumbnail img {width: 112px; height: 112px; padding: 0; margin: 0;}
 #secPage #mainColumn ul.categoryList li .thumbnail a, 

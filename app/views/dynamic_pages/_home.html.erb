@@ -34,15 +34,15 @@
     <section id="extraColumn" class="contents">
       <%= render :partial => 'elements/page_area_elements', :locals => {:page_area => 4} %>
     </section>
-    <section id="mainColumn" class="clearfix contents">
+    <section id="mainColumn" class="contents">
       <div id="top"></div>
       <div id="inner">
         <%= render :partial => 'elements/page_area_elements', :locals => {:page_area => 5} %>
       </div>
     </section>
-    <section id="subColumn" class="clearfix contents">
+    <section id="subColumn" class="contents">
       <div id="top"></div>
-      <div id="inner">
+      <div id="inner" class="clearfix">
         <%= render :partial => 'elements/page_area_elements', :locals => {:page_area => 6} %>
       </div>
     </section>
