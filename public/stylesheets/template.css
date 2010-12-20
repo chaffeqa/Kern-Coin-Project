@@ -202,9 +202,9 @@ nav {
 }
 
 #secPage #subColumn ul {margin: 0;}
-#secPage #subColumn ul li { padding: 4px 0; background: none;}
+#secPage #subColumn ul li { padding: 2px 0; background: none;}
 #secPage #subColumn ul li.Item { display: none;}
-#secPage #subColumn ul li a { font-weight: bold; color: #000; font-size: 1.2em; display: block; line-height: 1.1em; }
+#secPage #subColumn ul li a { font-weight: bold; color: #000; font-size: 1.2em; display: block; }
 #secPage #subColumn ul li a:before {content: "- ";}
 
 #secPage #subColumn ul li a.selected { background-color: #ffef85; }
