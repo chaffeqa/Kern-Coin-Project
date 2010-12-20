@@ -47,28 +47,23 @@ class Category < ActiveRecord::Base
   def original_image
     self.image? ? self.image.url : 'no_image_full_size.gif'
   end
+
+
   
 
+  # Returns an array of all the node ID's of this categories' decendents
+  def search_categories_array
+    return get_child_category_node_ids(self.node)
+  end
 
-  #  def default_node
-  #    unless self.node
-  #      self.create_node({
-  #          :title => self.title,
-  #          :menu_name => self.title,
-  #          :displayed => true,
-  #          :shortcut => self.title.parameterize.html_safe
-  #        })
-  #    else
-  #      self.node.update_attributes(
-  #        :title => self.title,
-  #        :menu_name => self.title,
-  #        :displayed => true,
-  #        :shortcut => self.title.parameterize.html_safe
-  #      )
-  #    end
-  #  end
-  #  def update_node
-  #    self.default_node
-  #    self.node.save!
-  #  end
+  # Recursively returns all the decendent node ID's of the passed in node
+  def get_child_category_node_ids(node)
+    children = node.children.categories
+    array = children.collect {|child| child.id }
+    children.each do |child|
+      array += get_child_category_node_ids(child)
+    end
+    return array
+  end
+
 end
