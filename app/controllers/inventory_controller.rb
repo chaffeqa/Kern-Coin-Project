@@ -6,7 +6,6 @@ class InventoryController < ApplicationController
     @category = Category.find(params[:category_id]) unless params[:category_id].blank?
     
     @items = Item.get_for_sale.displayed
-    puts "First Query - " + @category.search_categories_array.to_s
     @items = @items.in_category_array(@category.search_categories_array) unless params[:category_id].blank?
     @items = @items.scope_name(params[:search_text]).scope_details(params[:search_text]) unless params[:search_text].blank?
     @items = @items.scope_min_price(low_cost).scope_max_price(high_cost) unless params[:cost_range].blank?
