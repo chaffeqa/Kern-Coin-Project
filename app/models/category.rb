@@ -51,15 +51,15 @@ class Category < ActiveRecord::Base
 
   
 
-  # Returns an array of all the node ID's of this categories' decendents
+  # Returns an array of all the node ID's of this categories' decendents plus this category
   def search_categories_array
     return get_child_category_node_ids(self.node)
   end
 
-  # Recursively returns all the decendent node ID's of the passed in node
+  # Recursively returns this node and all the decendent node ID's of the passed in node
   def get_child_category_node_ids(node)
     children = node.children.categories
-    array = children.collect {|child| child.id }
+    array = [node.id] # children.collect {|child| child.id }
     children.each do |child|
       array += get_child_category_node_ids(child)
     end

@@ -34,7 +34,7 @@
   <ul>
     <% unless params[:search_text].blank? %> <li><strong>Search Text:</strong><br/> "<%= params[:search_text] %>"</li> <% end %>
     <% unless params[:category_id].blank? %> <li><strong>Under Category:</strong><br/> <%= @category.title %></li> <% end %>
-    <% unless params[:cost_range].blank? %> <li><strong>Cost Range:</strong><br/> $<%= params[:cost_range] %></li> <% end %>
+    <% unless params[:cost_range].blank? %> <li><strong>Price Range:</strong><br/> $<%= params[:cost_range] %></li> <% end %>
   </ul>
 <% end %>
 
