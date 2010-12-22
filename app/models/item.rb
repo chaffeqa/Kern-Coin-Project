@@ -51,7 +51,7 @@ class Item < ActiveRecord::Base
   scope :scope_details, lambda {|name| where('details LIKE ?', "%"+name+"%")}
   scope :scope_item_id, lambda {|item_id| where('item_id LIKE ?', "%"+item_id+"%")}
   scope :scope_category, lambda {|title| includes(:nodes => {:parent => :category}) & where('categories.title LIKE ?', "%"+title+"%")}
-  scope :scope_text, lambda {|text| where('name LIKE ? or details LIKE ?', "%"+name+"%", "%"+name+"%")}
+  scope :scope_text, lambda {|text| where('name LIKE ? or details LIKE ?', "%"+text+"%", "%"+text+"%")}
   scope :scope_min_price, lambda {|price| where('cost >= ?', price)}
   scope :scope_max_price, lambda {|price| where('cost <= ?', price)}
   scope :in_category_array, lambda {|category_array| includes(:nodes).where('nodes.parent_id IN (?)', category_array )}
