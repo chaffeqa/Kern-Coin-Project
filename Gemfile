@@ -23,3 +23,5 @@ gem 'carmen'
 gem "will_paginate", "~> 3.0.pre2"
 
 gem 'jquery-rails'
+
+gem 'mail', :git => 'https://github.com/mikel/mail.git'

@@ -3,6 +3,6 @@ class QuestionsMailer < ActionMailer::Base
 
   def question_submital(question)
     @question = question
-    mail(:from => "#{@question.last_name}, #{@question.first_name}  <#{@question.subject}>", :subject => "Submitted Message")
+    mail(:from => "#{@question.first_name} #{@question.last_name} <#{@question.email}>", :subject => "Submitted Message")
   end
 end

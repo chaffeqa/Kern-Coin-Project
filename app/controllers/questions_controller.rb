@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(params[:question])
-#    QuestionsMailer.question_submital(@question).deliver
+    QuestionsMailer.question_submital(@question).deliver
     if @question.save
       redirect_to(new_question_path, :notice => 'Question was successfully Submitted.')
     else
