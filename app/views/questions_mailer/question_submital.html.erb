@@ -13,8 +13,8 @@
 <p>
   <b>Address:</b>
   <%= @question.street_address_1 %> <%= (' (' +  @question.street_address_2 + ')') unless @question.street_address_2.blank? %> <br/>
-  <%= @question.city + ' ,' + @question.state %> <br/>
-  <%= @question.country + ' ,' + @question.zip_code %>
+  <%= @question.city + ', ' + @question.state %> <br/>
+  <%= @question.country + ', ' + @question.zip_code %>
 </p>
 <p>
   <b>Phone:</b>
