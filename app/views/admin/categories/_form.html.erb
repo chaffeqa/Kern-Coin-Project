@@ -23,7 +23,7 @@
           <% end %>
         <% else %>
           <%= node_f.label :parent_id, raw('&nbsp;') %>
-          <%= node_f.hidden_field :parent, :value => Node.root.id %>
+          <%= node_f.hidden_field :parent_id, :value => Node.root.id %>
         <% end %>
       </div>
 
