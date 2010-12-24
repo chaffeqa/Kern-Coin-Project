@@ -19,11 +19,11 @@ class Category < ActiveRecord::Base
     :styles => { :thumb => ['112x112#', :gif] }
 
   #  validates_associated :node
-  validate :refuse_inventory_title_rename
+  validate :refuse_inventory_title_rename, :on => :update
   before_validation :update_node
 
   def refuse_inventory_title_rename
-    errors.add(:title, "cannot change the 'Inventory' category title.") if title == 'Inventory'
+    errors.add(:title, "cannot change the 'Inventory' category title.") if title == 'Inventory' and value != 'Inventory'
   end
 
   def update_node
