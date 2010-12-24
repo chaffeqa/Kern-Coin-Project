@@ -23,7 +23,7 @@ class Category < ActiveRecord::Base
   before_validation :update_node
 
   def refuse_inventory_title_rename
-    errors.add(:title, "cannot change the 'Inventory' category title.") if self.title == 'Inventory' and title != 'Inventory'
+    errors.add(:title, "cannot change the 'Inventory' category title.") if title != 'Inventory'
   end
 
   def update_node
