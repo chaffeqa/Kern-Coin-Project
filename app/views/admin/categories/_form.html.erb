@@ -13,25 +13,30 @@
 
   <fieldset>
     <%= f.fields_for :node do |node_f| %>
-      <div class="field">
-        <% unless f.object.title == 'Inventory' %>
+      <%= node_f.hidden_field :displayed, :value => true %>
+
+      <% if @editing_inventory %>
+        <div class="field">
+          <%= f.label :title, "Category Name", :class => "req" %>
+          <%= f.text_field :title, :disabled => true %>
+          <%= node_f.hidden_field :parent_id, :value => Node.root.id %>
+        </div>
+
+      <% else %>
+        <div class="field">
+          <%= f.label :title, "Category Name", :class => "req" %>
+          <%= f.text_field :title %>
+        </div>
+        <div class="field">
           <%= node_f.label :parent_id, 'Parent Category', :class => "req" %>
           <% if f.object.new_record? %>
             <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
           <% else %>
             <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
           <% end %>
-        <% else %>
-          <%= node_f.label :parent_id, raw('&nbsp;') %>
-          <%= node_f.hidden_field :parent_id, :value => Node.root.id %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
-      <div class="field">
-        <%= f.label :title, "Category Name", :class => "req" %>
-        <%= f.text_field :title %>
-        <%= node_f.hidden_field :displayed, :value => true %>
-      </div>
     <% end %>
 
 

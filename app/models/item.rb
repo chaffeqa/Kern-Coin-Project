@@ -21,19 +21,43 @@ class Item < ActiveRecord::Base
   # Validations and Callbacks
   ###########
 
+  #Validations
   validates_presence_of :item_id, :cost, :name
   validates_numericality_of :cost
-  
+
+  #Callbacks
   before_validation :update_nodes
+  after_save :update_item_counts
+  after_destroy :quick_category_tree_update
+
+  # performs a quick update on this item's category item_counts, as well as their ancestors
+  def update_item_counts
+    categories.each do |category|
+      category.set_item_count
+      category.save!
+      while category.node.parent.page_type == 'Category'
+        category = category.node.parent.category
+        category.set_item_count
+        category.save!
+      end
+    end
+  end
+
+  # Performs a quick update on the category item_counts
+  def quick_category_tree_update
+    Category.item_count_quick_check
+  end
+
+  # updates the attributes for each node for this item
   def update_nodes
-    count = 0
-    #    count += 1 unless self.new_record?
+    incr = 0
     self.nodes.each do |node|
       node.title =  self.name
       node.menu_name =  self.name
-      node.shortcut = self.name.parameterize.html_safe + "-#{count}"
+      incr = (node.new_record? ? node.set_safe_shortcut(self.name.parameterize.html_safe, 0, incr) : node.set_safe_shortcut(node.shortcut, node.id, incr))
       node.displayed = self.display
-      count += 1
+      incr += 1
+#      puts "Updating node: #{node.title}, new record: #{node.new_record?}... set URL: #{node.shortcut}"
     end
   end
   

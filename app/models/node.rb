@@ -17,7 +17,7 @@ class Node < ActiveRecord::Base
   validates_presence_of :menu_name
   validate :shortcut_html_safe?
   validate :check_unique_shortcut?
-#  validate :ensure_unique_root_node
+  #  validate :ensure_unique_root_node
   before_validation :fill_missing_fields
 
   def fill_missing_fields
@@ -42,7 +42,8 @@ class Node < ActiveRecord::Base
   end
 
   def check_unique_shortcut?    
-    if Node.where(:shortcut => shortcut).count > 1 or (Node.exists?(:shortcut => shortcut) and self.new_record?)
+    if  (Node.exists?(:shortcut => shortcut) and new_record?)
+      puts "Problem Node: #{title}, #{id} URL: #{shortcut}, new_record: #{new_record?}"
       addition = Node.where('shortcut LIKE ?', shortcut).count
       suggested = self.shortcut + "_" + addition.to_s
       errors.add(:shortcut, "URL shortcut already exists in this site.  Suggested Shortcut: '#{suggested}'")
@@ -88,6 +89,22 @@ class Node < ActiveRecord::Base
   def self.order_tree(json)
     Node.update_all(['position = ?', nil])
     Node.order_helper(json)
+  end
+
+  # sets this node's shortcut to the desired shortcut or closest related shortcut that will be unique in the database.  If a conflict
+  # occurs than a numeric increment will be appended as a prefix and the increment number will be returned.  If no conflict occured
+  # than the method will return 0 (or the passed in increment if one was passed in)
+  def set_safe_shortcut(desired_shortcut, node_id, increment=0)
+    prefix = increment == 0 ? "" : increment.to_s + "-"
+#    puts "attempting to assign node: (#{title}, #{node_id}) to a shorcut: #{prefix + desired_shortcut}"
+    while Node.where('nodes.shortcut = ? AND nodes.id != ?', prefix + desired_shortcut, node_id).exists?
+      increment += 1
+      prefix = increment.to_s + "-"
+#      puts "failed assignment... new shortcut: #{prefix + desired_shortcut}"
+    end
+    self.shortcut = prefix + desired_shortcut
+#    puts "Assigned! new shortcut should be: #{self.shortcut}"
+    return increment
   end
 
   private
