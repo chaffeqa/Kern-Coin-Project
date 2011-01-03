@@ -48,7 +48,6 @@ class Node < ActiveRecord::Base
 
   # Checks the database to ensure the Shortcut is not already taken
   def check_unique_shortcut?
-    puts "checking if new record: #{new_record?}"
     if (not new_record? and Node.where('nodes.shortcut = ? AND nodes.id != ?', shortcut, id).exists?) or (new_record? and Node.exists?(:shortcut => shortcut))
       puts "Problem Node: (Title: #{title}, ID: #{id} URL: #{shortcut}), new_record: #{new_record?}"
       addition = Node.where('shortcut LIKE ?', shortcut).count
