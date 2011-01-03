@@ -105,11 +105,9 @@ class Category < ActiveRecord::Base
     puts 'Quick update of Category.item_count...'
     leafs = Category.leaf_categories
     leafs.each do |category|
-      puts "leaf category = #{category.title}"
       unless category.set_item_count  # Only save and recurse if the item_count has changed
         category.save!
         while category.node.parent.page_type == 'Category'
-          puts "parent category = #{category.title}"
           category = category.node.parent.category
           category.set_item_count
           category.save!
