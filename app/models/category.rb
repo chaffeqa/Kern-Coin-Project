@@ -54,6 +54,15 @@ class Category < ActiveRecord::Base
     return (prev_count == temp_item_count)
   end
 
+  # Recursive setter of this category's item_count
+  def recursive_item_count_set
+    children_item_count = 0
+    node.children.categories.each  {|child_node| children_item_count += child_node.category.recursive_item_count_set }
+    self.item_count = (displayed_items.count + children_item_count)
+    return self.item_count if self.save!
+    return 0
+  end
+
   ####################################################################
   # Scopes
   ###########
@@ -114,7 +123,8 @@ class Category < ActiveRecord::Base
     children_count = 0
     node.children.categories.each {|node| children_count += node.category.full_set_item_count}
     node.category.item_count = node.category.displayed_items.count + children_count
-    return node.category.item_count if node.save!
+    node.save!
+    return node.category.item_count
   end
 
   # Initialize item count update from inventory down
@@ -123,5 +133,16 @@ class Category < ActiveRecord::Base
     get_inventory.full_set_item_count
     puts '...Finished'
   end
+
+  # Performs recursive setting of all the categories' item_counts
+  def self.set_item_counts
+    puts 'Full recursive item_count set'
+    Category.update_all(['item_count = ?', 0])
+    inventory_category = Category.get_inventory
+    inventory_category.recursive_item_count_set
+    puts '...Finished'
+  end
+
+  
 
 end
