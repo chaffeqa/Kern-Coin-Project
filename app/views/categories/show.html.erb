@@ -32,7 +32,7 @@ children = @node.children.displayed  %>
       <% cat_nodes.each do |child|%>
         <%= content_tag_for :li, child do %>
           <div class="thumbnail"> <%= link_to image_tag(child.page.thumbnail_image ? child.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(child.shortcut) %> </div>
-          <p class="title"><%= link_to child.page.title, shortcut_path(child.shortcut) %></p>
+          <p class="title"><%= link_to child.page.title, shortcut_path(child.shortcut) %> (<%= child.page.item_count %>)</p>
         <% end %>
       <% end %>
     </ul>

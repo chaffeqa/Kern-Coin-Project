@@ -24,8 +24,5 @@ gem "will_paginate", "~> 3.0.pre2"
 
 gem 'jquery-rails'
 
-<<<<<<< HEAD
 gem 'mail'#, :git => 'https://github.com/mikel/mail.git'
-=======
-gem 'mail'#, :git => 'https://github.com/mikel/mail.git'
->>>>>>> d4d5ae13dc5bb65c8b4440d74496c6d17155b37f
+
