@@ -117,37 +117,19 @@ class Category < ActiveRecord::Base
     return array
   end
 
-  # Recurses through the leaf category nodes and sets all 'item_count's to the correct values.  If any of those nodes
-  # changed values, then their ancestors will be updated as well
-  def self.item_count_quick_check
-    puts 'Quick update of Category.item_count...'
-    leafs = Category.leaf_categories
-    leafs.each do |category|
-      unless category.set_item_count  # Only save and recurse if the item_count has changed
-        category.save!
-        while category.node.parent.page_type == 'Category'
-          category = category.node.parent.category
-          category.set_item_count
-          category.save!
-        end
-      end
-    end
-    puts '...Finished'
+  # Recurses from the current node down to the leaf categories, returning item count + child item count
+  # Effect is full item count update from this node down.
+  def full_set_item_count
+    children_count = 0
+    node.children.categories.each {|node| children_count += node.category.full_set_item_count}
+    node.category.item_count = node.category.displayed_items.count + children_count
+    return node.category.item_count if node.save!
   end
 
-  # Recurses through the entire category tree and sets all 'item_count's to the correct values
+  # Initialize item count update from inventory down
   def self.item_count_full_check
     puts 'Full update of Category.item_count...'
-    leafs = Category.leaf_categories
-    leafs.each do |category|
-      category.set_item_count  # WILL recurse regardless of not changing item_count
-      category.save!
-      while category.node.parent.page_type == 'Category'
-        category = category.node.parent.category
-        category.set_item_count
-        category.save!
-      end
-    end
+    get_inventory.full_set_item_count
     puts '...Finished'
   end
 
