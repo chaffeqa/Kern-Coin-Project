@@ -3,11 +3,20 @@ class Category < ActiveRecord::Base
   ####################################################################
   # Associations
   ###########
-  has_many :items, :finder_sql =>
+  has_many :items, :class_name => 'Item', :finder_sql =>
     'SELECT item.* FROM items AS item
     JOIN nodes AS item_node ON item_node.page_id = item.id AND item_node.page_type = "Item"
     JOIN nodes AS cat_node ON item_node.parent_id = cat_node.id
     WHERE cat_node.page_id = #{id} AND cat_node.page_type = "Category"'
+
+
+  has_many :displayed_items, :class_name => 'Item', :finder_sql =>
+    'SELECT item.* FROM items AS item
+    JOIN nodes AS item_node ON item_node.page_id = item.id AND item_node.page_type = "Item"
+    JOIN nodes AS cat_node ON item_node.parent_id = cat_node.id
+    WHERE cat_node.page_id = #{id} AND cat_node.page_type = "Category"
+    AND item.display = "t"'
+  
   
   # Associated Node attributes
   has_one :node, :as => :page, :dependent => :destroy
@@ -39,7 +48,7 @@ class Category < ActiveRecord::Base
   def set_item_count
     temp_item_count = 0
     prev_count = item_count
-    temp_item_count += items.count
+    temp_item_count += displayed_items.count
     node.children.categories.each {|node| temp_item_count += node.category.item_count}
     self.item_count = temp_item_count
     return (prev_count == temp_item_count)
@@ -105,11 +114,9 @@ class Category < ActiveRecord::Base
     puts 'Quick update of Category.item_count...'
     leafs = Category.leaf_categories
     leafs.each do |category|
-      puts "leaf category = #{category.title}"
       unless category.set_item_count  # Only save and recurse if the item_count has changed
         category.save!
         while category.node.parent.page_type == 'Category'
-          puts "parent category = #{category.title}"
           category = category.node.parent.category
           category.set_item_count
           category.save!
