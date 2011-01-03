@@ -96,14 +96,11 @@ class Node < ActiveRecord::Base
   # than the method will return 0 (or the passed in increment if one was passed in)
   def set_safe_shortcut(desired_shortcut, node_id, increment=0)
     prefix = increment == 0 ? "" : increment.to_s + "-"
-#    puts "attempting to assign node: (#{title}, #{node_id}) to a shorcut: #{prefix + desired_shortcut}"
     while Node.where('nodes.shortcut = ? AND nodes.id != ?', prefix + desired_shortcut, node_id).exists?
       increment += 1
       prefix = increment.to_s + "-"
-#      puts "failed assignment... new shortcut: #{prefix + desired_shortcut}"
     end
     self.shortcut = prefix + desired_shortcut
-#    puts "Assigned! new shortcut should be: #{self.shortcut}"
     return increment
   end
 

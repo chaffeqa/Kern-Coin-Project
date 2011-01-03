@@ -54,7 +54,7 @@ class Item < ActiveRecord::Base
     self.nodes.each do |node|
       node.title =  self.name
       node.menu_name =  self.name
-      incr = (node.new_record? ? node.set_safe_shortcut(self.name.parameterize.html_safe, 0, incr) : node.set_safe_shortcut(node.shortcut, node.id, incr))
+      incr = (node.new_record? ? node.set_safe_shortcut(self.name.parameterize.html_safe, 0, incr) : node.set_safe_shortcut(self.name.parameterize.html_safe, node.id, incr))
       node.displayed = self.display
       incr += 1
 #      puts "Updating node: #{node.title}, new record: #{node.new_record?}... set URL: #{node.shortcut}"
