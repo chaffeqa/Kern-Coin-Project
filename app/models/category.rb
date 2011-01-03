@@ -58,9 +58,10 @@ class Category < ActiveRecord::Base
   def recursive_item_count_set
     children_item_count = 0
     node.children.categories.each  {|child_node| children_item_count += child_node.category.recursive_item_count_set }
+    puts "#{title} category: items: #{displayed_items.count}, child_categories: #{children_item_count}"
     self.item_count = (displayed_items.count + children_item_count)
-    return self.item_count if self.save!
-    return 0
+    self.save!
+    return self.item_count
   end
 
   ####################################################################
