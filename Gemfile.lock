@@ -45,11 +45,7 @@ GEM
     jquery-rails (0.2.6)
       rails (~> 3.0)
       thor (~> 0.14.4)
-<<<<<<< HEAD
-    mail (2.2.12)
-=======
     mail (2.2.13)
->>>>>>> 5ba5bed45e65479fb00725b60ebc2fd8d2336ecd
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
