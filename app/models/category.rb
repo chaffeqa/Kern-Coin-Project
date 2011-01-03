@@ -123,7 +123,8 @@ class Category < ActiveRecord::Base
     children_count = 0
     node.children.categories.each {|node| children_count += node.category.full_set_item_count}
     node.category.item_count = node.category.displayed_items.count + children_count
-    return node.category.item_count if node.save!
+    node.save!
+    return node.category.item_count
   end
 
   # Initialize item count update from inventory down
