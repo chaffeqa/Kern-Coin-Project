@@ -49,6 +49,7 @@ class Category < ActiveRecord::Base
     temp_item_count = 0
     prev_count = item_count
     temp_item_count += displayed_items.count
+    puts ""+displayed_items.count
     node.children.categories.each {|node| temp_item_count += node.category.item_count}
     self.item_count = temp_item_count
     return (prev_count == temp_item_count)
