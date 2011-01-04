@@ -54,16 +54,6 @@ class Category < ActiveRecord::Base
     return (prev_count == temp_item_count)
   end
 
-  # Recursive setter of this category's item_count
-  def recursive_item_count_set
-    children_item_count = 0
-    node.children.categories.each  {|child_node| children_item_count += child_node.category.recursive_item_count_set }
-    puts "#{title} category: items: #{displayed_items.count}, child_categories: #{children_item_count}"
-    self.item_count = (displayed_items.count + children_item_count)
-    self.save!
-    return self.item_count
-  end
-
   ####################################################################
   # Scopes
   ###########
@@ -120,20 +110,32 @@ class Category < ActiveRecord::Base
 
   # Recurses from the current node down to the leaf categories, returning item count + child item count
   # Effect is full item count update from this node down.
-  def full_set_item_count
-    children_count = 0
-    node.children.categories.each {|node| children_count += node.category.full_set_item_count}
-    node.category.item_count = node.category.displayed_items.count + children_count
-    node.save!
-    return node.category.item_count
+#  def full_set_item_count
+#    children_count = 0
+#    node.children.categories.each {|child| children_count += child.category.full_set_item_count}
+#    self.item_count = self.displayed_items.count + children_count
+#    self.save!
+#    return self.node.category.item_count
+#  end
+
+
+  # Recursive setter of this category's item_count
+  def recursive_item_count_set
+    children_item_count = 0
+    node.children.categories.each  {|child_node| children_item_count += child_node.category.recursive_item_count_set }
+    puts "#{title} category: items: #{displayed_items.count}, child_categories' items: #{children_item_count}"
+    self.item_count = (displayed_items.count + children_item_count)
+    self.save!
+    return self.item_count
   end
 
+
   # Initialize item count update from inventory down
-  def self.item_count_full_check
-    puts 'Full update of Category.item_count...'
-    get_inventory.full_set_item_count
-    puts '...Finished'
-  end
+#  def self.item_count_full_check
+#    puts 'Full update of Category.item_count...'
+#    get_inventory.full_set_item_count
+#    puts '...Finished'
+#  end
 
   # Performs recursive setting of all the categories' item_counts
   def self.set_item_counts
