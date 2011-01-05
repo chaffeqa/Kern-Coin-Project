@@ -15,7 +15,7 @@ class Category < ActiveRecord::Base
     JOIN nodes AS item_node ON item_node.page_id = item.id AND item_node.page_type = "Item"
     JOIN nodes AS cat_node ON item_node.parent_id = cat_node.id
     WHERE cat_node.page_id = #{id} AND cat_node.page_type = "Category"
-    AND item.display = 1'
+    AND item.display = "t"'
   
   
   # Associated Node attributes
@@ -44,7 +44,26 @@ class Category < ActiveRecord::Base
     self.node.shortcut = self.title.parameterize.html_safe  
   end
 
-  # Sets the item_count of this category to the correct value.  Returns true if the item_count value did not change, False otherwise.
+  # Decrements the item count and asks parent to do the same
+  def dec_item_count
+    self.item_count -= 1
+    self.save!
+    if node.parent && node.parent.is_category?
+      node.parent.category.dec_item_count
+    end
+  end
+
+  # Increments the item count and asks parent to do the same
+  def inc_item_count
+    self.item_count += 1
+    self.save!
+    if node.parent && node.parent.page_type == "Category"
+      node.parent.category.inc_item_count
+    end
+  end
+
+  # Sets the item_count of this category to the correct value. 
+  #   Returns true if the item_count value did not change, False otherwise.
   def set_item_count
     temp_item_count = 0
     prev_count = item_count
@@ -53,6 +72,7 @@ class Category < ActiveRecord::Base
     self.item_count = temp_item_count
     return (prev_count == temp_item_count)
   end
+
 
   ####################################################################
   # Scopes
@@ -108,10 +128,17 @@ class Category < ActiveRecord::Base
     return array
   end
 
+
+
+
+  #############################
+  # Recursively set item counts
+  #############################
+
   # Recursive setter of this category's item_count
-  def recursive_item_count_set
+  def set_item_counts
     children_item_count = 0
-    node.children.categories.each  {|child_node| children_item_count += child_node.category.recursive_item_count_set }
+    node.children.categories.each  {|child_node| children_item_count += child_node.category.set_item_counts }
 #    puts "#{title} category: items: #{displayed_items.count}, child_categories' items: #{children_item_count}"
     self.item_count = (displayed_items.count + children_item_count)
     self.save!
@@ -119,10 +146,12 @@ class Category < ActiveRecord::Base
   end
 
   # Performs recursive setting of all the categories' item_counts
-  def self.set_item_counts
-    Category.update_all(['item_count = ?', 0])
+  def self.full_item_counts_update
     inventory_category = Category.get_inventory
-    inventory_category.recursive_item_count_set
+    inventory_category.set_item_counts
   end
+ 
+  #############################
+  #############################
 
 end

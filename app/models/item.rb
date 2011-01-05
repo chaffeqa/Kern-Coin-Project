@@ -27,26 +27,8 @@ class Item < ActiveRecord::Base
 
   #Callbacks
   before_validation :update_nodes
-  after_save :update_item_counts
-  after_destroy :quick_category_tree_update
-
-  # performs a quick update on this item's category item_counts, as well as their ancestors
-  def update_item_counts
-    categories.each do |category|
-      category.set_item_count
-      category.save!
-      while category.node.parent.page_type == 'Category'
-        category = category.node.parent.category
-        category.set_item_count
-        category.save!
-      end
-    end
-  end
-
-  # Performs a quick update on the category item_counts
-  def quick_category_tree_update
-    Category.item_count_quick_check
-  end
+  after_save :cat_update_item_count
+  after_destroy :full_item_counts_update
 
   # updates the attributes for each node for this item
   def update_nodes
@@ -95,6 +77,34 @@ class Item < ActiveRecord::Base
   def short_details
     return self.details[0,30] << "..."
   end
+
+
+
+
+
+  private
+
+  # performs a quick update on this item's category item_counts, as well as their ancestors
+  def cat_update_item_count
+    self.categories.each do |category|
+      if (category.displayed_items.count - 1) == category.item_count
+        category.inc_item_count
+      end
+    end
+  end
+
+  def full_item_counts_update
+    Category.full_item_counts_update
+  end
+
+  # Performs a quick update on the category item_counts
+#  def cat_dec_item_count
+#    puts "hello"
+#    self.categories.each do |category|
+#      puts "there"
+#      category.dec_item_counts
+#    end
+#  end
   
 
 end
