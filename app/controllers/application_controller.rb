@@ -35,8 +35,7 @@ class ApplicationController < ActionController::Base
 
   #TODO
   def admin?
-    true
-    #    admin_signed_in?
+    admin_signed_in?
   end
 
   def check_admin

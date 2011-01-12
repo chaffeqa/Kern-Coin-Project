@@ -1,39 +1,41 @@
-<section id="adminBar">
-  <div id="wrapper">
+<% if admin? %>
+  <section id="adminBar">
+    <div id="wrapper">
 
-    <%= link_to image_tag('inventure-logo.png', :alt => 'Inventure'), 'http://www.inventure.com' %>
-    <ul class="btn large clearfix" id="admin-menu">
-      <li>Content management
-        <ul>
-          <li class="expandable"><a href="#">Manage... </a>
+      <%= link_to image_tag('inventure-logo.png', :alt => 'Inventure'), 'http://www.inventure.com' %>
 
-            <ul class="btn medium clearfix">
-              <li><%= link_to 'Pages', admin_dynamic_pages_path %></li>
-              <li><%= link_to 'Menus', admin_menus_path %></li>
-              <li><%= link_to 'Categories', admin_categories_path %></li>
-              <li><%= link_to 'Items', admin_items_path %></li>
-              <li><%= link_to 'Client Messages', admin_questions_path %></li>
-<!--              <li><%#= link_to 'Blogs', admin_blogs_path %></li>   -->
-              <li><%= link_to 'Calendars', admin_calendars_path %></li>
-            </ul>
-          </li>
+      <% if admin_signed_in? %> <%= link_to 'Log Out', destroy_admin_session_path, :class => 'btn large clearfix' %> <% end %>
+      
+      <ul class="btn large clearfix" id="admin-menu">
+        <li>Content management
+          <ul>
+            <li class="expandable"><a href="#">Manage... </a>
 
-          <li class="expandable"><a href="#">Create... </a>
-            <ul class="btn medium clearfix">
-              <li><%= link_to 'New Page', new_admin_dynamic_page_path %></li>
-              <li><%= link_to 'New Category', new_admin_category_path %></li>
-              <li><%= link_to 'New Item', new_admin_item_path %></li>
-<!--              <li><%#= link_to 'New Blog', new_admin_blog_path %></li> -->
-              <li><%= link_to 'New Calendar', new_admin_calendar_path %></li>
-            </ul>
-          </li>
+              <ul class="btn medium clearfix">
+                <li><%= link_to 'Pages', admin_dynamic_pages_path %></li>
+                <li><%= link_to 'Menus', admin_menus_path %></li>
+                <li><%= link_to 'Categories', admin_categories_path %></li>
+                <li><%= link_to 'Items', admin_items_path %></li>
+                <li><%= link_to 'Client Messages', admin_questions_path %></li>
+                <li><%= link_to 'Calendars', admin_calendars_path %></li>
+              </ul>
+            </li>
 
-        </ul>
-      </li>
-    </ul>
-    <%= yield :page_admin_bar %>
+            <li class="expandable"><a href="#">Create... </a>
+              <ul class="btn medium clearfix">
+                <li><%= link_to 'New Page', new_admin_dynamic_page_path %></li>
+                <li><%= link_to 'New Category', new_admin_category_path %></li>
+                <li><%= link_to 'New Item', new_admin_item_path %></li>
+                <li><%= link_to 'New Calendar', new_admin_calendar_path %></li>
+              </ul>
+            </li>
 
-  </div>
-</section>
-<% if flash[:notice] %> <div id="notice"><%= flash[:notice] %></div> <% end %>
-<% if flash[:alert] %> <div id="alert"><%= flash[:alert] %></div><% end %>
+          </ul>
+        </li>
+      </ul>
+      <%= yield :page_admin_bar %>
+    </div>
+  </section>
+  <% if flash[:notice] %> <div id="notice"><%= flash[:notice] %></div> <% end %>
+  <% if flash[:alert] %> <div id="alert"><%= flash[:alert] %></div><% end %>
+<% end %>

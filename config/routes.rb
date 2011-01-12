@@ -11,21 +11,6 @@ KernCoinProject::Application.routes.draw do
     post :move_down, :on => :member
   end
   
-  # Auctions Module
-#  get "auctions/index"
-  #  scope :module => "auction" do
-  #    # CustomerAuctions Controller
-  #    match "auctions/categories" => 'customer_auctions#categories', :as => :auctions_categories
-  #    match "auctions/list" => 'customer_auctions#list', :as => :auctions_list
-  #    match "auctions/view/:id" => 'customer_auctions#view', :as => :auctions_view
-  #    # CustomerBid Controller
-  #    resource :customer_bid, :only => [:new, :create, :destroy]
-  #  end
-
-  # Inventory Controller
-#  match 'inventory/category/:id' => 'inventory#category', :as => :inventory_category
-  
-#  match 'inventory/item/:id' => 'inventory#item', :as => :inventory_item
 
   # Questions for 'Contact Us'
   resources :questions, :only => [:new, :create]
