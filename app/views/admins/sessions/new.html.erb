@@ -1,25 +1,33 @@
-<h2>Sign in</h2>
+<%= content_for :head do stylesheet_link_tag 'admin'; javascript_include_tag 'admin' end %>
+<%= content_for :body_id do 'admin' end %>
+
+
+<div id="adminPage">
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </p>
-
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
-
-  <% if devise_mapping.rememberable? -%>
-    <p>
+  <fieldset class="tab">
+    <legend>Sign In</legend>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    
+    <% if devise_mapping.rememberable? -%>
+    <div class="field">
       <%= f.label :remember_me %>
       <%= f.check_box :remember_me %>
-    </p>
-  <% end -%>
-
-  <p>
-    <%= f.submit "Sign in" %>
-    <%= render :partial => "devise/shared/links" %>
-  </p>
+    </div>
+    <% end -%>
+    
+    <div class="field">
+      <label></label>
+      <%= f.submit "Sign in" %>
+    </div>
+  </fieldset>
 <% end %>
+</div>

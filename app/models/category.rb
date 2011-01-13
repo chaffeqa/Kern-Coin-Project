@@ -40,7 +40,8 @@ class Category < ActiveRecord::Base
 
   def update_node
     self.node.title =  self.title
-    self.node.menu_name =   self.title
+    self.node.menu_name = self.title
+#    self.node.displayed = self.has_items?
     self.node.shortcut = self.title.parameterize.html_safe  
   end
 
