@@ -13,11 +13,11 @@ children = @node.children.displayed  %>
     <ul class="itemList">
       <% item_nodes.each do |child|%>
 	<% if child.page.display %>
-        <%= content_tag_for :li, child do %>
-          <div class="thumbnail"> <%= link_to image_tag(child.page.thumbnail_image ? child.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(child.shortcut) %> </div>
-          <p class="title"><%= link_to child.page.name, shortcut_path(child.shortcut) %></p>
-          <p class="cost"><%= number_to_currency(child.page.cost) %></p>
-        <% end %>
+          <%= content_tag_for :li, child do %>
+            <div class="thumbnail"> <%= link_to image_tag(child.page.thumbnail_image ? child.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(child.shortcut) %> </div>
+            <p class="title"><%= link_to child.page.name, shortcut_path(child.shortcut) %></p>
+            <p class="cost"><%= number_to_currency(child.page.cost) %></p>
+          <% end %>
 	<% end %>
       <% end %>
     </ul>
@@ -30,8 +30,8 @@ children = @node.children.displayed  %>
     <h3>Sub-categories</h3>
     <ul class="categoryList">
       <% cat_nodes.each do |child|%>
-        <%= content_tag_for :li, child do %>
-	  <% if child.page.item_count > 0 %>
+        <% if child.page.item_count > 0 %>
+          <%= content_tag_for :li, child do %>
             <div class="thumbnail"> <%= link_to image_tag(child.page.thumbnail_image ? child.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(child.shortcut) %> </div>
             <p class="title"><%= link_to child.page.title, shortcut_path(child.shortcut) %> <em>(<%= child.page.item_count %>)</em></p>
 	  <% end %>
