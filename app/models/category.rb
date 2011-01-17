@@ -49,7 +49,7 @@ class Category < ActiveRecord::Base
   def dec_item_count
     self.item_count -= 1
     self.save!
-    if node.parent && node.parent.is_category?
+    if node.parent && node.parent.page_type == "Category"
       node.parent.category.dec_item_count
     end
   end
