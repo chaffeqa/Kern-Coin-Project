@@ -40,7 +40,7 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update_attributes(params[:item])
-      redirect_to(shortcut_path(@item.nodes.first.shortcut), :notice => 'Item was successfully updated.')
+      redirect_to(:back, :notice => 'Item was successfully updated.')
     else
       render :action => "edit"
     end
