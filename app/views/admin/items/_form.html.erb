@@ -20,7 +20,7 @@
     <% end %>
     <%= new_child_fields_template(f, :nodes)%>
     <div class="field"><label></label><%= add_child_link "Add Category", :nodes %></div>
-    
+
     <hr />
 
     <div class="field"><span class="hint">Be sure to enter a unique item ID.</span>
@@ -65,6 +65,14 @@
     <div class="field"><label></label><%= add_child_link "Add Product Image", :product_images %></div>
     <hr />
 
-    <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'Item'} %>
+    <div class="field">
+      <%= f.label :submit, raw("&nbsp;") %>
+      <% if f.object.new_record? %>
+        <%= f.submit "Create "+type, :disable_with => "Please Wait...", :class => "btn medium" %>
+      <% else %>
+        <%= f.submit "Update", :disable_with => "Please Wait...", :class => "btn medium" %>
+      <% end %>
+      <%= link_to 'Cancel', admin_items_path(@full_params) %>
+    </div>
   </fieldset>
 <% end %>

@@ -2,6 +2,7 @@ class Admin::ItemsController < ApplicationController
   helper_method :sort_column, :sort_direction
   layout 'admin'
   before_filter :check_admin
+  before_filter :persist_filter_parameters
   
   def index
     @per_page = params[:per_page] || 10
@@ -48,10 +49,35 @@ class Admin::ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to(admin_items_url(), :notice => 'Item was successfully destroyed.' )
+    redirect_to(admin_items_url(@full_params), :notice => 'Item was successfully destroyed.' )
   end
 
   private
+
+  def persist_filter_parameters
+    @parsed_params = {}
+    @parsed_params[:name]=params[:name] unless params[:name].blank?
+    @parsed_params[:item_id]=params[:item_id] unless params[:item_id].blank?
+    @parsed_params[:displayed]=params[:displayed] unless params[:displayed].blank?
+    @parsed_params[:for_sale]=params[:for_sale] unless params[:for_sale].blank?
+    @parsed_params[:min_price]=params[:min_price] unless params[:min_price].blank?
+    @parsed_params[:max_price]=params[:max_price] unless params[:max_price].blank?
+    @parsed_params[:category]=params[:category] unless params[:category].blank?
+    @parsed_params[:per_page]=@per_page || 10
+
+
+    @full_params = {}
+    @full_params[:name]=params[:name] unless params[:name].blank?
+    @full_params[:item_id]=params[:item_id] unless params[:item_id].blank?
+    @full_params[:displayed]=params[:displayed] unless params[:displayed].blank?
+    @full_params[:for_sale]=params[:for_sale] unless params[:for_sale].blank?
+    @full_params[:min_price]=params[:min_price] unless params[:min_price].blank?
+    @full_params[:max_price]=params[:max_price] unless params[:max_price].blank?
+    @full_params[:category]=params[:category] unless params[:category].blank?
+    @full_params[:sort]=params[:sort] unless params[:sort].blank?
+    @full_params[:direction]=params[:direction] unless params[:direction].blank?
+    @full_params[:per_page]=@per_page || 10
+  end
 
   def get_node
     super

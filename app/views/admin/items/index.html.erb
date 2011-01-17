@@ -19,25 +19,24 @@
 
   <tr class="sorters">
     <!--td></td-->
-    <td><%= sortable "item_id", "Item ID", parsed_params %></td>
-    <td><%= sortable "name", "Name", parsed_params %></td>
+    <td><%= sortable "item_id", "Item ID", @parsed_params %></td>
+    <td><%= sortable "name", "Name", @parsed_params %></td>
     <td><span>Categories</span></td>
-    <td><%= sortable "cost", "Price", parsed_params %></td>
-    <td><%= sortable "display", "Displayed", parsed_params %></td>
+    <td><%= sortable "cost", "Price", @parsed_params %></td>
+    <td><%= sortable "display", "Displayed", @parsed_params %></td>
     <td colspan="2"><span>Options</span></td>
   </tr>
   <% even = true
   @items.each do |item|
     even = !even %>
     <%= content_tag_for :tr, item, :class => (even ? "even" : "odd") do %>
-          <!--td class="itemThumb"> <%#= image_tag(item.thumbnail_image)  %> </td-->
       <td class='<%= (params[:sort] == "item_id") ? "sorted" : "" %>'><%= item.item_id %></td>
       <td class='<%= (params[:sort] == "name") ? "sorted" : "" %>'><%= item.nodes.any? ? link_to(item.name, shortcut_path(item.nodes.first.shortcut)) : item.name %></td>
       <td><%=raw item.categories.collect {|cat| (link_to(cat.title, shortcut_path(cat.node.shortcut)) + (cat == item.categories.last ? raw('<br />') : raw(',<br />'))) } %></td>
       <td class='<%= (params[:sort] == "cost") ? "sorted" : "" %>'><%= number_to_currency(item.cost) %></td>
       <td class='<%= (params[:sort] == "display") ? "sorted" : "" %>'><%= item.display ? "Yes" : "No" %></td>
-      <td><%= link_to 'Edit', edit_admin_item_path(item), :class => "btn small" %></td>
-      <td><%= link_to 'Delete', admin_item_path(item, full_params.to_hash), :confirm => 'Are you sure you want to delete this item?', :method => :delete, :class => "btn small" %></td>
+      <td><%= link_to 'Edit', edit_admin_item_path(item, @full_params), :class => "btn small" %></td>
+      <td><%= link_to 'Delete', admin_item_path(item, @full_params.to_hash), :confirm => 'Are you sure you want to delete this item?', :method => :delete, :class => "btn small" %></td>
     <% end %>
   <% end %>
 </table>

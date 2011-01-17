@@ -90,6 +90,9 @@ class Item < ActiveRecord::Base
       if (category.displayed_items.count - 1) == category.item_count
         category.inc_item_count
       end
+      if (category.displayed_items.count + 1) == category.item_count
+        category.dec_item_count
+      end
     end
   end
 
@@ -97,14 +100,5 @@ class Item < ActiveRecord::Base
     Category.full_item_counts_update
   end
 
-  # Performs a quick update on the category item_counts
-#  def cat_dec_item_count
-#    puts "hello"
-#    self.categories.each do |category|
-#      puts "there"
-#      category.dec_item_counts
-#    end
-#  end
-  
 
 end
