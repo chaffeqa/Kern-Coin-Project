@@ -1,5 +1,11 @@
 <% @category = @node.page
 children = @node.children.displayed  %>
+<% if admin? %>
+  <% content_for :page_admin_bar do %>
+    <%= link_to 'Delete Category', admin_category_path(@category) , :confirm => "Are you sure you want to delete this category?", :method => :delete, :class => 'btn large' %>
+    <%= link_to 'Edit Category', edit_admin_category_path(@category), :class => 'btn large' %>
+  <% end %>
+<% end %>
 
 <h1><%= @category.title %></h1>
 <p><%= @category.description %></p>
