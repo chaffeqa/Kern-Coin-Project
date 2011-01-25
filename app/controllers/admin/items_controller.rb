@@ -84,8 +84,6 @@ class Admin::ItemsController < ApplicationController
     @full_params[:direction]=cookies[:direction] unless cookies[:direction].blank?
     @full_params[:page]=cookies[:page] unless cookies[:page].blank?
     @full_params[:per_page]= cookies[:per_page]
-
-    puts @full_params[:per_page]
   end
 
   # Creates/Updates the cookies values based on past and new filter parameters
