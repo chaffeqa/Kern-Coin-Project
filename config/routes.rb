@@ -22,7 +22,9 @@ KernCoinProject::Application.routes.draw do
     resources :menus, :only => [:index] do
       post :sort, :on => :collection
     end
-    resources :items
+    resources :items do
+      post :reset_filters, :on => :collection
+    end
     resources :blogs, :except => [:show] do
       resources :posts, :except => [:index]
     end
