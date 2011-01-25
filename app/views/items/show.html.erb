@@ -1,7 +1,7 @@
 <% @item = @node.page %>
 <% if admin? %>
   <% content_for :page_admin_bar do %>
-    <%= link_to 'Delete Item', admin_item_path(@item) , :confirm => "Are you sure?", :method => :delete, :class => 'btn large' %>
+    <%= link_to 'Delete Item', admin_item_path(@item) , :confirm => "Are you sure you want to delete this item?", :method => :delete, :class => 'btn large' %>
     <%= link_to 'Edit Item', edit_admin_item_path(@item), :class => 'btn large' %>
   <% end %>
 <% end %>

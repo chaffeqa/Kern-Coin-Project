@@ -3,7 +3,7 @@ class ShortcutController < ApplicationController
   
   def route
     if not @node.displayed and not admin?
-      error_redirect(:message => 'We are sorry, the Item or Page you are trying to view is no longer publicly listed.')
+      error_redirect('The ' + @node.page_type.capitalize + ' you are trying to view is no longer publicly listed.')
     end
     if @node.page_type == 'DynamicPage'
       render("#{@node.page_type.tableize.pluralize}/show", :layout => "dynamic")
@@ -42,9 +42,8 @@ class ShortcutController < ApplicationController
 
   private
 
-  def error_redirect
+  def error_redirect(message="The page you have requested either has been moved or doesn't exit.")
     shortcut = params[:shortcut].blank? ? nil : params[:shortcut]
-    message = shortcut != '' ? 'We are sorry, there was an internal Site error' : "We are sorry, the page you have requested either has been moved or doesn't exit."
     redirect_to(error_path(:message => message, :shortcut => shortcut))
   end
 
