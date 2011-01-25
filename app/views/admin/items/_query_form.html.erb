@@ -10,7 +10,7 @@
       -
       <%= text_field_tag(:max_price,  @full_params[:max_price].blank? ? '' :  @full_params[:max_price], :style => "width: 35px;") -%>
     </td>
-    <td><%= select_tag :displayed, options_for_select([['Yes','t'],['No','f']],  @full_params[:displayed].blank? ? '' :  @full_params[:displayed]), :include_blank => true, :style => "width: 60px;" %></td>
+    <td><%= select_tag :displayed, options_for_select([['Yes',db_friendly_boolean(true)],['No',db_friendly_boolean(false)]],  @full_params[:displayed].blank? ? '' :  @full_params[:displayed]), :include_blank => true, :style => "width: 60px;" %></td>
     <td colspan="2">
       <%= submit_tag 'Apply Filter', :disable_with => 'Searching Items...', :class => "btn small yellow"  %>
       <%= link_to 'Reset Filters', reset_filters_admin_items_path(), :method => :post, :class => "btn small reset-filter" %>

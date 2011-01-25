@@ -85,6 +85,7 @@ class Admin::ItemsController < ApplicationController
     @full_params[:page]=cookies[:page] unless cookies[:page].blank?
     @full_params[:per_page]= cookies[:per_page]
 
+    puts @full_params[:per_page]
   end
 
   # Creates/Updates the cookies values based on past and new filter parameters
@@ -100,7 +101,7 @@ class Admin::ItemsController < ApplicationController
     cookies[:page]={ :expires => 30.minutes.from_now, :value => params[:page] } unless params[:page].blank?
     cookies[:direction]={ :expires => 30.minutes.from_now, :value => params[:direction] } unless params[:direction].blank?
     cookies[:per_page]={ :expires => 30.minutes.from_now, :value => params[:per_page] } unless params[:per_page].blank?
-    cookies[:per_page]={ :expires => 30.minutes.from_now, :value => 10 } if  cookies[:per_page].blank?
+    cookies[:per_page]={ :expires => 30.minutes.from_now, :value => 10 } if cookies[:per_page].blank?
   end
 
   def sort_column

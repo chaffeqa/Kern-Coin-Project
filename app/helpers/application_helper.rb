@@ -160,11 +160,10 @@ module ApplicationHelper
 
   
 
-  #  ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
-  #    if instance.error_message.kind_of?(Array)
-  #      %(<span class="field_with_errors">#{html_tag}</span>)
-  #    else
-  #      %(<span class="field_with_errors">#{html_tag}</span>)
-  #    end
-  #  end
+  def db_friendly_boolean(bool)
+    if bool
+      return ENV['RAILS_ENV'] == 'production' ? '1' : 't'
+    end
+    return ENV['RAILS_ENV'] == 'production' ? '0' : 'f'
+  end
 end
