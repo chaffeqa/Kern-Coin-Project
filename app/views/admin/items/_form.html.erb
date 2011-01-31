@@ -26,15 +26,15 @@
     <div class="field"><span class="hint">Be sure to enter a unique item ID.</span>
       <%= f.label :name, "Item Details", :class => "req" %>
       <%= f.text_field :name, :title => "Item Name" %>
-      <% if f.object.new_record? %>
-        <%= f.text_field :item_id, :title => "Item ID", :style => "width: 100px;" %>
-      <% else %>
-        <%= f.text_field :item_id, :title => "Item ID", :disabled => true %>
-      <% end %>
+      <%= f.text_field :item_id, :title => "Item ID", :style => "width: 100px;" %>
     </div>
     <div class="field">
       <%= f.label :details %>
       <%= f.text_area :details %>
+    </div>
+    <div class="field"><span class="hint">Enter searchable keywords for this item separated by a space.</span>
+      <%= f.label :meta %>
+      <%= f.text_area :meta %>
     </div>
     <hr />
 

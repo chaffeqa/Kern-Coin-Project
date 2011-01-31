@@ -21,11 +21,11 @@ class Item < ActiveRecord::Base
   # Validations and Callbacks
   ###########
 
-  #Validations
+  # Validations
   validates_presence_of :item_id, :cost, :name
   validates_numericality_of :cost
 
-  #Callbacks
+  # Callbacks
   before_validation :update_nodes
   after_save :cat_update_item_count
   after_destroy :full_item_counts_update
@@ -55,9 +55,10 @@ class Item < ActiveRecord::Base
   scope :scope_for_sale, lambda {|for_sale| where(:for_sale => for_sale)}
   scope :scope_name, lambda {|name| where('name LIKE ?', '%'+name+'%')}
   scope :scope_details, lambda {|name| where('details LIKE ?', "%"+name+"%")}
+  scope :scope_meta, lambda {|meta| where('meta LIKE ?', "%"+meta+"%")}
   scope :scope_item_id, lambda {|item_id| where('item_id LIKE ?', "%"+item_id+"%")}
   scope :scope_category, lambda {|title| includes(:nodes => {:parent => :category}) & where('categories.title LIKE ?', "%"+title+"%")}
-  scope :scope_text, lambda {|text| where('name LIKE ? or details LIKE ?', "%"+text+"%", "%"+text+"%")}
+  scope :scope_text, lambda {|text| where('name LIKE ? or meta LIKE ? or details LIKE ?', "%"+text+"%", "%"+text+"%", "%"+text+"%")}
   scope :scope_min_price, lambda {|price| where('cost >= ?', price)}
   scope :scope_max_price, lambda {|price| where('cost <= ?', price)}
   scope :in_category_array, lambda {|category_array| includes(:nodes).where('nodes.parent_id IN (?)', category_array )}
