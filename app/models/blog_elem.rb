@@ -16,9 +16,15 @@ class BlogElem < ActiveRecord::Base
 
   #  validates_numericality_of :limit
   validates :display_type, :inclusion => { :in => DISPLAY_TYPE }
+  before_save :persist_title
   #  validates_associated :blog
 
 
+  def persist_title
+    title = element.title || blog.title
+    self.element.title = title if element
+    self.blog.title = title if blog
+  end
 
   def self.display_type_select
     DISPLAY_TYPE

@@ -14,7 +14,7 @@
   <%
   blog = elem.blog
   other_blogs = elem.blogs
-  posts = Post.order("post_date").where('post_date <= ?', Time.now)
+  posts = Post.order("post_date DESC").where('post_date <= ?', Time.now)
   posts = posts.limit(elem.count_limit) unless elem.count_limit.blank?
   posts = posts.where("posts.post_date >= ?", elem.past_limit) unless elem.past_limit.blank?
   posts = posts.where("posts.blog_id IN (?)", [blog.id] + other_blogs.collect {|b| b.id })
