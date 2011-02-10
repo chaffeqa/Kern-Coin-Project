@@ -25,7 +25,7 @@
   
   <fieldset>
     <div class="field">
-      <%=  f.check_box :is_image, :class => 'toggle-fields' %> &nbsp;
+      <%=  f.check_box :is_image, :class => 'toggle-fields', :value => (f.object.new_record? ? false : f.object.is_image) %> &nbsp;
       <%= f.label :is_image, 'Make this link an image?' %>
     </div>
     <div class="toggleable-field field ">

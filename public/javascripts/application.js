@@ -104,7 +104,10 @@ function init_dynamic_fields() {
 function init_toggleable_fields() {
     tog_fields = $('form input.toggle-fields');
     tog_fields.each( function(){
-        var hide = $(this).val() == '0';
-        $(this).parent().parent().children('.toggleable-field').toggle(hide);
+        if ($(this).is(':checked') ) {
+            $(this).parent().parent().children('.toggleable-field').show();
+        } else {
+            $(this).parent().parent().children('.toggleable-field').hide();
+        }
     });
 }
