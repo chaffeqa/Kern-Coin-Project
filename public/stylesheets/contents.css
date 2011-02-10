@@ -258,7 +258,7 @@ ul.blogList {
 			font-weight: bold;
 		}
 .rss {
-	display: block;
+	display: none;
 	float: right;
 	color: #000;
 	margin: -55px 0 0;
@@ -269,7 +269,7 @@ ul.blogList {
 
 /* Category List */
 #secPage #mainColumn ul.itemList,
-#secPage #mainColumn ul.categoryList {margin: 0;}
+#secPage #mainColumn ul.categoryList {margin: 0 0 15px;}
 #secPage #mainColumn ul.categoryList li, 
 #secPage #mainColumn ul.itemList li {background: none; padding: 20px; float: left; width: 112px; height: 210px;}
 #secPage #mainColumn ul.categoryList li .thumbnail img, 
