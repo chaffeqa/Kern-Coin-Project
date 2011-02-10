@@ -93,7 +93,7 @@ function init_dynamic_fields() {
     tog_dyn_fields.each( function(){
         var init_val = $(this).val();
         $(this).parent().children('.toggleable-dynamic-field').hide();
-        $(this).parent().children('.toggleable-dynamic-field.' + init_val ).show();
+        if (init_val != "") { $(this).parent().children('.toggleable-dynamic-field.' + init_val ).show(); }
     });
 //    tog_dyn_init_val = tog_dyn_fields.val();
 //    tog_dyn_fields.parent().children('.toggleable-dynamic-field').hide();
