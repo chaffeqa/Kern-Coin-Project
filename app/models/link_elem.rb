@@ -1,8 +1,6 @@
 class LinkElem < ActiveRecord::Base
-  has_one :element, :as => :elem, :dependent => :destroy
   belongs_to :node
   belongs_to :image, :class_name => 'Ckeditor::Picture'
-  accepts_nested_attributes_for :element
 
   has_attached_file :link_file,
     :url => '/site_assets/files/link_file_:id.:extension',

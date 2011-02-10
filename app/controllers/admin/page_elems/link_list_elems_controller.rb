@@ -1,11 +1,13 @@
 class Admin::PageElems::LinkListElemsController < ApplicationController
   layout 'admin'
-  before_filter :get_node, :check_admin
+  before_filter :check_admin, :except => :file
+  before_filter :get_node
 
 
   def new
     @link_list_elem = LinkListElem.new
     @link_list_elem.build_element(:page_area => params[:page_area], :display_title => true)
+    @link_elem = @link_list_elem.link_elems.build(:link_type => 'Url')
   end
 
 
@@ -34,6 +36,12 @@ class Admin::PageElems::LinkListElemsController < ApplicationController
   def destroy
     @link_list_elem.destroy
     redirect_to(shortcut_path(@node.shortcut), :notice => 'Element successfully destroyed.')
+  end
+
+  def send_link_file
+    redirect_to(:back) if params[:link_id].blank? or not request.post?
+    @link = Link.find(params[:link_id])
+    send_file "#{@link.link_file.path}", :type => @link.link_file_content_type # TODO get x-sendfile => true to work
   end
 
 

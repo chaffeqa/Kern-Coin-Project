@@ -1,6 +1,7 @@
 class Admin::PageElems::LinkElemsController < ApplicationController
   layout 'admin'
-  before_filter :get_node, :check_admin
+  before_filter :check_admin, :except => :file
+  before_filter :get_node
 
   def new
     @link_elem = LinkElem.new(:link_type => 'Url')
@@ -31,10 +32,7 @@ class Admin::PageElems::LinkElemsController < ApplicationController
   end
 
   
-  def file
-    @link = Link.find(params[:id])
-    send_file "#{@link.link_file.path}", :type => @link.link_file_content_type # TODO get x-sendfile => true to work
-  end
+  
 
 
   def destroy

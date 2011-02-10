@@ -8,7 +8,7 @@ class Admin::PageElems::LoginElemsController < ApplicationController
     if @node.page.elements << @element and @element.save
       redirect_to(shortcut_path(@node.shortcut), :notice => "Login Element successfully added!")
     else
-      redirect_to(shortcut_path(@node.shortcut), :alert => "Login Element failsed to be added!")
+      redirect_to(shortcut_path(@node.shortcut), :alert => "Login Element failed to be added!")
     end
   end
 

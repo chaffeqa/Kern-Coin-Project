@@ -43,8 +43,8 @@ KernCoinProject::Application.routes.draw do
       resources :blog_elems, :except => [:index, :show]
       resources :calendar_elems, :except => [:index, :show]
       resources :text_elems, :except => [:index, :show]
-      resources :link_elems, :except => [:index] do
-        post :file, :on => :member
+      resources :link_list_elems, :except => [:index] do
+        post :send_link_file, :on => :member
       end
     end
   end
