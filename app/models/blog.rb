@@ -5,21 +5,18 @@ class Blog < ActiveRecord::Base
   has_many :blog_elems, :through => :blog_elem_links
   
   # Associated Node attributes
-  has_one :node, :as => :page, :dependent => :destroy
+  has_one :node, :as => :page, :dependent => :destroy, :validate => true
   accepts_nested_attributes_for :node
-
-  after_save :update_node
-  validates_presence_of :title
-  validates_uniqueness_of :title
+  before_save :update_node
 #  validates_associated :node
 
   def update_node
     this_node = self.node || self.build_node
-    this_node.title = this_node.title.blank? ? self.title : this_node.title
-    this_node.menu_name = this_node.menu_name.blank? ? self.title : this_node.menu_name
-    this_node.shortcut = this_node.shortcut.blank? ? self.title.parameterize.html_safe : this_node.shortcut
+    self.title = this_node.title.blank? ? self.title : this_node.title
+    this_node.title = self.title
+    this_node.menu_name = self.title
+    this_node.shortcut = self.title.parameterize.html_safe
     this_node.displayed = true
-    this_node.save!
   end
 
 #  def update_node

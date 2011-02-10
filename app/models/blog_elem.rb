@@ -2,7 +2,7 @@ class BlogElem < ActiveRecord::Base
   has_one :element, :as => :elem, :dependent => :destroy
   has_many :blog_elem_links, :dependent => :destroy
   has_many :blogs, :through => :blog_elem_links
-  has_one :blog, :dependent => :destroy
+  has_one :blog, :dependent => :destroy, :validate => true
   accepts_nested_attributes_for :element
   accepts_nested_attributes_for :blog
 
