@@ -12,17 +12,18 @@
 
   <fieldset>
     <%= render :partial => 'admin/page_elems/form_element_fields', :locals => {:f => f} %>
+  </fieldset>
+
   <hr />
 
-    <div class="field"><span class="hint">Add Links to this Link List.</span>
-      <label>Links</label><br />
-    </div>
-    <% f.fields_for :link_elems do |links_form| %>
-      <%= render :partial => 'link_elem', :locals => { :f => links_form } %>
-    <% end %>
-    <%= new_child_fields_template(f, :link_elems)%>
-    <div class="field"><label></label><%= add_child_link "Add Link", :link_elems %></div>
+  <% f.fields_for :link_elems do |links_form| %>
+    <%= render :partial => 'link_elem', :locals => { :f => links_form } %>
+  <% end %>
+  <%= new_child_fields_template(f, :link_elems)%>
+  <div class="field">
+    <label></label>
+    <%= add_child_link "Add Link", :link_elems %>
+  </div>
 
     <%= render :partial => 'admin/submit', :locals => {:f => f, :type => 'element'} %>
-  </fieldset>
 <% end %>
