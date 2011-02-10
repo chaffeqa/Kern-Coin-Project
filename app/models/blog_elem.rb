@@ -1,5 +1,5 @@
 class BlogElem < ActiveRecord::Base
-  has_one :element, :as => :elem, :dependent => :destroy
+  has_one :element, :as => :elem, :dependent => :destroy, :validate => true
   has_many :blog_elem_links, :dependent => :destroy
   has_many :blogs, :through => :blog_elem_links
   has_one :blog, :dependent => :destroy, :validate => true
@@ -21,7 +21,7 @@ class BlogElem < ActiveRecord::Base
 
 
   def persist_title
-    title = element.title || blog.title
+    title = blog.title || element.title
     self.element.title = title if element
     self.blog.title = title if blog
   end
