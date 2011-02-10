@@ -16,7 +16,7 @@ children = @node.children.displayed  %>
   cat_nodes = children.categories %>
 
   <% unless item_nodes.empty? %>
-    <ul class="itemList">
+    <ul class="itemList of clearfix">
       <% item_nodes.each do |item|%>
 	<% if item.display %>
           <%= content_tag_for :li, item do %>
