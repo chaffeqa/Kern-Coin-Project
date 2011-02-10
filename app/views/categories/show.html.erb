@@ -12,7 +12,7 @@ children = @node.children.displayed  %>
 <hr />
 
 <% if children %>
-  <% item_nodes = children.items.order('name DESC')
+  <% item_nodes = children.items.order('items.name DESC')
   cat_nodes = children.categories %>
 
   <% unless item_nodes.empty? %>
