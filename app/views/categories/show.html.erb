@@ -17,6 +17,7 @@ children = @node.children.displayed  %>
 
   <% unless item_nodes.empty? %>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ul class="itemList cf clearfix">
       <% item_nodes.each do |child|%>
 	<% if child.page.display %>
@@ -26,6 +27,9 @@ children = @node.children.displayed  %>
             <p class="cost"><%= number_to_currency(child.page.cost) %></p>
 =======
     <ul class="itemList">
+=======
+    <ul class="itemList of clearfix">
+>>>>>>> 0663294f7db597fd77a2a0822ad83604da2d3d2e
       <% item_nodes.each do |item|%>
 	<% if item.display %>
           <%= content_tag_for :li, item do %>
