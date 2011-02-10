@@ -12,10 +12,11 @@ children = @node.children.displayed  %>
 <hr />
 
 <% if children %>
-  <% item_nodes = children.items.order('nodes.title DESC')
+  <% item_nodes = children.items.page.order('items.title DESC')
   cat_nodes = children.categories %>
 
   <% unless item_nodes.empty? %>
+<<<<<<< HEAD
     <ul class="itemList cf clearfix">
       <% item_nodes.each do |child|%>
 	<% if child.page.display %>
@@ -23,6 +24,15 @@ children = @node.children.displayed  %>
             <div class="thumbnail"> <%= link_to image_tag(child.page.thumbnail_image ? child.page.thumbnail_image : "no_image_thumb.gif"), shortcut_path(child.shortcut) %> </div>
             <p class="title"><%= link_to (child.page.name + " " + child.page.item_id), shortcut_path(child.shortcut) %></p>
             <p class="cost"><%= number_to_currency(child.page.cost) %></p>
+=======
+    <ul class="itemList">
+      <% item_nodes.each do |item|%>
+	<% if item.display %>
+          <%= content_tag_for :li, item do %>
+            <div class="thumbnail"> <%= link_to image_tag(item.thumbnail_image ? item.thumbnail_image : "no_image_thumb.gif"), shortcut_path(item.nodes.where(:parent_id => @node).shortcut) %> </div>
+            <p class="title"><%= link_to (item.name + " " + item.item_id), shortcut_path(item.nodes.where(:parent_id => @node).shortcut) %></p>
+            <p class="cost"><%= number_to_currency(item.cost) %></p>
+>>>>>>> be36f4425090ab42bde1b51c19a10a357a1ed8de
           <% end %>
 	<% end %>
       <% end %>
