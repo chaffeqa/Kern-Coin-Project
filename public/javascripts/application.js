@@ -90,14 +90,21 @@ $(function() {
 /* Toggles dynamic fields based on a <select> field's value */
 function init_dynamic_fields() {
     tog_dyn_fields = $('form select.toggle-dynamic-fields');
-    tog_dyn_init_val = tog_dyn_fields.val();
-    tog_dyn_fields.parent().children('.toggleable-dynamic-field').hide();
-    tog_dyn_fields.parent().children('.toggleable-dynamic-field.' + tog_dyn_init_val ).show();
+    tog_dyn_fields.each( function(){
+        var init_val = $(this).val();
+        $(this).parent().children('.toggleable-dynamic-field').hide();
+        $(this).parent().children('.toggleable-dynamic-field.' + init_val ).show();
+    });
+//    tog_dyn_init_val = tog_dyn_fields.val();
+//    tog_dyn_fields.parent().children('.toggleable-dynamic-field').hide();
+//    tog_dyn_fields.parent().children('.toggleable-dynamic-field.' + tog_dyn_init_val ).show();
 }
 
 /* Toggles fields based on this field's value */
 function init_toggleable_fields() {
     tog_fields = $('form input.toggle-fields');
-    var hide = tog_fields.val() == '0';
-    tog_fields.parent().parent().children('.toggleable-field').toggle(hide);
+    tog_fields.each( function(){
+        var hide = $(this).val() == '0';
+        $(this).parent().parent().children('.toggleable-field').toggle(hide);
+    });
 }
