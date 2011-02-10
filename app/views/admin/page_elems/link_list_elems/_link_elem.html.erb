@@ -1,0 +1,54 @@
+<% home_node = Node.root%>
+
+<div class="child-field">
+
+  <div class="field">
+    <%= f.label :link_name %><br />
+    <%= f.text_field :link_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :link_type %><br />
+    <%= f.select :link_type, LinkElem.link_type_options, {}, :class => 'toggle-dynamic-fields' %> &nbsp;
+
+    <span class="toggleable-dynamic-field File field">
+      <%= f.file_field :link_file %> &nbsp; <%= f.label :link_file, 'Upload File' %>
+    </span>
+    <span class="toggleable-dynamic-field Page field">
+      <%= f.select :node_id, options_for_select([[home_node.menu_name,home_node.id]] + dynamic_pages_options_tree_recursive(home_node, ""), "Home") %>
+    </span>
+    <span class="toggleable-dynamic-field Url field">
+      <%= f.text_field :link_url %>
+    </span>
+
+  </div>
+  
+  <fieldset>
+    <div class="field">
+      <%=  f.check_box :is_image, :class => 'toggle-fields' %> &nbsp;
+      <%= f.label :is_image, 'Make this link an image?' %>
+    </div>
+    <div class="toggleable-field field ">
+<%#= render :partial => 'admin/site_assets/select_site_image', :locals => {:form => f}     IF RUNNING OFF OF SITE ASSETS #TODO %>
+      <%= f.label :image_style, 'Style applied to img tag:' %><br/>
+      <%= f.text_field :image_style %>
+    </div>
+    <div class="toggleable-field field">
+      <%= f.label :img_src, 'Image name (as stored in the /image directory on the server):' %><br/>
+      <%= f.text_field :img_src %>
+    </div>
+  </fieldset>
+
+  <div class="field">
+    <%= f.check_box :target, {}, '_blank', '' %>
+    <%= f.label :target, "Open Link in New Window?" %>
+  </div>
+
+  <% if f.object.new_record? %>
+    <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-new-child' %>
+  <% else %>
+    <%= link_to "Remove", 'javascript:void(0)', :class => 'remove-old-child' %>
+    <%= f.hidden_field :_destroy, :class => 'destroy-field', :value => '0' %>
+  <% end %>
+</div>
+<hr />

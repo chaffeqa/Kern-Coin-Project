@@ -1,0 +1,17 @@
+<% if admin? %>
+  <span class="controls">
+    <%= link_to 'Edit', edit_admin_link_list_elem_path(elem), :class => 'btn small' %>
+    <%= link_to image_tag("delete.png", :alt => 'X'), admin_link_list_elem_path(elem) , :confirm => "Are you sure you wish to delete this element?", :method => :delete, :class => 'control' %>
+    <%= render :partial => 'elements/element_controls', :locals => {:element => elem.element} %>
+  </span>
+<% end %>
+
+<% if elem.element.display_title %><h1 class="title  <%= elem.element.html_id %> "><%= elem.element.title %></h1><% end %>
+
+<ul class="link_list_elem">
+  <% elem.link_elems.each do |link| %>
+    <%= content_tag_for :li, link do %>
+      <%= render :partial => 'elem_partials/link', :locals => {:link => link} %>
+    <% end %>
+  <% end %>
+</ul>

@@ -7,6 +7,9 @@ $(function() {
         var new_id = new Date().getTime();
 
         $(this).parent().before(content.replace(regexp, new_id));
+        
+        init_dynamic_fields();      // Sanatize forms Jquery
+        init_toggleable_fields();   // Sanatize forms Jquery
         return false;
     });
 
@@ -20,6 +23,40 @@ $(function() {
         $(this).parents('.child-field').hide();
         return false;
     });
+
+    
+    /* Toggles fields based on this field's value
+     * DOM Structure:
+     * <div>
+     *      <div>
+     *          <input.togge-fields>
+     *      </div>
+     *      <div.toggleable-field>
+     *          ...
+     *      </div>
+     * </div>
+     * */
+    init_toggleable_fields();
+    $('form input.toggle-fields').live('change', function() {
+        val = $(this).val();
+        $(this).parent().parent().children('.toggleable-field').toggle(val);
+    })
+
+    /* Toggles dynamic fields based on a <select> field's value
+     * DOM Structure:
+     *      <div>
+     *          <select.toggle-dynamic-fields>
+     *      </div>
+     *      <div.toggleable-dynamic-field>
+     *          ...
+     *      </div>
+     * */
+    init_dynamic_fields();
+    $('form select.toggle-dynamic-fields').live('change', function() {
+        val = $(this).val();
+        $(this).parent().children('.toggleable-dynamic-field').hide();
+        $(this).parent().children('.toggleable-dynamic-field.' + val ).show();
+    })
 
     
 
@@ -45,3 +82,22 @@ $(function() {
 
 
 
+/* //////////////////////////////////////////////////////
+ *  Helper Methods
+ * //////////////////////////////////////////////////////
+
+
+/* Toggles dynamic fields based on a <select> field's value */
+function init_dynamic_fields() {
+    tog_dyn_fields = $('form select.toggle-dynamic-fields');
+    tog_dyn_init_val = tog_dyn_fields.val();
+    tog_dyn_fields.parent().children('.toggleable-dynamic-field').hide();
+    tog_dyn_fields.parent().children('.toggleable-dynamic-field.' + tog_dyn_init_val ).show();
+}
+
+/* Toggles fields based on this field's value */
+function init_toggleable_fields() {
+    tog_fields = $('form input.toggle-fields');
+    var hide = tog_fields.val() == '0';
+    tog_fields.parent().parent().children('.toggleable-field').toggle(hide);
+}

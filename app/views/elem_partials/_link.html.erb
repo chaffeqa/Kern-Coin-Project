@@ -1,0 +1,9 @@
+<% if link.link_type == "Url" %>
+  <%= link_to (link.is_image ? image_tag(link.img_src, :alt => link.link_name, :style => link.image_style) : link.link_name), link.link_url, :target => link.target %>
+<% end %>
+<% if link.link_type == "Page" %>
+  <%= link_to (link.is_image ? image_tag(link.img_src, :alt => link.link_name, :style => link.image_style) : link.link_name), link.node.url, :target => link.target %>
+<% end %>
+<% if link.link_type == "File" %>
+  <%= link_to (link.is_image ? image_tag(link.img_src, :alt => link.link_name, :style => link.image_style) : link.link_name), send_link_file_admin_link_list_elem_path(link.link_list_elem, :link_id => link), :method => :post, :target => link.target %>
+<% end %>

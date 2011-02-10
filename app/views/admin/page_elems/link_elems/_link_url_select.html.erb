@@ -1,7 +1,0 @@
-<% if @link_elem.link_type == "File" %>
-  <%= f.file_field :link_file %> &nbsp; <%= f.label :link_file, 'Upload File' %>
-<% elsif @link_elem.link_type == "Page" %>
-  <%= f.select :node_id, options_for_select([[@home_node.menu_name,@home_node.id]] + options_tree_recursive(@home_node, ""), "Home") %>
-<% else %>
-  <%= f.text_field :link_url %>
-<% end %>
