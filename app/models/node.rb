@@ -15,15 +15,13 @@ class Node < ActiveRecord::Base
   ###########
 
   #Validations
-  validates_presence_of :shortcut, :message => 'URL cannot be blank.'
-  validates_presence_of :title
-  validates_presence_of :menu_name
-  validate :shortcut_html_safe?
+  validate :basic_validations
   validate :check_unique_shortcut?
   #  validate :ensure_unique_root_node
 
   #Callbacks
-  before_validation :fill_missing_fields
+  # NOTE: dont need if basic_validations works!
+#  before_validation :fill_missing_fields
 
   # Ensures the fields for this node are all filled, and if not, attempts to fill them
   def fill_missing_fields
@@ -58,10 +56,16 @@ class Node < ActiveRecord::Base
   end
 
   # Checks the shortcut to ensure the string is HTML safe.
-  def shortcut_html_safe?
-    errors.add(:shortcut, "Shortcut cannot contain spaces") if shortcut.include? " "
-    errors.add(:shortcut, "Shortcut cannot contain slashes") if shortcut.include? "/"
-    errors.add(:shortcut, "Shortcut cannot contain '?'") if shortcut.include? "?"
+  def basic_validations
+    if title.blank?
+      errors.add(:title, 'Title cannot be blank.')
+    else
+      self.menu_name = self.title if menu_name.blank?
+      self.shortcut = self.title.parameterize.html_safe if shortcut.blank?
+      errors.add(:shortcut, "Shortcut cannot contain spaces") if shortcut.include? " "
+      errors.add(:shortcut, "Shortcut cannot contain slashes") if shortcut.include? "/"
+      errors.add(:shortcut, "Shortcut cannot contain '?'") if shortcut.include? "?"
+    end
   end
 
 

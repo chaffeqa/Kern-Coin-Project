@@ -10,11 +10,11 @@ class Item < ActiveRecord::Base
   has_many :categories, :finder_sql =>
     'SELECT cats.* FROM categories AS cats
     JOIN nodes AS parent_n ON parent_n.page_id = cats.id AND parent_n.page_type = "Category"
-    JOIN nodes AS item_n ON parent_n.id = item_n.parent_id 
+    JOIN nodes AS item_n ON parent_n.id = item_n.parent_id
     WHERE item_n.page_id = #{id} AND item_n.page_type = "Item"'
-  has_many :nodes, :as => :page, :dependent => :destroy
+  has_many :nodes, :as => :page, :dependent => :destroy, :validate => true
   accepts_nested_attributes_for :nodes, :allow_destroy => true, :reject_if => proc { |attributes| attributes['parent_id'].blank? }
-  
+
 
 
   ####################################################################
@@ -30,20 +30,9 @@ class Item < ActiveRecord::Base
   after_save :cat_update_item_count
   after_destroy :full_item_counts_update
 
-  # updates the attributes for each node for this item
-  def update_nodes
-    incr = 0
-    self.nodes.each do |node|
-      node.title =  self.name
-      node.menu_name =  self.name
-      incr = (node.new_record? ? node.set_safe_shortcut(self.name.parameterize.html_safe, 0, incr) : node.set_safe_shortcut(self.name.parameterize.html_safe, node.id, incr))
-      node.displayed = self.display
-      incr += 1
-#      puts "Updating node: #{node.title}, new record: #{node.new_record?}... set URL: #{node.shortcut}"
-    end
-  end
-  
-  
+
+
+
 
 
   ####################################################################
@@ -67,6 +56,34 @@ class Item < ActiveRecord::Base
   ####################################################################
   # Helpers
   ###########
+
+  # Allows overriding of the self.node lookup
+  alias_method :original_nodes, :nodes
+
+
+  # updates the attributes for each node for this item
+  def update_nodes
+    incr = 0
+    self.original_nodes.build(:displayed => true) if not new_record? and self.original_nodes.count == 0  # Insure at least 1 node
+    self.original_nodes.each do |node|
+      node.title =  self.name
+      node.menu_name =  self.name
+      incr = (node.new_record? ? node.set_safe_shortcut(self.name.parameterize.html_safe, 0, incr) : node.set_safe_shortcut(self.name.parameterize.html_safe, node.id, incr))
+      node.displayed = self.display
+      incr += 1
+    end
+  end
+
+
+  # Overrides regular accessor to prevent errors if self.node doesn't exists
+  def nodes
+    if self.original_nodes.count == 0 and not new_record?
+      self.save # Triggers callback of update_node
+    end
+    self.original_nodes
+  end
+
+
   def thumbnail_image
     self.main_image ? self.main_image.thumbnail_image : 'no_image_thumb.gif'
   end
@@ -103,3 +120,4 @@ class Item < ActiveRecord::Base
 
 
 end
+

@@ -3,7 +3,7 @@ class Admin::ItemsController < ApplicationController
   layout 'admin'
   before_filter :check_admin
   before_filter :persist_filter_parameters
-  
+
   def index
     @items = Item.scoped
     @items = @items.scope_display(@full_params[:displayed]) unless @full_params[:displayed].blank?
@@ -19,7 +19,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.nodes.build(:displayed => true)
+    @item.nodes.build(:displayed => true) unless @item.nodes.count > 0
   end
 
   def edit
@@ -113,3 +113,4 @@ class Admin::ItemsController < ApplicationController
   end
 
 end
+

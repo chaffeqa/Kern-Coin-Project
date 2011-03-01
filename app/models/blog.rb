@@ -1,17 +1,38 @@
 class Blog < ActiveRecord::Base
+
+  ####################################################################
+  # Associations
+  ###########
   has_many :posts
   belongs_to :blog_elem
   has_many :blog_elem_links, :dependent => :destroy
   has_many :blog_elems, :through => :blog_elem_links
 
+
+  ####################################################################
+  # Validations and Callbacks
+  ###########
+
   # Associated Node attributes
   has_one :node, :as => :page, :dependent => :destroy, :validate => true
   accepts_nested_attributes_for :node
   before_save :update_node
-#  validates_associated :node
 
+
+
+
+
+  ####################################################################
+  # Helpers
+  ###########
+
+  # Allows overriding of the self.node lookup
+  alias_method :original_node, :node
+
+
+  # Updates this Object's Node, setting all the attributes correctly and creating the node if need be
   def update_node
-    this_node = self.node || self.build_node
+    this_node = self.original_node || self.build_node
     self.title = this_node.title.blank? ? self.title : this_node.title
     this_node.title = self.title
     this_node.menu_name = self.title
@@ -21,35 +42,12 @@ class Blog < ActiveRecord::Base
 
   # Overrides regular accessor to prevent errors if self.node doesn't exists
   def node
-    unless self.node
+    unless self.original_node
       self.save # Triggers callback of update_node
     end
-    super
+    self.original_node
   end
 
-#  def update_node
-#    self.default_node
-#    self.node.parent = Node.blog_node if ( self.node and not self.node.parent )
-#    self.node.save!
-#  end
-#
-#  def default_node
-#    unless self.node
-#      self.create_node({
-#          :title => self.title,
-#          :menu_name => self.title,
-#          :displayed => true,
-#          :shortcut => self.title.parameterize.html_safe
-#        })
-#    else
-#      self.node.update_attributes(
-#        :title => self.title,
-#        :menu_name => self.title,
-#        :displayed => true,
-#        :shortcut => self.title.parameterize.html_safe
-#      )
-#    end
-#  end
 
 end
 
