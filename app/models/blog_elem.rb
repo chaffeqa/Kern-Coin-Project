@@ -12,7 +12,7 @@ class BlogElem < ActiveRecord::Base
     "List with Body"
   ]
 
-  
+
 
   #  validates_numericality_of :limit
   validates :display_type, :inclusion => { :in => DISPLAY_TYPE }
@@ -21,8 +21,11 @@ class BlogElem < ActiveRecord::Base
 
 
   def persist_title
-    self.element.title = blog.title
-    self.element.save
+    puts self.blog.title
+    if self.element
+      self.element.title = self.blog.title
+      self.element.save
+    end
   end
 
   def self.display_type_select
@@ -33,3 +36,4 @@ class BlogElem < ActiveRecord::Base
     self.display_type.downcase.gsub(" ", "_")
   end
 end
+

@@ -21,7 +21,7 @@ class Node < ActiveRecord::Base
   validate :shortcut_html_safe?
   validate :check_unique_shortcut?
   #  validate :ensure_unique_root_node
-  
+
   #Callbacks
   before_validation :fill_missing_fields
 
@@ -63,7 +63,7 @@ class Node < ActiveRecord::Base
     errors.add(:shortcut, "Shortcut cannot contain slashes") if shortcut.include? "/"
     errors.add(:shortcut, "Shortcut cannot contain '?'") if shortcut.include? "?"
   end
-  
+
 
   ####################################################################
   # Scopes
@@ -75,7 +75,7 @@ class Node < ActiveRecord::Base
   scope :calendars, where(:page_type => 'Calendar')
   scope :items, where(:page_type => 'Item')
   scope :no_items, where("page_type != 'Item' OR page_type IS NULL")
-  
+
   def self.home
     self.where('shortcut LIKE ?', 'Home').count == 1 ? self.root.where('shortcut LIKE ?', 'Home') : nil
   end
@@ -136,7 +136,7 @@ class Node < ActiveRecord::Base
   private
   # Actual behind the scenes ordering of the Node tree
   def self.order_helper( json, position = 0, parent_id = nil)
-    json.each do |hash|  
+    json.each do |hash|
       node_id = hash['attr']['id'].delete('node_')
       Node.update_all(['position = ?, parent_id = ?', position, parent_id], ['id = ?', node_id])
       position += 1
@@ -148,3 +148,4 @@ class Node < ActiveRecord::Base
   end
 
 end
+

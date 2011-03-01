@@ -1,5 +1,6 @@
 home_page = DynamicPage.create(:template_name => 'Home', :node_attributes=>{:menu_name => 'Home', :title => 'Home', :shortcut => 'Home', :displayed => true})
 home_node = home_page.node
+home_page.node.save!
 blogs_node = home_node.children.create(:menu_name => 'Blogs', :title => 'Blogs', :shortcut => 'Blogs', :displayed => false)
 calendars_node = home_node.children.create(:menu_name => 'Calendars', :title => 'Calendars', :shortcut => 'Calendars', :displayed => false)
 
@@ -27,7 +28,7 @@ bid_element.elem = TextElem.create(:text => '<p>
       that allows our loyal customers to bid on rare,
       unique and valuable coins!
     </p><a href="/auction"><img src="/site_assets/images/2/content_view-auctions.png" alt="View Current Auctions" /></a>')
-bid_element.save! 
+bid_element.save!
 
 special_offers_element = home_page.elements.create(:page_area => 4, :title => 'Special Offers', :display_title => false)
 special_offers_element.elem = TextElem.create(:text => '<p>
@@ -77,11 +78,11 @@ about_us_element.save!
 
 
 recent_news_element = home_page.elements.create(:page_area => 6, :title => 'Recent News', :display_title => true)
-recent_news_element.elem = BlogElem.create!(:count_limit => 5, :display_type => 'Archive')
-recent_news_element.save!
+recent_news_element.elem = BlogElem.create(:count_limit => 5, :display_type => 'Archive', :blog_attributes=>{:title => 'Recent News'})
+recent_news_element.save
 recent_news_link_element = home_page.elements.create(:page_area => 6,  :title => 'Recent News Archive', :display_title => false)
 recent_news_link_element.elem = TextElem.create(:text => '<a href="/Archives"><img style="float: right; margin-top: 19px;" src="/site_assets/images/5/content_view-archive.png" alt="View News Archive" /></a>')
-recent_news_link_element.save!
+recent_news_link_element.save
 
 
 admin_node = home_node.children.create(:menu_name => 'Administrative', :title => 'Administrative', :shortcut => 'admin', :displayed => false)
@@ -121,7 +122,7 @@ inventory_categories = Category.create([
     { :title => 'U.S. Treasures', :node_attributes=>{:menu_name => 'U.S. Treasures', :title => 'U.S. Treasures', :shortcut => 'US-Treasures', :displayed => true} },
     { :title => 'U.S. Medals and Awards', :node_attributes=>{:menu_name => 'U.S. Medals and Awards', :title => 'U.S. Medals and Awards', :shortcut => 'US-Medals-and-Awards', :displayed => true} }
   ])
-inventory_categories.each do |category| 
+inventory_categories.each do |category|
   inventory.node.children << category.node
 end
 
@@ -303,4 +304,6 @@ foreign_strait_categories.each do |category|
   foreign_strait.node.children << category.node
 end
 
+# Sets the category counts
+Category.full_item_counts_update
 

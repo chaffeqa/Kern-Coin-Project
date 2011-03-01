@@ -16,12 +16,12 @@ class Category < ActiveRecord::Base
     JOIN nodes AS cat_node ON item_node.parent_id = cat_node.id
     WHERE cat_node.page_id = #{id} AND cat_node.page_type = "Category"
     AND item.display = 1'
-  
-  
+
+
   # Associated Node attributes
   has_one :node, :as => :page, :dependent => :destroy
   accepts_nested_attributes_for :node
-  
+
   has_attached_file :image,
     :url  => "/site_assets/categories/:id/image_:style.:extension",
     :path => ":rails_root/public/site_assets/categories/:id/image_:style.:extension",
@@ -42,7 +42,7 @@ class Category < ActiveRecord::Base
     self.node.title =  self.title
     self.node.menu_name = self.title
 #    self.node.displayed = self.has_items?
-    self.node.shortcut = self.title.parameterize.html_safe  
+    self.node.shortcut = self.title.parameterize.html_safe
   end
 
   # Decrements the item count and asks parent to do the same
@@ -63,7 +63,7 @@ class Category < ActiveRecord::Base
     end
   end
 
-  # Sets the item_count of this category to the correct value. 
+  # Sets the item_count of this category to the correct value.
   #   Returns true if the item_count value did not change, False otherwise.
   def set_item_count
     temp_item_count = 0
@@ -92,7 +92,7 @@ class Category < ActiveRecord::Base
     return false
   end
 
-  # Returns the root category 
+  # Returns the root category
   def self.get_inventory
     self.where(:title => 'Inventory').first
   end
@@ -151,8 +151,9 @@ class Category < ActiveRecord::Base
     inventory_category = Category.get_inventory
     inventory_category.set_item_counts
   end
- 
+
   #############################
   #############################
 
 end
+

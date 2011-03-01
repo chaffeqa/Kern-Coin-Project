@@ -3,7 +3,7 @@ class Blog < ActiveRecord::Base
   belongs_to :blog_elem
   has_many :blog_elem_links, :dependent => :destroy
   has_many :blog_elems, :through => :blog_elem_links
-  
+
   # Associated Node attributes
   has_one :node, :as => :page, :dependent => :destroy, :validate => true
   accepts_nested_attributes_for :node
@@ -17,6 +17,14 @@ class Blog < ActiveRecord::Base
     this_node.menu_name = self.title
     this_node.shortcut = self.title.parameterize.html_safe
     this_node.displayed = true
+  end
+
+  # Overrides regular accessor to prevent errors if self.node doesn't exists
+  def node
+    unless self.node
+      self.save # Triggers callback of update_node
+    end
+    super
   end
 
 #  def update_node
@@ -42,5 +50,6 @@ class Blog < ActiveRecord::Base
 #      )
 #    end
 #  end
-  
+
 end
+
