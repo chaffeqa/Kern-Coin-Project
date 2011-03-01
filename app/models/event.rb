@@ -24,10 +24,10 @@ class Event < ActiveRecord::Base
   # Updates this Object's Node, setting all the attributes correctly and creating the node if need be
   def update_node
     this_node = self.original_node || self.build_node
-    self.title = this_node.title.blank? ? self.title : this_node.title
-    this_node.title = self.title
-    this_node.menu_name = self.title
-    this_node.shortcut = self.title.parameterize.html_safe
+    self.name = this_node.title.blank? ? self.name : this_node.title
+    this_node.title = self.name
+    this_node.menu_name = self.name
+    this_node.shortcut = self.name.parameterize.html_safe
     this_node.displayed = true
   end
 
