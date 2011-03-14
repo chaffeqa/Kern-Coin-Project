@@ -25,7 +25,7 @@ class Category < ActiveRecord::Base
   has_attached_file :image,
     :url  => "/site_assets/categories/:id/image_:style.:extension",
     :path => ":rails_root/public/site_assets/categories/:id/image_:style.:extension",
-    :styles => { :thumb => ['112x112#', :gif] }
+    :styles => { :thumb => ['112x112#', :png] }
 
   ####################################################################
   # Validations and Callbacks
