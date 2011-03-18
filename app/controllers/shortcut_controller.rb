@@ -1,6 +1,6 @@
 class ShortcutController < ApplicationController
   before_filter :get_node, :only => :route
-  
+
   def route
     if not @node.displayed and not admin?
       error_redirect('The ' + @node.page_type.capitalize + ' you are trying to view is no longer publicly listed.')
@@ -35,7 +35,7 @@ class ShortcutController < ApplicationController
     @message = params[:message]
     @shortcut = params[:shortcut]
     if @shortcut
-      @similar_nodes = Node.displayed.where(["shortcut LIKE ?", "%"+@shortcut+"%"])
+      @similar_nodes = Node.displayed.where(["UPPER(shortcut) LIKE UPPER(?)", "%"+@shortcut+"%"])
     end
     render('error_page/error')
   end
@@ -48,3 +48,4 @@ class ShortcutController < ApplicationController
   end
 
 end
+

@@ -5,12 +5,12 @@ KernCoinProject::Application.routes.draw do
   match "error" => 'shortcut#error', :as => :error
 
   devise_for :admins
-  
+
   resources :elements, :only => [:destroy] do
     post :move_up, :on => :member
     post :move_down, :on => :member
   end
-  
+
 
   # Questions for 'Contact Us'
   resources :questions, :only => [:new, :create]
@@ -53,11 +53,13 @@ KernCoinProject::Application.routes.draw do
 
   match ':shortcut(/:year(/:month))' => 'shortcut#route', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   match 'Inventory/item_list' => 'inventory#list', :as => :inventory_list
-  
+
 #  match '/admin/:controller/:action(/:id)'
 #  match '/:controller/:action(/:id)'
   match ':shortcut' => 'shortcut#route', :as => :shortcut
   match ':shortcut/:page_area/new_element' => 'dynamic_pages#new_element', :as => :new_element
+  match '/*shortcut' => 'shortcut#route'
 
-  
+
 end
+
