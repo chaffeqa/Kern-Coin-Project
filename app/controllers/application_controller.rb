@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def get_home_node
     unless @home_node
-      @home_node = Node.root
+      @home_node = Node.home
       if @home_node.nil?
         create_home_node
       end

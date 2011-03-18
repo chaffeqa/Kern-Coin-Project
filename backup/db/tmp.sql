@@ -2795,7 +2795,6 @@ INSERT INTO `posts` VALUES (13,'CoinWorld - The World Certified','<p>\r\n	<a cla
 INSERT INTO `posts` VALUES (14,'CoinWorld - USA Fun Stuff','<p>\r\n	<a class=\"attach_pdf?1292423209\" href=\"/site_assets/files/19/2006_usa.pdf?1292423209\" title=\"Download PDF File &gt;\">Download PDF File &gt;</a></p>\r\n',6,'2010-12-15 14:27:00','2010-12-15 14:27:00','2006-06-05 00:00:00');
 INSERT INTO `posts` VALUES (15,'CoinWorld - The Holy Land and Christianity ','<p>\r\n	<a class=\"attach_pdf?1292423450\" href=\"/site_assets/files/20/2006_may29_pg1.pdf?1292423450\" title=\"2006_may29_pg1.pdf?1292423450\">Download PDF File &gt; (Page 1)</a><br />\r\n	<a class=\"attach_pdf?1292423676\" href=\"/site_assets/files/21/2006_may29_pg2.pdf?1292423676\" title=\"2006_may29_pg2.pdf?1292423676\">Download PDF File &gt; (Page 2)</a><br />\r\n	<a class=\"attach_pdf?1292424010\" href=\"/site_assets/files/22/2006_may29_pg3.pdf?1292424010\" title=\"2006_may29_pg3.pdf?1292424010\">Download PDF File &gt; (Page 3)</a></p>\r\n',6,'2010-12-15 14:40:58','2010-12-15 14:55:31','2006-05-29 00:00:00');
 INSERT INTO `posts` VALUES (16,'CoinWorld - World','<p>\r\n	<a class=\"attach_pdf?1292424359\" href=\"/site_assets/files/23/2006_may22_pg1.pdf?1292424359\" title=\"2006_may22_pg1.pdf?1292424359\">Download PDF File &gt; (Page 1)</a><br />\r\n	<a class=\"attach_pdf?1292424787\" href=\"/site_assets/files/24/2006_may22_pg2.pdf?1292424787\" title=\"2006_may22_pg2.pdf?1292424787\">Download PDF File &gt; (Page 2)</a></p>\r\n',6,'2010-12-15 14:54:06','2010-12-15 14:54:06','2006-05-22 00:00:00');
-INSERT INTO `posts` VALUES (18,'Current News','<p>\r\n	<a href=\"/site_assets/files/26/COIN WORLD FEB, 2011 PG1.pdf\" target=\"_blank\">Coin World February 2011, Page 1</a></p>\r\n',7,'2011-02-10 00:50:14','2011-02-10 00:50:14','2011-02-10 00:00:00');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4088,4 +4087,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-03-18 17:15:05
+-- Dump completed on 2011-03-18 18:15:16
