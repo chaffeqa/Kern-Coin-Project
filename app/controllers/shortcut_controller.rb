@@ -32,12 +32,13 @@ class ShortcutController < ApplicationController
   end
 
   def error
+    request.format
     @message = params[:message]
     @shortcut = params[:shortcut]
     if @shortcut
       @similar_nodes = Node.displayed.where(["UPPER(shortcut) LIKE UPPER(?)", "%"+@shortcut+"%"])
     end
-    render('error_page/error')
+    render('error_page/error', :format => :html)
   end
 
   private

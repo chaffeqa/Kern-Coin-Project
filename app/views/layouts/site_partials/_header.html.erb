@@ -1,11 +1,16 @@
-<ul id="skipTo">
-  <li><a href="#navigation" title="Skip to Navigation" accesskey="n" tabindex="1">Skip to Navigation</a></li>
-  <li><a href="#content" title="Skip to Content" accesskey="c" tabindex="2">Skip to Content</a></li>
-</ul>
+<% cache('header_nodes_cache') do %>
+  <ul id="skipTo">
+    <li><a href="#navigation" title="Skip to Navigation" accesskey="n" tabindex="1">Skip to Navigation</a></li>
+    <li><a href="#content" title="Skip to Content" accesskey="c" tabindex="2">Skip to Content</a></li>
+  </ul>
 
-<header class="clearfix">
-  <div id="wrapper">
-    <%= render :partial => 'layouts/site_partials/contact_info' %>
-    <h1 id="logo"><%= link_to (image_tag "logo.png", :alt => "logo"), :root %></h1>
-  </div>
-</header>
+  <header class="clearfix">
+    <div id="wrapper">
+      <%= render :partial => 'layouts/site_partials/contact_info' %>
+      <h1 id="logo"><%= link_to (image_tag "logo.png", :alt => "logo"), :root %></h1>
+    </div>
+  </header>
+
+  <%= render :partial => 'layouts/site_partials/nav_menu' %>
+<% end %>
+

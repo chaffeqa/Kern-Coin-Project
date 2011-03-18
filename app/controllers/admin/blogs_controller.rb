@@ -3,6 +3,7 @@ class Admin::BlogsController < ApplicationController
   layout 'admin'
   before_filter :check_admin
   before_filter :get_node, :except => [:new, :create, :index]
+  cache_sweeper :node_sweeper, :only => [:create, :update, :destroy]
 
   def index
     get_home_node
@@ -54,7 +55,7 @@ class Admin::BlogsController < ApplicationController
     @node = @blog.node
     super
   end
- 
+
 
   def sort_column
     @sort = @sort || params[:sort] || ''
@@ -67,3 +68,4 @@ class Admin::BlogsController < ApplicationController
   end
 
 end
+

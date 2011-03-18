@@ -1,5 +1,6 @@
 .bundle
 db/*.sqlite3
+backup
 log/*.log
 tmp/**/*
 db/*.sqlite3_test

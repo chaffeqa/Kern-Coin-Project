@@ -2,6 +2,7 @@ class Admin::QuestionsController < ApplicationController
   helper_method :sort_column, :sort_direction
   layout 'admin'
   before_filter :check_admin
+  cache_sweeper :node_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @questions = Question.paginate :page => params[:page], :order => (sort_column + " " + sort_direction)
@@ -16,7 +17,7 @@ class Admin::QuestionsController < ApplicationController
     @question.destroy
     redirect_to(admin_questions_url, :notice => 'Client messege was successfully destroyed.' )
   end
-  
+
   private
 
   def sort_column
@@ -29,3 +30,4 @@ class Admin::QuestionsController < ApplicationController
     "ASC DESC".include?(@direction) ? @direction : "ASC"
   end
 end
+

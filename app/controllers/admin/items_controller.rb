@@ -3,6 +3,7 @@ class Admin::ItemsController < ApplicationController
   layout 'admin'
   before_filter :check_admin
   before_filter :persist_filter_parameters
+  cache_sweeper :node_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @items = Item.scoped

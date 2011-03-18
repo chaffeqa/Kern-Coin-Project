@@ -2,6 +2,7 @@ class Admin::DynamicPagesController < ApplicationController
   layout 'admin'
   before_filter :check_admin
   before_filter :home_form?, :only => [ :edit, :update, :destroy]
+  cache_sweeper :node_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @dynamic_pages = DynamicPage.paginate :page => params[:page], :order => (params[:order_by].blank? ? 'updated_at DESC' : params[:order_by])
@@ -45,7 +46,7 @@ class Admin::DynamicPagesController < ApplicationController
     redirect_to( admin_dynamic_pages_url, :notice => 'Page was successfully destroyed.'  )
   end
 
-  
+
   def home_form?
     get_home_node
     @dynamic_page = DynamicPage.find(params[:id])
@@ -54,3 +55,4 @@ class Admin::DynamicPagesController < ApplicationController
 #    get_node
   end
 end
+

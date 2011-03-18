@@ -1,6 +1,7 @@
 class Admin::SiteAssetsController < ApplicationController
   layout 'admin'
-    
+  cache_sweeper :node_sweeper, :only => [:create, :update, :destroy]
+
   def create
     @asset = Ckeditor.image_model.create!(params[:asset])
     redirect_to admin_site_assets_path()
@@ -20,3 +21,4 @@ class Admin::SiteAssetsController < ApplicationController
   end
 
 end
+

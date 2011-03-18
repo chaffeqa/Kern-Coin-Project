@@ -3,12 +3,13 @@ class Admin::CategoriesController < ApplicationController
   before_filter :get_node, :except => [:new, :create, :index]
   before_filter :check_admin
   before_filter :edit_inventory_node?, :only => [:new, :edit, :create, :update]
+  cache_sweeper :node_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @inventory = Category.where(:title => 'Inventory').first
   end
 
-  
+
   def new
     @category = Category.new
     @category.build_node(:displayed => true)
@@ -22,7 +23,7 @@ class Admin::CategoriesController < ApplicationController
     if @category.save
       redirect_to(admin_categories_path, :notice => 'Category was successfully Added.')
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -48,7 +49,7 @@ class Admin::CategoriesController < ApplicationController
     @category.node.move_lower
     redirect_to admin_categories_path
   end
-  
+
   private
 
   def get_node
@@ -63,3 +64,4 @@ class Admin::CategoriesController < ApplicationController
   end
 
 end
+

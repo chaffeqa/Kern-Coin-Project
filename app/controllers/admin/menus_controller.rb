@@ -1,6 +1,7 @@
 class Admin::MenusController < ApplicationController
   layout 'admin'
   before_filter :check_admin, :get_home_node
+  cache_sweeper :node_sweeper
 
   def index
   end
@@ -12,3 +13,4 @@ class Admin::MenusController < ApplicationController
 
 
 end
+
