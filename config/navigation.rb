@@ -30,7 +30,7 @@ SimpleNavigation::Configuration.run do |navigation|
     # works for all levels of the menu
     #    menu_level_1.dom_id = 'nav-menu'
     menu_level_1.dom_class = 'nav-menu'
-    @home_node = Node.home
+    @home_node ||= Node.home
 
     menu_level_1.item @home_node.menu_name.to_sym, 'Home', @home_node.url
     @home_node.children.displayed.each do |child_node_1|
