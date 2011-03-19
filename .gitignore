@@ -1,6 +1,7 @@
 .bundle
 db/*.sqlite3
 backup
+backup/**
 log/*.log
 tmp/**/*
 db/*.sqlite3_test
@@ -17,4 +18,16 @@ public/site_assets/images/**
 !public/site_assets/images/3/
 !public/site_assets/images/4/
 !public/site_assets/images/5/
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
 
