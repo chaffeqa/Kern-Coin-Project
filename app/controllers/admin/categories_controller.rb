@@ -3,7 +3,6 @@ class Admin::CategoriesController < ApplicationController
   before_filter :get_node, :except => [:new, :create, :index]
   before_filter :check_admin
   before_filter :edit_inventory_node?, :only => [:new, :edit, :create, :update]
-  cache_sweeper :node_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @inventory = Category.where(:title => 'Inventory').first

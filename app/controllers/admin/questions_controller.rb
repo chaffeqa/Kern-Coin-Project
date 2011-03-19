@@ -2,7 +2,6 @@ class Admin::QuestionsController < ApplicationController
   helper_method :sort_column, :sort_direction
   layout 'admin'
   before_filter :check_admin
-  cache_sweeper :node_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @questions = Question.paginate :page => params[:page], :order => (sort_column + " " + sort_direction)

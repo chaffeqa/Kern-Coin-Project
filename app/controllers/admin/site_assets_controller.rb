@@ -1,6 +1,5 @@
 class Admin::SiteAssetsController < ApplicationController
   layout 'admin'
-  cache_sweeper :node_sweeper, :only => [:create, :update, :destroy]
 
   def create
     @asset = Ckeditor.image_model.create!(params[:asset])
