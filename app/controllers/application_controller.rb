@@ -21,12 +21,9 @@ class ApplicationController < ActionController::Base
 
   def get_node
     get_home_node
-    @node = @node || (Node.where(:shortcut => params[:shortcut]).first if params[:shortcut])
-    if @node
-      @shortcut = @node.shortcut
-    else
-      redirect_to(error_path(:shortcut => params[:shortcut] ))
-    end
+    @shortcut ||= params[:shortcut].blank? ? nil : params[:shortcut]
+    @node ||= Node.find_shortcut(@shortcut)
+    redirect_to(error_path(:shortcut => @shortcut )) unless @node
   end
 
   #TODO
@@ -56,6 +53,7 @@ class ApplicationController < ActionController::Base
       puts "Expiring Cache..."
       expire_fragment(%r{.*\/\d})
       expire_fragment(%r{.*\/index})
+      expire_fragment(%r{.*partial})
     end
   end
 
