@@ -84,6 +84,10 @@ class Node < ActiveRecord::Base
 	  where(:shortcut => 'Home').first
   end
 
+  def self.find_shortcut(shortcut='')
+    where(:shortcut => shortcut).first unless shortcut.blank?
+  end
+
 
   ####################################################################
   # Helpers

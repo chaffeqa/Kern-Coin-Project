@@ -6,7 +6,7 @@
       <li>No similar site locations</li>
     <% else %>
       <% @similar_nodes.each do |node| %>
-        <li><%= node.menu_name %></li>
+        <li><%= link_to node.menu_name, shortcut_path(node.shortcut) %></li>
       <% end %>
     <% end %>
   </ul>
