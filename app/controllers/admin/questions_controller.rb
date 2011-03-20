@@ -16,7 +16,7 @@ class Admin::QuestionsController < ApplicationController
     @question.destroy
     redirect_to(admin_questions_url, :notice => 'Client messege was successfully destroyed.' )
   end
-  
+
   private
 
   def sort_column
@@ -29,3 +29,4 @@ class Admin::QuestionsController < ApplicationController
     "ASC DESC".include?(@direction) ? @direction : "ASC"
   end
 end
+

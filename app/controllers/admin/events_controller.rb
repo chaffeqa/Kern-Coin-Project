@@ -50,3 +50,4 @@ class Admin::EventsController < ApplicationController
     super
   end
 end
+

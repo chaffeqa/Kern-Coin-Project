@@ -1,6 +1,6 @@
 class Admin::SiteAssetsController < ApplicationController
   layout 'admin'
-    
+
   def create
     @asset = Ckeditor.image_model.create!(params[:asset])
     redirect_to admin_site_assets_path()
@@ -20,3 +20,4 @@ class Admin::SiteAssetsController < ApplicationController
   end
 
 end
+

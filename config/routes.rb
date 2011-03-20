@@ -1,6 +1,6 @@
 KernCoinProject::Application.routes.draw do
 
-  root :to => 'shortcut#home'
+  root :to => redirect('/Home')
 
   match "error" => 'shortcut#error', :as => :error
 
@@ -58,7 +58,7 @@ KernCoinProject::Application.routes.draw do
 #  match '/:controller/:action(/:id)'
   match ':shortcut' => 'shortcut#route', :as => :shortcut
   match ':shortcut/:page_area/new_element' => 'dynamic_pages#new_element', :as => :new_element
- # match '/*shortcut' => 'shortcut#route'
+  match '/*unknown' => 'shortcut#error'
 
 
 end

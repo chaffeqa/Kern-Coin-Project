@@ -81,8 +81,7 @@ class Node < ActiveRecord::Base
   scope :no_items, where("page_type != 'Item' OR page_type IS NULL")
 
   def self.home
-    #self.where('shortcut LIKE ?', 'Home').count == 1 ? self.root.where('shortcut LIKE ?', 'Home') : nil
-	where(:shortcut => 'Home').first  
+	  where(:shortcut => 'Home').first
   end
 
 
@@ -136,6 +135,11 @@ class Node < ActiveRecord::Base
   def self.order_tree(json)
     Node.update_all(['position = ?', nil])
     Node.order_helper(json)
+  end
+
+
+  def valid_url?
+    true
   end
 
   private

@@ -45,7 +45,7 @@ class Admin::DynamicPagesController < ApplicationController
     redirect_to( admin_dynamic_pages_url, :notice => 'Page was successfully destroyed.'  )
   end
 
-  
+
   def home_form?
     get_home_node
     @dynamic_page = DynamicPage.find(params[:id])
@@ -54,3 +54,4 @@ class Admin::DynamicPagesController < ApplicationController
 #    get_node
   end
 end
+

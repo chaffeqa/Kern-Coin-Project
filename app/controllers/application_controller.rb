@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all
-  helper_method :get_node, :categories_for_items, :get_home_node, :admin?
-  before_filter :side_panels
+  helper_method :get_node, :categories_for_items, :get_home_node, :admin?, :expire_cache
   layout 'static_page'
 
   def categories_for_items(items = Item.all)
@@ -11,10 +10,7 @@ class ApplicationController < ActionController::Base
 
   def get_home_node
     unless @home_node
-      @home_node = Node.home
-      if @home_node.nil?
-        create_home_node
-      end
+      @home_node = Node.home || create_home_node
     end
     @home_node
   rescue ActiveRecord::RecordNotFound
@@ -42,23 +38,27 @@ class ApplicationController < ActionController::Base
     unless admin?
       redirect_to error_path(:message => 'Unauthorized Access')
     end
+    expire_cache
   end
 
 
-  
+
   private
 
   def create_home_node
-    home_page = DynamicPage.create!(:template_name => 'Home')
-    @home_node = home_page.create_node(:menu_name => 'Home', :title => 'Home', :shortcut => 'home', :displayed => true)
+    home_page = DynamicPage.create(:template_name => 'Home')
+    @home_node = home_page.create_node(:menu_name => 'Home', :title => 'Home', :shortcut => 'Home', :displayed => true)
   end
 
-  
-
-  def side_panels
-    #    @popular_auctions = Auction.list_by_popularity.limit(5)
-    @time = Time.now
+  def expire_cache
+    if admin? and !request.get?
+      # Expires the cached fragments
+      puts "Expiring Cache..."
+      expire_fragment(%r{.*\/\d})
+      expire_fragment(%r{.*\/index})
+    end
   end
 
-  
+
 end
+

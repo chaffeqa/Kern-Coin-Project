@@ -14,7 +14,6 @@
     <% if admin? %><%= render :partial => 'layouts/site_partials/page_admin' %><% end %>
 
     <%= render :partial => 'layouts/site_partials/header' %>
-    <%= render :partial => 'layouts/site_partials/nav_menu' %>
 
     <section id="content" class="clearfix">
       <div id="wrapper">
@@ -35,8 +34,8 @@
 	      <li><%= link_to 'Categories', admin_categories_path %></li>
 	      <li><%= link_to 'Items', admin_items_path %></li>
 	      <li><%= link_to 'Client Messages', admin_questions_path %></li>
-	      <li><%= link_to 'Blogs', admin_blogs_path %></li> 
-	      <li><%= link_to 'Calendars', admin_calendars_path %></li> 
+	      <li><%= link_to 'Blogs', admin_blogs_path %></li>
+	      <li><%= link_to 'Calendars', admin_calendars_path %></li>
 	    </ul>
 	  </div>
 	</section>
@@ -46,3 +45,4 @@
     <%= render :partial => 'layouts/site_partials/footer' %>
   </body>
 </html>
+

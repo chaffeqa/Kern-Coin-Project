@@ -1,17 +1,17 @@
 # Configures your navigation
-SimpleNavigation::Configuration.run do |navigation|  
-  # Specify a custom renderer if needed. 
+SimpleNavigation::Configuration.run do |navigation|
+  # Specify a custom renderer if needed.
   # The default renderer is SimpleNavigation::Renderer::List which renders HTML lists.
-  # The renderer can also be specified as option in the render_navigation call. 
+  # The renderer can also be specified as option in the render_navigation call.
   # navigation.renderer = Your::Custom::Renderer
-  
+
   # Specify the class that will be applied to active navigation items. Defaults to 'selected'
   # navigation.selected_class = 'your_selected_class'
-    
+
   # Item keys are normally added to list items as id.
   # This setting turns that off
   # navigation.autogenerate_item_ids = false
-  
+
   # You can override the default logic that is used to autogenerate the item ids.
   # To do this, define a Proc which takes the key of the current item as argument.
   # The example below would add a prefix to each key.
@@ -53,7 +53,7 @@ SimpleNavigation::Configuration.run do |navigation|
         end
       end
     end
-    
+
     #    menu_level_1.item :inventory, 'Inventory', inventory_category_path(inventory) do |level_1|
     #      inventory.children.displayed.each do |sub_category|
     #        if sub_category.children.displayed.empty?
@@ -74,14 +74,14 @@ SimpleNavigation::Configuration.run do |navigation|
     #    menu_level_1.item :auctions, 'Auctions', home_path
     #    menu_level_1.item :contact_us, 'Contact Us', new_question_path
     #    menu_level_1.item :admin, 'Admin', admin_home_path, :if => Proc.new { admin? }
-   
+
 
 
 
 
     # You can turn off auto highlighting for a specific level
     #    menu_level_1.auto_highlight = false
-    
+
     # Add an item to the menu_level_1 navigation. The following params apply:
     # key - a symbol which uniquely defines your navigation item in the scope of the menu_level_1_navigation
     # name - will be displayed in the rendered navigation. This can also be a call to your I18n-framework.
@@ -100,24 +100,24 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.
     #
     #    menu_level_1.item :key_1, 'name', url, options
-    
+
     # Add an item which has a sub navigation (same params, but with block)
     #    menu_level_1.item :key_2, 'name', url, options do |sub_nav|
     # Add an item to the sub navigation (same params again)
     #      sub_nav.item :key_2_1, 'name', url, options
     #    end
-  
+
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
     #    menu_level_1.item :key_3, 'Admin', url, :class => 'special', :if => Proc.new { current_user.admin? }
     #    menu_level_1.item :key_4, 'Account', url, :unless => Proc.new { logged_in? }
 
-    
-  
+
+
   end
 
- 
+
 
   #  navigation.items do |admin|
   #    admin.item :pages_admin, 'Pages Admin', admin_pages_path
@@ -125,5 +125,6 @@ SimpleNavigation::Configuration.run do |navigation|
   #    admin.item :users_admin, 'Users Admin', admin_users_path
   #    admin.item :categories_pages_admin, 'Categories Admin', admin_categories_path
   #  end
-  
+
 end
+

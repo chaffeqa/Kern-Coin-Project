@@ -54,7 +54,7 @@ class Admin::BlogsController < ApplicationController
     @node = @blog.node
     super
   end
- 
+
 
   def sort_column
     @sort = @sort || params[:sort] || ''
@@ -67,3 +67,4 @@ class Admin::BlogsController < ApplicationController
   end
 
 end
+
