@@ -18,7 +18,6 @@ KernCoinProject::Application.routes.draw do
   resources :questions, :only => [:new, :create]
 
   # Ckeditor file browsing
-  get 'ckeditor/images'
 
 
   # Admin Namespace
@@ -60,10 +59,10 @@ KernCoinProject::Application.routes.draw do
   match 'Inventory/item_list' => 'inventory#list', :as => :inventory_list
 
 #  match '/admin/:controller/:action(/:id)'
-#  match '/:controller/:action(/:id)'
+  match '/:controller/:action', :constraints => {:controller => 'ckeditor'}
   match ':shortcut' => 'shortcut#route', :as => :shortcut
-  match ':shortcut/:page_area/new_element' => 'dynamic_pages#new_element', :as => :new_element
-  match '/*anything' => 'shortcut#error'
+#  match ':shortcut/:page_area/new_element' => 'dynamic_pages#new_element', :as => :new_element
+#  match '/*anything' => 'shortcut#error'
 
 
 end
