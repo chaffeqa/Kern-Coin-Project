@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
     @shortcut ||= params[:shortcut].blank? ? nil : params[:shortcut]
     @node ||= Node.find_shortcut(@shortcut)
     redirect_to(error_path(:shortcut => @shortcut )) unless @node
+    @node
   end
 
   #TODO
