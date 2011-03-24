@@ -37,10 +37,11 @@ class ShortcutController < ApplicationController
   end
 
   def check_shortcut
-    error_redirect() unless request.format == :html
-    get_node
-    # Error for a non-displayed page request
-    error_redirect('The ' + @node.page_type.capitalize || 'page' + ' you are trying to view is no longer publicly listed.') if @node and not @node.displayed and not admin?
+    unless get_node.nil?
+      # Error for a non-displayed page request
+      error_redirect() unless request.format == :html
+      error_redirect('The ' + @node.page_type.capitalize || 'page' + ' you are trying to view is no longer publicly listed.') if @node and not @node.displayed and not admin?
+    end
   end
 
 end
