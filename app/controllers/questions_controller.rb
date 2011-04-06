@@ -13,15 +13,15 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(params[:question])
-    QuestionsMailer.question_submital(@question).deliver
     if @question.save
+      QuestionsMailer.question_submital(@question).deliver rescue  nil
       redirect_to(new_question_path, :notice => 'Question was successfully Submitted.')
     else
       render :action => "new"
     end
   end
 
-  
+
   def update
     @question = Question.find(params[:id])
     if @question.update_attributes(params[:question])
@@ -31,5 +31,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  
+
 end
+
