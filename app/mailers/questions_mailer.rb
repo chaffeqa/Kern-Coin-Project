@@ -1,6 +1,6 @@
 class QuestionsMailer < ActionMailer::Base
 #  default :to => "chaffee.development@gmail.com"
-  default :to => "macklin@inventure.com, dino@jkerncoins.com, john@jkerncoins.com"
+  default :to => "dino@jkerncoins.com, john@jkerncoins.com"
 #  default :to => "dino@jkerncoins.com"
 
   def question_submital(question)
