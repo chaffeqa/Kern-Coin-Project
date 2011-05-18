@@ -7,12 +7,12 @@ tmp/**/*
 db/*.sqlite3_test
 config/database.yml
 schema.rb
-public/ckeditor_assets
+#public/ckeditor_assets
 public/javascripts/kern-javascripts.js
 public/stylesheets/kern-styles.css
-public/site_assets/**
+#public/site_assets/**
 !public/site_assets/images
-public/site_assets/images/**
+#public/site_assets/images/**
 !public/site_assets/images/1/
 !public/site_assets/images/2/
 !public/site_assets/images/3/
