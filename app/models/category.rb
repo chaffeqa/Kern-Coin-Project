@@ -31,11 +31,12 @@ class Category < ActiveRecord::Base
   # Validations and Callbacks
   ###########
   validate :refuse_inventory_title_rename, :on => :update
+  validates :title, :presence => true
   before_validation :update_node
   #  before_save :full_item_count_update, :unless => Proc.new {|cat| cat.updated_at > (Time.now - 1.minute) }
 
   def refuse_inventory_title_rename    
-    errors.add(:title, "cannot change the 'Inventory' category title.") if self.id == Category.get_inventory and title != 'Inventory'
+    errors.add(:title, "cannot change the 'Inventory' category title.") if self.id == Category.get_inventory.id and title != 'Inventory'
   end
 
 
@@ -51,10 +52,11 @@ class Category < ActiveRecord::Base
   # Updates this Object's Node, setting all the attributes correctly and creating the node if need be
   def update_node
     this_node = self.original_node || self.build_node
-    self.title = this_node.title.blank? ? self.title : this_node.title
-    this_node.title = self.title
-    this_node.menu_name = self.title
-    this_node.shortcut = self.title.parameterize.html_safe
+    unless title.blank?
+      this_node.title = title
+      this_node.menu_name = title
+      this_node.shortcut = title.parameterize.html_safe
+    end
     this_node.displayed = true
   end
 
