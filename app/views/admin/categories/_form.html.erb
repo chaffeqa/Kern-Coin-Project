@@ -19,7 +19,7 @@
         <div class="field">
           <%= f.label :title, "Category Name", :class => "req" %>
           <%= f.text_field :title, :disabled => true %>
-          <%= node_f.hidden_field :parent_id, :value => Node.root.id %>
+          <%= node_f.hidden_field :parent_id, :value => @home_node.id %>
         </div>
 
       <% else %>
@@ -32,7 +32,7 @@
           <% if f.object.new_record? %>
             <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, '')), :prompt => true %>
           <% else %>
-            <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), node_f.object.parent_id) %>
+            <%= node_f.select :parent_id, options_for_select(cat_options_tree_recursive(Category.get_inventory.node, ''), @category.node.parent_id) %>
           <% end %>
         </div>
       <% end %>
