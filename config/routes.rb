@@ -6,7 +6,7 @@ KernCoinProject::Application.routes.draw do
 
   match "error" => 'shortcut#error', :as => :error
 
-  devise_for :admins, :except => [:sign_up]
+  devise_for :admins, :skip => [:registrations]
 
   resources :elements, :only => [:destroy] do
     post :move_up, :on => :member
