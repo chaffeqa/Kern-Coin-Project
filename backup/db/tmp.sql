@@ -212,7 +212,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Inventory','Test Text Two',NULL,NULL,NULL,NULL,'2010-10-30 03:30:30','2011-05-18 14:22:58',371);
+INSERT INTO `categories` VALUES (1,'Inventory','Test Text Two',NULL,NULL,NULL,NULL,'2010-10-30 03:30:30','2011-05-18 15:56:04',370);
 INSERT INTO `categories` VALUES (2,'Special Offers','','SPECIALS-2.jpg','image/jpeg',275729,'2011-01-27 14:58:35','2010-10-30 03:30:30','2011-03-16 15:46:53',1);
 INSERT INTO `categories` VALUES (3,'Ancient Coinage','Alexander the Great gold stater, certified gem Uncirculated! We sell coins from the Biblical period, as well as ancient Roman and Greek coins.','DARIC CH AU OBV sm size.jpg','image/jpeg',71277,'2010-12-23 21:32:28','2010-10-30 03:30:30','2011-05-17 21:47:57',120);
 INSERT INTO `categories` VALUES (4,'Error Coins','','1995 1C DDO P-67 OBV.jpg','image/jpeg',147036,'2011-01-24 22:11:08','2010-10-30 03:30:30','2011-01-25 17:37:29',1);
@@ -226,7 +226,7 @@ INSERT INTO `categories` VALUES (12,'U.S. Proof and Mint Sets','','51_pr_set_f.j
 INSERT INTO `categories` VALUES (13,'U.S. Territorial Gold','','1853 $20 REV.jpg','image/jpeg',51414,'2011-01-20 15:29:26','2010-10-30 03:30:30','2011-01-20 15:29:26',1);
 INSERT INTO `categories` VALUES (14,'U.S. Tokens','','rolledobv.jpg','image/jpeg',12420,'2010-12-02 18:41:15','2010-10-30 03:30:30','2011-03-16 16:03:25',2);
 INSERT INTO `categories` VALUES (15,'U.S. Treasures','','1715barobv.jpg','image/jpeg',3265,'2010-12-02 18:22:15','2010-10-30 03:30:30','2011-01-05 18:23:22',1);
-INSERT INTO `categories` VALUES (16,'U.S. Medals and Awards','This category will contain one of a kind treasures such as the huge silver bowl presented by Cambodia to Henry Kissinger in 1970.','kissinger.jpg','image/jpeg',344303,'2010-12-02 18:19:26','2010-10-30 03:30:30','2011-03-16 20:34:47',2);
+INSERT INTO `categories` VALUES (16,'U.S. Medals and Awards','This category will contain one of a kind treasures such as the huge silver bowl presented by Cambodia to Henry Kissinger in 1970.','kissinger.jpg','image/jpeg',344303,'2010-12-02 18:19:26','2010-10-30 03:30:30','2011-05-18 15:56:02',1);
 INSERT INTO `categories` VALUES (17,'Biblical','','ab0001obv.jpg','image/jpeg',89879,'2010-12-03 14:29:52','2010-10-30 03:30:30','2011-05-04 21:36:37',19);
 INSERT INTO `categories` VALUES (18,'Byzantine','','MAURICE_TIBERIUS_OBV.jpg','image/jpeg',129299,'2010-12-03 14:30:19','2010-10-30 03:30:30','2011-01-05 18:23:18',3);
 INSERT INTO `categories` VALUES (19,'Greek','Amazing Numismatic Artwork','Syrgoldobv300.jpg','image/jpeg',50365,'2010-12-03 14:30:40','2010-10-30 03:30:30','2011-05-12 14:46:19',33);
@@ -2108,7 +2108,6 @@ INSERT INTO `items` VALUES (1494,'1807-Mo TH Silver 1/2 REAL  Mexico','47.00','E
 INSERT INTO `items` VALUES (1497,'2004 LEWIS & CLARK Bank Set','3.75','CENT, PEACE & KEELBOAT NICKEL, DIME, HALF DOLLAR, SACAGAWEA DOLLAR. The half and dollar bid higher than double by themselves.','UNCIRCULATED',1,1,'2011-03-16 15:46:35','2011-03-16 15:46:35','');
 INSERT INTO `items` VALUES (1498,'c.1807 GEORGE WASHINGTON Medal by Sansom','1477.00','Made of Bronze. One of the prettiest medals of this era. B-71A AE. 40mm','NGC (MS-62) BROWN',1,1,'2011-03-16 15:58:53','2011-03-16 15:58:53','');
 INSERT INTO `items` VALUES (1499,'c.1825-1860 WASHINGTON SUCCESS Silvered Token','6700.00','Undated. Large plain edge with perfect full silvering. Very original surfaces. 24.5mm','NGC (MS-61)',1,1,'2011-03-16 16:03:18','2011-03-16 16:06:21','');
-INSERT INTO `items` VALUES (1500,'c.1807 GEORGE WASHINGTON Medal by Sansom','1477.00','Made of Bronze. One of the prettiest medals of this era. B-71A AE. 40mm','NGC (MS-62) BROWN',1,1,'2011-03-16 20:34:16','2011-03-16 20:34:16','');
 INSERT INTO `items` VALUES (1502,'1832-PTS JL Silver 8-SOLES','97.00','Pleasing rich original surfaces. Reeded edge. ','NGC (VF-35)',1,1,'2011-03-17 16:10:01','2011-03-17 16:10:01','');
 INSERT INTO `items` VALUES (1503,'1921 Silver Quarter 25c','297.00','Bright untoned surfaces.','NGC (XF-45)',1,1,'2011-03-17 16:16:49','2011-03-17 16:16:49','');
 INSERT INTO `items` VALUES (1504,'1929 Silver DIME 10c','97.00','Lusterous white surfaces.','NGC (MS-63)',1,1,'2011-03-17 16:18:40','2011-03-17 16:18:40','');
@@ -2833,7 +2832,6 @@ INSERT INTO `nodes` VALUES (645,'1807-Mo TH Silver 1/2 REAL  Mexico','1807-Mo TH
 INSERT INTO `nodes` VALUES (648,'2004 LEWIS & CLARK Bank Set','2004 LEWIS & CLARK Bank Set','2004-lewis-clark-bank-set',11,1,1497,'Item',NULL,NULL,3,'2011-03-16 15:46:45','2011-03-16 15:46:45');
 INSERT INTO `nodes` VALUES (649,'c.1807 GEORGE WASHINGTON Medal by Sansom','c.1807 GEORGE WASHINGTON Medal by Sansom','c-1807-george-washington-medal-by-sansom',25,1,1498,'Item',NULL,NULL,509,'2011-03-16 15:58:56','2011-03-16 15:58:56');
 INSERT INTO `nodes` VALUES (650,'c.1825-1860 WASHINGTON SUCCESS Silvered Token','c.1825-1860 WASHINGTON SUCCESS Silvered Token','c-1825-1860-washington-success-silvered-token',23,1,1499,'Item',NULL,NULL,507,'2011-03-16 16:03:22','2011-03-16 16:03:22');
-INSERT INTO `nodes` VALUES (651,'c.1807 GEORGE WASHINGTON Medal by Sansom','c.1807 GEORGE WASHINGTON Medal by Sansom','1-c-1807-george-washington-medal-by-sansom',25,1,1500,'Item',NULL,NULL,510,'2011-03-16 20:34:36','2011-03-16 20:34:36');
 INSERT INTO `nodes` VALUES (653,'1832-PTS JL Silver 8-SOLES','1832-PTS JL Silver 8-SOLES','1832-pts-jl-silver-8-soles',386,1,1502,'Item',NULL,NULL,164,'2011-03-17 16:10:01','2011-03-17 16:10:01');
 INSERT INTO `nodes` VALUES (654,'1921 Silver Quarter 25c','1921 Silver Quarter 25c','1921-silver-quarter-25c',40,1,1503,'Item',NULL,NULL,169,'2011-03-17 16:16:49','2011-03-17 16:16:49');
 INSERT INTO `nodes` VALUES (655,'1929 Silver DIME 10c','1929 Silver DIME 10c','1929-silver-dime-10c',40,1,1504,'Item',NULL,NULL,170,'2011-03-17 16:18:40','2011-03-17 16:18:40');
@@ -4108,9 +4106,6 @@ INSERT INTO `product_images` VALUES (1169,'SANSOM MEDAL.jpg','image/jpeg',57007,
 INSERT INTO `product_images` VALUES (1170,'WASH TOKEN OBV.jpg','image/jpeg',82441,'2011-03-16 16:03:09',1499,1,'2011-03-16 16:03:19','2011-03-16 16:03:19');
 INSERT INTO `product_images` VALUES (1171,'WASH TOKEN REV.jpg','image/jpeg',94390,'2011-03-16 16:03:11',1499,0,'2011-03-16 16:03:20','2011-03-16 16:03:20');
 INSERT INTO `product_images` VALUES (1172,'WASH TOKEN.jpg','image/jpeg',52989,'2011-03-16 16:03:12',1499,0,'2011-03-16 16:03:21','2011-03-16 16:03:21');
-INSERT INTO `product_images` VALUES (1173,'SANSOM MEDAL OBV.jpg','image/jpeg',78237,'2011-03-16 20:33:51',1500,1,'2011-03-16 20:34:20','2011-03-16 20:34:20');
-INSERT INTO `product_images` VALUES (1174,'SANSOM MEDAL REV.jpg','image/jpeg',84788,'2011-03-16 20:33:59',1500,0,'2011-03-16 20:34:29','2011-03-16 20:34:29');
-INSERT INTO `product_images` VALUES (1175,'SANSOM MEDAL.jpg','image/jpeg',57007,'2011-03-16 20:34:02',1500,0,'2011-03-16 20:34:32','2011-03-16 20:34:32');
 INSERT INTO `product_images` VALUES (1176,'AUSSIE 1913 2S REV.jpg','image/jpeg',98155,'2011-03-17 16:02:17',1485,1,'2011-03-17 16:02:19','2011-03-17 16:02:19');
 INSERT INTO `product_images` VALUES (1177,'AUSSIE 1913 2S OBV.jpg','image/jpeg',95235,'2011-03-17 16:02:18',1485,0,'2011-03-17 16:02:20','2011-03-17 16:02:20');
 INSERT INTO `product_images` VALUES (1178,'AUSSIE 1913 2S.jpg','image/jpeg',56934,'2011-03-17 16:02:19',1485,0,'2011-03-17 16:02:20','2011-03-17 16:02:20');
@@ -4536,4 +4531,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-05-18 10:34:09
+-- Dump completed on 2011-05-19  3:00:05
